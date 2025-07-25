@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Support - vybecoding.ai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-vybe-dark text-vybe-gray-100 font-inter antialiased">
+    <div id="app-container" class="min-h-screen flex flex-col">
+        <!-- Header Placeholder -->
+        <div id="header-placeholder"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 relative">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="stars"></div>
+                <div class="nebula-background"></div>
+                <div class="floating-particles"></div>
+            </div>
+
+            <!-- Page Container -->
+            <div class="page-container relative">
+                <div class="max-w-4xl mx-auto px-6 py-12">
+                    <!-- Header -->
+                    <div class="text-center mb-12">
+                        <h1 class="text-4xl font-bold text-white mb-4">Contact Support</h1>
+                        <p class="text-xl text-vybe-gray-300">We're here to help! Reach out to our support team.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Contact Options -->
+                        <div class="lg:col-span-1 space-y-6">
+                            <!-- Response Time -->
+                            <div class="bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-600/20 backdrop-blur-sm rounded-xl border border-gray-600/30 shadow-xl p-6">
+                                <div class="flex items-center gap-3 mb-4">
+                                    <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-lg font-semibold text-white">Response Time</h3>
+                                </div>
+                                <p class="text-vybe-gray-400 text-sm">
+                                    We typically respond within 24 hours during business days. Pro members get priority support with faster response times.
+                                </p>
+                            </div>
+
+                            <!-- Other Ways to Get Help -->
+                            <div class="bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-600/20 backdrop-blur-sm rounded-xl border border-gray-600/30 shadow-xl p-6">
+                                <h3 class="text-lg font-semibold text-white mb-4">Other Ways to Get Help</h3>
+                                <ul class="space-y-3">
+                                    <li>
+                                        <a href="help.html" class="flex items-center gap-3 text-vybe-gray-300 hover:text-white transition-colors">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                            <span class="text-sm">Help Center</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center gap-3 text-vybe-gray-300 hover:text-white transition-colors">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-6a2 2 0 012-2h8z"></path>
+                                            </svg>
+                                            <span class="text-sm">Community Forum</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="flex items-center gap-3 text-vybe-gray-300 hover:text-white transition-colors">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                            </svg>
+                                            <span class="text-sm">Documentation</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-gradient-to-br from-gray-800/40 via-gray-700/30 to-gray-600/20 backdrop-blur-sm rounded-xl border border-gray-600/30 shadow-xl p-8">
+                                <form onsubmit="handleSubmit(event)">
+                                    <div class="space-y-6">
+                                        <!-- Category -->
+                                        <div>
+                                            <label for="category" class="block text-sm font-medium text-vybe-gray-400 mb-2">What can we help you with?</label>
+                                            <select id="category" name="category" required
+                                                class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all">
+                                                <option value="">Select a category</option>
+                                                <option value="technical">Technical Issue</option>
+                                                <option value="billing">Billing & Subscription</option>
+                                                <option value="account">Account Management</option>
+                                                <option value="content">Content & Guides</option>
+                                                <option value="mentorship">Mentorship</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Name -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label for="firstName" class="block text-sm font-medium text-vybe-gray-400 mb-2">First Name</label>
+                                                <input type="text" id="firstName" name="firstName" required
+                                                    class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white placeholder-vybe-gray-500 focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all"
+                                                    placeholder="John">
+                                            </div>
+                                            <div>
+                                                <label for="lastName" class="block text-sm font-medium text-vybe-gray-400 mb-2">Last Name</label>
+                                                <input type="text" id="lastName" name="lastName" required
+                                                    class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white placeholder-vybe-gray-500 focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all"
+                                                    placeholder="Doe">
+                                            </div>
+                                        </div>
+
+                                        <!-- Email -->
+                                        <div>
+                                            <label for="email" class="block text-sm font-medium text-vybe-gray-400 mb-2">Email</label>
+                                            <input type="email" id="email" name="email" required
+                                                class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white placeholder-vybe-gray-500 focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all"
+                                                placeholder="you@example.com">
+                                        </div>
+
+                                        <!-- Subject -->
+                                        <div>
+                                            <label for="subject" class="block text-sm font-medium text-vybe-gray-400 mb-2">Subject</label>
+                                            <input type="text" id="subject" name="subject" required
+                                                class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white placeholder-vybe-gray-500 focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all"
+                                                placeholder="Brief description of your issue">
+                                        </div>
+
+                                        <!-- Message -->
+                                        <div>
+                                            <label for="message" class="block text-sm font-medium text-vybe-gray-400 mb-2">Message</label>
+                                            <textarea id="message" name="message" rows="6" required
+                                                class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white placeholder-vybe-gray-500 focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all resize-none"
+                                                placeholder="Please describe your issue in detail..."></textarea>
+                                        </div>
+
+                                        <!-- Priority (Pro members only) -->
+                                        <div class="bg-vybe-purple/10 border border-vybe-purple/30 rounded-lg p-4">
+                                            <label class="flex items-center gap-3">
+                                                <input type="checkbox" id="priority" name="priority"
+                                                    class="w-4 h-4 text-vybe-purple bg-vybe-gray-800 border-vybe-gray-700 rounded focus:ring-vybe-purple focus:ring-2">
+                                                <span class="text-sm text-vybe-gray-300">
+                                                    Mark as priority (Pro members only)
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <button type="submit"
+                                        class="w-full mt-6 px-8 py-3 bg-gray-900/80 border border-purple-500/30 text-purple-400 rounded-lg hover:bg-gray-900 hover:border-purple-500/50 hover:text-purple-300 transition-all font-medium">
+                                        Send Message
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Message (Initially Hidden) -->
+                    <div id="successMessage" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+                        <div class="bg-gradient-to-br from-gray-800/90 via-gray-700/90 to-gray-600/90 backdrop-blur-sm rounded-xl border border-gray-600/30 shadow-xl p-8 max-w-md mx-4">
+                            <div class="text-center">
+                                <div class="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white mb-2">Message Sent!</h3>
+                                <p class="text-vybe-gray-300 mb-6">We've received your message and will get back to you soon.</p>
+                                <button onclick="closeSuccessMessage()"
+                                    class="px-8 py-2 bg-gray-900/80 border border-purple-500/30 text-purple-400 rounded-lg hover:bg-gray-900 hover:border-purple-500/50 hover:text-purple-300 transition-all font-medium">
+                                    OK
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Initialize page
+        if (window.pageLoader) {
+            window.pageLoader.init();
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            // Show success message
+            document.getElementById('successMessage').classList.remove('hidden');
+            // Reset form
+            event.target.reset();
+        }
+
+        function closeSuccessMessage() {
+            document.getElementById('successMessage').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

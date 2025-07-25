@@ -1,0 +1,288 @@
+/**
+ * CSS Layers for VybeCoding Demo
+ * Establishes cascade order for maintainable styling
+ */
+
+/* Define layer order (lower layers have lower priority) */
+@layer tokens, reset, base, components, utilities, overrides;
+
+/* ============================================
+   RESET LAYER
+   ============================================ */
+
+@layer reset {
+  /* Modern CSS Reset */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  * {
+    margin: 0;
+  }
+  
+  html, body {
+    height: 100%;
+  }
+  
+  body {
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+}
+
+/* ============================================
+   BASE LAYER
+   ============================================ */
+
+@layer base {
+  /* Base typography */
+  html {
+    font-family: var(--font-primary);
+    color: var(--color-white);
+    background-color: var(--color-void);
+  }
+  
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: var(--weight-semibold);
+    line-height: var(--leading-tight);
+  }
+  
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+  h4 { font-size: var(--text-xl); }
+  h5 { font-size: var(--text-lg); }
+  h6 { font-size: var(--text-base); }
+  
+  /* Links */
+  a {
+    color: var(--color-brand-secondary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  
+  a:hover {
+    color: var(--color-brand-accent);
+  }
+  
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Selection */
+  ::selection {
+    background-color: rgba(138, 43, 226, 0.2);
+    color: var(--color-white);
+  }
+}
+
+/* ============================================
+   COMPONENTS LAYER
+   ============================================ */
+
+@layer components {
+  /* Button components */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md) var(--space-xl);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--weight-medium);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+    text-decoration: none;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+    color: var(--color-white);
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow-purple);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-mist);
+    border: 1px solid var(--color-carbon);
+  }
+  
+  .btn-secondary:hover {
+    color: var(--color-white);
+    border-color: var(--color-silver);
+  }
+  
+  /* Card components */
+  .card {
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+  
+  .card:hover {
+    background: rgba(26, 26, 26, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Navigation components */
+  .nav-item {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    font-weight: var(--weight-medium);
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+  
+  .nav-item:hover {
+    color: var(--color-brand-secondary);
+  }
+  
+  .nav-item.active {
+    color: var(--color-brand-primary);
+  }
+  
+  /* Logo components */
+  .logo-container {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .logo-gradient {
+    position: absolute;
+    inset: 0;
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    background: conic-gradient(from 0deg, var(--color-brand-primary) 0deg, var(--color-brand-secondary) 120deg, var(--color-brand-accent) 240deg, var(--color-brand-primary) 360deg);
+    background-clip: padding-box;
+    animation: gentleColorShift 32s ease-in-out infinite;
+  }
+  
+  .logo-letter {
+    position: absolute;
+    inset: 2px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(30, 37, 46, 1.0);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    color: var(--color-white);
+    transform-style: preserve-3d;
+  }
+}
+
+/* ============================================
+   UTILITIES LAYER
+   ============================================ */
+
+@layer utilities {
+  /* Spacing utilities */
+  .p-xs { padding: var(--space-xs); }
+  .p-sm { padding: var(--space-sm); }
+  .p-md { padding: var(--space-md); }
+  .p-lg { padding: var(--space-lg); }
+  .p-xl { padding: var(--space-xl); }
+  
+  .m-xs { margin: var(--space-xs); }
+  .m-sm { margin: var(--space-sm); }
+  .m-md { margin: var(--space-md); }
+  .m-lg { margin: var(--space-lg); }
+  .m-xl { margin: var(--space-xl); }
+  
+  /* Display utilities */
+  .hidden { display: none; }
+  .block { display: block; }
+  .flex { display: flex; }
+  .inline-flex { display: inline-flex; }
+  .grid { display: grid; }
+  
+  /* Position utilities */
+  .relative { position: relative; }
+  .absolute { position: absolute; }
+  .fixed { position: fixed; }
+  
+  /* Text utilities */
+  .text-xs { font-size: var(--text-xs); }
+  .text-sm { font-size: var(--text-sm); }
+  .text-base { font-size: var(--text-base); }
+  .text-lg { font-size: var(--text-lg); }
+  .text-xl { font-size: var(--text-xl); }
+  
+  .font-light { font-weight: var(--weight-light); }
+  .font-normal { font-weight: var(--weight-normal); }
+  .font-medium { font-weight: var(--weight-medium); }
+  .font-semibold { font-weight: var(--weight-semibold); }
+  .font-bold { font-weight: var(--weight-bold); }
+  
+  /* Color utilities */
+  .text-white { color: var(--color-white); }
+  .text-brand { color: var(--color-brand-primary); }
+  .text-accent { color: var(--color-brand-accent); }
+  
+  /* Background utilities */
+  .bg-brand { background-color: var(--color-brand-primary); }
+  .bg-dark { background-color: var(--color-dark); }
+  .bg-transparent { background-color: transparent; }
+  
+  /* Border utilities */
+  .rounded-sm { border-radius: var(--radius-sm); }
+  .rounded { border-radius: var(--radius-md); }
+  .rounded-lg { border-radius: var(--radius-lg); }
+  .rounded-full { border-radius: var(--radius-full); }
+  
+  /* Shadow utilities */
+  .shadow-sm { box-shadow: var(--shadow-sm); }
+  .shadow { box-shadow: var(--shadow-md); }
+  .shadow-lg { box-shadow: var(--shadow-lg); }
+  .shadow-glow { box-shadow: var(--shadow-glow-purple); }
+  
+  /* Transition utilities */
+  .transition { transition: all var(--duration-normal) var(--ease-out); }
+  .transition-colors { transition: color var(--duration-fast) var(--ease-out); }
+  .transition-transform { transition: transform var(--duration-normal) var(--ease-out); }
+}
+
+/* ============================================
+   OVERRIDES LAYER
+   ============================================ */
+
+@layer overrides {
+  /* Important overrides for critical styles */
+  .force-visible {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  .force-hidden {
+    display: none !important;
+  }
+  
+  .force-z-top {
+    z-index: var(--z-maximum) !important;
+  }
+}

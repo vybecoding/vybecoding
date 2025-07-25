@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building AI Agents with Claude - vybecoding.ai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-vybe-dark text-vybe-gray-100 font-inter antialiased">
+    <div id="app-container" class="min-h-screen flex flex-col">
+        <!-- Header Placeholder -->
+        <div id="header-placeholder"></div>
+
+        <!-- Main Content -->
+        <main class="flex-1 relative">
+            <!-- Background Elements -->
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="stars"></div>
+                <div class="nebula-background"></div>
+                <div class="floating-particles"></div>
+            </div>
+
+            <!-- Page Container -->
+            <div class="page-container relative">
+                <div class="max-w-7xl mx-auto px-6 py-8">
+                    <!-- Back Button -->
+                    <button onclick="history.back()" class="flex items-center gap-2 text-sm text-vybe-gray-400 hover:text-white transition-colors mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <span>Back to Guide Details</span>
+                    </button>
+
+                    <!-- Main Content Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                        <!-- Content Area -->
+                        <div class="lg:col-span-8">
+                            <!-- Guide Header -->
+                            <div class="vybe-card overflow-hidden mb-6">
+                                <div class="relative">
+                                    <!-- Cover Image -->
+                                    <div class="h-24 bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-black/50"></div>
+                                        <img src="../assets/guide-covers/claude-agents.jpg" alt="Guide Cover" class="w-full h-full object-cover opacity-50" onerror="this.style.display='none'">
+                                    </div>
+                                    
+                                    <!-- Guide Info Overlay -->
+                                    <div class="absolute bottom-0 left-0 right-0 px-6 pb-4 pt-8 bg-gradient-to-t from-black/80 to-transparent">
+                                        <h1 class="text-3xl font-bold text-white mb-2">Advanced Claude API Mastery</h1>
+                                        <div class="flex flex-wrap items-center gap-4 text-sm text-vybe-gray-300">
+                                            <span class="flex items-center gap-1">
+                                                <span class="text-red-500">●</span>
+                                                Advanced
+                                            </span>
+                                            <span class="flex items-center gap-1">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                                3.5 hours total
+                                            </span>
+                                            <span class="flex items-center gap-1">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                                </svg>
+                                                Backend developers
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Guide Details -->
+                                <div class="p-6">
+                                    <!-- Brief Description -->
+                                    <p class="text-vybe-gray-300 mb-6">
+                                        Master advanced Claude API patterns including streaming, function calling, context management, and production deployment strategies.
+                                    </p>
+                                    
+                                    <!-- Primary Focus & AI Tools -->
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                        <div>
+                                            <h3 class="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
+                                            <span class="inline-block px-3 py-1 bg-vybe-purple/20 border border-vybe-purple/30 text-vybe-purple-light rounded-full text-sm">
+                                                Development
+                                            </span>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-sm font-medium text-vybe-gray-400 mb-2">AI Tools Covered</h3>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">Claude</span>
+                                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">Claude API</span>
+                                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">Python SDK</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Module Navigation -->
+                                    <div class="border-t border-vybe-gray-700 pt-4">
+                                        <h3 class="text-sm font-medium text-vybe-gray-400 mb-3">Currently Viewing</h3>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <h2 class="text-xl font-semibold text-white">Module 1: Introduction to AI Agents</h2>
+                                                <p class="text-sm text-vybe-gray-400 mt-1">15 min read • Lesson 1 of 3</p>
+                                            </div>
+                                            <button class="btn btn-primary-purple">
+                                                Mark Complete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content Container -->
+                            <div class="vybe-card p-8">
+                                <!-- Content -->
+                                <article class="prose prose-invert max-w-none">
+                                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center gap-2">
+                                        <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                        What are AI Agents?
+                                    </h2>
+                                    <p class="text-vybe-gray-300 leading-relaxed mb-6">
+                                        AI agents are autonomous software systems that can perceive their environment, make decisions, and take actions to achieve specific goals. Unlike traditional chatbots that simply respond to queries, AI agents can actively plan, execute tasks, and learn from their interactions.
+                                    </p>
+
+                                    <h3 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                                        <div class="w-1 h-4 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                        Key Characteristics
+                                    </h3>
+                                    <ul class="list-disc list-inside text-vybe-gray-300 space-y-2 mb-6">
+                                        <li>Autonomy: Agents can operate without constant human intervention</li>
+                                        <li>Reactivity: They respond to changes in their environment</li>
+                                        <li>Proactivity: They can take initiative to achieve goals</li>
+                                        <li>Social ability: They can interact with other agents or humans</li>
+                                    </ul>
+
+                                    <h3 class="text-xl font-semibold text-white mb-3 flex items-center gap-2">
+                                        <div class="w-1 h-4 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                        Why Claude for AI Agents?
+                                    </h3>
+                                    <p class="text-vybe-gray-300 leading-relaxed mb-6">
+                                        Claude's advanced language understanding and generation capabilities make it an excellent foundation for building sophisticated AI agents. With its ability to understand context, follow complex instructions, and generate human-like responses, Claude can power agents that feel natural and intelligent.
+                                    </p>
+
+                                    <!-- Code Example -->
+                                    <div class="bg-vybe-gray-900 rounded-lg p-6 mb-6">
+                                        <h4 class="text-sm font-medium text-vybe-gray-400 mb-3">Example: Simple Claude Agent</h4>
+                                        <pre class="text-sm"><code class="language-python text-vybe-gray-300">import anthropic
+
+class SimpleAgent:
+    def __init__(self, api_key):
+        self.client = anthropic.Anthropic(api_key=api_key)
+        
+    def process_task(self, task):
+        response = self.client.messages.create(
+            model="claude-3-opus-20240229",
+            max_tokens=1024,
+            messages=[{
+                "role": "user",
+                "content": f"As an AI agent, help me with: {task}"
+            }]
+        )
+        return response.content</code></pre>
+                                    </div>
+
+
+                                    <!-- Next Steps -->
+                                    <div class="bg-vybe-purple/10 border border-vybe-purple/30 rounded-lg p-6 mt-8">
+                                        <h4 class="vybe-section-header mb-2">Ready to Continue?</h4>
+                                        <p class="text-vybe-gray-300 mb-4">
+                                            Now that you understand the basics of AI agents and why Claude is a great choice, let's dive into setting up your development environment.
+                                        </p>
+                                        <button onclick="navigateToNextModule()" class="btn btn-primary-purple">
+                                            Continue to Module 2 →
+                                        </button>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <!-- Navigation Controls -->
+                            <div class="flex items-center justify-between mt-8">
+                                <button class="btn btn-secondary flex items-center gap-2" disabled>
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                    </svg>
+                                    Previous Module
+                                </button>
+                                <button onclick="navigateToNextModule()" class="btn btn-primary-purple flex items-center gap-2">
+                                    Next Module
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Sidebar -->
+                        <div class="lg:col-span-4">
+                            <div class="sticky top-24 space-y-6">
+                                <!-- Progress Card -->
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                                            <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                            Your Progress
+                                        </h3>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="mb-4">
+                                            <div class="flex justify-between text-sm mb-2">
+                                                <span class="text-vybe-gray-400">Module Progress</span>
+                                                <span class="text-white font-medium">1 of 8</span>
+                                            </div>
+                                            <div class="w-full bg-vybe-gray-800 rounded-full h-2">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-2 rounded-full" style="width: 12.5%"></div>
+                                            </div>
+                                        </div>
+                                        <div class="text-sm text-vybe-gray-400">
+                                            <p>Time spent: 5 minutes</p>
+                                            <p>Estimated remaining: 1h 10min</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- What You'll Learn Section -->
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h2 class="text-lg font-semibold text-white flex items-center gap-2">
+                                            <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                            What You'll Learn
+                                        </h2>
+                                    </div>
+                                    <div class="p-6">
+                                        <ul class="space-y-2">
+                                            <li class="flex items-start gap-2">
+                                                <span class="text-vybe-purple-light mt-1">✓</span>
+                                                <span class="text-vybe-gray-300">Understand and execute complex multi-step tasks</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <span class="text-vybe-purple-light mt-1">✓</span>
+                                                <span class="text-vybe-gray-300">Maintain context across conversations</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <span class="text-vybe-purple-light mt-1">✓</span>
+                                                <span class="text-vybe-gray-300">Integrate with external tools and APIs</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <span class="text-vybe-purple-light mt-1">✓</span>
+                                                <span class="text-vybe-gray-300">Learn and adapt from user feedback</span>
+                                            </li>
+                                            <li class="flex items-start gap-2">
+                                                <span class="text-vybe-purple-light mt-1">✓</span>
+                                                <span class="text-vybe-gray-300">Handle errors gracefully and provide helpful responses</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Module List -->
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                                            <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                            Guide Modules
+                                        </h3>
+                                    </div>
+                                    <div class="p-6">
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <a href="#" class="block p-3 bg-vybe-purple/20 border border-vybe-purple/30 rounded-lg">
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="w-6 h-6 bg-vybe-purple rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h4 class="text-white font-medium text-sm">Module 1: Introduction</h4>
+                                                            <p class="text-xs text-vybe-gray-400 mt-1">Currently viewing</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" onclick="navigateToNextModule()" class="block p-3 hover:bg-vybe-gray-800/50 rounded-lg transition-colors">
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="w-6 h-6 bg-vybe-gray-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <span class="text-xs text-vybe-gray-400">2</span>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h4 class="text-vybe-gray-300 font-medium text-sm">Module 2: Environment Setup</h4>
+                                                            <p class="text-xs text-vybe-gray-500 mt-1">20 min</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block p-3 hover:bg-vybe-gray-800/50 rounded-lg transition-colors">
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="w-6 h-6 bg-vybe-gray-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <span class="text-xs text-vybe-gray-400">3</span>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h4 class="text-vybe-gray-300 font-medium text-sm">Module 3: Basic Agent Architecture</h4>
+                                                            <p class="text-xs text-vybe-gray-500 mt-1">25 min</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="block p-3 hover:bg-vybe-gray-800/50 rounded-lg transition-colors opacity-50 cursor-not-allowed">
+                                                    <div class="flex items-start gap-3">
+                                                        <div class="w-6 h-6 bg-vybe-gray-700 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                                            <svg class="w-3 h-3 text-vybe-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                                            </svg>
+                                                        </div>
+                                                        <div class="flex-1">
+                                                            <h4 class="text-vybe-gray-500 font-medium text-sm">Module 4: Advanced Features</h4>
+                                                            <p class="text-xs text-vybe-gray-600 mt-1">Locked</p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Resources Card -->
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                                            <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                            Resources
+                                        </h3>
+                                    </div>
+                                    <div class="p-6">
+                                        <ul class="space-y-3">
+                                        <li>
+                                            <a href="#" class="flex items-center gap-3 text-vybe-gray-300 hover:text-white transition-colors">
+                                                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                                </svg>
+                                                <span class="text-sm">Download Code Examples</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center gap-3 text-vybe-gray-300 hover:text-white transition-colors">
+                                                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                                </svg>
+                                                <span class="text-sm">API Documentation</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="flex items-center gap-3 text-vybe-gray-300 hover:text-white transition-colors">
+                                                <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                </svg>
+                                                <span class="text-sm">Get Help</span>
+                                            </a>
+                                        </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <!-- Author Card -->
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h3 class="text-lg font-semibold text-white flex items-center gap-2">
+                                            <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                            Guide Author
+                                        </h3>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="flex items-center gap-3 mb-3">
+                                        <div class="w-12 h-12 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center text-white font-bold">
+                                            AC
+                                        </div>
+                                        <div>
+                                            <div class="font-medium text-white">Alex Chen</div>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-sm text-vybe-gray-400">@alexchen</span>
+                                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium">PRO</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-vybe-gray-300 mb-3">
+                                        With over 8 years of experience in full-stack development, I specialize in building scalable web applications and mentoring developers.
+                                    </p>
+                                    <a href="https://discord.gg/VaxG4VEdFk" target="_blank" class="text-sm text-vybe-purple-light hover:text-vybe-pink transition-colors">
+                                        Message on Discord →
+                                    </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        // Initialize page
+        if (window.pageLoader) {
+            window.pageLoader.init();
+        }
+
+        // Navigation functions
+        function navigateToNextModule() {
+            // In a real app, this would navigate to the next module
+            alert('Navigate to Module 2: Environment Setup');
+        }
+    </script>
+</body>
+</html>

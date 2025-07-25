@@ -1,0 +1,598 @@
+        <div class="page-container nebula-background">
+            <!-- Nebula backgrounds handled by CSS -->
+            <div class="nebula-middle"></div>
+            <div class="nebula-bottom"></div>
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-8">
+                    <h1 class="text-4xl font-light mb-4">
+                        <span class="text-gradient-brand">Featured</span>
+                    </h1>
+                    <p class="text-vybe-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                        Discover featured members, trending guides, latest platform updates, and community highlights. 
+                        Everything noteworthy in the vybecoding.ai ecosystem.
+                    </p>
+                </div>
+
+
+                <!-- Universal Search -->
+                <div class="universal-search mb-8">
+                    <svg class="universal-search-icon w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="search" 
+                           placeholder="Search content, guides, apps, members, and news..." 
+                           class="universal-search-input"
+                           id="feed-search"
+                           onkeyup="searchFeed(this.value)">
+                    <button class="btn btn-primary-purple universal-search-submit" onclick="performFeedSearch()">Search</button>
+                    
+                    <!-- Search Suggestions Dropdown -->
+                    <div class="search-suggestions" id="feed-search-suggestions">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Unified Filters -->
+                <div class="search-filter-container mb-8">
+                    <div class="flex flex-col gap-0">
+                        <!-- Filters Row -->
+                        <div class="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
+                            <!-- Filter by Dropdown (Consolidated Content Type + Activity) -->
+                    <div class="filter-dropdown multi-select-dropdown" id="feed-filter-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('feed-filter')">
+                            <span>Filter by</span>
+                            <span class="filter-selection-counter hidden" id="feed-filter-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">All Activity</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'guides')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Guides</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'sites')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Apps</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'members')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Members</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'announcements')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Announcements</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'trending')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Trending Now</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'popular')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Most Popular</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-filter', 'featured')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Featured Only</span>
+                            </div>
+                        </div>
+                    </div><div class="filter-dropdown multi-select-dropdown" id="feed-tier-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('feed-tier')">
+                            <span>Member Tier</span>
+                            <span class="filter-selection-counter hidden" id="feed-tier-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-tier', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">All Tiers</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-tier', 'pro')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Pro</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-tier', 'free')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Free</span>
+                            </div>
+                        </div>
+                    </div><div class="filter-dropdown multi-select-dropdown" id="feed-expertise-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('feed-expertise')">
+                            <span>Expertise</span>
+                            <span class="filter-selection-counter hidden" id="feed-expertise-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'ai-dev')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">AI Development</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'claude')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Claude Expert</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'fullstack')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Full-Stack</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'frontend')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Frontend</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'backend')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Backend</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'design')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">UI/UX Design</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'prompt')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Prompt Engineering</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'automation')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Automation</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'devops')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">DevOps</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'mobile')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Mobile</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-expertise', 'data-science')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Data Science</span>
+                            </div>
+                        </div>
+                    </div><div class="filter-dropdown multi-select-dropdown" id="feed-services-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('feed-services')">
+                            <span>Services</span>
+                            <span class="filter-selection-counter hidden" id="feed-services-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-services', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">All Services</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-services', 'mentorship')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Offering Mentorship</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-services', 'collab')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Open to Collab</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-services', 'hiring')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Hiring/Available</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('feed-services', 'consulting')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Consulting</span>
+                            </div>
+                        </div>
+                    </div><div class="filter-dropdown" id="feed-sort-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('feed-sort')">
+                            <span>Sort by</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="filter-dropdown-item" onclick="selectFilter('feed-sort', 'newest')">Newest First</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('feed-sort', 'oldest')">Oldest First</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('feed-sort', 'popular')">Most Popular</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('feed-sort', 'likes')">Most Liked</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('feed-sort', 'comments')">Most Comments</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('feed-sort', 'trending')">Trending</div>
+                        </div>
+                    </div>
+
+                    <!-- Clear Filters Button -->
+                    <button class="filter-clear-button" onclick="clearAllFilters('featured')">Clear Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unified Content -->
+                <div class="mt-8">
+                    <!-- Notice about default feed -->
+                    <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded-lg p-4 mb-6 text-left">
+                        <div class="flex items-center text-sm">
+                            <div class="mr-4 text-vybe-purple-light font-medium flex items-center gap-1 self-center">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                            </svg>
+                            Featured members system:
+                        </div>
+                        <div class="flex-1 text-vybe-gray-300">
+                            <div>Top 3 spots reserved for Pro members. Featured status rotates fairly among active paying members.</div>
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- Activity Feed -->
+                    <div id="activity-feed" class="space-y-6">
+                        <!-- Activity Feed Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Recently Verified Guide -->
+                            <div class="minimal-card card-verified rounded-lg p-5 transition-all cursor-pointer group">
+                                <!-- Title and creator -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
+                                    Building AI Agents with Claude 3.5
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0"></div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        @sarahchen
+                                        <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 01/16/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    Complete guide to building autonomous AI agents using the latest Claude 3.5 API, including function calling and computer use.
+                                </p>
+                                
+                                <!-- Tags -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded font-medium">Claude 3.5</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">AI Agents</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Python</span>
+                                </div>
+                                
+                                <!-- Stats -->
+                                <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                    <div class="flex items-center gap-1 text-green-400 text-xs">
+                                        <span class="text-xs">✅</span>
+                                        <span>Verified 2h ago</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs">
+                                        <div class="flex items-center gap-1 text-vybe-gray-400">
+                                            <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                            <span>156</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Needs Verification App -->
+                            <div class="minimal-card card-needs-verification rounded-lg p-5 transition-all cursor-pointer group">
+                                <!-- Title and creator -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                    AI Code Review Assistant
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full flex-shrink-0"></div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        @devtools
+                                        <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 01/02/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    Interactive tool that analyzes your code for bugs, suggests improvements, and explains best practices using Claude AI.
+                                </p>
+                                
+                                <!-- App Tags and Technologies -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <!-- App Tags (Orange) -->
+                                    <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">productivity</span>
+                                    <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">developer-tools</span>
+                                    <!-- Technologies (Orange on App cards) -->
+                                    <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">TypeScript</span>
+                                </div>
+                                
+                                <!-- Stats -->
+                                <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                    <div class="flex items-center gap-1 text-vybe-gray-500 text-xs">
+                                        <span class="text-xs">⚪</span>
+                                        <span>Needs verification</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs">
+                                        <div class="flex items-center gap-1 text-vybe-gray-400">
+                                            <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                            <span>89</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Possibly Outdated Guide -->
+                            <div class="minimal-card card-possibly-outdated rounded-lg p-5 transition-all cursor-pointer group">
+                                <!-- Title and creator -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                    ChatGPT Plugin Development
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex-shrink-0"></div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        @olddev
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 08/16/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    Build custom ChatGPT plugins using the original plugin system. Note: OpenAI has deprecated plugins in favor of GPTs.
+                                </p>
+                                
+                                <!-- User Tags from Guide Submission -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs rounded font-medium">Intermediate</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">chatgpt</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">plugin-development</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api-guide</span>
+                                </div>
+                                
+                                <!-- Stats -->
+                                <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                    <div class="flex items-center gap-1 text-yellow-500 text-xs">
+                                        <span class="text-xs">⚠️</span>
+                                        <span>May be outdated</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs">
+                                        <div class="flex items-center gap-1 text-vybe-gray-400">
+                                            <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                            <span>32</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Likely Outdated Guide -->
+                            <div class="minimal-card card-likely-outdated rounded-lg p-5 transition-all cursor-pointer group">
+                                <!-- Title and creator -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-gray-300 transition-colors">
+                                    GPT-3 API Quick Start
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full flex-shrink-0"></div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        @legacy
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 01/16/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    Getting started with the GPT-3 API. Note: GPT-3 has been superseded by GPT-4 and GPT-4 Turbo.
+                                </p>
+                                
+                                <!-- User Tags from Guide Submission -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-green-500/10 border border-green-500/20 text-green-500 text-xs rounded font-medium">Beginner</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api-guide</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">openai</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">beginner</span>
+                                </div>
+                                
+                                <!-- Stats -->
+                                <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                    <div class="flex items-center gap-1 text-red-500 text-xs">
+                                        <span class="text-xs">❌</span>
+                                        <span>Likely outdated</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs">
+                                        <div class="flex items-center gap-1 text-vybe-gray-400">
+                                            <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                            <span>23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Fresh News Article -->
+                            <div class="minimal-card card-verified rounded-lg p-5 transition-all cursor-pointer group" data-card-type="news">
+                                <!-- Title and source -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-blue-400 transition-colors">
+                                    OpenAI Releases Claude 4.0 with Enhanced Reasoning
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
+                                        <span class="text-xs font-bold text-white">AI</span>
+                                    </div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        OpenAI Blog
+                                        <span class="text-blue-400 font-medium ml-1">Official</span>
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 01/16/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    The latest Claude model brings significant improvements to reasoning capabilities and multimodal understanding, with enhanced performance across coding and analysis tasks.
+                                </p>
+                                
+                                <!-- News Topic Categories -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded font-medium">AI News</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Claude</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Model Updates</span>
+                                </div>
+                            </div>
+
+                            <!-- Premium Guide (Unpurchased) -->
+                            <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative">
+                                <!-- Title and creator -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
+                                    Advanced Claude API Mastery
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0"></div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        @alexchen
+                                        <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <span class="text-sm text-amber-500">🏆 Top Creator</span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 11/16/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    Master advanced Claude API patterns including streaming, function calling, context management, and production deployment strategies.
+                                </p>
+                                
+                                <!-- Tags -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api</span>
+                                    <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">TypeScript</span>
+                                </div>
+                                
+                                <!-- Stats with lock icon -->
+                                <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                    <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                        </svg>
+                                        <span>Premium • $25</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs">
+                                        <div class="flex items-center gap-1 text-vybe-gray-400">
+                                            <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                            <span>127</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Premium App (Purchased) -->
+                            <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative">
+                                <!-- Title -->
+                                <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                    AI Code Assistant Pro
+                                </h3>
+                                
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full flex-shrink-0"></div>
+                                    <span class="text-sm text-vybe-gray-400">
+                                        @buildtools
+                                        <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                    </span>
+                                    <span class="text-vybe-gray-500">•</span>
+                                    <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                        <span>Posted 01/10/25</span>
+                                    </div>
+                                </div>
+                                
+                                <!-- Description -->
+                                <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                    Production-ready code assistant with advanced refactoring, test generation, and team collaboration features.
+                                </p>
+                                
+                                <!-- Tags -->
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">productivity</span>
+                                    <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">TypeScript</span>
+                                </div>
+                                
+                                <!-- Stats with purchased status -->
+                                <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                    <div class="flex items-center gap-1 text-green-500 text-xs">
+                                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                        </svg>
+                                        <span>Purchased</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-xs">
+                                        <div class="flex items-center gap-1 text-vybe-gray-400">
+                                            <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                            </svg>
+                                            <span>285</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div> <!-- End page-container -->
+
+    <!-- Members Page (Working) -->
+    <div id="members" class="page">

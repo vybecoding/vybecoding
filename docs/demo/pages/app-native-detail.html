@@ -1,0 +1,113 @@
+        <div class="pt-24 pb-16 relative nebula-background">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Back Button -->
+                <button onclick="showPage('apps')" class="flex items-center gap-2 text-sm text-vybe-gray-400 hover:text-white transition-colors mb-6">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>Back to Apps</span>
+                </button>
+                
+                <!-- App Detail Header -->
+                <div class="p-8 mb-8">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 17H7V7h2v10zm4 0h-2V7h2v10zm4 0h-2V7h2v10zm2-8H4V7h15v2z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h1 class="text-3xl font-light mb-2">AI Calculator</h1>
+                            <p class="text-vybe-gray-400 mb-4">Smart calculator with natural language processing and advanced math capabilities</p>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full"></div>
+                                    <span class="text-sm text-vybe-gray-400">@vybecoding</span>
+                                </div>
+                                <span class="text-vybe-gray-500">•</span>
+                                <span class="text-sm text-vybe-gray-500">Native App</span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 text-vybe-purple-light text-xs rounded-full">Built-in</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-sm rounded">Calculator</span>
+                                <span class="px-3 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-sm rounded">AI</span>
+                                <span class="px-3 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-sm rounded">Math</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- App Interface -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Calculator Interface -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-4">Calculator</h3>
+                        <div class="bg-vybe-gray-900 rounded-lg p-4">
+                            <div class="bg-vybe-gray-800 rounded p-3 mb-4">
+                                <div class="text-right text-xl font-mono text-white">0</div>
+                            </div>
+                            <div class="grid grid-cols-4 gap-2">
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">C</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">±</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">%</button>
+                                <button class="bg-vybe-orange hover:bg-vybe-orange/80 text-white p-3 rounded transition-colors">÷</button>
+                                
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">7</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">8</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">9</button>
+                                <button class="bg-vybe-orange hover:bg-vybe-orange/80 text-white p-3 rounded transition-colors">×</button>
+                                
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">4</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">5</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">6</button>
+                                <button class="bg-vybe-orange hover:bg-vybe-orange/80 text-white p-3 rounded transition-colors">-</button>
+                                
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">1</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">2</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">3</button>
+                                <button class="bg-vybe-orange hover:bg-vybe-orange/80 text-white p-3 rounded transition-colors">+</button>
+                                
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors col-span-2">0</button>
+                                <button class="bg-vybe-gray-700 hover:bg-vybe-gray-600 text-white p-3 rounded transition-colors">.</button>
+                                <button class="bg-vybe-purple hover:bg-vybe-purple/80 text-white p-3 rounded transition-colors">=</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Features -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-4">AI Features</h3>
+                        <div class="space-y-4">
+                            <div class="bg-vybe-gray-900 rounded-lg p-4">
+                                <h4 class="font-medium mb-2">Natural Language Input</h4>
+                                <p class="text-sm text-vybe-gray-400 mb-3">Ask questions in plain English:</p>
+                                <div class="bg-vybe-gray-800 rounded p-2 text-sm font-mono">
+                                    "What is 15% of 250?"
+                                </div>
+                            </div>
+                            
+                            <div class="bg-vybe-gray-900 rounded-lg p-4">
+                                <h4 class="font-medium mb-2">Advanced Math</h4>
+                                <p class="text-sm text-vybe-gray-400 mb-3">Solve complex equations:</p>
+                                <div class="bg-vybe-gray-800 rounded p-2 text-sm font-mono">
+                                    "Solve x² + 5x + 6 = 0"
+                                </div>
+                            </div>
+                            
+                            <div class="bg-vybe-gray-900 rounded-lg p-4">
+                                <h4 class="font-medium mb-2">Unit Conversion</h4>
+                                <p class="text-sm text-vybe-gray-400 mb-3">Convert between units:</p>
+                                <div class="bg-vybe-gray-800 rounded p-2 text-sm font-mono">
+                                    "Convert 100 miles to km"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Page -->
+    <div id="pricing" class="page">

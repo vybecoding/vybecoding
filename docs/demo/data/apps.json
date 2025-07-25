@@ -1,0 +1,81 @@
+{
+  "task-manager-pro": {
+    "id": "task-manager-pro",
+    "name": "TaskManager Pro",
+    "description": "Advanced task management with AI-powered scheduling and team collaboration features",
+    "category": "Productivity",
+    "author": "DevTeam Alpha",
+    "rating": 4.6,
+    "downloads": 12500,
+    "tags": ["Productivity", "AI", "Collaboration", "Scheduling"],
+    "tier": "Pro",
+    "price": 29,
+    "demo_url": "https://demo.taskmanager.pro",
+    "github_url": "https://github.com/devteam/taskmanager-pro",
+    "tech_stack": ["React", "Node.js", "PostgreSQL", "OpenAI"],
+    "features": [
+      "AI-powered task scheduling",
+      "Real-time team collaboration",
+      "Advanced analytics dashboard",
+      "Mobile responsive design"
+    ],
+    "screenshots": [
+      "/screenshots/taskmanager-dashboard.jpg",
+      "/screenshots/taskmanager-calendar.jpg",
+      "/screenshots/taskmanager-team.jpg"
+    ],
+    "updated": "2024-01-19"
+  },
+  "code-reviewer-ai": {
+    "id": "code-reviewer-ai",
+    "name": "Code Reviewer AI",
+    "description": "Intelligent code review assistant powered by advanced AI models",
+    "category": "Development",
+    "author": "CodeCraft Studios",
+    "rating": 4.8,
+    "downloads": 8900,
+    "tags": ["AI", "Code Review", "Development", "Quality"],
+    "tier": "Free",
+    "price": 0,
+    "demo_url": "https://demo.codereviewer.ai",
+    "github_url": "https://github.com/codecraft/code-reviewer-ai",
+    "tech_stack": ["Python", "FastAPI", "Transformers", "React"],
+    "features": [
+      "Automated code analysis",
+      "Security vulnerability detection",
+      "Performance optimization suggestions",
+      "Multi-language support"
+    ],
+    "screenshots": [
+      "/screenshots/codereview-analysis.jpg",
+      "/screenshots/codereview-suggestions.jpg"
+    ],
+    "updated": "2024-01-22"
+  },
+  "design-system-builder": {
+    "id": "design-system-builder",
+    "name": "Design System Builder",
+    "description": "Create and maintain consistent design systems with automated component generation",
+    "category": "Design",
+    "author": "DesignFlow Inc",
+    "rating": 4.7,
+    "downloads": 6200,
+    "tags": ["Design System", "Components", "UI/UX", "Automation"],
+    "tier": "Pro",
+    "price": 59,
+    "demo_url": "https://demo.designsystem.build",
+    "github_url": "https://github.com/designflow/system-builder",
+    "tech_stack": ["React", "TypeScript", "Storybook", "Figma API"],
+    "features": [
+      "Component library generation",
+      "Figma integration",
+      "Theme management",
+      "Documentation automation"
+    ],
+    "screenshots": [
+      "/screenshots/designsystem-builder.jpg",
+      "/screenshots/designsystem-components.jpg"
+    ],
+    "updated": "2024-01-17"
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "react-advanced-patterns": {
+    "id": "react-advanced-patterns",
+    "title": "Advanced React Patterns",
+    "description": "Master advanced React patterns including render props, compound components, and custom hooks",
+    "author": "Sarah Chen",
+    "avatar": "/avatars/sarah-chen.jpg",
+    "difficulty": "Advanced",
+    "duration": "4 hours",
+    "rating": 4.8,
+    "students": 2150,
+    "tags": ["React", "JavaScript", "Patterns", "Hooks"],
+    "category": "Frontend",
+    "tier": "Pro",
+    "updated": "2024-01-15",
+    "thumbnail": "/thumbnails/react-patterns.jpg",
+    "price": 49,
+    "lessons": [
+      {
+        "title": "Introduction to Advanced Patterns",
+        "duration": "15 min",
+        "type": "video"
+      },
+      {
+        "title": "Render Props Pattern",
+        "duration": "45 min",
+        "type": "video"
+      },
+      {
+        "title": "Compound Components",
+        "duration": "30 min",
+        "type": "video"
+      }
+    ]
+  },
+  "ai-prompt-engineering": {
+    "id": "ai-prompt-engineering",
+    "title": "AI Prompt Engineering Mastery",
+    "description": "Learn to craft effective prompts for AI systems and maximize AI productivity",
+    "author": "Dr. Marcus Webb",
+    "avatar": "/avatars/marcus-webb.jpg",
+    "difficulty": "Intermediate",
+    "duration": "3 hours",
+    "rating": 4.9,
+    "students": 3200,
+    "tags": ["AI", "Prompts", "GPT", "Claude", "Engineering"],
+    "category": "AI/ML",
+    "tier": "Free",
+    "updated": "2024-01-20",
+    "thumbnail": "/thumbnails/prompt-engineering.jpg",
+    "price": 0,
+    "lessons": [
+      {
+        "title": "Fundamentals of Prompt Design",
+        "duration": "20 min",
+        "type": "video"
+      },
+      {
+        "title": "Advanced Prompting Techniques",
+        "duration": "40 min",
+        "type": "video"
+      }
+    ]
+  },
+  "nextjs-full-stack": {
+    "id": "nextjs-full-stack",
+    "title": "Next.js Full-Stack Development",
+    "description": "Build complete web applications with Next.js, including API routes and database integration",
+    "author": "Alex Rodriguez",
+    "avatar": "/avatars/alex-rodriguez.jpg",
+    "difficulty": "Intermediate",
+    "duration": "6 hours",
+    "rating": 4.7,
+    "students": 1850,
+    "tags": ["Next.js", "React", "Full-Stack", "API", "Database"],
+    "category": "Full-Stack",
+    "tier": "Pro",
+    "updated": "2024-01-18",
+    "thumbnail": "/thumbnails/nextjs-fullstack.jpg",
+    "price": 79,
+    "lessons": [
+      {
+        "title": "Next.js Fundamentals",
+        "duration": "25 min",
+        "type": "video"
+      },
+      {
+        "title": "API Routes & Middleware",
+        "duration": "35 min",
+        "type": "video"
+      }
+    ]
+  }
+}

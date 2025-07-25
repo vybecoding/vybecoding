@@ -1,0 +1,577 @@
+        <div class="page-container nebula-background">
+            <!-- Nebula backgrounds handled by CSS -->
+            <div class="nebula-middle"></div>
+            <div class="nebula-bottom"></div>
+            <div class="max-w-7xl mx-auto px-6 h-full flex flex-col relative z-10">
+                <!-- Profile Tabs Navigation -->
+                <div class="flex gap-4 border-b border-vybe-gray-800 mb-6 justify-center">
+                    <button onclick="showProfileTab('info')" class="profile-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800 active" data-tab="info">
+                        Profile Info
+                    </button>
+                    <button onclick="showProfileTab('booking')" class="profile-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800" data-tab="booking">
+                        Book Session
+                    </button>
+                </div>
+                
+                <!-- Profile Tab Contents -->
+                <div class="profile-tab-contents flex-1">
+                    <!-- Profile Info Tab -->
+                    <div id="profile-info-content" class="profile-tab-content">
+                        <div class="max-w-6xl mx-auto">
+                            <div class="vybe-card p-8">
+                            <!-- Profile Header -->
+                            <div class="mb-8">
+                                <div class="flex flex-col md:flex-row items-start gap-6">
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-3 mb-3">
+                                            <div class="w-12 h-12 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                                AD
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap-2">
+                                                    <h1 class="text-2xl font-medium">Alex Developer</h1>
+                                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink rounded-full text-xs">PRO</span>
+                                                </div>
+                                                <p class="text-vybe-gray-500 text-sm">@alexdev • Senior Developer • SaaS / Tech</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Profile Actions - Moved to top right -->
+                                    <div class="flex gap-3 flex-shrink-0">
+                                        <button class="btn btn-secondary w-36">
+                                            Follow
+                                        </button>
+                                        <button class="btn btn-secondary w-36">
+                                            Message
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- About Me Section - Now full width -->
+                                <div class="mt-6">
+                                    <h4 class="vybe-section-header mb-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        About Me
+                                    </h4>
+                                    <p class="text-gray-400 text-sm leading-relaxed">
+                                        With over 8 years of experience in full-stack development, I specialize in building scalable web applications and mentoring developers. I've worked with startups and established companies to create robust, modern applications using the latest AI technologies and best practices.
+                                    </p>
+                                </div>
+                                
+                                <!-- Core Expertise - Now full width -->
+                                <div class="mt-6">
+                                    <h4 class="vybe-section-header mb-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Core Expertise
+                                    </h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        <div class="bg-purple-500/10 border border-purple-500/20 rounded px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap">
+                                            <div class="w-1.5 h-1.5 bg-purple-400 rounded-full flex-shrink-0"></div>
+                                            <span class="text-purple-300 text-xs">React & Next.js</span>
+                                        </div>
+                                        <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap">
+                                            <div class="w-1.5 h-1.5 bg-vybe-purple-light rounded-full flex-shrink-0"></div>
+                                            <span class="text-vybe-purple-light text-xs">Node.js</span>
+                                        </div>
+                                        <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap">
+                                            <div class="w-1.5 h-1.5 bg-vybe-purple-light rounded-full flex-shrink-0"></div>
+                                            <span class="text-vybe-purple-light text-xs">TypeScript</span>
+                                        </div>
+                                        <div class="bg-amber-500/10 border border-amber-500/20 rounded px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap">
+                                            <div class="w-1.5 h-1.5 bg-amber-400 rounded-full flex-shrink-0"></div>
+                                            <span class="text-amber-300 text-xs">System Design</span>
+                                        </div>
+                                        <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap">
+                                            <div class="w-1.5 h-1.5 bg-vybe-purple-light rounded-full flex-shrink-0"></div>
+                                            <span class="text-vybe-purple-light text-xs">AI Integration</span>
+                                        </div>
+                                        <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5 whitespace-nowrap">
+                                            <div class="w-1.5 h-1.5 bg-vybe-purple-light rounded-full flex-shrink-0"></div>
+                                            <span class="text-vybe-purple-light text-xs">MongoDB</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Social Links - Now below Core Expertise -->
+                                <div class="mt-6">
+                                    <h4 class="vybe-section-header mb-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Social Links
+                                    </h4>
+                                    <div class="flex gap-4">
+                                        <!-- Discord -->
+                                        <a href="https://discord.com/users/alexdev#1234" class="text-vybe-gray-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+                                            </svg>
+                                        </a>
+                                        <!-- GitHub -->
+                                        <a href="#" class="text-vybe-gray-400 hover:text-white transition-colors">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                            </svg>
+                                        </a>
+                                        <!-- LinkedIn -->
+                                        <a href="#" class="text-vybe-gray-400 hover:text-white transition-colors">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                            </svg>
+                                        </a>
+                                        <!-- YouTube -->
+                                        <a href="#" class="text-vybe-gray-400 hover:text-white transition-colors">
+                                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Profile Info Tab -->
+                    
+                    <!-- Booking Tab -->
+                    <div id="profile-booking-content" class="profile-tab-content hidden">
+                        <div class="max-w-6xl mx-auto">
+                            <div class="py-6">
+                            
+                            <!-- Main Booking Grid (2 Column Layout) -->
+                            <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 max-w-full">
+                                
+                                <!-- Left Column: All Booking Content (60%) -->
+                                <div class="lg:col-span-3 space-y-6">
+                                    
+                                    <!-- Connected Booking Card -->
+                                    <div class="vybe-card p-6 space-y-6">
+                                        
+                                        <!-- Profile Header Section -->
+                                        <div class="text-center pb-6 border-b border-vybe-gray-800">
+                                            <!-- Profile Avatar and Name -->
+                                            <div class="flex flex-col items-center mb-2">
+                                                <div class="w-16 h-16 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex items-center justify-center text-white font-bold text-xl mb-3">
+                                                    AD
+                                                </div>
+                                                <div class="flex items-center gap-2 mb-2">
+                                                    <h3 class="text-xl font-semibold text-white">Alex Developer</h3>
+                                                    <span class="inline-flex items-center gap-1 px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink rounded-full text-xs">PRO</span>
+                                                </div>
+                                                <div class="flex items-center gap-3 text-sm text-vybe-gray-400">
+                                                    <span class="flex items-center gap-1">
+                                                        <span class="text-yellow-400">★</span> 4.9
+                                                    </span>
+                                                    <span>•</span>
+                                                    <span>147 sessions</span>
+                                                    <span>•</span>
+                                                    <span>Senior Developer</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Quick Stats - Inline -->
+                                            <div class="text-center mb-4">
+                                                <p class="text-sm text-vybe-gray-400">
+                                                    <span class="text-vybe-gray-400">Response Time:</span> <span class="text-white font-medium">Within 24 hours</span>
+                                                    <span class="mx-2">•</span>
+                                                    <span class="text-vybe-gray-400">Experience:</span> <span class="text-white font-medium">8+ years</span>
+                                                </p>
+                                            </div>
+                                            
+                                            <!-- Description - Left Aligned -->
+                                            <p class="text-sm text-vybe-gray-300 text-left">I'm a senior developer with 8+ years in SaaS and React development, specializing in full-stack development & career growth for developers.</p>
+                                        </div>
+                                    
+                                    <!-- Step 1: Select Date & Time -->
+                                    <h4 class="vybe-section-header mb-4">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Select Date & Time
+                                    </h4>
+                                        
+                                        <div class="flex items-center justify-between mb-4">
+                                            <span class="text-xs text-vybe-gray-400">EST (UTC-5)</span>
+                                        </div>
+                                    
+                                    <!-- Month Navigation -->
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h5 class="text-white font-medium">January 2025</h5>
+                                        <div class="flex gap-1">
+                                            <button class="p-2 text-vybe-gray-400 hover:text-white rounded-lg">←</button>
+                                            <button class="p-2 text-vybe-gray-400 hover:text-white rounded-lg">→</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Calendar Grid -->
+                                    <div class="grid grid-cols-7 gap-2 mb-3 max-w-full">
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">S</div>
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">M</div>
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">T</div>
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">W</div>
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">T</div>
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">F</div>
+                                        <div class="text-center text-xs text-vybe-gray-400 py-2">S</div>
+                                        
+                                        <!-- Calendar Days -->
+                                        <div class="text-center py-3"></div>
+                                        <div class="text-center py-3"></div>
+                                        <div class="text-center py-3"></div>
+                                        <div class="text-center py-3 text-vybe-gray-500">1</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">2</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">3</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">4</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">5</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">6</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">7</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">8</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">9</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">10</div>
+                                        <div class="text-center py-3 bg-green-800/80 border border-green-700/60 text-green-200 rounded-md cursor-pointer hover:bg-green-700">11</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">12</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">13</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">14</div>
+                                        <div class="text-center py-3 bg-green-800/80 border border-green-700/60 text-green-200 rounded-md cursor-pointer hover:bg-green-700">15</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">16</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">17</div>
+                                        <div class="text-center py-3 bg-red-900/80 border border-red-800/60 text-red-200 rounded-md cursor-not-allowed">18</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">19</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">20</div>
+                                        <div class="text-center py-3 bg-purple-900/80 border border-purple-800/60 text-purple-200 rounded-md cursor-pointer hover:bg-purple-700">21</div>
+                                        <div class="text-center py-3 bg-green-800/80 border border-green-700/60 text-green-200 rounded-md cursor-pointer hover:bg-green-700">22</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">23</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">24</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">25</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">26</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">27</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">28</div>
+                                        <div class="text-center py-3 bg-green-800/80 border border-green-700/60 text-green-200 rounded-md cursor-pointer hover:bg-green-700">29</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">30</div>
+                                        <div class="text-center py-3 text-vybe-gray-500">31</div>
+                                    </div>
+                                    
+                                    <!-- Calendar Legend -->
+                                    <div class="flex flex-wrap items-center gap-4 text-xs mt-4 mb-6">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-3 h-3 bg-green-600 rounded-full"></div>
+                                            <span class="text-vybe-gray-400">Available</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-3 h-3 bg-purple-600 rounded-full"></div>
+                                            <span class="text-vybe-gray-400">Today</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-3 h-3 bg-red-600 rounded-full"></div>
+                                            <span class="text-vybe-gray-400">Booked</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-3 h-3 bg-vybe-gray-500 rounded-full"></div>
+                                            <span class="text-vybe-gray-400">Unavailable</span>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="text-yellow-500">💡</span>
+                                            <span class="text-vybe-gray-400">Tip: Click and drag to select multiple dates</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Time Slots -->
+                                    <div class="mt-6">
+                                        <h5 class="text-sm font-medium text-white mb-3">Available Times on January 11</h5>
+                                        <div class="grid grid-cols-3 gap-2 max-w-full">
+                                            <button class="px-4 py-2 text-sm bg-vybe-gray-800 text-white rounded hover:bg-vybe-purple transition-colors">9:00 AM</button>
+                                            <button class="px-4 py-2 text-sm bg-vybe-gray-800 text-white rounded hover:bg-vybe-purple transition-colors">10:00 AM</button>
+                                            <button class="px-4 py-2 text-sm bg-vybe-gray-800 text-white rounded hover:bg-vybe-purple transition-colors">11:00 AM</button>
+                                            <button class="px-4 py-2 text-sm bg-vybe-gray-800 text-white rounded hover:bg-vybe-purple transition-colors">2:00 PM</button>
+                                            <button class="px-4 py-2 text-sm border border-vybe-purple bg-vybe-purple/10 text-white rounded hover:border-vybe-purple/70 transition-all">3:00 PM</button>
+                                            <button class="px-4 py-2 text-sm bg-vybe-gray-800 text-white rounded hover:bg-vybe-purple transition-colors">4:00 PM</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Choose Your Session -->
+                                    <div class="mt-8">
+                                        <h4 class="vybe-section-header mb-4">
+                                            <div class="vybe-gradient-accent-bar"></div>
+                                            Choose Your Session
+                                        </h4>
+                                        
+                                        <!-- Session Options -->
+                                        <div class="space-y-3">
+                                            <!-- Quick Help -->
+                                            <div class="border border-vybe-gray-700 rounded-lg p-4 hover:border-vybe-purple/50 transition-colors cursor-pointer">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="text-white font-medium">Quick Help</h5>
+                                                        <p class="text-sm text-vybe-gray-400">30 minutes</p>
+                                                        <p class="text-xs text-vybe-gray-500 mt-1">Perfect for quick questions, code reviews, or specific bug fixes</p>
+                                                    </div>
+                                                    <span class="text-white font-medium">$50</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Full Session -->
+                                            <div class="border border-vybe-purple rounded-lg p-4 bg-vybe-purple/10 cursor-pointer">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="text-white font-medium">Full Session</h5>
+                                                        <p class="text-sm text-vybe-gray-400">60 minutes</p>
+                                                        <p class="text-xs text-vybe-gray-500 mt-1">Comprehensive mentoring, architecture design, or feature implementation</p>
+                                                    </div>
+                                                    <span class="text-white font-medium">$100</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Workshop -->
+                                            <div class="border border-vybe-gray-700 rounded-lg p-4 hover:border-vybe-purple/50 transition-colors cursor-pointer">
+                                                <div class="flex justify-between items-start">
+                                                    <div>
+                                                        <h5 class="text-white font-medium">Workshop</h5>
+                                                        <p class="text-sm text-vybe-gray-400">90 minutes</p>
+                                                        <p class="text-xs text-vybe-gray-500 mt-1">In-depth workshops, project kickoffs, or team training sessions</p>
+                                                    </div>
+                                                    <span class="text-white font-medium">$150</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Session Details -->
+                                    <div class="mt-8">
+                                        <h4 class="vybe-section-header mb-4">
+                                            <div class="vybe-gradient-accent-bar"></div>
+                                            Session Details
+                                        </h4>
+                                        
+                                        <div class="mb-4">
+                                            <label class="text-sm text-vybe-gray-400 mb-2 block">What would you like help with?</label>
+                                            <textarea class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg p-3 text-white placeholder-vybe-gray-500 resize-none h-24" placeholder="Describe your goals for this session, what you're working on, and any specific questions you have..."></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Choose Your Platform -->
+                                    <div class="mt-8">
+                                        <h4 class="vybe-section-header mb-4">
+                                            <div class="vybe-gradient-accent-bar"></div>
+                                            Choose Your Platform
+                                        </h4>
+                                        
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <!-- Zoom -->
+                                            <div class="border border-vybe-purple bg-vybe-purple/10 rounded-lg p-3 cursor-pointer">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-3 h-3 bg-vybe-purple rounded-full"></div>
+                                                    <span class="text-white font-medium">Zoom</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Discord -->
+                                            <div class="border border-vybe-gray-700 rounded-lg p-3 hover:border-vybe-purple/50 transition-colors cursor-pointer">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-3 h-3 bg-vybe-gray-600 rounded-full"></div>
+                                                    <span class="text-vybe-gray-300">Discord</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Meet -->
+                                            <div class="border border-vybe-gray-700 rounded-lg p-3 hover:border-vybe-purple/50 transition-colors cursor-pointer">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-3 h-3 bg-vybe-gray-600 rounded-full"></div>
+                                                    <span class="text-vybe-gray-300">Meet</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Teams -->
+                                            <div class="border border-vybe-gray-700 rounded-lg p-3 hover:border-vybe-purple/50 transition-colors cursor-pointer">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-3 h-3 bg-vybe-gray-600 rounded-full"></div>
+                                                    <span class="text-vybe-gray-300">Teams</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                    
+                                <!-- Right Column: Summary & Payment (40%) -->
+                                <div class="lg:col-span-2">
+                                    <!-- Session Summary Container -->
+                                    <div class="vybe-card overflow-hidden mb-6">
+                                        <div class="vybe-card-header">
+                                            <h2 class="vybe-section-header">
+                                                <div class="vybe-gradient-accent-bar"></div>
+                                                Session Summary
+                                            </h2>
+                                        </div>
+                                        <!-- Booking Summary -->
+                                        <div class="p-6 sticky top-20">
+                                        
+                                        <!-- Selected Date & Time -->
+                                        <div class="mb-4 pb-4 border-b border-vybe-gray-800">
+                                            <p class="text-sm text-vybe-gray-400 mb-1">Date & Time</p>
+                                            <p class="text-white">January 11, 2025 at 3:00 PM EST</p>
+                                        </div>
+                                        
+                                        <!-- Service Type -->
+                                        <div class="mb-4 pb-4 border-b border-vybe-gray-800">
+                                            <p class="text-sm text-vybe-gray-400 mb-1">Service</p>
+                                            <p class="text-white">1-on-1 Mentoring Session</p>
+                                            <p class="text-sm text-vybe-gray-500">60 minutes</p>
+                                        </div>
+                                        
+                                        <!-- Pricing -->
+                                        <div class="mb-6">
+                                            <div class="flex justify-between mb-2">
+                                                <span class="text-vybe-gray-400">Session Rate</span>
+                                                <span class="text-white">$120</span>
+                                            </div>
+                                            <div class="flex justify-between pt-2 border-t border-vybe-gray-800">
+                                                <span class="text-white font-medium">Total</span>
+                                                <span class="text-white font-medium">$120</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Book Button -->
+                                        <button class="w-full py-3 bg-gradient-to-r from-vybe-purple to-vybe-orange text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                                            Book Session
+                                        </button>
+                                        
+                                        <!-- Terms -->
+                                        <p class="text-xs text-vybe-gray-500 mt-4 text-center">
+                                            By booking, you agree to our terms and cancellation policy
+                                        </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Services Offered Container -->
+                                    <div class="vybe-card overflow-hidden mb-6">
+                                        <div class="vybe-card-header">
+                                            <h4 class="vybe-section-header">
+                                                <div class="vybe-gradient-accent-bar"></div>
+                                                Services Offered
+                                            </h4>
+                                        </div>
+                                        <div class="p-6">
+                                        
+                                        <!-- Technical Services -->
+                                        <div class="mb-4">
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <div class="w-5 h-5 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                                    <svg class="w-3 h-3 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                                                    </svg>
+                                                </div>
+                                                <h5 class="text-white font-medium">Technical Services</h5>
+                                            </div>
+                                            <div class="ml-7 space-y-2 text-sm text-vybe-gray-400">
+                                                <p class="flex items-center gap-2"><span class="text-blue-400">•</span> Full-stack code reviews</p>
+                                                <p class="flex items-center gap-2"><span class="text-blue-400">•</span> System architecture design</p>
+                                                <p class="flex items-center gap-2"><span class="text-blue-400">•</span> Performance optimization</p>
+                                                <p class="flex items-center gap-2"><span class="text-blue-400">•</span> AI/ML integration</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Career Development -->
+                                        <div class="mb-4">
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <div class="w-5 h-5 bg-pink-500/20 rounded-lg flex items-center justify-center">
+                                                    <svg class="w-3 h-3 text-pink-400" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                    </svg>
+                                                </div>
+                                                <h5 class="text-white font-medium">Career Development</h5>
+                                            </div>
+                                            <div class="ml-7 space-y-2 text-sm text-vybe-gray-400">
+                                                <p class="flex items-center gap-2"><span class="text-pink-400">•</span> Technical interview prep</p>
+                                                <p class="flex items-center gap-2"><span class="text-pink-400">•</span> Resume reviews</p>
+                                                <p class="flex items-center gap-2"><span class="text-pink-400">•</span> Career planning</p>
+                                                <p class="flex items-center gap-2"><span class="text-pink-400">•</span> Salary negotiation</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Areas of Expertise -->
+                                        <div class="mb-4">
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <div class="w-5 h-5 bg-purple-500/20 rounded-lg flex items-center justify-center">
+                                                    <svg class="w-3 h-3 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                                    </svg>
+                                                </div>
+                                                <h5 class="text-white font-medium">Areas of Expertise</h5>
+                                            </div>
+                                            <div class="ml-7 space-y-2 text-sm text-vybe-gray-400">
+                                                <p class="flex items-center gap-2"><span class="text-purple-400">•</span> Frontend frameworks</p>
+                                                <p class="flex items-center gap-2"><span class="text-purple-400">•</span> Backend & API development</p>
+                                                <p class="flex items-center gap-2"><span class="text-purple-400">•</span> Cloud & DevOps practices</p>
+                                                <p class="flex items-center gap-2"><span class="text-purple-400">•</span> Database design</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Quick Question Container -->
+                                    <div class="vybe-card overflow-hidden mb-6">
+                                        <div class="vybe-card-header">
+                                            <h4 class="vybe-section-header">
+                                                <div class="vybe-gradient-accent-bar"></div>
+                                                Quick Question?
+                                            </h4>
+                                        </div>
+                                        <div class="p-6">
+                                            <div class="text-center">
+                                                <p class="text-sm text-vybe-gray-300 mb-4">Have a quick question before booking? Message me on Discord for a faster response!</p>
+                                                <a href="https://discord.com/users/alexdev#1234" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors font-medium">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+                                                    </svg>
+                                                    Message on Discord
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Recent Reviews Container -->
+                                    <div class="vybe-card overflow-hidden">
+                                        <div class="vybe-card-header">
+                                            <h4 class="vybe-section-header">
+                                                <div class="vybe-gradient-accent-bar"></div>
+                                                Recent Reviews
+                                            </h4>
+                                        </div>
+                                        <div class="p-6">
+                                        
+                                        <!-- Review 1 -->
+                                        <div class="mb-4 pb-4 border-b border-vybe-gray-800 last:border-b-0">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="flex text-yellow-400">
+                                                    <span>★★★★★</span>
+                                                </div>
+                                                <span class="text-white font-medium">Sarah K.</span>
+                                                <div class="w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center">
+                                                    <span class="text-xs text-white">⚡</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-xs text-vybe-gray-500 mb-2">React live mentoring session • 2 days ago</p>
+                                            <p class="text-sm text-vybe-gray-300">Alex helped me identify and fix critical performance issues in my React app. His systematic approach and clear explanations made complex concepts easy to understand.</p>
+                                        </div>
+                                        
+                                        <!-- Review 2 -->
+                                        <div class="mb-4 pb-4 border-b border-vybe-gray-800 last:border-b-0">
+                                            <div class="flex items-center gap-2 mb-2">
+                                                <div class="flex text-yellow-400">
+                                                    <span>★★★★★</span>
+                                                </div>
+                                                <span class="text-white font-medium">Mike D.</span>
+                                                <div class="w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center">
+                                                    <span class="text-xs text-white">⚡</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-xs text-vybe-gray-500 mb-2">System Architecture Review • 1 week ago</p>
+                                            <p class="text-sm text-vybe-gray-300">Excellent session! Alex reviewed our architecture design with attention to scalability and best practices. Highly recommended for architecture decisions.</p>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Booking Tab -->
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,36 @@
+{
+  "guides": {
+    "react-advanced-patterns": {
+      "detail_page": "details/guide-detail.html",
+      "view_page": "details/guide-view.html",
+      "data_source": "guides.json#react-advanced-patterns"
+    },
+    "ai-prompt-engineering": {
+      "detail_page": "details/guide-detail.html",
+      "view_page": "details/guide-view.html",
+      "data_source": "guides.json#ai-prompt-engineering"
+    },
+    "nextjs-full-stack": {
+      "detail_page": "details/guide-detail.html",
+      "view_page": "details/guide-view.html",
+      "data_source": "guides.json#nextjs-full-stack"
+    }
+  },
+  "apps": {
+    "task-manager-pro": {
+      "preview_page": "details/app-preview.html",
+      "detail_page": "details/app-detail.html",
+      "data_source": "apps.json#task-manager-pro"
+    },
+    "code-reviewer-ai": {
+      "preview_page": "details/app-preview.html",
+      "detail_page": "details/app-detail.html", 
+      "data_source": "apps.json#code-reviewer-ai"
+    },
+    "design-system-builder": {
+      "preview_page": "details/app-preview.html",
+      "detail_page": "details/app-detail.html",
+      "data_source": "apps.json#design-system-builder"
+    }
+  }
+}

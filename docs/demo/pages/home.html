@@ -1,0 +1,568 @@
+        <div class="page-container nebula-background">
+        <!-- Hero Section -->
+        <section class="h-screen flex items-center justify-center relative hero-mesh">
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <div class="animate-fade-in">
+                    <h1 class="text-6xl md:text-8xl font-light mb-6 leading-tight">
+                        <span class="font-medium" style="background: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 85%, #ff6b35 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">vybecoding.ai</span>
+                    </h1>
+                    <p class="text-2xl md:text-4xl text-vybe-gray-300 font-light mb-8">
+                        Where <span style="background: linear-gradient(90deg, #8a2be2 0%, #d946a0 70%, #e96b3a 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">vibe coding</span> meets<br>
+                        <span class="bg-gradient-to-r from-vybe-orange via-vybe-pink to-vybe-purple bg-clip-text text-transparent">context engineering</span>.
+                    </p>
+                    <h2 class="text-xl md:text-2xl text-vybe-gray-300 font-light mb-8">
+                        Learn from AI builders who've shipped real products.<br>
+                        Get <span class="text-vybe-purple-light">guides</span>, showcase <span class="text-vybe-pink">apps</span>, connect with <span class="text-vybe-orange">mentors</span>.
+                    </h2>
+                </div>
+                
+                <!-- CTA Section -->
+                <div class="text-center" style="animation: slideUp 0.8s ease-out;">
+                    <button onclick="showPage('pricing')" class="px-12 py-4 text-xl bg-gradient-to-r from-vybe-purple via-vybe-pink to-vybe-orange text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-vybe-purple/25 hover:transform hover:scale-105 transition-all duration-300 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-vybe-purple focus:ring-offset-2 focus:ring-offset-gray-900">
+                        Start Building with AI
+                    </button>
+                    <p class="text-sm text-vybe-gray-400 mt-4">Start free • No credit card required</p>
+                    
+                    <!-- Subtle Credibility -->
+                    <div class="flex justify-center items-center gap-6 text-xs text-vybe-gray-500 mt-6">
+                        <span class="flex items-center gap-1">
+                            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                            Coined by Karpathy
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                            Merriam-Webster Official
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-8 left-0 right-0">
+                <svg class="w-12 h-12 text-vybe-gray-500 mx-auto animate-gentle-bounce" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Featured Mentors Section (Moved from later in page for Pro member value) -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="animate-slide-up">
+                        <h3 class="text-4xl font-light mb-6 text-center">Learn from <span class="text-gradient-title">Featured Mentors</span></h3>
+                        
+                        <p class="text-vybe-gray-400 text-center mb-8">
+                            Connect with AI developers who've already built successful projects and can guide your journey.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <div class="space-y-4">
+                            
+                            <!-- Featured Mentor 1 -->
+                            <div class="p-4 flex items-center gap-4 relative">
+                                <div class="absolute -top-2 right-4 px-2 py-0.5 bg-vybe-orange text-white text-xs rounded-full">Featured</div>
+                                <div class="w-14 h-14 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
+                                    AD
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-medium">Alex Developer</h5>
+                                    <p class="text-xs text-vybe-gray-400">Senior Full-Stack Developer</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-yellow-400 text-xs">★★★★★</span>
+                                        <span class="text-xs text-vybe-gray-500">4.9 (127)</span>
+                                    </div>
+                                </div>
+                                <button onclick="bookSession()" class="px-3 py-1.5 text-xs bg-vybe-purple/20 text-vybe-purple-light hover:bg-vybe-purple hover:text-white rounded transition-colors">
+                                    View
+                                </button>
+                            </div>
+                            
+                            <!-- Featured Mentor 2 -->
+                            <div class="p-4 flex items-center gap-4 relative">
+                                <div class="absolute -top-2 right-4 px-2 py-0.5 bg-vybe-orange text-white text-xs rounded-full">Featured</div>
+                                <div class="w-14 h-14 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
+                                    MR
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-medium">Marcus Rodriguez</h5>
+                                    <p class="text-xs text-vybe-gray-400">Principal Engineer at Meta</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-yellow-400 text-xs">★★★★★</span>
+                                        <span class="text-xs text-vybe-gray-500">4.8 (89)</span>
+                                    </div>
+                                </div>
+                                <button onclick="bookSession()" class="px-3 py-1.5 text-xs bg-vybe-purple/20 text-vybe-purple-light hover:bg-vybe-purple hover:text-white rounded transition-colors">
+                                    View
+                                </button>
+                            </div>
+                            
+                            <!-- Featured Mentor 3 -->
+                            <div class="p-4 flex items-center gap-4 relative">
+                                <div class="absolute -top-2 right-4 px-2 py-0.5 bg-vybe-orange text-white text-xs rounded-full">Featured</div>
+                                <div class="w-14 h-14 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex items-center justify-center text-sm font-bold text-white flex-shrink-0">
+                                    JL
+                                </div>
+                                <div class="flex-1">
+                                    <h5 class="font-medium">Jennifer Liu</h5>
+                                    <p class="text-xs text-vybe-gray-400">AI Research Lead at Google</p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-yellow-400 text-xs">★★★★★</span>
+                                        <span class="text-xs text-vybe-gray-500">5.0 (156)</span>
+                                    </div>
+                                </div>
+                                <button onclick="bookSession()" class="px-3 py-1.5 text-xs bg-vybe-purple/20 text-vybe-purple-light hover:bg-vybe-purple hover:text-white rounded transition-colors">
+                                    View
+                                </button>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <a href="#" onclick="showPage('members')" class="text-sm text-vybe-purple-light hover:text-vybe-pink transition-colors">
+                                    Browse all mentors →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Reality Check Section -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="max-w-3xl mx-auto">
+                    <h3 class="text-4xl font-light mb-12 text-center">Yes, AI Can Be <span class="text-gradient-title">Frustrating</span></h3>
+                    <div class="py-2">
+                        <p class="text-lg text-vybe-gray-300 mb-8 text-center">I know what you're thinking...</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-vybe-purple/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                <div class="w-2 h-2 rounded-full bg-vybe-purple"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-vybe-gray-100 mb-1">"But AI hallucinates!"</h4>
+                                <p class="text-sm text-vybe-gray-400">True. AI will confidently invent APIs and "solutions" that don't exist. We'll show you how to catch and prevent this.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-vybe-pink/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                <div class="w-2 h-2 rounded-full bg-vybe-pink"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-vybe-gray-100 mb-1">"It's just toxic positivity!"</h4>
+                                <p class="text-sm text-vybe-gray-400">Also true. Getting honest feedback from AI is hard. Our workflows teach you how to get critical, useful responses.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-vybe-orange/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                <div class="w-2 h-2 rounded-full bg-vybe-orange"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-vybe-gray-100 mb-1">"All AI sites look the same!"</h4>
+                                <p class="text-sm text-vybe-gray-400">Yes, including ours. AI works best with familiar patterns it's trained on. Learn how to add unique touches while keeping AI-friendly foundations.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-5 h-5 rounded-full bg-red-800/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                                <div class="w-2 h-2 rounded-full bg-red-800"></div>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-medium text-vybe-gray-100 mb-1">"It breaks with complex logic!"</h4>
+                                <p class="text-sm text-vybe-gray-400">Multi-step workflows and intricate business logic confuse AI. We'll teach you how to break down complexity into AI-digestible chunks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-vybe-gray-300 mt-8 text-center">
+                        <span class="text-vybe-pink font-medium">These challenges are real, but they're solvable.</span> 
+                        That's why our guides focus on practical workflows that actually work.
+                    </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Everything You Need Section -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <h3 class="text-4xl font-light mb-12 text-center">Everything You Need to <span class="text-gradient-title">Succeed with AI</span></h3>
+                
+                <!-- Feature Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+                    <!-- Create & Share -->
+                    <div class="minimal-card card-purple rounded-lg p-5 flex flex-col h-full">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div class="w-12 h-12 bg-vybe-purple/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-vybe-purple-light" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <polyline points="4 17 10 11 4 5"></polyline>
+                                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-medium text-white">Create & Share</h4>
+                        </div>
+                        
+                        <ul class="space-y-2 text-sm text-vybe-gray-300 mb-6 flex-grow">
+                            <li class="flex items-start">
+                                <span style="color: #a855f7;" class="mr-2">•</span>
+                                <span>Guides & Apps</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #a855f7;" class="mr-2">•</span>
+                                <span>Community rated</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #a855f7;" class="mr-2">•</span>
+                                <span>Showcase your work</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #a855f7;" class="mr-2">•</span>
+                                <span>Build your portfolio</span>
+                            </li>
+                        </ul>
+                        
+                        <div class="space-y-2">
+                            <a href="#" onclick="showPage('guides')" class="block text-vybe-pink hover:text-vybe-purple-light text-sm font-medium transition-colors">
+                                Browse Guides →
+                            </a>
+                            <a href="#" onclick="showPage('apps')" class="block text-vybe-pink hover:text-vybe-purple-light text-sm font-medium transition-colors">
+                                Browse Apps →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Learn & Earn -->
+                    <div class="minimal-card card-pink rounded-lg p-5 flex flex-col h-full">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div class="w-12 h-12 bg-vybe-pink/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-vybe-pink" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-medium text-white">Learn & Earn</h4>
+                        </div>
+                        
+                        <ul class="space-y-2 text-sm text-vybe-gray-300 mb-6 flex-grow">
+                            <li class="flex items-start">
+                                <span style="color: #d946a0;" class="mr-2">•</span>
+                                <span>Book expert mentors</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #d946a0;" class="mr-2">•</span>
+                                <span>Offer your expertise</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #d946a0;" class="mr-2">•</span>
+                                <span>90-95% revenue share</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #d946a0;" class="mr-2">•</span>
+                                <span>Build mentorship business</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="#" onclick="showPage('members')" class="text-vybe-pink hover:text-vybe-purple-light text-sm font-medium transition-colors">
+                            Find Mentors →
+                        </a>
+                    </div>
+
+                    <!-- Track & Optimize -->
+                    <div class="minimal-card card-orange rounded-lg p-5 flex flex-col h-full">
+                        <div class="flex items-center gap-4 mb-5">
+                            <div class="w-12 h-12 bg-vybe-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-vybe-orange" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-medium text-white">Track & Optimize</h4>
+                        </div>
+                        
+                        <ul class="space-y-2 text-sm text-vybe-gray-300 mb-6 flex-grow">
+                            <li class="flex items-start">
+                                <span style="color: #e96b3a;" class="mr-2">•</span>
+                                <span>Content analytics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #e96b3a;" class="mr-2">•</span>
+                                <span>Mentorship metrics</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #e96b3a;" class="mr-2">•</span>
+                                <span>Revenue tracking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span style="color: #e96b3a;" class="mr-2">•</span>
+                                <span>Growth insights</span>
+                            </li>
+                        </ul>
+                        
+                        <a href="#" onclick="showPage('dashboard')" class="text-vybe-pink hover:text-vybe-purple-light text-sm font-medium transition-colors">
+                            View Demo →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Build → Guide → Grow Pattern Section -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <h3 class="text-4xl font-light mb-12 text-center">The <span class="text-gradient-title">Build → Guide → Grow</span> Pattern</h3>
+                
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-lg text-vybe-gray-300 text-center mb-12">
+                        The most successful AI developers follow this simple cycle. Here's how vybecoding.ai accelerates each step.
+                    </p>
+                    
+                    <!-- Pattern Steps -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Build -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <polyline points="4 17 10 11 4 5"></polyline>
+                                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-medium text-white mb-3">1. Build</h4>
+                            <p class="text-sm text-vybe-gray-400 mb-4">
+                                Create something useful with AI - an app, workflow, or solution to a real problem.
+                            </p>
+                            <div class="text-xs text-vybe-purple-light font-medium">
+                                Using community guides & mentorship
+                            </div>
+                        </div>
+                        
+                        <!-- Guide -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-vybe-pink to-vybe-orange rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-medium text-white mb-3">2. Guide</h4>
+                            <p class="text-sm text-vybe-gray-400 mb-4">
+                                Share what you learned by creating guides, tutorials, or live demos for the community.
+                            </p>
+                            <div class="text-xs text-vybe-pink font-medium">
+                                Building reputation & helping others
+                            </div>
+                        </div>
+                        
+                        <!-- Grow -->
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-br from-vybe-orange to-vybe-purple rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                                </svg>
+                            </div>
+                            <h4 class="text-xl font-medium text-white mb-3">3. Grow</h4>
+                            <p class="text-sm text-vybe-gray-400 mb-4">
+                                Monetize your expertise through mentorship, consulting, or advanced content creation.
+                            </p>
+                            <div class="text-xs text-vybe-orange font-medium">
+                                Earning while contributing value
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cycle Arrow -->
+                    <div class="flex justify-center mt-12">
+                        <div class="flex items-center gap-4 text-vybe-gray-500">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <polyline points="1 20 1 14 7 14"></polyline>
+                                <path d="M20.49 9A9 9 0 0 0 5.64 5.64l1.27 1.27"></path>
+                                <path d="M3.51 15a9 9 0 0 0 14.85 3.36l-1.27-1.27"></path>
+                            </svg>
+                            <span class="text-sm">Continuous improvement cycle</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h3 class="text-4xl font-light mb-12">What You Could <span class="text-gradient-title">Build & Share</span></h3>
+                </div>
+
+                <div class="space-y-24">
+                    <!-- Project 1 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                            <div class="rounded-lg aspect-video bg-gradient-to-br from-vybe-gray-800 to-vybe-gray-900 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-vybe-purple/5"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background: rgba(138, 43, 226, 0.2);">
+                                            <svg class="w-8 h-8" style="color: #a855f7;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                                            </svg>
+                                        </div>
+                                        <p class="text-vybe-gray-400 text-sm">Guide Preview</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-1 lg:order-2">
+                            <h4 class="text-2xl font-light mb-4">TikTok Clone with AI Editing</h4>
+                            <p class="text-vybe-gray-400 mb-6 leading-relaxed">
+                                Build a short-form video platform with AI-powered editing, trending effects, and viral content optimization. 
+                                Then create a guide, mentor others on social apps, and track what goes viral.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">AI Video Editing</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Viral Algorithm</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Social Feed</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Builder Tools</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-2">
+                            <div class="rounded-lg aspect-video bg-gradient-to-br from-vybe-gray-800 to-vybe-gray-900 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-vybe-orange/5"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-vybe-orange/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <svg class="w-8 h-8 text-vybe-orange" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                            </svg>
+                                        </div>
+                                        <p class="text-vybe-gray-400 text-sm">Testing Guide</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-1 lg:order-1">
+                            <h4 class="text-2xl font-light mb-4">Custom Agents - From Marketing to Coaching</h4>
+                            <p class="text-vybe-gray-400 mb-6 leading-relaxed">
+                                Build specialized AI agents for any need - marketing teams that create content and manage campaigns, 
+                                fitness coaches that design personalized workouts, personal shoppers, study buddies, and more. 
+                                Then monetize through subscriptions, mentorship, and white-label services.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Multi-Purpose Agents</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Custom Personalities</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Niche Expertise</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">API Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="order-2 lg:order-1">
+                            <div class="rounded-lg aspect-video bg-gradient-to-br from-vybe-gray-800 to-vybe-gray-900 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-vybe-magenta/5"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="w-16 h-16 bg-vybe-magenta/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <svg class="w-8 h-8" style="color: #d946a0;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <circle cx="11" cy="11" r="8"></circle>
+                                                <path d="m21 21-4.35-4.35"></path>
+                                            </svg>
+                                        </div>
+                                        <p class="text-vybe-gray-400 text-sm">SEO Guide</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-1 lg:order-2">
+                            <h4 class="text-2xl font-light mb-4">AI-Powered SEO Tool</h4>
+                            <p class="text-vybe-gray-400 mb-6 leading-relaxed">
+                                Create an SEO optimization platform that analyzes content, suggests keywords, tracks rankings, 
+                                and generates AI-optimized meta descriptions. Perfect for content publishers and agencies 
+                                looking to dominate search results with AI assistance.
+                            </p>
+                            
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Keyword Research</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Content Analysis</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">Rank Tracking</span>
+                                <span class="px-3 py-1 text-xs bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange rounded-full">AI Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="py-20">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <h3 class="text-4xl font-light mb-8">A Rising Tide <span class="text-gradient-title">Lifts All Boats</span></h3>
+                
+                <p class="text-lg text-vybe-gray-400 mb-16 max-w-2xl mx-auto leading-relaxed">
+                    What started as my personal journey into the AI era has evolved into something bigger - 
+                    a community where we all rise together. This platform is in beta and needs your help to 
+                    make it a place where all developers can thrive. Report bugs, suggest features, share your 
+                    workflows. No gatekeeping, no secret sauce - everything I learn becomes your blueprint for success.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 max-w-2xl mx-auto">
+                    <div class="p-6 text-center">
+                        <div class="w-12 h-12 bg-vybe-purple/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6 text-vybe-purple-light" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-medium mb-2">Feedback</h4>
+                        <p class="text-sm text-vybe-gray-400">Share your thoughts</p>
+                    </div>
+
+                    <div class="p-6 text-center">
+                        <div class="w-12 h-12 bg-vybe-magenta/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <svg class="w-6 h-6" style="color: #d946a0;" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h4 class="text-lg font-medium mb-2">Bug Reports</h4>
+                        <p class="text-sm text-vybe-gray-400">Help us improve</p>
+                    </div>
+
+                </div>
+                
+                <!-- Arrow pointing to button -->
+                <div class="relative mt-0.5 mb-3.5">
+                    <svg class="w-12 h-12 text-vybe-gray-500 mx-auto animate-gentle-bounce" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <polyline points="19 12 12 19 5 12"></polyline>
+                    </svg>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="openFeedbackModal()" class="btn btn-primary-fuchsia">
+                        Submit Feedback
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+        </div> <!-- End page-container -->

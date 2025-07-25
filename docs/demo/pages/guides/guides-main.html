@@ -1,0 +1,1369 @@
+        <div class="pt-24 pb-16">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h1 class="text-5xl font-light mb-6">
+                        <span class="text-gradient-brand">Guides</span>
+                    </h1>
+                    <p class="text-vybe-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                        Step-by-step tutorials, prompt patterns, and workflows for building with AI. 
+                        Learn the exact processes behind every project.
+                    </p>
+                </div>
+
+
+                <!-- Universal Search -->
+                <div class="universal-search mb-8">
+                    <svg class="universal-search-icon w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="search" 
+                           placeholder="Search AI guides, tutorials, and workflows..." 
+                           class="universal-search-input"
+                           id="guides-search"
+                           onkeyup="searchGuides(this.value)">
+                    <button class="btn btn-primary-purple universal-search-submit" onclick="performGuidesSearch()">Search</button>
+                    
+                    <!-- Search Suggestions Dropdown -->
+                    <div class="search-suggestions" id="guides-search-suggestions">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Search Filter Dropdowns -->
+                <div class="search-filter-container mb-8">
+                    <div class="flex flex-col gap-0">
+                        <!-- Filters Row -->
+                        <div class="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
+                            <!-- AI Tools Multi-select Dropdown (Primary Filter) -->
+                    <div class="filter-dropdown multi-select-dropdown" id="guides-aitools-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('guides-aitools')">
+                            <span>AI Tools</span>
+                            <span class="filter-selection-counter hidden" id="guides-aitools-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'claude')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Claude</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'claude-code')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Claude Code</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'claude-api')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Claude API</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'chatgpt')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">ChatGPT</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'cursor')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Cursor</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'augment-code')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Augment Code</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'copilot')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">GitHub Copilot</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'v0')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">v0 by Vercel</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'bolt')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Bolt</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'perplexity')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Perplexity</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'midjourney')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Midjourney</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'dalle')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">DALL-E</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-aitools', 'stable-diffusion')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Stable Diffusion</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Difficulty Dropdown -->
+                    <div class="filter-dropdown multi-select-dropdown" id="guides-difficulty-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('guides-difficulty')">
+                            <span>Difficulty</span>
+                            <span class="filter-selection-counter hidden" id="guides-difficulty-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-difficulty', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">All Levels</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-difficulty', 'beginner')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Beginner</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-difficulty', 'intermediate')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Intermediate</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-difficulty', 'advanced')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Primary Focus Dropdown -->
+                    <div class="filter-dropdown multi-select-dropdown" id="guides-focus-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('guides-focus')">
+                            <span>Primary Focus</span>
+                            <span class="filter-selection-counter hidden" id="guides-focus-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">All Focus Areas</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'development')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Development</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'design')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Design</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'architecture')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Architecture</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'automation')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Automation</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'integration')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Integration</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-focus', 'optimization')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duration Dropdown -->
+                    <div class="filter-dropdown multi-select-dropdown" id="guides-duration-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('guides-duration')">
+                            <span>Duration</span>
+                            <span class="filter-selection-counter hidden" id="guides-duration-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-duration', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Any Duration</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-duration', '0-15')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">0-15 mins</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-duration', '15-30')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">15-30 mins</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-duration', '30-60')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">30-60 mins</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('guides-duration', '60+')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">60+ mins</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sort By Dropdown -->
+                    <div class="filter-dropdown" id="guides-sort-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('guides-sort')">
+                            <span>Sort By</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="filter-dropdown-item" onclick="selectFilter('guides-sort', 'relevance')">Relevance</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('guides-sort', 'newest')">Newest First</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('guides-sort', 'popular')">Most Popular</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('guides-sort', 'trending')">Trending Now</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('guides-sort', 'rated')">Highest Rated</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('guides-sort', 'views')">Most Viewed</div>
+                        </div>
+                    </div>
+
+                    <!-- Clear Filters Button -->
+                    <button class="filter-clear-button" onclick="clearAllFilters('guides')">Clear Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-navigation-container">
+                    <div class="inline-flex bg-vybe-gray-900 rounded-lg p-1">
+                        <button onclick="showGuidesTab('browse')" id="guides-browse-tab" class="px-6 py-2 rounded-md text-sm font-medium transition-all guides-tab-active">
+                            Browse Guides
+                        </button>
+                        <button onclick="showGuidesTab('submit')" id="guides-submit-tab" class="px-6 py-2 rounded-md text-sm font-medium text-vybe-gray-400 hover:text-white transition-all">
+                            Submit Guide
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Browse Guides Tab -->
+                <div id="guides-browse-content" class="guides-tab-content">
+                    <!-- Search Results Section (Hidden by default) -->
+                    <div id="guides-search-results" class="hidden">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-light">Search Results</h2>
+                            <p class="text-sm text-vybe-gray-400"><span id="guides-result-count">0</span> results found</p>
+                        </div>
+                        <div id="guides-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Dynamically populated search results -->
+                        </div>
+                    </div>
+                    <!-- Guides Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Building AI Agents with Claude 3.5 (Free) -->
+                        <div class="minimal-card card-verified rounded-lg p-5 transition-all cursor-pointer group" onclick="showGuideDetail('free')">
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
+                                Building AI Agents with Claude 3.5
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @sarahchen
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 01/16/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Complete guide to building autonomous AI agents using the latest Claude 3.5 API, including function calling and computer use.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded font-medium">Claude 3.5</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">AI Agents</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Python</span>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50 mt-auto">
+                                <div class="flex items-center gap-1 text-green-400 text-xs">
+                                    <span class="text-xs">✅</span>
+                                    <span>Verified 2h ago</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>156</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- GPT-4 Fine-tuning Tutorial (Needs Verification) -->
+                        <div class="minimal-card card-needs-verification rounded-lg p-5 transition-all cursor-pointer group">
+                            
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-pink transition-colors">
+                                GPT-4 Fine-tuning Tutorial
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @aiweekly
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 11/16/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Step-by-step guide to fine-tuning GPT-4 for your specific use case. Includes dataset preparation and best practices.
+                            </p>
+                            
+                            <!-- User Tags from Guide Submission -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs rounded font-medium">Intermediate</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded font-medium">GPT-4</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Fine-tuning</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">OpenAI</span>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50 mt-auto">
+                                <div class="flex items-center gap-1 text-vybe-gray-500 text-xs">
+                                    <span class="text-xs">⚪</span>
+                                    <span>Last verified 45d ago</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <span>72</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Possibly Outdated Card -->
+                        <div class="minimal-card card-possibly-outdated rounded-lg p-5 transition-all cursor-pointer group">
+                            
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                ChatGPT Plugin Development
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @olddev
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 08/16/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Build custom ChatGPT plugins using the original plugin system. Note: OpenAI has deprecated plugins in favor of GPTs.
+                            </p>
+                            
+                            <!-- User Tags from Guide Submission -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-xs rounded font-medium">Intermediate</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">chatgpt</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">plugin-development</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api-guide</span>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-yellow-500 text-xs">
+                                    <span class="text-xs">⚠️</span>
+                                    <span>May be outdated</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>32</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Likely Outdated Card -->
+                        <div class="minimal-card card-likely-outdated rounded-lg p-5 transition-all cursor-pointer group">
+                            
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-gray-300 transition-colors">
+                                GPT-3 API Quick Start
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-gray-600 to-gray-700 rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @legacy
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 01/16/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Getting started with the GPT-3 API. Note: GPT-3 has been superseded by GPT-4 and GPT-4 Turbo.
+                            </p>
+                            
+                            <!-- User Tags from Guide Submission -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-green-500/10 border border-green-500/20 text-green-500 text-xs rounded font-medium">Beginner</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api-guide</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">openai</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">beginner</span>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-red-500 text-xs">
+                                    <span class="text-xs">❌</span>
+                                    <span>Likely outdated</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>23</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Premium Guide Card with Top Creator Badge (Locked) -->
+                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showGuideDetail('premium-locked')">
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
+                                Advanced Claude API Mastery
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @alexchen
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <span class="text-sm text-amber-500">🏆 Top Creator</span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 11/16/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Master advanced Claude API patterns including streaming, function calling, context management, and production deployment strategies.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats with lock icon -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                    </svg>
+                                    <span>Premium • $25</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>127</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Claude API Mastery (Purchased) Card -->
+                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showGuideDetail('premium-purchased')">
+                            <!-- Title -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
+                                Advanced Claude API Mastery
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @alexchen
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <span class="text-sm text-amber-500">🏆 Top Creator</span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 11/16/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Master advanced Claude API patterns including streaming, function calling, context management, and production deployment strategies.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api</span>
+                                <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats with purchased status -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-green-500 text-xs">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                    <span>Purchased</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>127</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Guide Tab -->
+                <div id="guides-submit-content" class="guides-tab-content hidden">
+                    <!-- Progress Indicator -->
+                    <div class="flex justify-between items-center mb-8 relative overflow-x-auto">
+                        <div class="absolute top-5 left-0 right-0 h-0.5 bg-vybe-gray-800 z-0"></div>
+                        
+                        <!-- Step 1: Overview -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="guide-step-indicator-1" onclick="goToGuideStep(1, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-purple text-white flex items-center justify-center font-semibold mb-2">
+                                1
+                            </div>
+                            <span class="text-sm text-vybe-purple-light font-medium whitespace-nowrap">Overview</span>
+                        </div>
+                        
+                        <!-- Step 2: Modules -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="guide-step-indicator-2" onclick="goToGuideStep(2, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                2
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Modules</span>
+                        </div>
+                        
+                        <!-- Step 3: Content -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="guide-step-indicator-3" onclick="goToGuideStep(3, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                3
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Content</span>
+                        </div>
+                        
+                        <!-- Step 4: Resources -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="guide-step-indicator-4" onclick="goToGuideStep(4, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                4
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Resources</span>
+                        </div>
+                        
+                        <!-- Step 5: Review -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="guide-step-indicator-5" onclick="goToGuideStep(5, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                5
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Review</span>
+                        </div>
+                    </div>
+
+                    <!-- Auto-save indicator -->
+                    <div class="text-right mb-4">
+                        <span class="text-sm text-vybe-gray-400">
+                            <span class="inline-block w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                            Draft saved
+                        </span>
+                    </div>
+
+                    <!-- Step 1: Guide Overview -->
+                    <div id="guide-creation-step-1" class="guide-creation-step">
+                        <div class="minimal-card rounded-lg p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Guide Overview
+                            </h2>
+                            
+                            <form class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="form-label form-label-required">
+                                            Guide Title
+                                            <div class="help-tooltip">
+                                                <div class="help-tooltip-icon">?</div>
+                                                <div class="help-tooltip-content">
+                                                    Choose a clear, descriptive title that tells readers exactly what they'll learn. Include the main AI tool and use case.
+                                                </div>
+                                            </div>
+                                        </label>
+                                        <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="e.g., Mastering Claude API for Production Apps" maxlength="100">
+                                        <p class="text-xs text-vybe-gray-400 mt-1">Max 100 characters</p>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">URL Slug</label>
+                                        <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="mastering-claude-api-production" readonly>
+                                        <p class="text-xs text-vybe-gray-400 mt-1">Auto-generated from title</p>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="form-label form-label-required">Difficulty Level</label>
+                                        <select class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all">
+                                            <option>Select difficulty</option>
+                                            <option>Beginner</option>
+                                            <option>Intermediate</option>
+                                            <option>Advanced</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="form-label form-label-required">Primary Focus</label>
+                                        <select class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all">
+                                            <option>Select focus area</option>
+                                            <option>Development</option>
+                                            <option>Design</option>
+                                            <option>Architecture</option>
+                                            <option>Automation</option>
+                                            <option>Integration</option>
+                                            <option>Optimization</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="form-label form-label-required">AI Tools Covered</label>
+                                    
+                                    <!-- Selected Tools Display -->
+                                    <div class="flex flex-wrap gap-2 mb-3" id="selected-ai-tools">
+                                        <!-- Selected tools will appear here as tags -->
+                                    </div>
+                                    
+                                    <!-- Searchable Dropdown -->
+                                    <div class="flex gap-2">
+                                        <div class="relative flex-1" id="ai-tools-dropdown-container">
+                                            <input type="text" id="ai-tools-search" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="Search AI tools..." autocomplete="off">
+                                            <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none">
+                                                <svg class="w-4 h-4 text-vybe-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="ai-tools-dropdown-menu hidden absolute z-50 w-full mt-1 bg-vybe-gray-800 border border-vybe-gray-600 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="claude">Claude</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="claude-code">Claude Code</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="claude-api">Claude API</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="chatgpt">ChatGPT</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="cursor">Cursor</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="augment-code">Augment Code</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="copilot">GitHub Copilot</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="v0">v0 by Vercel</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="bolt">Bolt</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="perplexity">Perplexity</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="midjourney">Midjourney</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="dalle">DALL-E</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="stable-diffusion">Stable Diffusion</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="gemini">Google Gemini</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="copilot-workspace">GitHub Copilot Workspace</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="windsurf">Windsurf</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="replit">Replit</div>
+                                                <div class="ai-tools-option p-3 hover:bg-vybe-gray-700 cursor-pointer border-b border-vybe-gray-700" data-value="other">Other</div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn-secondary px-6 py-3" onclick="addSelectedAITool()">Add</button>
+                                    </div>
+                                    <p class="text-xs text-vybe-gray-400 mt-2">Search and add all AI tools featured in this guide</p>
+                                </div>
+
+                                <div>
+                                    <label class="form-label form-label-required">Brief Description</label>
+                                    <textarea class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all h-24" placeholder="Brief overview of what this guide teaches..." maxlength="300"></textarea>
+                                    <p class="text-xs text-vybe-gray-400 mt-1">Max 300 characters</p>
+                                </div>
+
+                                <div>
+                                    <label class="form-label form-label-required">Cover Image</label>
+                                    <div class="border-2 border-dashed border-vybe-gray-600 rounded-lg p-8 text-center hover:border-vybe-purple transition-colors cursor-pointer">
+                                        <svg class="w-12 h-12 mx-auto mb-4 text-vybe-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                        </svg>
+                                        <p class="text-vybe-gray-400 mb-2">Drop image here or click to upload</p>
+                                        <p class="text-xs text-vybe-gray-500">Recommended: 1200x630px (16:9 ratio)</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="form-label">Estimated Total Time</label>
+                                        <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="e.g., 45 minutes">
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Target Audience</label>
+                                        <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="e.g., Backend developers">
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between pt-6">
+                                    <button type="button" onclick="showGuidesTab('browse')" class="btn-secondary">
+                                        Cancel
+                                    </button>
+                                    <button type="button" onclick="goToGuideStep(2)" class="btn-primary-purple">
+                                        Next: App Modules →
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Module Builder -->
+                    <div id="guide-creation-step-2" class="guide-creation-step hidden">
+                        <div class="minimal-card rounded-lg p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Build Your Guide Structure
+                            </h2>
+                            
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <!-- Module List -->
+                                <div class="lg:col-span-2">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h3 class="text-lg font-medium">Modules</h3>
+                                        <button type="button" onclick="addModule()" class="btn-primary-purple">
+                                            + Add Module
+                                        </button>
+                                    </div>
+                                    
+                                    <div id="modules-list" class="space-y-4">
+                                        <!-- Module 1 -->
+                                        <div class="module-card bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-4">
+                                            <div class="flex items-start gap-3">
+                                                <div class="cursor-move text-vybe-gray-500 mt-1">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M4 8h16M4 16h16"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all mb-2" placeholder="Module Title" value="Getting Started">
+                                                    <textarea class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all h-20" placeholder="Module description...">Introduction to Claude API and setting up your development environment</textarea>
+                                                    <div class="flex items-center gap-4 mt-3 text-sm">
+                                                        <input type="text" class="w-24 bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="Time" value="15 min">
+                                                        <span class="text-vybe-gray-400">2 lessons</span>
+                                                        <button class="text-vybe-purple-light hover:text-vybe-pink ml-auto">+ Add Lesson</button>
+                                                    </div>
+                                                </div>
+                                                <button class="text-vybe-gray-500 hover:text-red-500">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M6 18L18 6M6 6l12 12"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Module 2 -->
+                                        <div class="module-card bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-4">
+                                            <div class="flex items-start gap-3">
+                                                <div class="cursor-move text-vybe-gray-500 mt-1">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M4 8h16M4 16h16"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all mb-2" placeholder="Module Title" value="Core Concepts">
+                                                    <textarea class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all h-20" placeholder="Module description...">Understanding context windows, prompt engineering, and rate limiting</textarea>
+                                                    <div class="flex items-center gap-4 mt-3 text-sm">
+                                                        <input type="text" class="w-24 bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="Time" value="45 min">
+                                                        <span class="text-vybe-gray-400">4 lessons</span>
+                                                        <button class="text-vybe-purple-light hover:text-vybe-pink ml-auto">+ Add Lesson</button>
+                                                    </div>
+                                                </div>
+                                                <button class="text-vybe-gray-500 hover:text-red-500">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M6 18L18 6M6 6l12 12"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Module 3 -->
+                                        <div class="module-card bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-4">
+                                            <div class="flex items-start gap-3">
+                                                <div class="cursor-move text-vybe-gray-500 mt-1">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M4 8h16M4 16h16"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="flex-1">
+                                                    <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all mb-2" placeholder="Module Title" value="Advanced Features">
+                                                    <textarea class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all h-20" placeholder="Module description...">Streaming responses, function calling, and production best practices</textarea>
+                                                    <div class="flex items-center gap-4 mt-3 text-sm">
+                                                        <input type="text" class="w-24 bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="Time" value="30 min">
+                                                        <span class="text-vybe-gray-400">3 lessons</span>
+                                                        <button class="text-vybe-purple-light hover:text-vybe-pink ml-auto">+ Add Lesson</button>
+                                                    </div>
+                                                </div>
+                                                <button class="text-vybe-gray-500 hover:text-red-500">
+                                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                        <path d="M6 18L18 6M6 6l12 12"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-sm text-vybe-gray-400 mt-4">Drag modules to reorder</p>
+                                </div>
+
+                                <!-- Guide Structure Preview -->
+                                <div class="lg:col-span-1">
+                                    <div class="bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-6 sticky top-4">
+                                        <h3 class="text-lg font-medium mb-4">Guide Structure</h3>
+                                        <div class="space-y-3">
+                                            <div class="text-sm">
+                                                <div class="flex items-center gap-2 mb-2">
+                                                    <span class="text-vybe-purple-light">✓</span>
+                                                    <span>3 modules (3-30 allowed)</span>
+                                                </div>
+                                                <div class="flex items-center gap-2 mb-2">
+                                                    <span class="text-vybe-purple-light">✓</span>
+                                                    <span>9 total lessons</span>
+                                                </div>
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-vybe-purple-light">✓</span>
+                                                    <span>~90 minutes total</span>
+                                                </div>
+                                            </div>
+                                            <div class="pt-4 border-t border-vybe-gray-800">
+                                                <p class="text-xs text-vybe-gray-400 mb-2">Requirements:</p>
+                                                <div class="space-y-1 text-xs">
+                                                    <div class="flex items-center gap-2">
+                                                        <span class="text-vybe-purple-light">✓</span>
+                                                        <span class="text-vybe-gray-300">Minimum 3 modules</span>
+                                                    </div>
+                                                    <div class="flex items-center gap-2">
+                                                        <span class="text-vybe-gray-500">○</span>
+                                                        <span class="text-vybe-gray-300">1500+ words</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between pt-8 border-t border-vybe-gray-800 mt-8">
+                                <button type="button" onclick="goToGuideStep(1)" class="btn-secondary">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="goToGuideStep(3)" class="btn-primary-purple">
+                                    Next: Write Content →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Content Editor -->
+                    <div id="guide-creation-step-3" class="guide-creation-step hidden">
+                        <div class="minimal-card rounded-lg p-8">
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-lg font-semibold text-white flex items-center gap-2">
+                                    <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                    Write Your Content
+                                </h2>
+                                <select class="w-64 bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all">
+                                    <option>Module 1 > Lesson 1: Introduction</option>
+                                    <option>Module 1 > Lesson 2: Setup Environment</option>
+                                    <option selected>Module 2 > Lesson 3: Rate Limiting</option>
+                                    <option>Module 2 > Lesson 4: Error Handling</option>
+                                </select>
+                            </div>
+
+                            <!-- Rich Text Editor -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-[600px]">
+                                <!-- Editor Panel -->
+                                <div class="border border-vybe-gray-700 rounded-lg overflow-hidden flex flex-col">
+                                    <!-- Toolbar -->
+                                    <div class="bg-vybe-gray-900 border-b border-vybe-gray-700 p-2 flex flex-wrap gap-1">
+                                        <button class="toolbar-button" title="Bold">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 4h8a4 4 0 014 4 4 4 0 01-4 4H6z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 12h9a4 4 0 014 4 4 4 0 01-4 4H6z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="toolbar-button" title="Italic">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M10 4h4M14 4l-4 16m-4 0h4"/>
+                                            </svg>
+                                        </button>
+                                        <button class="toolbar-button" title="Heading">
+                                            <span class="font-bold text-sm">H</span>
+                                        </button>
+                                        <div class="w-px h-6 bg-vybe-gray-700 mx-1"></div>
+                                        <button class="toolbar-button" title="Code">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                <polyline points="4 17 10 11 4 5"></polyline>
+                                                <line x1="12" y1="19" x2="20" y2="19"></line>
+                                            </svg>
+                                        </button>
+                                        <button class="toolbar-button" title="Code Block">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                            </svg>
+                                        </button>
+                                        <div class="w-px h-6 bg-vybe-gray-700 mx-1"></div>
+                                        <button class="toolbar-button" title="Image">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="toolbar-button" title="Video">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                        </button>
+                                        <div class="w-px h-6 bg-vybe-gray-700 mx-1"></div>
+                                        <button class="toolbar-button" title="Tip Box">
+                                            <span class="text-green-500 text-xs font-bold">TIP</span>
+                                        </button>
+                                        <button class="toolbar-button" title="Warning Box">
+                                            <span class="text-yellow-500 text-xs font-bold">WARN</span>
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Editor Content Area -->
+                                    <div class="flex-1 p-4 overflow-y-auto">
+                                        <textarea class="w-full h-full bg-transparent text-white font-mono text-sm resize-none focus:outline-none" placeholder="Start writing your lesson content...">## Implementing Rate Limiting for Claude API
+
+When building production applications with Claude API, implementing proper rate limiting is crucial to ensure reliable service and prevent unexpected costs. In this lesson, we'll explore best practices for rate limiting implementation.
+
+### Understanding Claude's Rate Limits
+
+Current limits as of 2025:
+- **Requests per minute:** 60 for standard tier
+- **Tokens per minute:** 100,000 tokens
+- **Concurrent requests:** 10 maximum
+
+### Basic Rate Limiter Implementation
+
+```javascript
+class RateLimiter {
+  constructor(maxRequests = 60, windowMs = 60000) {
+    this.maxRequests = maxRequests;
+    this.windowMs = windowMs;
+    this.requests = [];
+  }
+
+  async acquire() {
+    const now = Date.now();
+    
+    // Remove old requests outside the window
+    this.requests = this.requests.filter(
+      time => now - time < this.windowMs
+    );
+    
+    // Check if we can make a request
+    if (this.requests.length >= this.maxRequests) {
+      const oldestRequest = this.requests[0];
+      const waitTime = oldestRequest + this.windowMs - now;
+      await new Promise(resolve => setTimeout(resolve, waitTime));
+      return this.acquire();
+    }
+    
+    this.requests.push(now);
+  }
+}
+```
+
+> **💡 Tip:** Always implement exponential backoff for retries to handle temporary API issues gracefully.</textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Preview Panel -->
+                                <div class="border border-vybe-gray-700 rounded-lg overflow-hidden">
+                                    <div class="bg-vybe-gray-900 border-b border-vybe-gray-700 p-3 flex justify-between items-center">
+                                        <span class="text-sm font-medium">Preview</span>
+                                        <span class="text-xs text-vybe-gray-400">Live preview</span>
+                                    </div>
+                                    <div class="p-6 overflow-y-auto h-full">
+                                        <h2 class="text-2xl font-semibold mb-4">Implementing Rate Limiting for Claude API</h2>
+                                        <p class="text-vybe-gray-300 mb-6">When building production applications with Claude API, implementing proper rate limiting is crucial to ensure reliable service and prevent unexpected costs. In this lesson, we'll explore best practices for rate limiting implementation.</p>
+                                        
+                                        <h3 class="text-xl font-semibold mb-3">Understanding Claude's Rate Limits</h3>
+                                        <p class="text-vybe-gray-300 mb-2">Current limits as of 2025:</p>
+                                        <ul class="list-disc list-inside space-y-1 text-vybe-gray-300 mb-6 ml-4">
+                                            <li><strong>Requests per minute:</strong> 60 for standard tier</li>
+                                            <li><strong>Tokens per minute:</strong> 100,000 tokens</li>
+                                            <li><strong>Concurrent requests:</strong> 10 maximum</li>
+                                        </ul>
+                                        
+                                        <h3 class="text-xl font-semibold mb-3">Basic Rate Limiter Implementation</h3>
+                                        <div class="bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-4 mb-6">
+                                            <pre class="text-sm overflow-x-auto"><code class="language-javascript">class RateLimiter {
+  constructor(maxRequests = 60, windowMs = 60000) {
+    this.maxRequests = maxRequests;
+    this.windowMs = windowMs;
+    this.requests = [];
+  }
+
+  async acquire() {
+    const now = Date.now();
+    
+    // Remove old requests outside the window
+    this.requests = this.requests.filter(
+      time => now - time < this.windowMs
+    );
+    
+    // Check if we can make a request
+    if (this.requests.length >= this.maxRequests) {
+      const oldestRequest = this.requests[0];
+      const waitTime = oldestRequest + this.windowMs - now;
+      await new Promise(resolve => setTimeout(resolve, waitTime));
+      return this.acquire();
+    }
+    
+    this.requests.push(now);
+  }
+}</code></pre>
+                                        </div>
+                                        
+                                        <div class="bg-green-500/10 border border-green-500/30 rounded-lg p-4">
+                                            <p class="text-sm"><span class="text-green-500 font-bold">💡 Tip:</span> Always implement exponential backoff for retries to handle temporary API issues gracefully.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center pt-6 mt-6 border-t border-vybe-gray-800">
+                                <button type="button" onclick="goToGuideStep(2)" class="btn-secondary">
+                                    ← Back
+                                </button>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="btn-secondary">
+                                        Save Draft
+                                    </button>
+                                    <button type="button" onclick="goToGuideStep(4)" class="btn-primary-purple">
+                                        Next: Add Resources →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Resources -->
+                    <div id="guide-creation-step-4" class="guide-creation-step hidden">
+                        <div class="minimal-card rounded-lg p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Resources & Downloads
+                            </h2>
+                            
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <!-- Upload Area -->
+                                <div>
+                                    <h3 class="text-lg font-medium mb-4">Upload Resources</h3>
+                                    <div class="border-2 border-dashed border-vybe-gray-600 rounded-lg p-8 text-center hover:border-vybe-purple transition-colors cursor-pointer mb-6">
+                                        <svg class="w-12 h-12 mx-auto mb-4 text-vybe-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                                        </svg>
+                                        <p class="text-vybe-gray-400 mb-2">Drop files here or click to upload</p>
+                                        <p class="text-xs text-vybe-gray-500">PDFs, ZIPs, code files (max 10MB each)</p>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label class="form-label">GitHub Repository</label>
+                                            <input type="url" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="https://github.com/username/repo">
+                                        </div>
+                                        <div>
+                                            <label class="form-label">Demo App</label>
+                                            <input type="url" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="https://demo.example.com">
+                                        </div>
+                                        <div>
+                                            <label class="form-label">External Resources</label>
+                                            <div class="space-y-2">
+                                                <input type="url" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="Resource URL">
+                                                <button type="button" class="text-sm text-vybe-purple-light hover:text-vybe-pink">+ Add another resource</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Resource List -->
+                                <div>
+                                    <h3 class="text-lg font-medium mb-4">Attached Resources</h3>
+                                    <div class="space-y-3">
+                                        <!-- Resource Item -->
+                                        <div class="flex items-center gap-3 p-3 bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg">
+                                            <div class="min-h-[2.5rem] p-2 bg-vybe-purple/20 rounded-lg flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-vybe-purple-light" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="font-medium">rate-limiter-template.js</div>
+                                                <div class="text-sm text-vybe-gray-400">JavaScript • 2.4 KB</div>
+                                            </div>
+                                            <button class="text-vybe-gray-500 hover:text-red-500">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <!-- Resource Item -->
+                                        <div class="flex items-center gap-3 p-3 bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg">
+                                            <div class="min-h-[2.5rem] p-2 bg-vybe-orange/20 rounded-lg flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-vybe-orange" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                                    <polyline points="4 17 10 11 4 5"></polyline>
+                                                    <line x1="12" y1="19" x2="20" y2="19"></line>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="font-medium">GitHub Repository</div>
+                                                <div class="text-sm text-vybe-gray-400">github.com/example/claude-rate-limiter</div>
+                                            </div>
+                                            <button class="text-vybe-gray-500 hover:text-red-500">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        <!-- Resource Item -->
+                                        <div class="flex items-center gap-3 p-3 bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg">
+                                            <div class="min-h-[2.5rem] p-2 bg-vybe-gray-700 rounded-lg flex items-center justify-center">
+                                                <svg class="w-5 h-5 text-vybe-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                                                </svg>
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="font-medium">production-config.pdf</div>
+                                                <div class="text-sm text-vybe-gray-400">PDF • 156 KB</div>
+                                            </div>
+                                            <button class="text-vybe-gray-500 hover:text-red-500">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-sm text-vybe-gray-400 mt-4">3 resources • 159.4 KB total</p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between pt-8 border-t border-vybe-gray-800 mt-8">
+                                <button type="button" onclick="goToGuideStep(3)" class="btn-secondary">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="goToGuideStep(5)" class="btn-primary-purple">
+                                    Next: Review & Submit →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Review & Submit -->
+                    <div id="guide-creation-step-5" class="guide-creation-step hidden">
+                        <div class="minimal-card rounded-lg p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Review & Submit
+                            </h2>
+                            
+                            <!-- AI Review Checklist -->
+                            <div class="bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-6 mb-8">
+                                <h3 class="text-lg font-medium mb-4">AI Review Checklist</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span>Word count: 2,847 words (minimum 1,500)</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span>Module count: 3 modules (minimum 3)</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span>Code examples: 5 code blocks found</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span>Cover image uploaded</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span>All lessons have content</span>
+                                    </div>
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                            <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                            </svg>
+                                        </div>
+                                        <span>Proper markdown structure</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Guide Preview -->
+                            <div class="mb-8">
+                                <h3 class="text-lg font-medium mb-4">Guide Preview</h3>
+                                <div class="border border-vybe-gray-700 rounded-lg overflow-hidden">
+                                    <div class="bg-vybe-gray-900 p-6">
+                                        <div class="flex items-start gap-6">
+                                            <img src="/api/placeholder/200/105" alt="Guide cover" class="w-48 h-auto rounded-lg">
+                                            <div class="flex-1">
+                                                <h4 class="text-xl font-semibold mb-2">Mastering Claude API for Production Apps</h4>
+                                                <p class="text-vybe-gray-400 mb-4">Learn how to implement Claude API in production environments with proper rate limiting, error handling, and best practices.</p>
+                                                <div class="flex flex-wrap gap-4 text-sm">
+                                                    <span class="text-vybe-gray-400">Focus: <span class="text-white">Development</span></span>
+                                                    <span class="text-vybe-gray-400">Difficulty: <span class="text-white">Intermediate</span></span>
+                                                    <span class="text-vybe-gray-400">Duration: <span class="text-white">90 minutes</span></span>
+                                                    <span class="text-vybe-gray-400">Modules: <span class="text-white">3</span></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="p-6 border-t border-vybe-gray-800">
+                                        <div class="flex items-center gap-3 mb-4">
+                                            <img src="/api/placeholder/40/40" alt="Author" class="min-h-[2.5rem] p-2 rounded-full">
+                                            <div>
+                                                <div class="font-medium">Sarah Chen</div>
+                                                <div class="text-sm text-vybe-gray-400">Senior Developer</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-wrap gap-2">
+                                            <span class="px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-xs">Claude</span>
+                                            <span class="px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-xs">API</span>
+                                            <span class="px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-xs">Production</span>
+                                            <span class="px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-xs">Rate Limiting</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Author Confirmation -->
+                            <div class="bg-vybe-gray-900 border border-vybe-gray-700 rounded-lg p-6 mb-8">
+                                <h3 class="text-lg font-medium mb-4">Author Profile</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="form-label">Discord Username (optional)</label>
+                                        <input type="text" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="username#1234">
+                                        <p class="text-xs text-vybe-gray-400 mt-1">Allow readers to contact you</p>
+                                    </div>
+                                    <div>
+                                        <label class="form-label">LinkedIn Profile (optional)</label>
+                                        <input type="url" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-4 py-3 text-white focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple transition-all" placeholder="https://linkedin.com/in/username">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Actions -->
+                            <div class="bg-vybe-purple/10 border border-vybe-purple/30 rounded-lg p-6 mb-8">
+                                <div class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-vybe-purple-light mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-vybe-purple-light mb-1">Ready to Submit?</p>
+                                        <p class="text-sm text-vybe-gray-300">Your guide will be reviewed by our AI system. Most guides are approved within 2 minutes. You'll receive an email notification once the review is complete.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <button type="button" onclick="goToGuideStep(4)" class="btn-secondary">
+                                    ← Back
+                                </button>
+                                <div class="flex gap-4">
+                                    <button type="button" class="btn-secondary">
+                                        Save as Draft
+                                    </button>
+                                    <button type="button" onclick="submitGuide()" class="btn-primary-purple">
+                                        Submit for AI Review
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Apps Page -->

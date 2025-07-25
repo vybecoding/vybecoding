@@ -1,0 +1,586 @@
+        <div class="page-container nebula-background">
+            <!-- Nebula backgrounds handled by CSS -->
+            <div class="nebula-middle"></div>
+            <div class="nebula-bottom"></div>
+            <div class="max-w-6xl mx-auto px-6 relative z-10">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-light mb-4">
+                        <span class="text-gradient-brand">Apps</span>
+                    </h1>
+                    <p class="text-vybe-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+                        Discover AI-built projects, applications, and tools. Live demos, source code, 
+                        and the exact prompts used to create them.
+                    </p>
+                </div>
+
+
+                <!-- Universal Search -->
+                <div class="universal-search mb-8">
+                    <svg class="universal-search-icon w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="search" 
+                           placeholder="Search AI-built projects, apps, tools, and showcases..." 
+                           class="universal-search-input"
+                           id="apps-search"
+                           onkeyup="searchApps(this.value)">
+                    <button class="btn btn-primary-purple universal-search-submit" onclick="performAppsSearch()">Search</button>
+                    
+                    <!-- Search Suggestions Dropdown -->
+                    <div class="search-suggestions" id="apps-search-suggestions">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+
+                <!-- Search Filter Dropdowns -->
+                <div class="search-filter-container mb-8">
+                    <div class="flex flex-col gap-0">
+                        <!-- Filters Row -->
+                        <div class="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
+                            <!-- Category Dropdown -->
+                    <div class="filter-dropdown multi-select-dropdown" id="apps-category-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('apps-category')">
+                            <span>Category</span>
+                            <span class="filter-selection-counter hidden" id="apps-category-counter">0</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'all')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">All Categories</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'portfolio')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Portfolio</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'business')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Business</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'creative')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Creative</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'ecommerce')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">E-commerce</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'blog')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Blog</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'saas')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">SaaS</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'landing')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Landing Page</span>
+                            </div>
+                            <div class="multi-select-item" onclick="toggleMultiSelect('apps-category', 'other')">
+                                <div class="multi-select-checkbox"></div>
+                                <span class="multi-select-label">Other</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Sort By Dropdown -->
+                    <div class="filter-dropdown" id="apps-sort-dropdown">
+                        <button class="filter-dropdown-button" onclick="toggleDropdown('apps-sort')">
+                            <span>Sort By</span>
+                            <svg class="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="filter-dropdown-menu">
+                            <div class="filter-dropdown-item" onclick="selectFilter('apps-sort', 'relevance')">Relevance</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('apps-sort', 'newest')">Newest First</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('apps-sort', 'popular')">Most Popular</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('apps-sort', 'trending')">Trending Now</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('apps-sort', 'likes')">Most Liked</div>
+                            <div class="filter-dropdown-item" onclick="selectFilter('apps-sort', 'views')">Most Viewed</div>
+                        </div>
+                    </div>
+
+                    <!-- Clear Filters Button -->
+                    <button class="filter-clear-button" onclick="clearAllFilters('apps')">Clear Filters</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="tab-navigation-container">
+                    <div class="flex gap-4 border-b border-vybe-gray-800 justify-center">
+                        <button onclick="showAppsTab('browse')" class="apps-tab active" data-tab="browse">
+                            Browse Apps
+                        </button>
+                        <button onclick="showAppsTab('submit')" class="apps-tab" data-tab="submit">
+                            Submit App
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Browse Apps Tab -->
+                <div id="apps-browse-content" class="apps-tab-content">
+                    <!-- Search Results Section (Hidden by default) -->
+                    <div id="sites-search-results" class="hidden">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-light">Search Results</h2>
+                            <p class="text-sm text-vybe-gray-400"><span id="apps-result-count">0</span> results found</p>
+                        </div>
+                        <div id="apps-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Dynamically populated search results -->
+                        </div>
+                    </div>
+
+                    <!-- Header Section -->
+                    <!-- Apps Grid - Universal Design -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- AI Code Review Assistant Card (Needs Verification) -->
+                        <div class="minimal-card card-needs-verification rounded-lg p-5 transition-all cursor-pointer group" onclick="showAppDetail('members', '0000001', '0000001-code-review-assistant')">
+                            
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                AI Code Review Assistant
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @devtools
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 01/02/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Interactive tool that analyzes your code for bugs, suggests improvements, and explains best practices using Claude AI.
+                            </p>
+                            
+                            <!-- App Tags and Technologies -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <!-- App Tags (Orange) -->
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">productivity</span>
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">developer-tools</span>
+                                <!-- Technologies (Orange on App cards) -->
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-vybe-gray-500 text-xs">
+                                    <span class="text-xs">⚪</span>
+                                    <span>Needs verification</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>89</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Code Assistant Pro Card (Unpurchased) -->
+                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showAppDetail('vibe-coding', '0000002', '0000002-code-assistant-pro')">
+                            <!-- Title -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                AI Code Assistant Pro
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @buildtools
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 01/10/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Production-ready code assistant with advanced refactoring, test generation, and team collaboration features.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">productivity</span>
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats with lock icon -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                    </svg>
+                                    <span>Premium • $35</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>285</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Code Assistant Pro Card (Purchased) -->
+                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showAppDetail('vibe-coding', '0000002', '0000002-code-assistant-pro')">
+                            <!-- Title -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                AI Code Assistant Pro
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @buildtools
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12,6 12,12 16,14"/>
+                                    </svg>
+                                    <span>Posted 01/10/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Production-ready code assistant with advanced refactoring, test generation, and team collaboration features.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">productivity</span>
+                                <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats with purchased status -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50">
+                                <div class="flex items-center gap-1 text-green-500 text-xs">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                    <span>Purchased</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>285</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Submit App Tab -->
+                <div id="apps-submit-content" class="apps-tab-content hidden">
+                    <!-- Progress Indicator -->
+                    <div class="flex justify-between items-center mb-8 relative overflow-x-auto">
+                        <div class="absolute top-5 left-0 right-0 h-0.5 bg-vybe-gray-800 z-0"></div>
+                        
+                        <!-- Step 1: Basic Info -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="step-indicator-1" onclick="goToAppStep(1, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-orange text-white flex items-center justify-center font-semibold mb-2">
+                                1
+                            </div>
+                            <span class="text-sm text-vybe-orange font-medium whitespace-nowrap">Basic Info</span>
+                        </div>
+                        
+                        <!-- Step 2: Details -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="step-indicator-2" onclick="goToAppStep(2, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                2
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Details</span>
+                        </div>
+                        
+                        <!-- Step 3: Preview -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="step-indicator-3" onclick="goToAppStep(3, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                3
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Preview</span>
+                        </div>
+                        
+                        <!-- Step 4: Submit -->
+                        <div class="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2" id="step-indicator-4" onclick="goToAppStep(4, true)">
+                            <div class="w-10 h-10 rounded-full bg-vybe-gray-800 text-vybe-gray-400 flex items-center justify-center font-semibold mb-2">
+                                4
+                            </div>
+                            <span class="text-sm text-vybe-gray-400 whitespace-nowrap">Submit</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 1: Basic Info -->
+                    <div id="app-creation-step-1" class="app-creation-step">
+                        <div class="vybe-card p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Basic Information
+                            </h2>
+                            <div class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="form-label form-label-required">App Name</label>
+                                        <input type="text" id="app-name" class="form-input w-full px-4 py-2 rounded-lg" placeholder="My AI Portfolio" required>
+                                    </div>
+                                    <div>
+                                        <label class="form-label form-label-required">Live URL</label>
+                                        <input type="url" id="app-url" class="form-input w-full px-4 py-2 rounded-lg" placeholder="https://your-app.vercel.app" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="form-label form-label-required">Category</label>
+                                    <select id="app-category" class="form-select w-full px-4 py-2 rounded-lg" required>
+                                        <option value="">Select a category</option>
+                                        <option value="portfolio">Portfolio</option>
+                                        <option value="business">Business</option>
+                                        <option value="creative">Creative</option>
+                                        <option value="ecommerce">E-commerce</option>
+                                        <option value="blog">Blog</option>
+                                        <option value="saas">SaaS</option>
+                                        <option value="landing">Landing Page</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="form-label form-label-required">Short Description</label>
+                                    <textarea id="app-description" class="form-textarea w-full px-4 py-2 rounded-lg h-24" placeholder="Brief description of your app and what makes it special..." required></textarea>
+                                </div>
+                                
+                                <!-- Pricing & Distribution -->
+                                <div>
+                                    <label class="form-label form-label-required inline-flex items-center gap-2">
+                                        Pricing & Distribution
+                                        <div class="relative group">
+                                            <div class="w-5 h-5 rounded-full bg-vybe-gray-700 text-vybe-gray-400 text-xs flex items-center justify-center cursor-help hover:bg-vybe-gray-600 transition-colors">?</div>
+                                            <div class="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 p-3 bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg text-sm text-vybe-gray-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity z-50">
+                                                Set pricing for your app. Premium apps generate revenue while free apps build your portfolio and reputation.
+                                                <div class="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-vybe-gray-700"></div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <!-- Pricing Type Selection -->
+                                    <div class="space-y-4 mb-4">
+                                        <div class="flex gap-4">
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="radio" name="app-pricing-type" value="free" class="text-vybe-orange focus:ring-vybe-orange/20" checked onchange="toggleAppPricingFields(this.value)">
+                                                <span class="text-white font-medium">Free App</span>
+                                            </label>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="radio" name="app-pricing-type" value="premium" class="text-vybe-orange focus:ring-vybe-orange/20" onchange="toggleAppPricingFields(this.value)">
+                                                <span class="text-white font-medium">Premium App</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Premium Options (Hidden by default) -->
+                                    <div id="app-premium-options" class="space-y-4 hidden">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label class="form-label">Price (USD)</label>
+                                                <div class="flex">
+                                                    <span class="inline-flex items-center px-3 text-sm text-vybe-gray-300 bg-vybe-gray-800 border border-r-0 border-vybe-gray-700 rounded-l-lg">$</span>
+                                                    <input type="number" id="app-price" class="form-input rounded-l-none" placeholder="35" min="5" max="1000" step="5">
+                                                </div>
+                                                <p class="text-xs text-vybe-gray-400 mt-1">Range: $5-$1000 • Platform fee: 20%</p>
+                                            </div>
+                                            
+                                            <div>
+                                                <label class="form-label">License Type</label>
+                                                <select id="app-license" class="form-select w-full px-4 py-2 rounded-lg">
+                                                    <option value="single">Single Site License</option>
+                                                    <option value="multiple">Multiple Site License (+$20)</option>
+                                                    <option value="commercial">Commercial License (+$50)</option>
+                                                    <option value="unlimited">Unlimited License (+$100)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="flex items-center gap-2 cursor-pointer">
+                                                <input type="checkbox" id="app-demo-enabled" class="text-vybe-orange focus:ring-vybe-orange/20">
+                                                <span class="text-sm text-vybe-gray-300">Provide live demo access</span>     
+                                            </label>
+                                            <p class="text-xs text-vybe-gray-400 mt-1 ml-6">Allow users to test your app before purchasing</p>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="form-label">Premium Features</label>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input type="checkbox" class="text-vybe-orange focus:ring-vybe-orange/20" checked disabled>
+                                                    <span class="text-sm text-vybe-gray-300">Full source code</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input type="checkbox" class="text-vybe-orange focus:ring-vybe-orange/20" checked disabled>
+                                                    <span class="text-sm text-vybe-gray-300">Installation guide</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input type="checkbox" id="app-support-included" class="text-vybe-orange focus:ring-vybe-orange/20">
+                                                    <span class="text-sm text-vybe-gray-300">Email support (30 days)</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input type="checkbox" id="app-updates-included" class="text-vybe-orange focus:ring-vybe-orange/20">
+                                                    <span class="text-sm text-vybe-gray-300">Free updates (1 year)</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input type="checkbox" id="app-customization" class="text-vybe-orange focus:ring-vybe-orange/20">
+                                                    <span class="text-sm text-vybe-gray-300">Customization service (+$100)</span>
+                                                </label>
+                                                <label class="flex items-center gap-2 cursor-pointer">
+                                                    <input type="checkbox" id="app-hosting-setup" class="text-vybe-orange focus:ring-vybe-orange/20">
+                                                    <span class="text-sm text-vybe-gray-300">Hosting setup service (+$50)</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-end mt-8">
+                                <button type="button" onclick="goToAppStep(2)" class="btn btn-primary-orange">
+                                    Continue to Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Details -->
+                    <div id="app-creation-step-2" class="app-creation-step hidden">
+                        <div class="vybe-card p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                App Details
+                            </h2>
+                            <div class="space-y-6">
+                                <div>
+                                    <label class="form-label">Technologies Used</label>
+                                    <input type="text" id="app-tech" class="form-input w-full px-4 py-2 rounded-lg" placeholder="React, Node.js, Claude API, Tailwind CSS...">
+                                    <p class="text-sm text-vybe-gray-400 mt-1">List the main technologies, AI tools, and frameworks used</p>
+                                </div>
+                                <div>
+                                    <label class="form-label">Tags</label>
+                                    <input type="text" id="app-tags" class="form-input w-full px-4 py-2 rounded-lg" placeholder="productivity, automation, ai-tools, developer-tools (comma separated)">
+                                    <p class="text-sm text-vybe-gray-400 mt-1">Help others discover your app with relevant tags</p>
+                                </div>
+                                <div>
+                                    <label class="form-label">Detailed Description</label>
+                                    <textarea id="app-detailed-description" class="form-textarea w-full px-4 py-2 rounded-lg h-32" placeholder="Provide a more detailed description of your app's features, functionality, and the problem it solves..."></textarea>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label class="form-label">Source Code (Optional)</label>
+                                        <input type="url" id="app-source" class="form-input w-full px-4 py-2 rounded-lg" placeholder="https://github.com/username/repo">
+                                    </div>
+                                    <div>
+                                        <label class="form-label">Demo Video (Optional)</label>
+                                        <input type="url" id="app-demo" class="form-input w-full px-4 py-2 rounded-lg" placeholder="https://youtube.com/watch?v=...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between mt-8">
+                                <button type="button" onclick="goToAppStep(1)" class="btn btn-secondary">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="goToAppStep(3)" class="btn btn-primary-orange">
+                                    Next: Preview →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Preview -->
+                    <div id="app-creation-step-3" class="app-creation-step hidden">
+                        <div class="vybe-card p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Preview Your Submission
+                            </h2>
+                            <div id="app-preview-content" class="space-y-6">
+                                <!-- Preview will be populated dynamically -->
+                            </div>
+                            <div class="flex justify-between mt-8">
+                                <button type="button" onclick="goToAppStep(2)" class="btn btn-secondary">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="goToAppStep(4)" class="btn btn-primary-orange">
+                                    Next: Submit →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Submit -->
+                    <div id="app-creation-step-4" class="app-creation-step hidden">
+                        <div class="vybe-card p-8">
+                            <h2 class="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                                <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                Submit Your App
+                            </h2>
+                            <div class="space-y-6">
+                                <div class="bg-gray-700/40 rounded-lg p-6">
+                                    <h3 class="text-lg font-medium mb-3">Submission Guidelines</h3>
+                                    <ul class="space-y-2 text-sm text-vybe-gray-400">
+                                        <li>• Your app will be reviewed within 2-3 business days</li>
+                                        <li>• Make sure your live URL is accessible and working</li>
+                                        <li>• Apps must be built with significant AI assistance</li>
+                                        <li>• Include source code for faster approval</li>
+                                        <li>• You'll receive an email notification once approved</li>
+                                    </ul>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="app-terms" class="rounded">
+                                    <label for="app-terms" class="text-sm text-vybe-gray-400">
+                                        I agree to the <a href="#" class="text-vybe-orange hover:underline">submission terms</a> and confirm this app was built with AI assistance
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="flex justify-between mt-8">
+                                <button type="button" onclick="goToAppStep(3)" class="btn btn-secondary">
+                                    ← Back
+                                </button>
+                                <button type="button" onclick="submitApp()" class="btn btn-primary-orange" id="submit-app-btn">
+                                    Submit App for Review
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+        </div> <!-- End page-container -->
+

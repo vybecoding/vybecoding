@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vybecoding.ai - AI-Powered Development Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace'],
+                    },
+                    colors: {
+                        'vybe': {
+                            // Base colors from showcase5 + showcase3 dark palette
+                            'void': '#000000',
+                            'dark': '#0a0a0a',
+                            'midnight': '#111111',
+                            'shadow': '#1a1a1a',
+                            'steel': '#242424',
+                            'slate': '#2a2a2a',
+                            'carbon': '#333333',
+                            'pewter': '#404040',
+                            'silver': '#666666',
+                            'mist': '#888888',
+                            'fog': '#aaaaaa',
+                            'light': '#cccccc',
+                            
+                            // Purple to Orange Spectrum (main branding)
+                            'purple': '#8a2be2',        // Primary purple for gradients
+                            'purple-light': '#a855f7',  // Purple-500 for text (vibrant but readable)
+                            'purple-lighter': '#a855f7', // Lighter purple option
+                            'violet': '#8B5CF6',
+                            'indigo': '#6366F1',
+                            'magenta': '#ff1493',
+                            'coral': '#ff6b9d',
+                            'pink': '#d946a0',
+                            'orange': '#e96b3a',
+                            'amber': '#F59E0B',
+                            
+                            // AI Accent Colors from showcase3
+                            'cyan': '#8a2be2',
+                            'matrix-green': '#00ff88',
+                            'neural-purple': '#8844ff',
+                            'quantum-orange': '#ff8800',
+                            'plasma-pink': '#ff44aa',
+                            'fusion-cyan': '#0066ff',
+                            'laser-red': '#ff4444',
+                            'volt-yellow': '#ffff00',
+                            
+                            // Tier colors
+                            'free': '#8a2be2',
+                            'pro': '#8a2be2',
+                            
+                            // Gray scale from showcase5
+                            'gray-950': '#050505',
+                            'gray-900': '#111111',
+                            'gray-800': '#1a1a1a',
+                            'gray-700': '#2a2a2a',
+                            'gray-600': '#404040',
+                            'gray-500': '#6b7280',
+                            'gray-400': '#888888',
+                            'gray-300': '#d1d5db',
+                            'gray-200': '#e5e7eb',
+                            'gray-100': '#f3f4f6',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'gentle-bounce': 'gentleBounce 2s ease-in-out infinite',
+                        'subtle-pulse': 'subtlePulse 3s ease-in-out infinite',
+                        'particle-float': 'particleFloat 12.5s linear infinite',
+                        'neural-pulse': 'neuralPulse 5s ease-in-out infinite',
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.1)',
+                        'glow-soft': '0 0 20px rgba(138, 43, 226, 0.15)',
+                        'glow-orange': '0 0 20px rgba(255, 107, 53, 0.15)',
+                        'glow-cyan': '0 0 20px rgba(0, 245, 255, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/layers.css">
+    <link rel="stylesheet" href="css/styles.css?v=2">
+    <style>
+        /* Logo animation with dual letters */
+        .logo-pulse {
+            animation: letterRotate 14s linear infinite;
+            transform-style: preserve-3d;
+            display: inline-block;
+        }
+        
+        .logo-letter {
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+        }
+        
+        @keyframes letterRotate {
+            0% { transform: rotateY(0deg); }
+            25% { transform: rotateY(90deg); }
+            50% { transform: rotateY(180deg); }
+            75% { transform: rotateY(270deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        /* Critical navigation fixes that must persist */
+        .nav-item {
+            display: inline-block !important;
+            padding: 0.5rem 1rem !important;
+        }
+        /* Ensure navigation stays on top */
+        nav {
+            z-index: 9999 !important;
+        }
+        /* Hide navigation at tablet and smaller screens and show mobile menu */
+        @media (max-width: 1249px) {
+            .desktop-nav {
+                display: none !important;
+            }
+            .mobile-menu-wrapper {
+                display: block !important;
+            }
+            .desktop-user-section {
+                display: none !important;
+            }
+        }
+        
+        /* Restore desktop navigation and prevent user section squishing on large screens */
+        @media (min-width: 1250px) {
+            .desktop-nav {
+                display: flex !important;
+            }
+            .mobile-menu-wrapper {
+                display: none !important;
+            }
+            .desktop-user-section {
+                display: flex !important;
+                flex-shrink: 0;
+                min-width: 100px;
+            }
+            .desktop-user-section .relative {
+                flex-shrink: 0;
+            }
+            .desktop-user-section button {
+                flex-shrink: 0;
+            }
+        }
+        
+        /* Compress logo area at medium sizes to prevent overflow */
+        @media (max-width: 1249px) {
+            .logo-main-gradient {
+                font-size: 1.125rem !important; /* text-lg instead of text-xl */
+            }
+            .flex.items-center.gap-3.flex-1 {
+                gap: 0.5rem !important; /* Reduce gap between logo icon and text */
+            }
+            /* Hide the subtitle only on very small screens to save space */
+            .text-xs.font-mono {
+                display: block !important;
+            }
+        }
+        
+        /* Keep subtitle visible on all screen sizes */
+        @media (max-width: 768px) {
+            .text-xs.font-mono {
+                display: block !important;
+                font-size: 0.65rem !important; /* Slightly smaller on mobile */
+            }
+            /* Reduce navigation padding to prevent overflow */
+            nav .max-w-7xl {
+                padding-left: 1rem !important; /* px-4 instead of px-6 */
+                padding-right: 1rem !important;
+                max-width: calc(100% - 1px) !important; /* Prevent subpixel overflow */
+            }
+        }
+        
+        /* Further compress at very cramped sizes */
+        @media (max-width: 1100px) and (min-width: 1000px) {
+            .logo-main-gradient {
+                font-size: 1rem !important; /* text-base */
+            }
+        }
+        
+        /* Fix header scrollbar overlap - prevent navigation from covering scrollbar */
+        nav {
+            max-width: calc(100vw - 15px) !important; /* Account for scrollbar width */
+        }
+        
+        /* Ensure proper spacing on larger screens */
+        @media (min-width: 1024px) {
+            nav {
+                padding-right: 15px !important; /* Give scrollbar breathing room */
+            }
+        }
+    </style>
+</head>
+<body class="font-sans text-white selection:bg-vybe-purple/20 selection:text-white bg-black">
+
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-vybe-purple focus:text-white focus:rounded-md focus:shadow-lg">
+        Skip to main content
+    </a>
+
+    <!-- Floating Particles Background -->
+    <div class="floating-particles">
+        <!-- Rising particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <!-- Neural nodes -->
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+        <div class="neural-node"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header role="banner">
+        <nav class="glassmorphism fixed top-0 left-0 right-0 z-50 border-b-0" role="navigation" aria-label="Main navigation" style="margin-right: 0;">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 flex-1">
+                    <div class="relative w-8 h-8" role="img" aria-label="VybeCoding animated logo">
+                        <!-- Animated logo: Subtle rotating gradient -->
+                        <div class="absolute border-2 border-transparent rounded-lg logo-spin" style="background: conic-gradient(from 0deg, #8a2be2 0deg, #d946a0 120deg, #e96b3a 240deg, #8a2be2 360deg); background-clip: padding-box; top: -0.2px; left: -0.2px; right: -0.2px; bottom: -0.2px;" aria-hidden="true"></div>
+                        <div class="absolute inset-0.5 rounded-md flex items-center justify-center" style="background: rgba(30, 37, 46, 1.0); overflow: hidden; perspective: 100px;">
+                            <div class="text-lg font-semibold logo-pulse relative z-10 flex items-center justify-center" style="width: 24px; height: 24px; transform-style: preserve-3d;">
+                                <span class="logo-letter text-white leading-none absolute inset-0 flex items-center justify-center" data-letter="v" style="transform: rotateY(0deg) translateZ(0px); backface-visibility: hidden;" aria-hidden="true">v</span>
+                                <span class="logo-letter text-white leading-none absolute inset-0 flex items-center justify-center" data-letter="c" style="transform: rotateY(180deg) translateZ(0px); backface-visibility: hidden;" aria-hidden="true">c</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Logo section -->
+                    <a href="#" data-navigate="home" class="flex items-center" aria-label="VybeCoding.ai - Go to homepage">
+                        <div class="flex flex-col">
+                            <span class="text-xl font-semibold logo-main-gradient">vybecoding.ai</span>
+                            <div class="text-xs font-mono tracking-normal">
+                                <span class="text-white">code beyond limits</span>
+                            </div>
+                        </div>
+                        <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs font-medium rounded-full border border-vybe-pink/30 ml-2" role="status" aria-label="Beta version">BETA</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <ul class="flex items-center justify-center space-x-0 sm:space-x-0.5 md:space-x-1 lg:space-x-2 xl:space-x-4 2xl:space-x-6 desktop-nav" role="menubar" aria-label="Main menu">
+                    <li role="none">
+                        <a href="#" data-navigate="home" class="nav-item" role="menuitem" aria-current="page">
+                            <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#" data-navigate="guides" class="nav-item" role="menuitem">
+                            <span class="nav-text">Guides</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#" data-navigate="apps" class="nav-item" role="menuitem">
+                            <span class="nav-text">Apps</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#" data-navigate="members" class="nav-item" role="menuitem">
+                            <span class="nav-text">Members</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#" data-navigate="featured" class="nav-item" role="menuitem">
+                            <span class="nav-text">Featured</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#" data-navigate="dashboard" class="nav-item" role="menuitem">
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li role="none">
+                        <a href="#" data-navigate="pricing" class="nav-item" role="menuitem">
+                            <span class="nav-text">Pricing</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- User Menu (Right) -->
+                <div class="flex items-center justify-end space-x-4 desktop-user-section flex-1">
+                    <!-- Notifications Icon -->
+                    <div class="relative group">
+                        <button class="relative p-2 text-gray-400 hover:text-white transition-colors" 
+                                aria-label="Notifications" 
+                                aria-describedby="notification-status">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                            </svg>
+                            <span class="absolute top-1 right-1 w-2 h-2 bg-vybe-pink rounded-full" 
+                                  id="notification-status" 
+                                  aria-label="New notifications available"></span>
+                        </button>
+                    </div>
+                    <!-- User Avatar -->
+                    <div class="relative">
+                        <button class="flex items-center gap-2 p-1 rounded-lg hover:bg-vybe-gray-800/50 transition-colors" 
+                                onclick="toggleProfileDropdown(event)"
+                                aria-label="User menu" 
+                                aria-expanded="false" 
+                                aria-haspopup="menu">
+                            <div class="w-8 h-8 avatar-purple-gradient rounded-full" aria-hidden="true"></div>
+                            <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="profileDropdown" class="absolute top-full right-0 mt-2 w-56 bg-vybe-midnight border border-vybe-gray-800 rounded-lg py-2 hidden z-50 shadow-xl">
+                            <!-- User Info -->
+                            <div class="px-4 py-3 border-b border-vybe-gray-700">
+                                <div class="text-base font-medium">Alex Developer</div>
+                                <div class="text-sm text-vybe-gray-400">@alexdev</div>
+                                <div class="text-xs text-vybe-gray-500 mt-1">alex.developer@email.com</div>
+                            </div>
+                            <!-- Menu Items -->
+                            <div class="py-2">
+                                <a href="#" data-navigate="dashboard" class="block px-4 py-2 text-sm text-gray-300 hover:bg-vybe-gray-800/50 hover:text-white transition-colors" onclick="closeDropdown()">
+                                    <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                    </svg>
+                                    Settings
+                                </a>
+                            </div>
+                            <!-- Sign Out -->
+                            <div class="border-t border-vybe-gray-700 pt-2">
+                                <button onclick="closeDropdown()" class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-vybe-gray-800/50 hover:text-red-400 transition-colors">
+                                    <svg class="w-4 h-4 inline mr-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                        <polyline points="16,17 21,12 16,7"></polyline>
+                                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                                    </svg>
+                                    Sign Out
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu Button Container -->
+                <div class="relative mobile-menu-wrapper" style="display: none;">
+                    <button class="mobile-menu-button p-2 text-gray-400 hover:text-white transition-colors" 
+                            onclick="toggleMobileMenu()"
+                            aria-expanded="false" 
+                            aria-controls="mobile-menu" 
+                            aria-label="Toggle navigation menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    
+                    <!-- Mobile Menu Dropdown -->
+                    <div id="mobile-menu" class="absolute top-full right-0 mt-2 w-56 rounded-lg py-2 hidden z-50" 
+                         style="background: rgba(30, 37, 46, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1);"
+                         role="navigation" aria-label="Mobile navigation menu">
+                        <!-- Main Navigation -->
+                        <a href="#" data-navigate="home" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Home</a>
+                        <a href="#" data-navigate="guides" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Guides</a>
+                        <a href="#" data-navigate="apps" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Apps</a>
+                        <a href="#" data-navigate="featured" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Featured</a>
+                        <a href="#" data-navigate="members" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Members</a>
+                        <a href="#" data-navigate="dashboard" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Dashboard</a>
+                        <a href="#" data-navigate="pricing" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">Pricing</a>
+                        <a href="#" onclick="showDashboardTab('settings'); closeMobileMenu();" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink" role="menuitem">
+                            Settings
+                            <svg class="w-4 h-4 inline ml-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </a>
+                        <!-- Auth -->
+                        <div class="border-t border-vybe-gray-700 my-2"></div>
+                        <a href="#" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink">Sign In</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-white font-semibold hover:text-vybe-pink">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="main-content" class="min-h-screen">
+        <!-- Dynamic content will be loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 border-t border-vybe-gray-700 bg-vybe-gray-900/50 relative z-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Footer Links Grid - Full Width -->
+            <div class="mb-12">
+                <div class="grid grid-cols-2 md:flex md:justify-between md:w-full gap-8 md:px-20">
+                    <!-- Product -->
+                    <div>
+                        <h4 class="text-sm font-medium text-white mb-4">Product</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" data-navigate="guides" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Guides</a></li>
+                            <li><a href="#" data-navigate="apps" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Apps</a></li>
+                            <li><a href="#" data-navigate="pricing" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Pricing</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Community -->
+                    <div>
+                        <h4 class="text-sm font-medium text-white mb-4">Community</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" data-navigate="featured" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Featured</a></li>
+                            <li><a href="#" data-navigate="members" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Members</a></li>
+                            <li><a href="#" onclick="window.vybeApp.getNavigation().navigateTo('guides'); setTimeout(() => { if (typeof showGuidesTab === 'function') showGuidesTab('submit'); }, 500); return false;" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Submit Guide</a></li>
+                            <li><a href="#" onclick="window.vybeApp.getNavigation().navigateTo('apps'); setTimeout(() => { if (typeof showAppsTab === 'function') showAppsTab('submit'); }, 500); return false;" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Submit App</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Company -->
+                    <div>
+                        <h4 class="text-sm font-medium text-white mb-4">Company</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" data-navigate="about" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">About</a></li>
+                            <li><a href="#" data-navigate="help" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Help Center</a></li>
+                            <li><a href="#" data-navigate="support" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Support</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Legal -->
+                    <div>
+                        <h4 class="text-sm font-medium text-white mb-4">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" data-navigate="terms" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Terms</a></li>
+                            <li><a href="#" data-navigate="privacy" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Privacy</a></li>
+                            <li><a href="#" data-navigate="cookies" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Cookies</a></li>
+                            <li><a href="#" data-navigate="licenses" class="text-sm text-vybe-gray-400 hover:text-vybe-pink">Licenses</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright Only -->
+            <div class="border-t border-vybe-gray-700 pt-8">
+                <p class="text-sm text-vybe-gray-400">
+                    &copy; 2024 vybecoding.ai. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+    <!-- Fallback for legacy browsers -->
+    <script nomodule src="js/page-loader.js"></script>
+    <script nomodule src="js/tabs.js"></script>
+    <!-- Demo Interactions -->
+    <script src="js/demo-interactions.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.add('hidden');
+        }
+
+        // Profile dropdown functionality
+        function toggleProfileDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+        
+        function closeDropdown() {
+            const dropdown = document.getElementById('profileDropdown');
+            dropdown.classList.add('hidden');
+        }
+
+        // Close menus when clicking outside
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const button = e.target.closest('button');
+            
+            // Close mobile menu
+            if (!mobileMenu.contains(e.target) && !button) {
+                mobileMenu.classList.add('hidden');
+            }
+            
+            // Close profile dropdown
+            if (!profileDropdown.contains(e.target) && !e.target.closest('button[onclick*="toggleProfileDropdown"]')) {
+                profileDropdown.classList.add('hidden');
+            }
+        });
+
+        // Global settings section function for dashboard
+        window.showSettingsSection = function(sectionName) {
+            // Hide all settings sections
+            document.querySelectorAll('.settings-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Remove active from all settings tabs
+            document.querySelectorAll('.settings-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById(`settings-${sectionName}`);
+            if (selectedSection) {
+                selectedSection.classList.remove('hidden');
+            }
+            
+            // Mark active tab
+            const activeTab = document.querySelector(`.settings-tab[data-section="${sectionName}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+        };
+
+        // Logo animation runs via CSS only - no JavaScript needed
+        console.log('✅ Logo CSS animation active');
+    </script>
+</body>
+</html>

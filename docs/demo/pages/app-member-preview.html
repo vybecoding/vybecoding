@@ -1,0 +1,88 @@
+        <div class="pt-24 pb-16 relative nebula-background">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Back Button -->
+                <button onclick="showPage('apps')" class="flex items-center gap-2 text-sm text-vybe-gray-400 hover:text-white transition-colors mb-6">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>Back to Apps</span>
+                </button>
+                
+                <!-- App Preview Header -->
+                <div class="p-8 mb-8">
+                    <div class="flex items-start gap-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-lg flex items-center justify-center flex-shrink-0">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h1 class="text-3xl font-light mb-2">Fitness Coach App</h1>
+                            <p class="text-vybe-gray-400 mb-4">AI-powered personal fitness trainer and nutrition advisor</p>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                    <span class="text-sm text-vybe-gray-400">@fitnessdev</span>
+                                </div>
+                                <span class="text-vybe-gray-500">•</span>
+                                <span class="text-sm text-vybe-gray-500">Member App</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-sm rounded">Health</span>
+                                <span class="px-3 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-sm rounded">AI Training</span>
+                                <span class="px-3 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-sm rounded">Nutrition</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Preview Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- App Description -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-4">About This App</h3>
+                        <p class="text-vybe-gray-300 mb-4">
+                            Transform your fitness journey with our AI-powered personal trainer. Get customized workout plans, 
+                            nutrition advice, and real-time coaching based on your goals and preferences.
+                        </p>
+                        <h4 class="font-medium mb-2">Key Features:</h4>
+                        <ul class="text-vybe-gray-300 space-y-1">
+                            <li>• Personalized workout plans</li>
+                            <li>• AI nutrition advisor</li>
+                            <li>• Progress tracking and analytics</li>
+                            <li>• Video exercise demonstrations</li>
+                            <li>• Community challenges</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- App Preview -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-4">Preview</h3>
+                        <div class="bg-vybe-gray-900 rounded-lg p-4 text-center">
+                            <div class="text-vybe-gray-400 mb-4">
+                                <svg class="w-16 h-16 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                                <p>App preview will be available soon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Launch Button -->
+                <div class="text-center mt-8">
+                    <button onclick="window.open('https://fitnesscoach.app', '_blank')" class="btn-primary-fuchsia px-8 py-3 text-lg">
+                        Launch App
+                        <svg class="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </button>
+                    <p class="text-sm text-vybe-gray-500 mt-2">
+                        This will open the app in a new tab
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Native App Detail Page -->
