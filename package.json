@@ -1,0 +1,33 @@
+{
+  "name": "vybecoding",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node test-runner.js",
+    "convex": "convex dev"
+  },
+  "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
+    "@clerk/nextjs": "^6.27.1",
+    "@sentry/nextjs": "^9.42.0",
+    "@stripe/stripe-js": "^7.6.1",
+    "convex": "^1.25.4",
+    "next": "^15.4.4",
+    "playwright": "^1.54.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "resend": "^4.7.0",
+    "stripe": "^18.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.0.0"
+  }
+}

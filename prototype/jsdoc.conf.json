@@ -1,0 +1,20 @@
+{
+    "source": {
+        "include": ["./js/"],
+        "includePattern": "\\.(js)$",
+        "exclude": ["node_modules/", "dist/"]
+    },
+    "opts": {
+        "destination": "./docs/",
+        "recurse": true
+    },
+    "plugins": ["plugins/markdown"],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    },
+    "metadata": {
+        "title": "vybecoding Demo API Documentation",
+        "version": "1.0.0"
+    }
+}

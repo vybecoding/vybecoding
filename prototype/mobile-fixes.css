@@ -1,0 +1,125 @@
+/* Mobile Fixes for vybecoding Demo */
+
+/* 1. Prevent horizontal scroll on mobile */
+body {
+    overflow-x: hidden;
+}
+
+.page-container {
+    overflow-x: hidden;
+}
+
+/* 2. Fix card spacing on mobile */
+@media (max-width: 640px) {
+    .vybe-card {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    
+    /* Reduce padding on mobile */
+    .px-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .py-8 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+/* 3. Fix dashboard tabs on mobile */
+@media (max-width: 768px) {
+    .dashboard-tabs-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .dashboard-tabs {
+        min-width: max-content;
+    }
+    
+    .dashboard-tab {
+        white-space: nowrap;
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* 4. Fix forms on mobile */
+@media (max-width: 640px) {
+    .form-input {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* 5. Fix modals/dropdowns on mobile */
+@media (max-width: 640px) {
+    #mobile-menu {
+        right: 1rem;
+        left: 1rem;
+        width: auto;
+    }
+    
+    .profile-dropdown {
+        right: 0;
+        left: auto;
+        min-width: 200px;
+    }
+}
+
+/* 6. Fix guide cards on mobile */
+@media (max-width: 640px) {
+    .guide-card img {
+        height: 150px; /* Reduce image height */
+    }
+    
+    .guide-stats {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+/* 7. Fix pricing cards stacking */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* 8. Improve touch targets */
+@media (max-width: 768px) {
+    .btn,
+    .nav-link,
+    .dashboard-tab,
+    .dropdown-item {
+        min-height: 44px; /* iOS recommendation */
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* 9. Fix floating particles performance on mobile */
+@media (max-width: 768px) {
+    .floating-particles,
+    .neural-node {
+        display: none; /* Disable animations for better performance */
+    }
+}
+
+/* 10. Stack form elements on mobile */
+@media (max-width: 640px) {
+    .flex.gap-4:has(.form-input) {
+        flex-direction: column;
+    }
+    
+    .grid-cols-2:has(.form-input) {
+        grid-template-columns: 1fr;
+    }
+}
