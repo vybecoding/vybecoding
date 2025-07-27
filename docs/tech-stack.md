@@ -83,27 +83,48 @@ Includes:
 **Solution:** Selected slash commands for systematic development  
 **Implementation:** `/create-base-prp` for planning, `/execute-base-prp` for execution
 
-### Semantic Code Understanding (Planned)
+### Semantic Code Understanding ✅
 **Problem:** AI struggles with navigating large codebases  
 **Solution:** Serena MCP for symbol-level code understanding  
-**Implementation:** MCP server providing IDE-like code navigation
+**Implementation:** MCP server providing IDE-like code navigation (Installed and configured)
 
 ## 🛠️ Development Environment 🛠️
 
 ### IDE & AI Tools
-- **VS Code** - Primary IDE with Claude Code integration
-- **Claude Code** - AI pair programming assistant
-- **BMAD Method** - AI agent orchestration framework with multi-agent collaboration
-- **Claude Code Auto-Approval** - Intelligent auto-approval system (90% fewer manual confirmations)
-- **Live Server Extension** - Instant HTML preview
+
+#### 🤖 100% Automated
+- **Claude Code Auto-Approval** - Auto-approves safe commands without prompting
+- **BMAD Method** - Multi-agent orchestration works automatically via slash commands
+- **Live Server Extension** - Auto-refreshes on file save
+
+#### 👤 Human Required
+- **VS Code** - Requires manual file navigation and editing
+- **Claude Code** - Needs human to initiate conversations and approve actions
 
 ### 🤖 MCP Intelligence Layer 🤖
-- **REF MCP** - Lightning-fast docs search with 85% token reduction
-- **GitHub MCP** - Repository integration, PR automation, security alerts
-- **Playwright MCP** - Automated testing with console monitoring
-- **Semgrep MCP** - Static analysis with 5000+ security rules
-- **EXA Search MCP** - Technical web search API
-- **Solutions Memory MCP** - TRAIL system integration for learned solutions
+
+#### 🤖 100% Automated (Claude uses without prompting)
+- **REF MCP** - Auto-searches docs when Claude needs info
+- **GitHub MCP** - Auto-handles git operations 
+- **Semgrep MCP** - Auto-scans code for security issues
+- **Solutions Memory MCP** - Auto-recalls previous fixes from TRAIL
+- **MCP Security Audit** - Auto-audits dependencies when asked
+- **Serena** - Symbol-level code navigation and editing
+
+#### 👤 Human Required (Need explicit request)
+- **Playwright MCP** - Ask Claude to "test with Playwright"
+- **EXA Search MCP** - Ask Claude to "search the web"
+- **MCP-Scan** - Run manually: `uvx mcp-scan@latest`
+
+#### 🔒 MCP Security Measures
+**Addressing Top MCP Vulnerabilities:**
+1. **Tool Poisoning Prevention**: All MCP servers from verified sources only
+2. **Token Protection**: OAuth tokens stored securely, never in plaintext
+3. **Command Injection Defense**: Input validation on all MCP server interactions
+4. **Admin Bypass Protection**: Strict identity verification for all MCP operations
+5. **Audit Logging**: Comprehensive logs of all MCP server actions
+6. **Least Privilege**: MCP servers limited to minimum required permissions
+7. **Tool Shadowing Defense**: Whitelist of approved MCP servers only
 
 ## 🎯 Development Workflow 🎯
 
@@ -121,21 +142,26 @@ Includes:
 - **Lucide** - Icon library
 
 ### Phase 3: Backend Services
-- **Convex** - Reactive backend database with real-time subscriptions, file storage, logging (✅ Installed)
-- **Clerk** - Authentication & user management (✅ Installed)
-- **Stripe** - Payment processing (✅ Installed)
-- **Resend** - Email API service (✅ Installed - 100k emails/month free tier)
-- **Sentry** - Error tracking and performance monitoring (✅ Installed - 5k events/month free tier)
-- **Cal.com** - Booking infrastructure (⏳ Implement in Phase 5 - Week 6)
-  - Option A: Cal.com Atoms (Free - Recommended for marketplaces)
-  - Option B: Cal.com Teams ($12/user/month - Not suitable for marketplaces)
-  - Option C: Self-hosted Cal.com (Free but complex)
+
+#### 🤖 100% Automated
+- **Convex** - Real-time data sync, automatic subscriptions (✅ Installed)
+- **Clerk** - Auto-handles auth on protected routes (✅ Installed)
+- **Sentry** - Auto-captures all errors and performance issues (✅ Installed)
+- **Resend** - Emails send automatically via API (✅ Installed)
+
+#### 👤 Human Required
+- **Stripe** - Manual product creation, webhook testing (✅ Installed)
+- **Cal.com** - Manual calendar and availability setup (⏳ Phase 5)
 
 ### Phase 4: Testing & Quality
-- **Playwright** - Modern E2E testing framework with TypeScript support (✅ Installed)
-- **TRAIL System** - Automatic test-and-learn system with 3-level debugging escalation (✅ Configured)
-- **Nuclei** - Comprehensive vulnerability scanning (✅ Installed at ~/.local/bin/nuclei)
-- **Semgrep MCP** - Static analysis with 5000+ security rules (✅ Configured)
+
+#### 🤖 100% Automated
+- **TRAIL System** - Auto-tests, learns, and applies fixes (✅ Configured)
+- **Semgrep MCP** - Auto-scans code for vulnerabilities (✅ Configured)
+
+#### 👤 Human Required
+- **Playwright** - Write test scripts, run manually (✅ Installed)
+- **Nuclei** - Run security scans: `nuclei -u target.com` (✅ Installed)
 
 ### Phase 5: Deployment & Infrastructure
 - **Vercel** - Hosting, deployment, web analytics, performance monitoring (Post-MVP)
@@ -233,6 +259,9 @@ npx playwright install chromium
 | GitHub | @modelcontextprotocol/server-github | Needs GITHUB_TOKEN |
 | Playwright | @modelcontextprotocol/server-playwright | Browser testing |
 | BrowserTools | Chrome Extension | Install from store |
+| MCP-Scan | https://github.com/invariantlabs-ai/mcp-scan | Run with: uvx mcp-scan@latest |
+| MCP Security Audit | https://github.com/qianniuspace/mcp-security-audit | npm dependency auditing |
+| Serena | https://github.com/oraios/serena | Symbol-level code navigation |
 
 ### Service Registrations
 
@@ -258,12 +287,45 @@ The guide includes:
 - Hook configuration for Claude Code
 - Backup and restoration procedures
 
+## 🔐 Security Considerations 🔐
+
+### MCP Security Hardening
+- **Composability Chaining Risk**: Monitor MCP servers for unexpected remote calls
+- **Cross-tenant Isolation**: Ensure Convex/Clerk properly isolate user data
+- **Living off AI Defense**: Validate all AI-generated commands before execution
+- **Consent Fatigue Mitigation**: Batch MCP permissions requests appropriately
+- **Toxic Agent Flow Prevention**: Sanitize all external inputs (GitHub issues, etc.)
+
+### Recommended Security Tools
+
+#### 🤖 100% Automated Tools
+- **validator.js**: Input validation via CLAUDE.md rules (✅ Installed)
+- **DOMPurify**: XSS sanitization via post-edit hooks (✅ Installed)  
+- **safe-compare**: Timing attack prevention via CLAUDE.md rules (✅ Installed)
+- **Living off AI Monitor**: Detects malicious AI instructions via post-response hooks (✅ Installed)
+- **GitGuardian**: Automatic secret scanning on all commits (✅ Installed)
+- **Snyk**: Vulnerability scanning with monitoring alerts (✅ Installed) 
+- **MCP-Scan**: Continuous MCP security monitoring
+
+#### 👤 Human-Required Tools  
+- **HashiCorp Vault**: Enterprise secrets management (✅ Installed - Web UI at http://127.0.0.1:8200)
+- **Cross-tenant Isolation Tester**: Manual testing before releases
+
+### Secure Vibe Coding Practices
+- **Security-First Prompting**: Always include security constraints in AI prompts
+- **Multi-Step Review**: Generate code → AI security review → human review
+- **Automated Scanning**: GitGuardian (installed), Snyk (installed), MCP-Scan
+- **Secure Defaults**: Input validation, constant-time comparisons, no hardcoded secrets
+- **Human-in-the-Loop**: AI augments but doesn't replace security review
+
 ## 🎯 Current Status 🎯
 
 ### ✅ Installed & Configured
 - **Core Infrastructure**: Convex, Clerk, Stripe, Sentry, Resend
 - **Development Tools**: BMAD Method, TRAIL System, Nuclei
-- **MCP Servers**: REF, GitHub, Playwright, Semgrep, EXA Search
+- **MCP Servers**: REF, GitHub, Playwright, Semgrep, EXA Search, MCP-Scan, MCP Security Audit, Serena
+- **Security Libraries**: validator.js, DOMPurify, safe-compare (auto-applied via CLAUDE.md + hooks)
+- **Security Tools**: GitGuardian (unlimited), Snyk (200/month), HashiCorp Vault, Living off AI Monitor
 - **Testing**: Playwright, TRAIL automatic learning system
 
 ### ⏳ Post-MVP (Not Yet Installed)

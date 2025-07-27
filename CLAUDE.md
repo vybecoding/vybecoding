@@ -166,23 +166,70 @@ Before making ANY claims about functionality:
 3. **Show Limitations**: Be upfront about what might not work
 4. **Test Before Claiming**: Never say "This will work" without testing
 
-## BMAD Method Commands
+## Security Rules (Auto-Applied)
 
-When working on complex features, use these structured commands:
+### Input Validation (validator.js)
+- **ALWAYS validate user inputs** using validator.js before processing
+- Use `validator.isEmail()`, `validator.isURL()`, `validator.escape()` etc.
+- Never trust user input - validate everything
 
-### Planning Phase
-Use `/create-base-prp` to:
-- Systematically research the problem space
-- Gather comprehensive context
-- Create implementation blueprint
+### XSS Prevention (DOMPurify) 
+- **ALWAYS sanitize HTML** before rendering with DOMPurify
+- Use `DOMPurify.sanitize(htmlString)` for any user-generated content
+- Never use `innerHTML` with unsanitized data
 
-### Execution Phase  
-Use `/execute-base-prp` to:
-- Follow 6-step structured workflow
-- Apply ULTRATHINK strategic planning
-- Implement with validation loops
+### Timing Attack Prevention (safe-compare)
+- **ALWAYS use safe-compare** for authentication token comparisons
+- Use `safeCompare(userToken, expectedToken)` instead of `===`
+- Never use direct string comparison for sensitive data
 
-These commands complement BMAD's agent orchestration by providing structured workflows within each agent's work.
+### Living off AI Defense (Automated)
+- **Hook automatically scans all AI responses** for malicious patterns
+- Detects hidden instructions, prompt injections, role confusion attacks
+- Logs suspicious activity to `.solutions/security/living-off-ai-alerts.log`
+- Always verify AI suggestions independently before execution
+
+## Parallel Task Execution
+
+### When to Execute Tasks in Parallel
+**ALWAYS batch multiple independent operations** to maximize efficiency:
+- Multiple file reads/searches
+- Multiple bash commands that don't depend on each other
+- Multiple web searches or API calls
+- Multiple file edits to different files
+
+### How to Execute in Parallel
+```
+# Good - Parallel execution (single message, multiple tool calls)
+<function_calls>
+<invoke name="Read">file1.js</invoke>
+<invoke name="Grep">search pattern</invoke>
+<invoke name="Bash">git status</invoke>
+</function_calls>
+
+# Bad - Sequential execution (wastes time)
+<function_calls><invoke name="Read">file1.js</invoke></function_calls>
+<function_calls><invoke name="Grep">search pattern</invoke></function_calls>
+<function_calls><invoke name="Bash">git status</invoke></function_calls>
+```
+
+### Parallel Todo Management
+When working on multiple independent tasks:
+1. Mark multiple todos as `in_progress` simultaneously
+2. Work on them in parallel using batched tool calls
+3. Complete them as they finish, not all at once
+
+### Examples of Parallel Operations
+- **Research Phase**: Read multiple files + search patterns + check docs simultaneously
+- **Security Checks**: Run Snyk + check GitGuardian + scan with MCP-Scan in parallel
+- **Git Operations**: git status + git diff + git log in one batch
+- **Multi-file Edits**: Edit config files + update docs + modify code simultaneously
+
+### Sound Notifications
+A sound will play after each response to notify completion:
+- Short beep: Quick responses
+- Completion sound: Long responses
+- Error sound: When operations fail
 
 ## Production Error Monitoring
 

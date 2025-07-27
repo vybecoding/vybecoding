@@ -113,24 +113,25 @@
   }
   
   .btn-primary {
-    background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+    background: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%);
     color: var(--color-white);
   }
   
   .btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-glow-purple);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(217, 70, 160, 0.4);
   }
   
   .btn-secondary {
     background: transparent;
-    color: var(--color-mist);
-    border: 1px solid var(--color-carbon);
+    color: var(--color-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   .btn-secondary:hover {
-    color: var(--color-white);
-    border-color: var(--color-silver);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
   }
   
   /* Card components */

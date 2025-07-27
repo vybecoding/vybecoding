@@ -334,23 +334,23 @@
   opacity: 1;
 }
 
-/* Primary Nebula (uses exact demo values) */
+/* Primary Nebula - Subtle colors */
 .nebula-background::before {
   inset: 0;
   background: 
-    radial-gradient(ellipse at 15% 30%, rgba(75, 18, 0, 0.095) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 20%, rgba(38, 0, 75, 0.085) 0%, transparent 45%),
-    radial-gradient(ellipse at 40% 70%, rgba(0, 18, 75, 0.07) 0%, transparent 40%),
-    radial-gradient(ellipse at 85% 80%, rgba(75, 0, 50, 0.043) 0%, transparent 40%),
-    radial-gradient(ellipse at 20% 85%, rgba(0, 0, 0, 0.06) 0%, transparent 30%),
-    radial-gradient(ellipse at 15% 88%, rgba(0, 20, 80, 0.088) 0%, transparent 30%),
-    radial-gradient(ellipse at 60% 40%, rgba(0, 18, 75, 0.06) 0%, transparent 25%),
-    radial-gradient(ellipse at 90% 15%, rgba(25, 0, 75, 0.07) 0%, transparent 20%),
-    radial-gradient(ellipse at 55% 45%, rgba(19, 9, 75, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 58% 35%, rgba(28, 9, 75, 0.038) 0%, transparent 40%),
-    radial-gradient(ellipse at 47% 55%, rgba(10, 14, 75, 0.045) 0%, transparent 45%),
-    radial-gradient(ellipse at 65% 50%, rgba(20, 10, 60, 0.03) 0%, transparent 35%),
-    radial-gradient(ellipse at 50% 45%, rgba(15, 5, 50, 0.025) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 30%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 20%, rgba(217, 70, 160, 0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 40% 70%, rgba(233, 107, 58, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 85% 80%, rgba(138, 43, 226, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 20% 85%, rgba(217, 70, 160, 0.045) 0%, transparent 30%),
+    radial-gradient(ellipse at 15% 88%, rgba(233, 107, 58, 0.055) 0%, transparent 30%),
+    radial-gradient(ellipse at 60% 40%, rgba(138, 43, 226, 0.04) 0%, transparent 25%),
+    radial-gradient(ellipse at 90% 15%, rgba(25, 0, 75, 0.035) 0%, transparent 20%),
+    radial-gradient(ellipse at 55% 45%, rgba(19, 9, 75, 0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at 58% 35%, rgba(28, 9, 75, 0.019) 0%, transparent 40%),
+    radial-gradient(ellipse at 47% 55%, rgba(10, 14, 75, 0.023) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 50%, rgba(20, 10, 60, 0.015) 0%, transparent 35%),
+    radial-gradient(ellipse at 50% 45%, rgba(15, 5, 50, 0.013) 0%, transparent 60%),
     radial-gradient(ellipse at 75% 75%, rgba(60, 0, 40, 0.025) 0%, transparent 35%),
     conic-gradient(from 225deg at 70% 30%, transparent 0deg, rgba(75, 18, 0, 0.048) 90deg, transparent 180deg);
   z-index: -1;
@@ -1423,23 +1423,25 @@
   pointer-events: none;
 }
 
-/* Primary button - Purple */
+/* Primary button - Gradient filled */
 .btn-primary-purple {
-  background: transparent !important;
-  color: var(--color-brand-primary) !important;
-  border: 1px solid rgba(168, 85, 247, 0.3);
-  font-weight: 500;
+  background: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%) !important;
+  color: white !important;
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .btn-primary-purple:hover:not(:disabled) {
-  background: rgba(168, 85, 247, 0.1);
-  border-color: rgba(168, 85, 247, 0.5);
-  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(217, 70, 160, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-primary-purple:active:not(:disabled) {
   transform: translateY(0);
-  background: rgba(168, 85, 247, 0.15);
+  box-shadow: 0 2px 10px rgba(217, 70, 160, 0.3);
 }
 
 /* Primary button - Fuchsia/Pink */
@@ -1481,22 +1483,26 @@
 }
 
 /* Secondary button */
+/* Secondary button - Ghost/outline */
 .btn-secondary {
   background: transparent;
-  color: #a855f7;
-  border: 1px solid rgba(168, 85, 247, 0.3);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-weight: 500;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: rgba(168, 85, 247, 0.1);
-  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-1px);
 }
 
 .btn-secondary:active:not(:disabled) {
   transform: translateY(0);
-  background: rgba(168, 85, 247, 0.15);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* Small button variant */
@@ -1728,23 +1734,25 @@ html {
 /* Individual particle (rising star) */
 .particle {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 2.5px;
+  height: 2.5px;
   background: #8a2be2;
   border-radius: 50%;
-  opacity: 0.375;
+  opacity: 0.2;
   animation: particleFloat 25s linear infinite;
+  box-shadow: 0 0 2px rgba(138, 43, 226, 0.15);
 }
 
 /* Neural node (pulsing star) */
 .neural-node {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 4.5px;
+  height: 4.5px;
   background: #e96b3a;
   border-radius: 50%;
-  opacity: 0.0625;
+  opacity: 0.08;
   animation: neuralPulse 8s ease-in-out infinite;
+  box-shadow: 0 0 3px rgba(233, 107, 58, 0.15);
 }
 
 /* Rising animation for particles */
@@ -1754,10 +1762,10 @@ html {
     opacity: 0;
   }
   10% {
-    opacity: 0.375;
+    opacity: 0.35;
   }
   90% {
-    opacity: 0.375;
+    opacity: 0.35;
   }
   100% {
     transform: translateY(-100vh) rotate(360deg);
@@ -1769,11 +1777,11 @@ html {
 @keyframes neuralPulse {
   0%, 100% {
     transform: scale(1);
-    opacity: 0.0625;
+    opacity: 0.15;
   }
   50% {
     transform: scale(1.5);
-    opacity: 0.125;
+    opacity: 0.3;
   }
 }
 
@@ -1947,11 +1955,161 @@ input[type="radio"] {
 
 /* Container/Card Classes */
 .vybe-card {
-  background: linear-gradient(to bottom right, rgba(31, 41, 55, 0.4), rgba(55, 65, 81, 0.3), rgba(75, 85, 99, 0.2));
-  backdrop-filter: blur(12px);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(75, 85, 99, 0.3);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.vybe-card:hover {
+  background: rgba(42, 42, 42, 0.8);
+  border-color: rgba(64, 64, 64, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Header Variants */
+.card-header-gradient {
+  background: linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2));
+  border-bottom: 1px solid rgba(75, 85, 99, 0.4);
+}
+
+.card-header-purple {
+  background: linear-gradient(90deg, rgba(138, 43, 226, 0.15), rgba(138, 43, 226, 0.25));
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.card-header-pink {
+  background: linear-gradient(90deg, rgba(217, 70, 160, 0.15), rgba(217, 70, 160, 0.25));
+  border-bottom: 1px solid rgba(217, 70, 160, 0.3);
+}
+
+.card-header-orange {
+  background: linear-gradient(90deg, rgba(233, 107, 58, 0.15), rgba(233, 107, 58, 0.25));
+  border-bottom: 1px solid rgba(233, 107, 58, 0.3);
+}
+
+/* Design System Button Patterns */
+.btn-primary {
+  background: var(--gradient-vybe);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(217, 70, 160, 0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(217, 70, 160, 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid;
+  padding: 0.75rem 2rem;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary-purple {
+  border-color: rgba(138, 43, 226, 0.4);
+  color: #8a2be2;
+}
+
+.btn-secondary-purple:hover {
+  border-color: rgba(138, 43, 226, 0.6);
+  background: rgba(138, 43, 226, 0.05);
+}
+
+.btn-secondary-pink {
+  border-color: rgba(217, 70, 160, 0.4);
+  color: #d946a0;
+}
+
+.btn-secondary-pink:hover {
+  border-color: rgba(217, 70, 160, 0.6);
+  background: rgba(217, 70, 160, 0.05);
+}
+
+.btn-secondary-orange {
+  border-color: rgba(233, 107, 58, 0.4);
+  color: #e96b3a;
+}
+
+.btn-secondary-orange:hover {
+  border-color: rgba(233, 107, 58, 0.6);
+  background: rgba(233, 107, 58, 0.05);
+}
+
+.btn-tertiary {
+  background: transparent;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-tertiary:hover {
+  text-decoration: underline;
+}
+
+/* Gradient Text Utility */
+.gradient-text {
+  background: var(--gradient-vybe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Badge System */
+.badge-difficulty {
+  padding: 0.25rem 0.5rem;
+  background: rgba(138, 43, 226, 0.1);
+  color: #a855f7;
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.badge-pro {
+  padding: 0.125rem 0.5rem;
+  background: linear-gradient(to bottom right, #e96b3a, #d946a0);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.badge-official {
+  padding: 0.125rem 0.5rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.badge-mentor {
+  color: #f59e0b;
+  font-size: 0.75rem;
+}
+
+.badge-verified {
+  color: #22c55e;
 }
 
 .vybe-card-light {

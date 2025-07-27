@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VybeCoding Design System Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/design-tokens.css">
+    <link rel="stylesheet" href="css/layers.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Accessibility styles */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        .focus\:not-sr-only:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+        }
+        
+        /* Focus indicators */
+        *:focus {
+            outline: 2px solid var(--color-brand-secondary);
+            outline-offset: 2px;
+        }
+        
+        *:focus:not(:focus-visible) {
+            outline: none;
+        }
+        
+        *:focus-visible {
+            outline: 2px solid var(--color-brand-secondary);
+            outline-offset: 2px;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Back to top button states */
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Active TOC link */
+        .toc-link-active {
+            color: var(--color-brand-primary) !important;
+            background-color: rgba(138, 43, 226, 0.1) !important;
+        }
+        
+        /* Navigation styles */
+        .fixed { position: fixed; }
+        .absolute { position: absolute; }
+        .relative { position: relative; }
+        .left-6 { left: 1.5rem; }
+        .right-6 { right: 1.5rem; }
+        .bottom-6 { bottom: 1.5rem; }
+        .top-1\/2 { top: 50%; }
+        .transform { transform: translateX(0); }
+        .-translate-y-1\/2 { transform: translateY(-50%); }
+        .z-50 { z-index: 50; }
+        .hidden { display: none; }
+        .block { display: block; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .text-sm { font-size: 0.875rem; }
+        .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+        .p-3 { padding: 0.75rem; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .rounded-full { border-radius: 9999px; }
+        .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        .opacity-0 { opacity: 0; }
+        .invisible { visibility: hidden; }
+        .visible { visibility: visible; }
+        .transition-colors { transition-property: color, background-color; transition-duration: 150ms; }
+        .transition-all { transition-property: all; transition-duration: 150ms; }
+        
+        @media (min-width: 1024px) {
+            .lg\\:block { display: block !important; }
+        }
+        
+        .text-vybe-gray-500 { color: #666666; }
+        .text-vybe-purple-light { color: #a855f7; }
+        .hover\\:text-vybe-purple-light:hover { color: #a855f7; }
+        .hover\\:bg-vybe-dark\\/50:hover { background-color: rgba(10, 10, 10, 0.5); }
+        .bg-vybe-purple { background-color: #8a2be2; }
+        .hover\\:bg-vybe-purple-light:hover { background-color: #a855f7; }
+        .text-white { color: white; }
+        .w-6 { width: 1.5rem; }
+        .h-6 { height: 1.5rem; }
+        /* Define the single unified gradient */
+        :root {
+            --gradient-vybe: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%);
+        }
+
+        /* Override styles to match prototype exactly */
+        .minimal-card {
+            background: rgba(26, 26, 26, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(51, 51, 51, 0.4) !important;
+            border-radius: 8px !important;
+            padding: 1.25rem !important;
+            transition: all 0.3s ease-in-out !important;
+            position: relative !important;
+            z-index: 10 !important;
+            cursor: pointer !important;
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+            overflow: visible !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        }
+        
+        /* Special handling for specialized cards with p-0 structure */
+        .minimal-card.p-0 {
+            padding: 0 !important;
+        }
+
+        .minimal-card:hover {
+            background: rgba(42, 42, 42, 0.8) !important;
+            border-color: rgba(64, 64, 64, 0.5) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .minimal-card.card-verified {
+            border: 1px solid rgba(34, 197, 94, 0.3) !important;
+        }
+
+        .minimal-card.card-verified:hover {
+            border-color: rgba(34, 197, 94, 0.4) !important;
+        }
+
+        .minimal-card.card-needs-verification {
+            border: 1px solid rgba(245, 158, 11, 0.3) !important;
+        }
+
+        .minimal-card.card-needs-verification:hover {
+            border-color: rgba(245, 158, 11, 0.4) !important;
+        }
+
+        .minimal-card.mentor-card {
+            border: 1px solid rgba(217, 70, 160, 0.3) !important;
+        }
+
+        .minimal-card.mentor-card:hover {
+            border-color: rgba(217, 70, 160, 0.4) !important;
+        }
+
+        /* Fix line heights to match prototype */
+        .minimal-card h3 {
+            line-height: 1.75rem !important;
+        }
+
+        .minimal-card p {
+            line-height: 1.25rem !important;
+        }
+
+        /* Remove conflicting p-5 padding since we set it in minimal-card */
+        .minimal-card.p-5 {
+            padding: 1.25rem !important;
+        }
+        
+        /* Make the content section (p-5 pt-4) fill remaining space */
+        .minimal-card .p-5.pt-4 {
+            display: flex !important;
+            flex-direction: column !important;
+            flex-grow: 1 !important;
+            padding: 1.25rem !important;
+            padding-top: 1rem !important;
+        }
+        
+        /* Ensure bottom stats section stays at bottom */
+        .minimal-card div[style*="margin-top: auto"] {
+            margin-top: auto !important;
+        }
+        
+        /* Make the description and tags area grow to fill space */
+        .minimal-card .p-5.pt-4 > p {
+            flex-grow: 1 !important;
+            margin-bottom: 1rem !important;
+        }
+        
+        /* Specialized card title spacing adjustments */
+        .minimal-card h3.mb-2 {
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.75rem !important;
+        }
+
+        /* Badge styles to match prototype */
+        .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+        .py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+        .py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+        .text-xs { font-size: 0.75rem; line-height: 1rem; }
+        .rounded { border-radius: 0.25rem; }
+        .rounded-full { border-radius: 9999px; }
+        .font-medium { font-weight: 500; }
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .ml-1 { margin-left: 0.25rem; }
+        .mt-auto { margin-top: auto; }
+        .pt-3 { padding-top: 0.75rem; }
+        .border-t { border-top-width: 1px; }
+        .w-6 { width: 1.5rem; }
+        .h-6 { height: 1.5rem; }
+        .w-3\.5 { width: 0.875rem; }
+        .h-3\.5 { height: 0.875rem; }
+        .w-4 { width: 1rem; }
+        .h-4 { height: 1rem; }
+        .w-10 { width: 2.5rem; }
+        .h-10 { height: 2.5rem; }
+        .flex { display: flex; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        .flex-1 { flex: 1 1 0%; }
+        .flex-wrap { flex-wrap: wrap; }
+        .items-center { align-items: center; }
+        .items-start { align-items: flex-start; }
+        .justify-between { justify-content: space-between; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; }
+        .line-clamp-2 { 
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        /* Color utility classes */
+        .bg-red-500\/10 { background-color: rgba(239, 68, 68, 0.1); }
+        .bg-vybe-purple\/10 { background-color: rgba(138, 43, 226, 0.1); }
+        .bg-vybe-purple\/20 { background-color: rgba(138, 43, 226, 0.2); }
+        .bg-vybe-orange\/10 { background-color: rgba(233, 107, 58, 0.05); }
+        .bg-vybe-pink\/10 { background-color: rgba(217, 70, 160, 0.05); }
+        .bg-vybe-pink\/20 { background-color: rgba(217, 70, 160, 0.2); }
+        .bg-yellow-500\/10 { background-color: rgba(234, 179, 8, 0.1); }
+        .bg-amber-500\/10 { background-color: rgba(245, 158, 11, 0.1); }
+        .bg-green-500\/10 { background-color: rgba(34, 197, 94, 0.1); }
+
+        .border-red-500\/20 { border-color: rgba(239, 68, 68, 0.3); }
+        .border-vybe-purple\/20 { border-color: rgba(138, 43, 226, 0.3); }
+        .border-vybe-purple\/30 { border-color: rgba(138, 43, 226, 0.3); }
+        .border-vybe-orange\/20 { border-color: rgba(233, 107, 58, 0.3); }
+        .border-vybe-pink\/20 { border-color: rgba(217, 70, 160, 0.3); }
+        .border-yellow-500\/20 { border-color: rgba(234, 179, 8, 0.3); }
+        .border-amber-500\/20 { border-color: rgba(245, 158, 11, 0.3); }
+        .border-green-500\/20 { border-color: rgba(34, 197, 94, 0.3); }
+        .border-vybe-gray-800\/50 { border-color: rgba(31, 41, 55, 0.5); }
+
+        .text-red-500 { color: #ef4444; }
+        .text-vybe-purple-light { color: #a855f7; }
+        .text-vybe-orange { color: #e96b3a; }
+        .text-vybe-pink { color: #d946a0; }
+        .text-yellow-500 { color: #eab308; }
+        .text-amber-500 { color: #f59e0b; }
+        .text-green-400 { color: #4ade80; }
+        .text-green-500 { color: #22c55e; }
+        .text-vybe-gray-300 { color: #d1d5db; }
+        .text-vybe-gray-400 { color: #888888; }
+        .text-vybe-gray-500 { color: #6b7280; }
+        .text-gray-500 { color: #6b7280; }
+        .text-white { color: #ffffff; }
+
+        .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+        .from-vybe-purple { --tw-gradient-from: #8a2be2; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .from-vybe-orange { --tw-gradient-from: #e96b3a; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+        .to-vybe-pink { --tw-gradient-to: #d946a0; }
+
+        /* Fix badge specific styles */
+        .minimal-card .flex-wrap span {
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        /* Bottom stats row alignment */
+        .minimal-card > div:last-child {
+            margin-top: auto;
+        }
+
+        /* Avatar styles */
+        .avatar-ring {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            overflow: visible;
+        }
+        
+        /* Ensure avatar content is centered and not compressed */
+        .avatar-ring > div,
+        .w-10.h-10.rounded-full,
+        .w-6.h-6.rounded-full {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            flex-shrink: 0 !important;
+            min-width: 1.5rem !important;
+            min-height: 1.5rem !important;
+        }
+        
+        .w-10.h-10 {
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+        }
+        
+        .w-6.h-6 {
+            width: 1.5rem !important;
+            height: 1.5rem !important;
+        }
+        
+        /* Card header backgrounds removed - using clean prototype style */
+        
+        /* Smart text compression for card headers */
+        .card-header-gradient h3,
+        .card-header-purple h3,
+        .card-header-orange h3,
+        .card-header-fuchsia h3 {
+            font-size: 1rem;
+            line-height: 1.4;
+            white-space: normal;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            max-width: 100%;
+            margin: 0;
+            word-break: break-word;
+        }
+        
+        /* For shorter titles, keep them centered */
+        .card-header-gradient,
+        .card-header-purple,
+        .card-header-orange,
+        .card-header-fuchsia {
+            min-height: 3.5rem;
+        }
+
+        /* Gradient backgrounds for avatars */
+        .bg-gradient-to-br.from-vybe-purple.to-vybe-pink {
+            background: linear-gradient(to bottom right, #8a2be2, #d946a0);
+        }
+
+        .bg-gradient-to-br.from-vybe-orange.to-vybe-pink {
+            background: linear-gradient(to bottom right, #e96b3a, #d946a0);
+        }
+        .bg-gradient-to-br.from-vybe-green.to-vybe-teal {
+            background: linear-gradient(to bottom right, #10b981, #14b8a6);
+        }
+
+        /* Pulse animation for badges */
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+
+        /* Fix mentor badge styling */
+        .text-amber-500 { color: #f59e0b; }
+        .w-3 { width: 0.75rem; }
+        .h-3 { height: 0.75rem; }
+        
+        /* Make grid responsive */
+        @media (max-width: 1024px) {
+            .showcase-section > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .showcase-section > div[style*="grid-template-columns: repeat(3, 1fr)"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Showcase specific styles */
+        .showcase-section {
+            margin-bottom: var(--space-5xl);
+            padding: var(--space-3xl);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+
+        .color-swatch {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border-secondary);
+            transition: transform var(--transition-fast);
+        }
+
+        .color-swatch:hover {
+            transform: translateY(-2px);
+        }
+
+        .color-preview {
+            width: 100%;
+            height: 80px;
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .color-info {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .color-name {
+            color: var(--color-text-primary);
+            font-weight: var(--weight-medium);
+        }
+
+        .color-value {
+            color: var(--color-text-secondary);
+        }
+
+        .type-sample {
+            margin: var(--space-lg) 0;
+            padding: var(--space-xl);
+            background: var(--color-bg-elevated);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border-secondary);
+        }
+
+        .spacing-demo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            margin: var(--space-md) 0;
+        }
+
+        .spacing-box {
+            background: var(--color-brand-primary);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-sm);
+            font-weight: var(--weight-medium);
+            border-radius: var(--radius-sm);
+        }
+
+        .component-demo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xl);
+            margin-top: var(--space-2xl);
+        }
+
+        .animation-demo {
+            display: inline-block;
+            padding: var(--space-lg) var(--space-2xl);
+            background: var(--color-brand-primary);
+            color: white;
+            border-radius: var(--radius-lg);
+            margin: var(--space-md);
+            font-weight: var(--weight-medium);
+        }
+
+        /* Button base styles */
+        .btn {
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            background: transparent;
+        }
+        
+        /* Primary button style for showcase */
+        .btn-primary {
+            background: var(--gradient-vybe);
+            color: white;
+            border: none;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 4px 20px rgba(217, 70, 160, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Tertiary button hover */
+        .tertiary-button:hover {
+            color: #d946a0;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        /* Animated stars */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite, rise 15s linear infinite;
+            opacity: 0;
+            will-change: transform, opacity;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            10% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.2);
+                box-shadow: 0 0 6px rgba(255, 255, 255, 0.9),
+                            0 0 12px rgba(255, 255, 255, 0.6),
+                            0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            90% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-450px);
+            }
+        }
+
+        .stars-container {
+            overflow: hidden;
+        }
+
+        .shadow-demo {
+            width: 200px;
+            height: 100px;
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            font-size: var(--text-sm);
+        }
+
+        .radius-demo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--color-brand-primary), var(--color-brand-secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: var(--weight-medium);
+        }
+
+        /* Vybe Card Styles - Imported from main CSS */
+        .vybe-card {
+            background: linear-gradient(to bottom right, rgba(31, 41, 55, 0.4), rgba(55, 65, 81, 0.3), rgba(75, 85, 99, 0.2));
+            backdrop-filter: blur(12px);
+            border-radius: 0.75rem;
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .vybe-card-header {
+            background: rgba(55, 65, 81, 0.4);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        .vybe-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+        
+        .vybe-gradient-accent-bar {
+            width: 0.25rem;
+            height: 1.25rem;
+            background: linear-gradient(to bottom, #8a2be2, #d946a0);
+            border-radius: 9999px;
+        }
+        
+        /* Nebula Background Pattern */
+        .nebula-background {
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        .nebula-background::before,
+        .nebula-background::after {
+            content: '';
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 1;
+        }
+
+        /* Primary Nebula - Balanced colors */
+        .nebula-background::before {
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 15% 30%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 40%, rgba(217, 70, 160, 0.06) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 80%, rgba(233, 107, 58, 0.05) 0%, transparent 60%);
+        }
+
+        /* Secondary Nebula - Balanced colors */
+        .nebula-background::after {
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 70% 20%, rgba(217, 70, 160, 0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 30% 60%, rgba(138, 43, 226, 0.04) 0%, transparent 50%);
+        }
+
+        /* Floating Particles */
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 11;
+            overflow: hidden;
+        }
+
+        /* Particle - Subtle visibility */
+        .particle {
+            position: absolute;
+            width: 2.5px;
+            height: 2.5px;
+            background: #8a2be2;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: particleFloat 25s linear infinite;
+            box-shadow: 0 0 2px rgba(138, 43, 226, 0.15);
+            will-change: transform;
+        }
+
+        /* Neural node (pulsing star) - Subtle visibility */
+        .neural-node {
+            position: absolute;
+            width: 4.5px;
+            height: 4.5px;
+            background: #e96b3a;
+            border-radius: 50%;
+            opacity: 0.08;
+            animation: neuralPulse 8s ease-in-out infinite;
+            box-shadow: 0 0 3px rgba(233, 107, 58, 0.15);
+        }
+
+        /* Rising animation for particles */
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.35;
+            }
+            90% {
+                opacity: 0.35;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Pulsing animation for neural nodes */
+        @keyframes neuralPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.3;
+            }
+        }
+
+        /* Particle positions */
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2.8s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 5.5s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 8.3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 11.1s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 13.9s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 16.7s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 19.4s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 22.2s; }
+        
+        /* Neural node positions */
+        .neural-node:nth-child(10) { top: 20%; left: 15%; animation-delay: 0s; }
+        .neural-node:nth-child(11) { top: 35%; left: 85%; animation-delay: 2s; }
+        .neural-node:nth-child(12) { top: 60%; left: 45%; animation-delay: 4s; }
+        .neural-node:nth-child(13) { top: 75%; left: 25%; animation-delay: 6s; }
+        .neural-node:nth-child(14) { top: 45%; left: 65%; animation-delay: 8s; }
+    </style>
+</head>
+<body class="bg-vybe-dark text-white">
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-vybe-purple text-white px-4 py-2 rounded-lg z-50">Skip to main content</a>
+    
+    <!-- Sticky Table of Contents -->
+    <nav class="fixed left-6 top-1/2 transform -translate-y-1/2 z-50 hidden lg:block" aria-label="Table of contents">
+        <ul class="space-y-2 text-sm">
+            <li><a href="#color-system-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Color System</a></li>
+            <li><a href="#typography-system-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Typography</a></li>
+            <li><a href="#spacing-system-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Spacing</a></li>
+            <li><a href="#component-patterns-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Components</a></li>
+            <li><a href="#specialized-cards-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Cards</a></li>
+            <li><a href="#gradient-usage-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Gradients</a></li>
+            <li><a href="#animations-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Animations</a></li>
+            <li><a href="#shadow-system-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Shadows</a></li>
+            <li><a href="#border-radius-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Borders</a></li>
+            <li><a href="#special-effects-heading" class="text-vybe-gray-500 hover:text-vybe-purple-light transition-colors block py-1 px-3 rounded-lg hover:bg-vybe-dark/50">Effects</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-vybe-purple hover:bg-vybe-purple-light text-white p-3 rounded-full shadow-lg transition-all opacity-0 invisible z-50" aria-label="Back to top">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+    
+    <!-- Floating Particles Background -->
+    <div class="floating-particles" role="presentation" aria-hidden="true">
+        <!-- Rising particles -->
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <div class="particle" aria-hidden="true"></div>
+        <!-- Neural nodes -->
+        <div class="neural-node" aria-hidden="true"></div>
+        <div class="neural-node" aria-hidden="true"></div>
+        <div class="neural-node" aria-hidden="true"></div>
+        <div class="neural-node" aria-hidden="true"></div>
+        <div class="neural-node" aria-hidden="true"></div>
+    </div>
+    
+    <!-- Hero Section -->
+    <div class="nebula-background min-h-screen">
+        <div class="nebula-middle"></div>
+        <div class="nebula-bottom"></div>
+        
+        <main id="main-content" class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+            <header class="text-center mb-16" role="banner">
+                <h1 class="text-5xl font-light mb-4">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">VybeCoding Design System</span>
+                </h1>
+                <p class="text-xl text-vybe-gray-400">Simplified design system with unified gradient and essential colors</p>
+            </header>
+
+            <!-- Color System -->
+            <section class="showcase-section" aria-labelledby="color-system-heading">
+                <h2 id="color-system-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Color System</span>
+                </h2>
+                
+                <!-- Brand Trinity & Gradient -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4">Brand Trinity</h3>
+                <div class="showcase-grid">
+                    <div class="color-swatch" role="button" tabindex="0" aria-label="Primary Purple color #8a2be2 - Click to copy">
+                        <div class="color-preview" style="background: #8a2be2;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Primary Purple</div>
+                            <div class="color-value">#8a2be2</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch" role="button" tabindex="0" aria-label="Secondary Pink color #d946a0 - Click to copy">
+                        <div class="color-preview" style="background: #d946a0;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Secondary Pink</div>
+                            <div class="color-value">#d946a0</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch" role="button" tabindex="0" aria-label="Accent Orange color #e96b3a - Click to copy">
+                        <div class="color-preview" style="background: #e96b3a;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Accent Orange</div>
+                            <div class="color-value">#e96b3a</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The Vybe Gradient -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4 mt-8">The Vybe Gradient</h3>
+                <div class="p-8 rounded-xl" style="background: var(--gradient-vybe);">
+                    <p class="text-white text-center font-mono">--gradient-vybe: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%)</p>
+                </div>
+
+                <!-- Functional Colors -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4 mt-8">Functional Colors</h3>
+                <div class="showcase-grid">
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: var(--color-success);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Success</div>
+                            <div class="color-value">#00ff88</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: var(--color-warning);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Warning</div>
+                            <div class="color-value">#ff8800</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: var(--color-error);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Error</div>
+                            <div class="color-value">#ff4444</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: var(--color-info);"></div>
+                        <div class="color-info">
+                            <div class="color-name">Info</div>
+                            <div class="color-value">#0066ff</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Neutral Scale (Simplified) -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4 mt-8">Neutral Scale</h3>
+                <div class="showcase-grid">
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: #0a0a0a;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Background</div>
+                            <div class="color-value">#0a0a0a</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: #1a1a1a;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Surface</div>
+                            <div class="color-value">#1a1a1a</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: #333333;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Border</div>
+                            <div class="color-value">#333333</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: #888888;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Text Muted</div>
+                            <div class="color-value">#888888</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: #aaaaaa;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Text Secondary</div>
+                            <div class="color-value">#aaaaaa</div>
+                        </div>
+                    </div>
+                    <div class="color-swatch">
+                        <div class="color-preview" style="background: #ffffff;"></div>
+                        <div class="color-info">
+                            <div class="color-name">Text Primary</div>
+                            <div class="color-value">#ffffff</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Typography System -->
+            <section class="showcase-section" aria-labelledby="typography-system-heading">
+                <h2 id="typography-system-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Typography System</span>
+                </h2>
+                
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4">Font Families</h3>
+                <div class="type-sample">
+                    <p style="font-family: var(--font-primary);">Primary Font: Inter - Used for all UI text and content</p>
+                    <p style="font-family: var(--font-mono);" class="mt-2">Monospace Font: JetBrains Mono - Used for code and technical content</p>
+                </div>
+
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4 mt-8">Type Scale</h3>
+                <div class="type-sample">
+                    <p style="font-size: var(--text-xs);">text-xs: 0.75rem (12px)</p>
+                    <p style="font-size: var(--text-sm);">text-sm: 0.875rem (14px)</p>
+                    <p style="font-size: var(--text-base);">text-base: 1rem (16px)</p>
+                    <p style="font-size: var(--text-lg);">text-lg: 1.125rem (18px)</p>
+                    <p style="font-size: var(--text-xl);">text-xl: 1.25rem (20px)</p>
+                    <p style="font-size: var(--text-2xl);">text-2xl: 1.5rem (24px)</p>
+                    <p style="font-size: var(--text-3xl);">text-3xl: 1.875rem (30px)</p>
+                    <p style="font-size: var(--text-4xl);">text-4xl: 2.25rem (36px)</p>
+                    <p style="font-size: var(--text-5xl);">text-5xl: 3rem (48px)</p>
+                </div>
+
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4 mt-8">Font Weights</h3>
+                <div class="type-sample">
+                    <p style="font-weight: var(--weight-light);">Light (300)</p>
+                    <p style="font-weight: var(--weight-normal);">Normal (400)</p>
+                    <p style="font-weight: var(--weight-medium);">Medium (500)</p>
+                    <p style="font-weight: var(--weight-semibold);">Semibold (600)</p>
+                    <p style="font-weight: var(--weight-bold);">Bold (700)</p>
+                </div>
+            </section>
+
+            <!-- Spacing System -->
+            <section class="showcase-section" aria-labelledby="spacing-system-heading">
+                <h2 id="spacing-system-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Spacing System</span>
+                </h2>
+                
+                <div class="spacing-demo">
+                    <div class="spacing-box" style="width: var(--space-xs);">xs</div>
+                    <div class="spacing-box" style="width: var(--space-sm);">sm</div>
+                    <div class="spacing-box" style="width: var(--space-md);">md</div>
+                    <div class="spacing-box" style="width: var(--space-lg);">lg</div>
+                    <div class="spacing-box" style="width: var(--space-xl);">xl</div>
+                    <div class="spacing-box" style="width: var(--space-2xl);">2xl</div>
+                    <div class="spacing-box" style="width: var(--space-3xl);">3xl</div>
+                    <div class="spacing-box" style="width: var(--space-4xl);">4xl</div>
+                </div>
+            </section>
+
+            <!-- Component Patterns -->
+            <section class="showcase-section" aria-labelledby="component-patterns-heading">
+                <h2 id="component-patterns-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Component Patterns</span>
+                </h2>
+                
+                <!-- Buttons Section -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-6">Buttons</h3>
+                
+                <!-- Primary Button -->
+                <h4 class="text-lg font-medium text-vybe-gray-400 mb-4">Primary Action</h4>
+                <div class="component-demo mb-8">
+                    <button class="btn-primary" aria-label="Primary action button example">Primary Action</button>
+                </div>
+                
+                <!-- Secondary Buttons -->
+                <h4 class="text-lg font-medium text-vybe-gray-400 mb-4">Secondary Actions</h4>
+                <div class="component-demo mb-8">
+                    <button class="btn btn-secondary" style="border-color: rgba(138, 43, 226, 0.4); color: #a855f7;" onmouseover="this.style.borderColor='rgba(138, 43, 226, 0.6)'; this.style.backgroundColor='rgba(138, 43, 226, 0.1)';" onmouseout="this.style.borderColor='rgba(138, 43, 226, 0.4)'; this.style.backgroundColor='transparent';">Secondary Purple</button>
+                    <button class="btn btn-secondary" style="border-color: rgba(217, 70, 160, 0.4); color: #d946a0;" onmouseover="this.style.borderColor='rgba(217, 70, 160, 0.6)'; this.style.backgroundColor='rgba(217, 70, 160, 0.05)';" onmouseout="this.style.borderColor='rgba(217, 70, 160, 0.4)'; this.style.backgroundColor='transparent';">Secondary Pink</button>
+                    <button class="btn btn-secondary" style="border-color: rgba(233, 107, 58, 0.4); color: #e96b3a;" onmouseover="this.style.borderColor='rgba(233, 107, 58, 0.6)'; this.style.backgroundColor='rgba(233, 107, 58, 0.05)';" onmouseout="this.style.borderColor='rgba(233, 107, 58, 0.4)'; this.style.backgroundColor='transparent';">Secondary Orange</button>
+                </div>
+                
+                <!-- Tertiary Buttons -->
+                <h4 class="text-lg font-medium text-vybe-gray-400 mb-4">Tertiary Actions</h4>
+                <div class="component-demo mb-8">
+                    <button class="tertiary-button" style="background: transparent; border: none; padding: 0; outline: none; box-shadow: none; color: #a855f7; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.color='#8a2be2'; this.style.textDecoration='underline'; this.style.textUnderlineOffset='4px';" onmouseout="this.style.color='#a855f7'; this.style.textDecoration='none';">Tertiary Purple</button>
+                    <button class="tertiary-button" style="background: transparent; border: none; padding: 0; outline: none; box-shadow: none; color: #d946a0; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.color='#ff69b4'; this.style.textDecoration='underline'; this.style.textUnderlineOffset='4px';" onmouseout="this.style.color='#d946a0'; this.style.textDecoration='none';">Tertiary Pink</button>
+                    <button class="tertiary-button" style="background: transparent; border: none; padding: 0; outline: none; box-shadow: none; color: #e96b3a; font-weight: 500; transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.color='#ff8c42'; this.style.textDecoration='underline'; this.style.textUnderlineOffset='4px';" onmouseout="this.style.color='#e96b3a'; this.style.textDecoration='none';">Tertiary Orange</button>
+                </div>
+
+                <!-- Cards Section -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-6 mt-12">Cards</h3>
+                
+                <!-- Primary Cards (with gradient header background) -->
+                <h4 class="text-lg font-medium text-vybe-gray-400 mb-4">Primary Cards</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <!-- Default Primary Card (Gray) -->
+                    <div class="vybe-card overflow-hidden" style="width: 280px; height: 180px;">
+                        <div style="padding: 1rem; background: rgba(55, 65, 81, 0.4); border-bottom: 1px solid rgba(75, 85, 99, 0.3); border-radius: 8px 8px 0 0; overflow: hidden;">
+                            <h3 class="text-base font-semibold text-white">Primary Default</h3>
+                        </div>
+                        <div style="padding: 1.25rem;">
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Default primary cards use subtle gray headers for better visual hierarchy.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Gradient Primary Card -->
+                    <div class="vybe-card overflow-hidden" style="width: 280px; height: 180px;">
+                        <div style="padding: 1rem; background: linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2)); border-bottom: 1px solid rgba(75, 85, 99, 0.4); border-radius: 8px 8px 0 0; overflow: hidden;">
+                            <h3 class="text-base font-semibold text-white">Primary Gradient</h3>
+                        </div>
+                        <div style="padding: 1.25rem;">
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Gradient header variant for maximum visual impact on key features.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Purple Primary Card -->
+                    <div class="vybe-card overflow-hidden" style="width: 280px; height: 180px; border: 1px solid rgba(138, 43, 226, 0.4);">
+                        <div style="padding: 1rem; background: linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.08)); border-bottom: 1px solid rgba(75, 85, 99, 0.4);">
+                            <h3 class="text-base font-semibold text-white">Primary Purple</h3>
+                        </div>
+                        <div style="padding: 1.25rem;">
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Purple variant for brand-focused content and primary features.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pink Primary Card -->
+                    <div class="vybe-card overflow-hidden" style="width: 280px; height: 180px; border: 1px solid rgba(217, 70, 160, 0.4);">
+                        <div style="padding: 1rem; background: linear-gradient(90deg, rgba(217, 70, 160, 0.2), rgba(217, 70, 160, 0.15)); border-bottom: 1px solid rgba(75, 85, 99, 0.4); border-radius: 8px 8px 0 0; overflow: hidden;">
+                            <h3 class="text-base font-semibold text-white">Primary Pink</h3>
+                        </div>
+                        <div style="padding: 1.25rem;">
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Pink variant ideal for calls to action and user engagement.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Orange Primary Card -->
+                    <div class="vybe-card overflow-hidden" style="width: 280px; height: 180px; border: 1px solid rgba(233, 107, 58, 0.4);">
+                        <div style="padding: 1rem; background: linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15)); border-bottom: 1px solid rgba(75, 85, 99, 0.4); border-radius: 8px 8px 0 0; overflow: hidden;">
+                            <h3 class="text-base font-semibold text-white">Primary Orange</h3>
+                        </div>
+                        <div style="padding: 1.25rem;">
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Orange variant perfect for highlights and promotional content.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Secondary Cards (gradient border accent) -->
+                <h4 class="text-lg font-medium text-vybe-gray-400 mb-4">Secondary Cards</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <!-- Default Secondary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 160px;">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: var(--gradient-vybe);"></div>
+                        <div style="padding: 1.25rem; padding-left: 1.75rem;">
+                            <h3 class="text-base font-semibold text-white" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <div style="width: 4px; height: 20px; background: linear-gradient(to bottom, #8a2be2, #d946a0, #e96b3a); border-radius: 9999px;"></div>
+                                Secondary Default
+                            </h3>
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Secondary cards use gradient side accent for moderate emphasis.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Purple Secondary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 160px; border: 1px solid rgba(138, 43, 226, 0.4);">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: #8a2be2;"></div>
+                        <div style="padding: 1.25rem; padding-left: 1.75rem;">
+                            <h3 class="text-base font-semibold text-white" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <div style="width: 4px; height: 20px; background: #8a2be2; border-radius: 9999px;"></div>
+                                Secondary Purple
+                            </h3>
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Purple variant for section headers and important features.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pink Secondary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 160px; border: 1px solid rgba(217, 70, 160, 0.4);">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: #d946a0;"></div>
+                        <div style="padding: 1.25rem; padding-left: 1.75rem;">
+                            <h3 class="text-base font-semibold text-white" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <div style="width: 4px; height: 20px; background: #d946a0; border-radius: 9999px;"></div>
+                                Secondary Pink
+                            </h3>
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Pink variant for user-focused sections and CTAs.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Orange Secondary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 160px; border: 1px solid rgba(233, 107, 58, 0.25);">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: #e96b3a;"></div>
+                        <div style="padding: 1.25rem; padding-left: 1.75rem;">
+                            <h3 class="text-base font-semibold text-white" style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                                <div style="width: 4px; height: 20px; background: #e96b3a; border-radius: 9999px;"></div>
+                                Secondary Orange
+                            </h3>
+                            <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Orange variant for highlights and promotional sections.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tertiary Cards (simple colored accent) -->
+                <h4 class="text-lg font-medium text-vybe-gray-400 mb-4">Tertiary Cards</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <!-- Default Tertiary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 140px;">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: var(--gradient-vybe);"></div>
+                        <div style="padding: 1rem; padding-left: 1.5rem;">
+                            <h3 class="text-sm font-semibold text-white" style="margin-bottom: 0.5rem;">Tertiary Default</h3>
+                            <p class="text-xs text-vybe-gray-400" style="line-height: 1.4;">Minimal accent for background information.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Purple Tertiary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 140px; border: 1px solid rgba(138, 43, 226, 0.25);">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: #8a2be2;"></div>
+                        <div style="padding: 1rem; padding-left: 1.5rem;">
+                            <h3 class="text-sm font-semibold text-white" style="margin-bottom: 0.5rem;">Tertiary Purple</h3>
+                            <p class="text-xs text-vybe-gray-400" style="line-height: 1.4;">Purple accent for supporting content.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pink Tertiary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 140px; border: 1px solid rgba(217, 70, 160, 0.25);">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: #d946a0;"></div>
+                        <div style="padding: 1rem; padding-left: 1.5rem;">
+                            <h3 class="text-sm font-semibold text-white" style="margin-bottom: 0.5rem;">Tertiary Pink</h3>
+                            <p class="text-xs text-vybe-gray-400" style="line-height: 1.4;">Pink accent for additional information.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Orange Tertiary Card -->
+                    <div class="vybe-card relative overflow-hidden" style="width: 280px; height: 140px; border: 1px solid rgba(233, 107, 58, 0.25);">
+                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: #e96b3a;"></div>
+                        <div style="padding: 1rem; padding-left: 1.5rem;">
+                            <h3 class="text-sm font-semibold text-white" style="margin-bottom: 0.5rem;">Tertiary Orange</h3>
+                            <p class="text-xs text-vybe-gray-400" style="line-height: 1.4;">Orange accent for notes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glassmorphism -->
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4">Glassmorphism</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+                    <div class="vybe-card-light" style="width: 280px; height: 140px; padding: 1.25rem;">
+                        <h4 class="text-base font-medium" style="margin-bottom: 0.75rem;">Light Glassmorphism</h4>
+                        <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Lighter variant with subtle transparency and blur effects.</p>
+                    </div>
+                    <div class="glassmorphism rounded-lg" style="width: 280px; height: 140px; padding: 1.25rem;">
+                        <h4 class="text-base font-medium" style="margin-bottom: 0.75rem;">Custom Glassmorphism</h4>
+                        <p class="text-sm text-vybe-gray-400" style="line-height: 1.5;">Custom implementation for special use cases.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Specialized Cards Section -->
+            <section class="showcase-section" aria-labelledby="specialized-cards-heading">
+                <h2 id="specialized-cards-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Specialized Cards</span>
+                </h2>
+                
+                <!-- All cards in a grid layout like the prototype -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1200px; align-items: stretch;">
+                    <!-- Guide Card (from guides.html) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(138, 43, 226, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">GUIDE</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-vybe-purple-light transition-colors" title="Building AI Agents with Claude 3.5">
+                            Building AI Agents with Claude 3.5
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0"></div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @sarahchen
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Posted 01/16/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Complete guide to building autonomous AI agents using the latest Claude 3.5 API, including function calling and computer use.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded font-medium">Claude 3.5</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">AI Agents</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Python</span>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-green-400 text-xs">
+                                <span class="text-xs">✅</span>
+                                <span>Verified 2h ago</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>156</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Card (from apps.html) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(217, 70, 160, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">APP</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-vybe-pink transition-colors" title="AI Code Review Assistant">
+                            AI Code Review Assistant
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-pink to-vybe-purple rounded-full"></div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @devtools
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Posted 01/02/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Interactive tool that analyzes your code for bugs, suggests improvements, and explains best practices using Claude AI.
+                        </p>
+                        
+                        <!-- App Tags and Technologies -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <!-- App Tags (Pink) -->
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">productivity</span>
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">developer-tools</span>
+                            <!-- Technologies (Pink on App cards) -->
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-vybe-gray-500 text-xs">
+                                <span class="text-xs">⚪</span>
+                                <span>Needs verification</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>89</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member Card (from members.html) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: linear-gradient(90deg, rgba(138, 43, 226, 0.75), rgba(217, 70, 160, 0.75), rgba(233, 107, 58, 0.75)); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">MEMBER</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem;"" title="Machine Learning Expert">Machine Learning Expert</h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-medium">
+                                SC
+                            </div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @alexchen
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="flex items-center gap-4 text-sm mb-2">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-vybe-purple-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                <span class="ml-1 font-medium text-white">8</span>
+                                <span class="ml-1 text-vybe-gray-500">guides</span>
+                            </div>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-vybe-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="2" y="4" width="20" height="12" rx="2"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 20h8m-4-4v4"/>
+                                </svg>
+                                <span class="ml-1 font-medium text-white">3</span>
+                                <span class="ml-1 text-vybe-gray-500">apps</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Pioneering next-generation AI systems and advancing machine learning capabilities
+                        </p>
+                        
+                        <!-- Expertise tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-purple/20 border border-vybe-purple/30 text-vybe-purple-light text-xs rounded font-medium animate-pulse">
+                                🏆 Top Mentor
+                            </span>
+                            <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">Production AI</span>
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">Python</span>
+                        </div>
+                        
+                        <!-- Mentor status - similar to app card statuses -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                <svg class="w-3 h-3 text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                </svg>
+                                <span>Mentor</span>
+                                <span>•</span>
+                                <svg class="w-3 h-3 text-amber-500" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                </svg>
+                                <span>4.9 (47)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Non-Mentor Member Card (Regular) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: linear-gradient(90deg, rgba(138, 43, 226, 0.75), rgba(217, 70, 160, 0.75), rgba(233, 107, 58, 0.75)); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">MEMBER</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem;"" title="Senior AI Developer">Senior AI Developer</h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-medium">
+                                JD
+                            </div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @jamiedavis
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="flex items-center gap-4 text-sm mb-2">
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-vybe-purple-light" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                                <span class="ml-1 font-medium text-white">8</span>
+                                <span class="ml-1 text-vybe-gray-500">guides</span>
+                            </div>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-vybe-orange" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="2" y="4" width="20" height="12" rx="2"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 20h8m-4-4v4"/>
+                                </svg>
+                                <span class="ml-1 font-medium text-white">3</span>
+                                <span class="ml-1 text-vybe-gray-500">apps</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Building AI-powered developer tools that enhance productivity and streamline workflows
+                        </p>
+                        
+                        <!-- Expertise tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded font-medium">LangChain</span>
+                            <span class="px-2 py-1 bg-vybe-orange/10 border border-vybe-orange/20 text-vybe-orange text-xs rounded">Vector DBs</span>
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                        </div>
+                        
+                    </div>
+
+                    <!-- Premium Guide Card (Locked) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(138, 43, 226, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">GUIDE</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-vybe-purple-light transition-colors" title="Advanced Claude API Mastery">
+                            Advanced Claude API Mastery
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0"></div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @alexchen
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Posted 01/16/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Master advanced Claude API patterns including streaming, function calling, context management, and production deployment strategies.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-purple/20 border border-vybe-purple/30 text-vybe-purple-light text-xs rounded font-medium animate-pulse">
+                                🏆 Top Creator
+                            </span>
+                            <span class="px-2 py-1 bg-red-500/10 border border-red-500/20 text-red-500 text-xs rounded font-medium">Advanced</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">api</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">TypeScript</span>
+                        </div>
+                        
+                        <!-- Stats with lock icon -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                </svg>
+                                <span>Premium • $25</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>127</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premium App Card (Locked) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(217, 70, 160, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">APP</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-vybe-orange transition-colors" title="AI Code Assistant Pro">
+                            AI Code Assistant Pro
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @buildtools
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Posted 01/10/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Production-ready code assistant with advanced refactoring, test generation, and team collaboration features.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">productivity</span>
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                        </div>
+                        
+                        <!-- Stats with lock icon -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                </svg>
+                                <span>Premium • $35</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>285</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Purchased App Card -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(217, 70, 160, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">APP</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-vybe-orange transition-colors" title="AI Portfolio Builder">
+                            AI Portfolio Builder
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-medium">
+                                CS
+                            </div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @creativestudio
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Posted 01/15/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Create stunning portfolios with AI-generated content, responsive designs, and built-in SEO optimization.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">portfolio</span>
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">Next.js</span>
+                        </div>
+                        
+                        <!-- Stats with purchased status -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-green-500 text-xs">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                </svg>
+                                <span>Purchased</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>342</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Premium App Card (Locked) -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(217, 70, 160, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">APP</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-vybe-orange transition-colors" title="AI Code Assistant Pro">
+                            AI Code Assistant Pro
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full flex-shrink-0"></div>
+                            <span class="text-sm text-vybe-gray-400">
+                                @buildtools
+                                <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                            </span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Updated 01/15/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            Advanced AI-powered code assistant with real-time suggestions, refactoring tools, and intelligent debugging capabilities.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">productivity</span>
+                            <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                        </div>
+                        
+                        <!-- Stats with lock icon -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                </svg>
+                                <span>Premium • $35</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                    </svg>
+                                    <span>285</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- News Card -->
+                    <div class="minimal-card pt-1 card-verified rounded-lg transition-all cursor-pointer group overflow-hidden" style="position: relative;">
+                        <!-- Type label -->
+                        <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; background: rgba(233, 107, 58, 0.75); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px;">NEWS</span>
+                        <!-- Title -->
+                        <h3 class="text-lg font-medium text-white mb-2" style="margin-top: 2rem; group-hover:text-blue-400 transition-colors" title="OpenAI Releases Claude 4.0 with Enhanced Reasoning">
+                            OpenAI Releases Claude 4.0 with Enhanced Reasoning
+                        </h3>
+                        
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold" style="background: linear-gradient(to bottom right, #3b82f6, #2563eb);">AI</div>
+                            <span class="text-sm text-vybe-gray-400">
+                                OpenAI Blog
+                            </span>
+                            <span class="px-2 py-0.5 text-xs rounded-full font-medium" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa;">Official</span>
+                            <span class="text-vybe-gray-500">•</span>
+                            <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                <span>Posted 01/16/25</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Description -->
+                        <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                            The latest Claude model brings significant improvements to reasoning capabilities, multimodal understanding, and code generation with 200K context window.
+                        </p>
+                        
+                        <!-- Tags -->
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">AI News</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Claude</span>
+                            <span class="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">Model Updates</span>
+                        </div>
+                        
+                        <!-- Stats -->
+                        <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50" style="margin-top: auto;">
+                            <div class="flex items-center gap-1 text-vybe-gray-500 text-xs">
+                                <span class="text-xs">📰</span>
+                                <span>News</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <div class="flex items-center gap-1 text-vybe-gray-400">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                    <span>8.2k</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Gradient Usage -->
+            <section class="showcase-section" aria-labelledby="gradient-usage-heading">
+                <h2 id="gradient-usage-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Gradient Usage</span>
+                </h2>
+                
+                <div class="component-demo">
+                    <div class="p-4">
+                        <h3 class="text-2xl font-medium" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Gradient Text</h3>
+                        <p class="text-vybe-gray-400 text-sm mt-2">The unified vybe gradient</p>
+                    </div>
+                    <div class="relative overflow-hidden rounded-2xl" style="background: var(--gradient-vybe); max-width: 320px; box-shadow: 0 8px 32px rgba(217, 70, 160, 0.3);">
+                        <div class="p-6">
+                            <h3 class="text-white text-xl font-semibold mb-2">Gradient Background</h3>
+                            <p class="text-white/90 text-sm">Applied as background with subtle glow effect</p>
+                        </div>
+                        <div class="absolute inset-0 opacity-20" style="background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Animations -->
+            <section class="showcase-section" aria-labelledby="animations-heading">
+                <h2 id="animations-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Animations</span>
+                </h2>
+                
+                <div class="component-demo">
+                    <div class="animation-demo animate-fade-in" role="button" tabindex="0" aria-label="Click to replay fade in animation">Fade In</div>
+                    <div class="animation-demo animate-slide-up" role="button" tabindex="0" aria-label="Click to replay slide up animation">Slide Up</div>
+                    <div class="animation-demo animate-subtle-pulse" role="button" tabindex="0" aria-label="Click to replay pulse animation">Pulse</div>
+                </div>
+
+            </section>
+
+            <!-- Shadows -->
+            <section class="showcase-section" aria-labelledby="shadow-system-heading">
+                <h2 id="shadow-system-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Shadow System</span>
+                </h2>
+                
+                <div class="showcase-grid">
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-sm);">
+                        <span>shadow-sm</span>
+                    </div>
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-md);">
+                        <span>shadow-md</span>
+                    </div>
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-lg);">
+                        <span>shadow-lg</span>
+                    </div>
+                    <div class="shadow-demo" style="box-shadow: var(--shadow-xl);">
+                        <span>shadow-xl</span>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-medium text-vybe-purple-light mb-4 mt-8">Glow Effect</h3>
+                <div class="shadow-demo mx-auto" style="box-shadow: 0 0 30px rgba(217, 70, 160, 0.4);">
+                    <span>Brand Glow</span>
+                </div>
+            </section>
+
+            <!-- Border Radius -->
+            <section class="showcase-section" aria-labelledby="border-radius-heading">
+                <h2 id="border-radius-heading" class="text-3xl font-light mb-6">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Border Radius</span>
+                </h2>
+                
+                <div class="showcase-grid">
+                    <div class="radius-demo" style="border-radius: var(--radius-none);">
+                        <span>none</span>
+                    </div>
+                    <div class="radius-demo" style="border-radius: var(--radius-sm);">
+                        <span>sm</span>
+                    </div>
+                    <div class="radius-demo" style="border-radius: var(--radius-md);">
+                        <span>md</span>
+                    </div>
+                    <div class="radius-demo" style="border-radius: var(--radius-lg);">
+                        <span>lg</span>
+                    </div>
+                    <div class="radius-demo" style="border-radius: var(--radius-xl);">
+                        <span>xl</span>
+                    </div>
+                    <div class="radius-demo" style="border-radius: var(--radius-2xl);">
+                        <span>2xl</span>
+                    </div>
+                    <div class="radius-demo" style="border-radius: var(--radius-full);">
+                        <span>full</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Special Effects -->
+            <section class="showcase-section" aria-labelledby="special-effects-heading" style="position: relative; padding: 3rem; border-radius: 1rem; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1);">
+                <!-- Use same nebula background as page -->
+                <div class="absolute inset-0 pointer-events-none z-0" style="
+                    background: 
+                        radial-gradient(ellipse at 15% 30%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 85% 40%, rgba(217, 70, 160, 0.06) 0%, transparent 40%),
+                        radial-gradient(ellipse at 50% 80%, rgba(233, 107, 58, 0.05) 0%, transparent 60%);
+                "></div>
+                <div class="absolute inset-0 pointer-events-none z-0" style="
+                    background: 
+                        radial-gradient(ellipse at 70% 20%, rgba(217, 70, 160, 0.05) 0%, transparent 40%),
+                        radial-gradient(ellipse at 30% 60%, rgba(138, 43, 226, 0.04) 0%, transparent 50%);
+                "></div>
+                
+                <!-- Add stars to the background -->
+                <div class="stars-container absolute inset-0 pointer-events-none z-0">
+                    <div class="star" style="left: 10%; bottom: 10%; animation-delay: 0s;"></div>
+                    <div class="star" style="left: 25%; bottom: 15%; animation-delay: 0.5s;"></div>
+                    <div class="star" style="left: 40%; bottom: 5%; animation-delay: 1s;"></div>
+                    <div class="star" style="left: 60%; bottom: 20%; animation-delay: 1.5s;"></div>
+                    <div class="star" style="left: 75%; bottom: 8%; animation-delay: 2s;"></div>
+                    <div class="star" style="left: 90%; bottom: 12%; animation-delay: 2.5s;"></div>
+                    <div class="star" style="left: 15%; bottom: 25%; animation-delay: 3s;"></div>
+                    <div class="star" style="left: 30%; bottom: 18%; animation-delay: 3.5s;"></div>
+                    <div class="star" style="left: 50%; bottom: 30%; animation-delay: 4s;"></div>
+                    <div class="star" style="left: 65%; bottom: 22%; animation-delay: 4.5s;"></div>
+                    <div class="star" style="left: 85%; bottom: 35%; animation-delay: 5s;"></div>
+                    <div class="star" style="left: 35%; bottom: 40%; animation-delay: 5.5s;"></div>
+                </div>
+                
+                <h2 id="special-effects-heading" class="text-3xl font-light mb-6 relative z-10">
+                    <span class="gradient-text" style="background: var(--gradient-vybe); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Special Effects</span>
+                </h2>
+                
+                <div class="relative rounded-xl overflow-hidden mb-8 z-10" style="height: 400px;">
+                    <!-- Use same nebula background as page -->
+                    <div class="absolute inset-0" style="
+                        background: 
+                            radial-gradient(ellipse at 15% 30%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+                            radial-gradient(ellipse at 85% 40%, rgba(217, 70, 160, 0.06) 0%, transparent 40%),
+                            radial-gradient(ellipse at 50% 80%, rgba(233, 107, 58, 0.05) 0%, transparent 60%);
+                    "></div>
+                    <div class="absolute inset-0" style="
+                        background: 
+                            radial-gradient(ellipse at 70% 20%, rgba(217, 70, 160, 0.05) 0%, transparent 40%),
+                            radial-gradient(ellipse at 30% 60%, rgba(138, 43, 226, 0.04) 0%, transparent 50%);
+                    "></div>
+                    
+                    <!-- Animated stars container -->
+                    <div class="stars-container absolute inset-0" style="overflow: hidden;">
+                        <!-- Generate more stars for better effect -->
+                        <div class="star" style="left: 10%; bottom: 20%; animation-delay: 0s;"></div>
+                        <div class="star" style="left: 25%; bottom: 40%; animation-delay: 0.5s;"></div>
+                        <div class="star" style="left: 40%; bottom: 15%; animation-delay: 1s;"></div>
+                        <div class="star" style="left: 60%; bottom: 30%; animation-delay: 1.5s;"></div>
+                        <div class="star" style="left: 75%; bottom: 50%; animation-delay: 2s;"></div>
+                        <div class="star" style="left: 85%; bottom: 25%; animation-delay: 2.5s;"></div>
+                        <div class="star" style="left: 15%; bottom: 70%; animation-delay: 3s;"></div>
+                        <div class="star" style="left: 50%; bottom: 60%; animation-delay: 3.5s;"></div>
+                        <div class="star" style="left: 90%; bottom: 65%; animation-delay: 4s;"></div>
+                        <div class="star" style="left: 30%; bottom: 80%; animation-delay: 4.5s;"></div>
+                        <div class="star" style="left: 5%; bottom: 45%; animation-delay: 5s;"></div>
+                        <div class="star" style="left: 35%; bottom: 10%; animation-delay: 5.5s;"></div>
+                        <div class="star" style="left: 65%; bottom: 85%; animation-delay: 6s;"></div>
+                        <div class="star" style="left: 45%; bottom: 35%; animation-delay: 6.5s;"></div>
+                        <div class="star" style="left: 80%; bottom: 75%; animation-delay: 7s;"></div>
+                        <div class="star" style="left: 20%; bottom: 55%; animation-delay: 7.5s;"></div>
+                        <div class="star" style="left: 55%; bottom: 20%; animation-delay: 8s;"></div>
+                        <div class="star" style="left: 70%; bottom: 90%; animation-delay: 8.5s;"></div>
+                        <div class="star" style="left: 95%; bottom: 40%; animation-delay: 9s;"></div>
+                        <div class="star" style="left: 12%; bottom: 95%; animation-delay: 9.5s;"></div>
+                    </div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center z-10 px-8">
+                            <h3 class="text-2xl font-light text-white mb-4">Nebula Background with Rising Stars</h3>
+                            <p class="text-vybe-gray-400 text-lg">This same nebula and stars effect creates the ambient atmosphere throughout the entire showcase</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-full mx-auto flex items-center justify-center text-white font-bold text-2xl relative z-10" style="background: var(--gradient-vybe); width: 6rem; height: 6rem; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; text-align: center; line-height: 1;">
+                    VC
+                </div>
+                <p class="text-center text-vybe-gray-400 text-sm mt-4 relative z-10">Avatar with Unified Gradient</p>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Add interactive demos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Keyboard navigation support
+            document.querySelectorAll('[role="button"][tabindex="0"]').forEach(el => {
+                el.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+            
+            // Back to top button functionality
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Active section highlighting for TOC
+            const sections = document.querySelectorAll('section[aria-labelledby]');
+            const tocLinks = document.querySelectorAll('nav[aria-label="Table of contents"] a');
+            
+            function highlightActiveSection() {
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= sectionTop - 200) {
+                        currentSection = section.getAttribute('aria-labelledby');
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('toc-link-active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('toc-link-active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightActiveSection);
+            highlightActiveSection(); // Initial check
+            // Animation toggle
+            const animatedElements = document.querySelectorAll('.animation-demo');
+            animatedElements.forEach(el => {
+                el.addEventListener('click', function() {
+                    const classes = Array.from(this.classList);
+                    const animationClass = classes.find(c => c.startsWith('animate-'));
+                    if (animationClass) {
+                        this.classList.remove(animationClass);
+                        setTimeout(() => {
+                            this.classList.add(animationClass);
+                        }, 10);
+                    }
+                });
+            });
+
+            // Copy color values on click
+            const colorSwatches = document.querySelectorAll('.color-swatch');
+            colorSwatches.forEach(swatch => {
+                swatch.addEventListener('click', function() {
+                    const colorValue = this.querySelector('.color-value').textContent;
+                    navigator.clipboard.writeText(colorValue);
+                    
+                    // Visual feedback
+                    const originalText = this.querySelector('.color-value').textContent;
+                    this.querySelector('.color-value').textContent = 'Copied!';
+                    setTimeout(() => {
+                        this.querySelector('.color-value').textContent = originalText;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -14,6 +14,9 @@
     --color-brand-secondary: #d946a0;
     --color-brand-accent: #e96b3a;
     
+    /* The Vybe Gradient - Unified brand gradient */
+    --gradient-vybe: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%);
+    
     /* Extended Brand Palette */
     --color-purple: #8a2be2;
     --color-purple-light: #a855f7;
