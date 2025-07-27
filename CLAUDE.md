@@ -1,4 +1,10 @@
-# TRAIL - Test, Resolve, And Intelligently Learn
+# CLAUDE.md - Project Instructions and Context
+
+**Last Updated:** 2025-07-27  
+**Version:** 2.0  
+**Review Schedule:** Weekly or after major changes
+
+## TRAIL - Test, Resolve, And Intelligently Learn
 
 This project has an intelligent 3-level debugging system that automatically tests code changes, learns from solutions, and escalates to visual debugging when needed.
 
@@ -166,6 +172,69 @@ Before making ANY claims about functionality:
 3. **Show Limitations**: Be upfront about what might not work
 4. **Test Before Claiming**: Never say "This will work" without testing
 
+## Development Principles
+
+### Minimal Code Impact Rule
+**"Every change should affect the smallest amount of code necessary to achieve the goal."**
+
+### Core Principles
+
+1. **NO TEMPORARY FIXES** - Find and fix root causes, never apply band-aids
+2. **Surgical Precision** - Change only what's directly needed
+3. **Single Purpose** - Each change solves exactly one problem
+4. **Simplicity First** - Choose the simplest solution that works
+
+### Guidelines for Minimal Impact
+
+#### ✅ GOOD Examples:
+```javascript
+// Task: Fix validation error
+// Change: Add missing validation check (1 line)
+if (!email) return showError('Email required');
+
+// Task: Update config value  
+// Change: Modify only the specific setting
+config.timeout = 5000; // was 3000
+```
+
+#### ❌ BAD Examples:
+```javascript
+// Task: Fix validation error
+// Change: Refactored entire form system, updated 8 files
+
+// Task: Update config value
+// Change: Reorganized config structure, added new features
+```
+
+### When Making Changes:
+
+1. **Ask First**: "What's the minimum change to fix THIS issue?"
+2. **Resist Temptation**: Don't fix unrelated problems you notice
+3. **Stay Focused**: Complete current task before identifying new ones
+4. **Document Scope**: If you see other issues, add them to todos
+
+### Exceptions (When Larger Changes Are OK):
+
+- Security vulnerabilities (must be thorough)
+- Breaking API changes (cascading updates required)  
+- Global renaming (inherently affects many files)
+- Explicitly requested refactoring
+
+### Anti-Patterns to Avoid:
+
+- **"While I'm Here"**: Fixing unrelated issues in same commit
+- **Feature Creep**: Adding unrequested functionality
+- **Style Crusades**: Reformatting code while fixing bugs
+- **Premature Optimization**: Performance tweaks not requested
+
+### Complexity Indicators:
+
+- **SIMPLE**: 1-2 files, <50 lines, single module
+- **MEDIUM**: 3-5 files, <200 lines, crosses 2 modules  
+- **COMPLEX**: >5 files, >200 lines, system-wide impact
+
+Remember: Smaller changes = fewer bugs, easier reviews, cleaner history!
+
 ## Security Rules (Auto-Applied)
 
 ### Input Validation (validator.js)
@@ -246,3 +315,331 @@ Additional VybeHack documentation and setup scripts are located in `docs/vybehac
 - VERIFY-FIRST.md - Full anti-hallucination protocol
 - VYBEHACKS-FROM-SCRATCH.md - Complete recreation guide
 - setup-vybehacks.sh - One-command setup script
+
+## Slash Commands
+
+### /update-docs - Automatic Documentation Updater
+Automatically updates all documentation files (READMEs, docs/*.md, CLAUDE.md) based on code changes:
+```bash
+# Run after making code changes
+/update-docs
+```
+
+Features:
+- Analyzes git changes and project structure
+- Updates feature lists, installation instructions, and usage examples
+- Synchronizes documentation with actual code
+- Generates accurate file structures and API references
+- Updates configuration documentation
+- Maintains consistent documentation style
+
+Helper script for manual analysis:
+```bash
+.solutions/update-docs.sh
+```
+
+## Auto-Commit System
+
+### Claude Branch Auto-Commits
+Every successful code change is automatically committed to a separate 'claude' branch:
+
+**Features:**
+- Automatic commits to 'claude' branch after successful edits
+- Formatted commit messages: `claude-01-[01/27 02:30PM]: edit module/file.js`
+- Incremental numbering tracked in `.claude-commit-count`
+- Keeps 'claude' branch separate from main
+- Returns to original branch after commit
+- Only commits error-free changes
+
+**View Claude Commits:**
+```bash
+.claude-code/hooks/view-claude-commits.sh
+```
+
+**Manual Control:**
+- Disable: Remove auto-commit from hooks in `.claude-code/settings.json`
+- Reset counter: `echo "0" > .claude-commit-count`
+- Delete branch: `git branch -D claude`
+
+This provides a complete history of all Claude Code changes without cluttering your main branch!
+
+## Task Management with TodoWrite
+
+### Best Practices for Planning
+
+When using plan mode with TodoWrite:
+
+1. **Break Down Complex Tasks**
+   ```
+   ❌ BAD: "Implement authentication system"
+   ✅ GOOD: 
+      - "Create user model and database schema"
+      - "Implement login endpoint"
+      - "Add JWT token generation"
+      - "Create middleware for protected routes"
+      - "Write tests for auth flow"
+   ```
+
+2. **Prioritize Effectively**
+   - **high**: Blocking issues, security fixes, core functionality
+   - **medium**: Features, non-critical bugs, improvements
+   - **low**: Nice-to-have, documentation, cleanup
+
+3. **Use Plan Mode + TodoWrite Together**
+   ```
+   You: Let's use plan mode to add search functionality
+   Claude: [Researches codebase, creates detailed todos]
+   You: [Approves plan]
+   Claude: [Executes todos one by one, tracking progress]
+   ```
+
+4. **Track Progress Accurately**
+   - Mark as `in_progress` BEFORE starting work
+   - Only one task `in_progress` at a time (unless parallel)
+   - Mark `completed` immediately when done
+   - Don't batch status updates
+
+5. **Document Blockers**
+   - If stuck, keep task as `in_progress`
+   - Add new todo for the blocker
+   - Example: "Fix TypeScript error in auth module [blocked by: Update types package]"
+
+### Session Reviews
+
+Generate comprehensive session reviews:
+```bash
+.solutions/generate-review.sh
+```
+
+Reviews include:
+- All changes made (with complexity metrics)
+- Files modified by type
+- Solutions learned
+- Recommendations for improvement
+
+### Integration with Auto-Commits
+
+Every change is tracked with complexity indicators:
+- `[SIMPLE:1 file]` - Single file, <50 lines
+- `[MEDIUM:3 files]` - Multiple files, <200 lines
+- `[COMPLEX:8 files]` - Many files or system-wide changes
+
+This helps identify when to break down tasks further.
+
+## BMAD Method Integration
+
+### Sub-Agent Orchestration
+The BMAD Method has been enhanced with powerful sub-agent capabilities for parallel execution.
+
+#### Available Sub-Agents
+**Implementation Specialists:**
+- `/sub-frontend-impl` - Frontend UI implementation
+- `/sub-backend-impl` - Backend API development
+- `/sub-test-impl` - Test creation and automation
+- `/sub-integration` - Component integration
+
+**Continuous Monitors:**
+- `/sub-doc-sync` - Keeps documentation updated
+- `/sub-test-runner` - Runs tests continuously
+- `/sub-security-scan` - Monitors for vulnerabilities
+- `/sub-trail-monitor` - Manages TRAIL knowledge
+
+**Orchestration:**
+- `/sub-dispatcher` - Distributes tasks intelligently
+- `/sub-coordinator` - Aggregates results
+
+#### BMAD Parallel Execution Rules
+1. **Always analyze stories for parallelization** - Dev agent should identify independent tasks
+2. **Delegate to specialized sub-agents** - Match tasks to sub-agent expertise
+3. **Track progress in TodoWrite** - All sub-agent tasks must be tracked
+4. **Use TRAIL for all agents** - Every agent/sub-agent searches and logs solutions
+5. **Integrate before completion** - Use coordinator to merge results
+
+#### Enhanced BMAD Agents
+- **Dev Enhanced** (`/dev-enhanced`) - Orchestrates parallel implementation
+- **SM Enhanced** (`/sm-enhanced`) - Creates stories for multiple epics simultaneously
+
+#### Workflow Example
+```
+Story with 4 tasks → Dev analyzes → Delegates to sub-agents:
+- Frontend task → /sub-frontend-impl
+- Backend task → /sub-backend-impl  
+- Test task → /sub-test-impl
+All run in parallel, 3x faster completion
+```
+
+### VybeHacks + BMAD Integration
+
+#### TRAIL Integration
+- All BMAD agents use `.solutions/search.sh` before tasks
+- Sub-agents share solutions automatically
+- Errors trigger learning across all agents
+
+#### Hook Integration  
+- Sub-agent changes tracked in auto-commits
+- Session reviews include parallelization metrics
+- Documentation auto-updates from all agents
+
+#### Security Enforcement
+- All agents apply CLAUDE.md security rules
+- Automatic validation/sanitization
+- No temporary fixes allowed
+
+### Best Practices
+1. **Use enhanced agents for complex stories** - Leverage parallelization
+2. **Let sub-agents specialize** - Don't override their expertise
+3. **Monitor with TodoWrite** - Track all parallel work
+4. **Trust TRAIL** - Apply learned solutions immediately
+5. **Review aggregated results** - Ensure quality integration
+
+## Continuous Learning System
+
+The project now includes an intelligent continuous learning system that improves execution over time.
+
+### How It Works
+
+1. **Pattern Recognition**: Analyzes errors, performance metrics, and task distributions
+2. **Automatic Learning**: Learns from every success and failure
+3. **Pattern Application**: Applies learned patterns to new tasks automatically
+4. **Continuous Improvement**: Gets smarter with every execution
+
+### Learning Types
+
+- **Error Resolution**: Common errors and their fixes
+- **Task Distribution**: Optimal sub-agent allocation strategies
+- **Performance Optimization**: Execution improvements
+- **Integration Conflicts**: Resolution patterns
+- **Security Fixes**: Automated security corrections
+
+### Commands
+
+```bash
+# Analyze and extract patterns
+node .solutions/continuous-learning.js analyze
+
+# Start continuous monitoring
+node .solutions/continuous-learning.js monitor
+
+# Generate learning report
+node .solutions/continuous-learning.js report
+
+# Apply learning to current context
+node .solutions/continuous-learning.js apply '{"taskType":"frontend"}'
+```
+
+### Integration with BMAD
+
+- Sub-agents automatically benefit from learned patterns
+- Orchestration improves based on distribution success
+- Error patterns shared across all agents instantly
+- Performance optimizations applied automatically
+
+### Metrics Tracked
+
+- Task completion times by type
+- Parallelization efficiency
+- Error rates and resolutions
+- Sub-agent utilization
+- Learning application success rate
+
+This creates a self-improving development system that gets faster and more reliable over time!
+
+## Autonomous Operation Rules
+
+### Story Selection Automation
+- **Auto-detect story context**: When user opens a story file or mentions a story ID, automatically activate dev-enhanced agent
+- **Auto-analyze parallelization**: When story detected, automatically run analysis without prompting
+- **Auto-delegate high-confidence**: If parallelization score > 70%, automatically run *delegate command
+- **Auto-progress tracking**: Use TodoWrite to track all story tasks without prompting
+
+### Smart Approval Rules
+**Auto-approve these without asking:**
+- Parallel execution plans when:
+  - All tasks have clear descriptions
+  - No external dependencies detected
+  - High confidence patterns available (>90%)
+  - Previous similar distributions succeeded
+- Security fixes that:
+  - Match known patterns in continuous learning
+  - Are marked as automated in CLAUDE.md rules
+  - Have been successfully applied 3+ times before
+- Test execution after integration completes
+- Documentation updates via /update-docs
+- Session reviews and learning reports
+
+### Proactive Behaviors
+**Automatically perform these actions:**
+- On session start: Check for "Ready for Development" stories and display summary
+- Every 4 hours: Generate comprehensive session review
+- After 10 tool uses: Run continuous learning analysis
+- On story completion: Auto-select next highest priority story
+- On error detection: Search TRAIL before displaying error
+- On test failure: Analyze with continuous learning for known fixes
+
+### Context-Aware Activation
+**Recognize these patterns and act:**
+- "work on [story/feature]" → Activate dev-enhanced, load story
+- "create stories" → Activate sm-enhanced
+- "fix [error]" → Search TRAIL, apply known solutions
+- "review progress" → Show orchestration monitor
+- "what's next" → Show priority stories, suggest highest
+- File paths containing "story" → Analyze for orchestration
+
+### Batching Operations
+**Group these for single approval:**
+- Multiple ready stories → Show summary table, get batch approval
+- Multiple security fixes → Group by type, single decision per type
+- Multiple pattern applications → Apply all high-confidence as batch
+- End-of-session items → Single comprehensive review
+
+### Continuous Learning Auto-Application
+**Apply without confirmation when:**
+- Pattern confidence > 95%
+- Similar error solved 5+ times with same fix
+- Task distribution pattern succeeded 10+ times
+- Security fix automated and tested 3+ times
+- Performance optimization with proven metrics
+
+### Exception Handling
+**Still require human input for:**
+- PRD creation and initial epic definition
+- Ambiguous requirements after analysis
+- External API keys and credentials
+- Architecture decisions and trade-offs
+- Production deployment approval
+- Breaking changes to public APIs
+
+## Core Development Rules (Priority Order)
+
+### Priority 1: Security and Quality
+1. **Security First**: All user input must be validated with validator.js
+2. **XSS Prevention**: All HTML must be sanitized with DOMPurify
+3. **Safe Comparisons**: Use safe-compare for authentication tokens
+4. **Verification**: Always verify claims before documenting them
+
+### Priority 2: Code Efficiency
+1. **Minimal Impact**: Change only what's necessary to fix the issue
+2. **No Temporary Fixes**: Always address root causes
+3. **Parallel Execution**: Batch independent operations
+4. **Existing Files**: Edit existing files rather than creating new ones
+
+### Priority 3: Documentation
+1. **Create docs only when**: Explicitly requested by user
+2. **Auto-update docs**: Use /update-docs after significant changes
+3. **Verify first**: Test all examples and commands before documenting
+
+### Priority 4: Automation
+1. **Be Proactive**: Execute high-confidence actions automatically
+2. **Batch Approvals**: Group similar items for single decision
+3. **Learn Continuously**: Apply patterns with >95% confidence
+4. **Track Progress**: Always use TodoWrite for task management
+
+## Review Reminder
+
+⚠️ **This file should be reviewed and updated:**
+- After major feature additions
+- When workflow patterns change
+- If automation rules need adjustment
+- At least once per week during active development
+
+Use `/memory` to edit this file or update directly with improvements learned during development.

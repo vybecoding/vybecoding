@@ -4,7 +4,7 @@
 
 | Tool | Type | Status | Usage | Link |
 |------|------|--------|--------|------|
-| **BMAD Method** | 🤖 Built-in | ✅ | `npm install -g bmad-method`, slash commands | [repo](https://github.com/bmadcode/BMAD-METHOD.git) |
+| **BMAD Method** | 🤖 Built-in | ✅ | Enhanced with sub-agents • `/dev-enhanced`, `/sm-enhanced` | [repo](https://github.com/bmadcode/BMAD-METHOD.git) |
 | **PRPs Engineering** | 🤖 CLAUDE.md | ✅ | `/create-base-prp`, `/execute-base-prp` | [repo](https://github.com/Wirasm/PRPs-agentic-eng.git) |
 | **SuperClaude Framework** | 🤖 CLAUDE.md | ✅ | Personas auto-activate by context | [repo](https://github.com/SuperClaude-Org/SuperClaude_Framework.git) |
 | **Ultra Wide Turbo** | 👤 Manual | ✅ | Manually select workflow patterns | [repo](https://github.com/its-brianwithai/ultra-wide-turbo-workspace.git) |
@@ -56,6 +56,16 @@
 | **Umami** | 👤 Manual | ⏳ | Needs deployed site with traffic | [umami.is](https://umami.is/) |
 | **Postal** | 👤 Manual | ⏳ | Server setup, DNS config • after Resend | [postalserver.io](https://postalserver.io/) |
 
+## 🚀 Orchestration & Learning
+
+| Tool | Type | Status | Usage | Link |
+|------|------|--------|--------|------|
+| **BMAD Orchestration** | 🤖 Auto | ✅ | Parallel task execution • Monitor: `node .bmad-core/utils/orchestration-monitor.js` | [LOCAL] |
+| **Continuous Learning** | 🤖 Auto | ✅ | Pattern recognition • `node .solutions/continuous-learning.js analyze` | [LOCAL] |
+| **Sub-Agents** | 🤖 Auto | ✅ | 8 specialized agents • Frontend, Backend, Test, Integration, etc. | `.claude/sub-agents/bmad/` |
+| **TRAIL System** | 🤖 Auto | ✅ | Error learning & solution recall • `.solutions/search.sh "pattern"` | [LOCAL] |
+| **Orchestration Monitor** | 👤 Manual | ✅ | Real-time execution dashboard • 3 view modes | `.bmad-core/utils/` |
+
 ## 📚 Security Resources & Documentation
 
 | Resource | Type | Usage | Link |
@@ -73,6 +83,7 @@
 |-----|------|--------|------|
 | **vybecoding Docs** | 📖 Local | Reference anytime via filesystem | `/home/happy/Projects/vybecoding/docs` |
 | **VybeHacks** | 📖 Local | TRAIL, VERIFY-FIRST patterns | `/home/happy/Projects/vybecoding/docs/vybehacks` |
+| **BMAD Orchestration Guide** | 📖 Local | Parallel execution guide | `.bmad-core/docs/orchestration-guide.md` |
 | **BMAD Guide** | 🌐 Online | Multi-agent workflows | [wiki](https://github.com/bmadcode/BMAD-METHOD/wiki) |
 | **Convex Docs** | 🌐 Online | Database patterns | [docs.convex.dev](https://docs.convex.dev/) |
 | **Clerk Docs** | 🌐 Online | Auth implementation | [clerk.com/docs](https://clerk.com/docs) |

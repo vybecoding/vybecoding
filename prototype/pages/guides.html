@@ -255,11 +255,13 @@
                     <!-- Guides Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <!-- Building AI Agents with Claude 3.5 (Free) -->
-                        <div class="minimal-card card-verified rounded-lg p-5 transition-all cursor-pointer group" onclick="showGuideDetail('free')">
-                            <!-- Title and creator -->
-                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
-                                Building AI Agents with Claude 3.5
-                            </h3>
+                        <div class="vybe-card overflow-hidden transition-all cursor-pointer group" onclick="showGuideDetail('free')">
+                            <div class="card-header-gradient" style="padding: 1rem; background: linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2)); border-bottom: 1px solid rgba(75, 85, 99, 0.4);">
+                                <h3 class="text-base font-semibold text-white group-hover:text-vybe-purple-light transition-colors">
+                                    Building AI Agents with Claude 3.5
+                                </h3>
+                            </div>
+                            <div style="padding: 1.25rem;">
                             
                             <div class="flex items-center gap-2 mb-3">
                                 <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0"></div>
@@ -305,15 +307,17 @@
                                     </div>
                                 </div>
                             </div>
+                            </div>
                         </div>
                         
                         <!-- GPT-4 Fine-tuning Tutorial (Needs Verification) -->
-                        <div class="minimal-card card-needs-verification rounded-lg p-5 transition-all cursor-pointer group">
-                            
-                            <!-- Title and creator -->
-                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-pink transition-colors">
-                                GPT-4 Fine-tuning Tutorial
-                            </h3>
+                        <div class="vybe-card overflow-hidden transition-all cursor-pointer group">
+                            <div class="card-header-pink" style="padding: 1rem; background: linear-gradient(90deg, rgba(217, 70, 160, 0.15), rgba(217, 70, 160, 0.25)); border-bottom: 1px solid rgba(217, 70, 160, 0.3);">
+                                <h3 class="text-base font-semibold text-white group-hover:text-vybe-pink transition-colors">
+                                    GPT-4 Fine-tuning Tutorial
+                                </h3>
+                            </div>
+                            <div style="padding: 1.25rem;">
                             
                             <div class="flex items-center gap-2 mb-3">
                                 <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full flex-shrink-0"></div>
@@ -470,7 +474,7 @@
                         </div>
                         
                         <!-- Premium Guide Card with Top Creator Badge (Locked) -->
-                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showGuideDetail('premium-locked')">
+                        <div class="minimal-card advanced-claude-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showGuideDetail('premium-locked')">
                             <!-- Title and creator -->
                             <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
                                 Advanced Claude API Mastery
@@ -527,7 +531,7 @@
                         </div>
                         
                         <!-- Advanced Claude API Mastery (Purchased) Card -->
-                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showGuideDetail('premium-purchased')">
+                        <div class="minimal-card advanced-claude-card rounded-lg p-5 transition-all cursor-pointer group relative" onclick="showGuideDetail('premium-purchased')">
                             <!-- Title -->
                             <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors">
                                 Advanced Claude API Mastery
@@ -1087,11 +1091,13 @@
 
                                 <!-- Guide Structure Preview -->
                                 <div class="lg:col-span-1">
-                                    <div class="vybe-card p-6 sticky top-4">
-                                        <h3 class="text-lg font-medium mb-4 flex items-center gap-2">
-                                            <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                                            Guide Structure
-                                        </h3>
+                                    <div class="vybe-card relative overflow-hidden sticky top-4">
+                                        <div class="absolute left-0 top-0 bottom-0" style="width: 4px; background: var(--gradient-vybe);"></div>
+                                        <div style="padding: 1.25rem; padding-left: 1.75rem;">
+                                            <h3 class="text-base font-semibold text-white flex items-center gap-2" style="margin-bottom: 0.75rem;">
+                                                <div style="width: 4px; height: 20px; background: linear-gradient(to bottom, #8a2be2, #d946a0, #e96b3a); border-radius: 9999px;"></div>
+                                                Guide Structure
+                                            </h3>
                                         <div class="space-y-3">
                                             <div class="text-sm">
                                                 <div class="flex items-center gap-2 mb-2">
@@ -1120,6 +1126,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

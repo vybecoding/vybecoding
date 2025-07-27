@@ -2069,6 +2069,11 @@ input[type="radio"] {
   -webkit-text-fill-color: transparent;
 }
 
+/* Special Card - Preserve unique styling */
+.advanced-claude-card {
+  /* Keep exactly as shown in images */
+}
+
 /* Badge System */
 .badge-difficulty {
   padding: 0.25rem 0.5rem;

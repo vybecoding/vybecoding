@@ -1,0 +1,14 @@
+{
+  "executions": [],
+  "averageMetrics": {
+    "taskCompletionTime": 0,
+    "parallelizationEfficiency": 0,
+    "subAgentUtilization": {},
+    "errorRate": 0
+  },
+  "trends": {
+    "performanceImprovement": 0,
+    "errorReduction": 0,
+    "learningApplicationRate": 0
+  }
+}
