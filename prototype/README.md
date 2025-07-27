@@ -12,6 +12,23 @@ Modern AI-powered development platform demo built with Vite and modern web techn
 - **⚡ Performance**: Optimized loading states, error handling, and code splitting
 - **🎯 Type Safety**: JSDoc annotations for better development experience
 
+## 🎨 UI Components & Best Practices
+
+### Use Official Components
+**Important:** Always use official, production-ready UI components instead of CSS hacks:
+- ✅ Use Shadcn UI components: `npx shadcn-ui@latest add [component]`
+- ✅ Use Lucide React icons: `npm install lucide-react`
+- ✅ Use Tailwind UI patterns for consistent styling
+- ❌ Avoid CSS text-indent hacks to hide content
+- ❌ Don't use absolute positioning tricks for layout
+- ❌ Never rely on overflow:hidden to fix visual issues
+
+### Why This Matters
+- **Production Stability**: CSS hacks often break across browsers or screen sizes
+- **Maintainability**: Official components are well-documented and tested
+- **Accessibility**: Proper components ensure screen reader compatibility
+- **Performance**: Framework components are optimized for production
+
 ## 🛠️ Development
 
 ### Prerequisites

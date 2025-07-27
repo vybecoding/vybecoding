@@ -5,35 +5,56 @@
   position: relative !important;
 }
 
-/* Move ONLY the date div (with clock icon) to top-right corner */
+/* Move ONLY the date div (with calendar icon) to top-right corner */
 .minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 {
   position: absolute !important;
   top: 0.5rem !important;
   right: 0.75rem !important;
   display: flex !important;
   align-items: center !important;
-  gap: 0.25rem !important;
+  gap: 0.25rem !important; /* Reduced gap */
   z-index: 20 !important;
   margin: 0 !important;
+  border: none !important;
+  background: none !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
 }
 
-/* Clock icon styling in date section */
+/* Remove any pseudo-element lines */
+.minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500::before,
+.minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500::after {
+  display: none !important;
+}
+
+/* Calendar icon styling in date section */
 .minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 svg {
-  width: 0.875rem !important;
-  height: 0.875rem !important;
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  min-width: 0.75rem !important;
+  min-height: 0.75rem !important;
+  max-width: 0.75rem !important;
+  max-height: 0.75rem !important;
   stroke: currentColor !important;
   opacity: 0.7 !important;
+  flex-shrink: 0 !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: middle !important;
 }
 
-/* Hide "Posted" text, show only date */
+/* Date text styling */
 .minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 span {
   font-size: 0.75rem !important;
   color: rgb(107, 114, 128) !important;
   font-weight: 500 !important;
-  text-indent: -4.2ch !important;
-  overflow: hidden !important;
   display: inline-block !important;
   white-space: nowrap !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1.2 !important;
 }
 
 /* Responsive adjustments */
