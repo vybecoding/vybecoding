@@ -1,0 +1,301 @@
+/* Guides Cards - Match Specialized Cards from Showcase */
+
+/* Main grid container for guides */
+#guides-browse-content > .grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+/* Update minimal-card to match showcase specialized cards */
+.minimal-card {
+  background: rgba(26, 26, 26, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(51, 51, 51, 0.4) !important;
+  border-radius: 8px !important;
+  padding: 1.25rem !important;
+  transition: all 0.3s ease-in-out !important;
+  position: relative !important;
+  z-index: 10 !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  min-height: 320px !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Remove any default padding from card classes */
+.minimal-card.p-5 {
+  padding: 1.25rem !important;
+}
+
+.minimal-card:hover {
+  background: rgba(42, 42, 42, 0.8) !important;
+  border-color: rgba(64, 64, 64, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Card verified state */
+.minimal-card.card-verified {
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+}
+
+.minimal-card.card-verified:hover {
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+/* Add type label to guides cards */
+.minimal-card::before {
+  content: "GUIDE";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.375rem 0.5rem;
+  background: rgba(138, 43, 226, 0.75);
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.844rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 0 0 0.625rem 0;
+  z-index: 20;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  letter-spacing: 0.25px;
+}
+
+
+/* Fix title spacing to account for label */
+.minimal-card h3 {
+  margin-top: 2rem !important;
+  padding: 0 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.5rem !important;
+  margin-bottom: 0.5rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+
+/* Author/avatar section - ensure row layout */
+.minimal-card .flex.items-center.gap-2 {
+  padding: 0 !important;
+  margin-bottom: 0.75rem !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex-wrap: nowrap !important;
+}
+
+/* Avatar gradient circle */
+.minimal-card .w-6.h-6.bg-gradient-to-br {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* Username and PRO badge */
+.minimal-card .flex.items-center.gap-2 > span.text-sm {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: rgb(156, 163, 175) !important;
+  font-size: 0.875rem !important;
+  white-space: nowrap !important;
+}
+
+/* PRO badge styling */
+.minimal-card span.px-2.py-0\\.5.bg-vybe-pink\\/20 {
+  margin-left: 0.25rem !important;
+  padding: 0.125rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+}
+
+/* Hide separator bullet since date is moved */
+.minimal-card span.text-vybe-gray-500 {
+  display: none !important;
+}
+
+/* Keep date section visible but styled differently - handled in guides-date-corner.css */
+
+
+/* Responsive adjustments for author section */
+@media (max-width: 480px) {
+  /* Reduce gaps and font sizes on mobile */
+  .minimal-card .flex.items-center.gap-2 {
+    gap: 0.375rem !important;
+  }
+  
+  .minimal-card .flex.items-center.gap-2 > span.text-sm,
+  .minimal-card .flex.items-center.gap-1 span {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Make avatar slightly smaller on mobile */
+  .minimal-card .w-6.h-6.bg-gradient-to-br {
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+  }
+  
+  /* Hide separator bullet on very small screens */
+  .minimal-card span.text-vybe-gray-500:nth-of-type(1) {
+    display: none !important;
+  }
+}
+
+/* Force all items in author section to stay in one row */
+.minimal-card .flex.items-center.gap-2 > * {
+  flex-shrink: 0 !important;
+}
+
+/* Reduce font size slightly if needed for mobile */
+@media (max-width: 400px) {
+  .minimal-card .flex.items-center.gap-2 > span.text-sm,
+  .minimal-card .flex.items-center.gap-1 span {
+    font-size: 0.75rem !important;
+  }
+}
+
+/* Description text */
+.minimal-card p.text-sm.text-vybe-gray-400 {
+  padding: 0 !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.5 !important;
+  flex-grow: 1 !important;
+}
+
+/* Tags section */
+.minimal-card .flex.flex-wrap.gap-2 {
+  padding: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Stats section at bottom - keep it visible at bottom */
+.minimal-card .flex.items-center.justify-between.pt-3 {
+  margin-top: auto !important;
+  padding-top: 0.75rem !important;
+  border-top: 1px solid rgba(75, 85, 99, 0.3) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Verified badge styling */
+.minimal-card .flex.items-center.gap-1.text-green-400 {
+  display: flex !important;
+  align-items: center !important;
+  color: rgb(74, 222, 128) !important;
+  font-size: 0.75rem !important;
+}
+
+/* Verified checkmark */
+.minimal-card .text-green-400 .text-xs {
+  font-size: 0.75rem !important;
+}
+
+/* Views/likes counter */
+.minimal-card .flex.items-center.gap-3.text-xs {
+  display: flex !important;
+  align-items: center !important;
+  font-size: 0.75rem !important;
+}
+
+/* Individual like counter */
+.minimal-card .flex.items-center.gap-1.text-vybe-gray-400 {
+  display: flex !important;
+  align-items: center !important;
+  color: rgb(156, 163, 175) !important;
+}
+
+/* Heart icon for likes */
+.minimal-card .text-red-500 {
+  color: rgb(239, 68, 68) !important;
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+}
+
+/* Tag styles to match showcase */
+.minimal-card span[class*="px-2"][class*="py-1"] {
+  font-size: 0.75rem !important;
+  border-radius: 0.25rem !important;
+  font-weight: 500 !important;
+}
+
+/* Difficulty badge colors */
+.minimal-card span.bg-red-500\\/10 {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+  color: rgb(239, 68, 68) !important;
+}
+
+.minimal-card span.bg-amber-500\\/10 {
+  background-color: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.2) !important;
+  color: rgb(245, 158, 11) !important;
+}
+
+.minimal-card span.bg-green-500\\/10 {
+  background-color: rgba(34, 197, 94, 0.1) !important;
+  border-color: rgba(34, 197, 94, 0.2) !important;
+  color: rgb(34, 197, 94) !important;
+}
+
+/* Technology tags */
+.minimal-card span.bg-vybe-purple\\/10 {
+  background-color: rgba(138, 43, 226, 0.1) !important;
+  border-color: rgba(138, 43, 226, 0.2) !important;
+  color: #a855f7 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  #guides-browse-content > .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 0 1rem !important;
+  }
+  
+  .minimal-card {
+    min-height: 280px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  #guides-browse-content > .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  #guides-browse-content > .grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Ensure cards fill their grid cells */
+#guides-browse-content > .grid > .minimal-card {
+  height: 100% !important;
+}
+
+/* Fix for search results grid */
+#guides-results-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+#guides-results-grid .minimal-card {
+  height: 100% !important;
+}

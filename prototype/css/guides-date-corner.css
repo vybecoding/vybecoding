@@ -1,0 +1,64 @@
+/* Move ONLY date to top-right corner */
+
+/* Ensure card is positioned for absolute children */
+.minimal-card {
+  position: relative !important;
+}
+
+/* Move ONLY the date div (with clock icon) to top-right corner */
+.minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.25rem !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+}
+
+/* Clock icon styling in date section */
+.minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 svg {
+  width: 0.875rem !important;
+  height: 0.875rem !important;
+  stroke: currentColor !important;
+  opacity: 0.7 !important;
+}
+
+/* Hide "Posted" text, show only date */
+.minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 span {
+  font-size: 0.75rem !important;
+  color: rgb(107, 114, 128) !important;
+  font-weight: 500 !important;
+  text-indent: -4.2ch !important;
+  overflow: hidden !important;
+  display: inline-block !important;
+  white-space: nowrap !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 {
+    top: 0.375rem !important;
+    right: 0.5rem !important;
+  }
+  
+  .minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 svg {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+  
+  .minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500 span {
+    font-size: 0.688rem !important;
+  }
+}
+
+/* Ensure date doesn't overlap with content */
+.minimal-card h3 {
+  padding-right: 4rem !important; /* Make room for date */
+}
+
+/* Remove separator bullet that appears before the date */
+.minimal-card .flex.items-center.gap-2 > span.text-vybe-gray-500 {
+  display: none !important;
+}

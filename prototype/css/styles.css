@@ -3,6 +3,10 @@
  * Design tokens, components, and utilities
  */
 
+/* Import guides showcase match styles */
+@import './guides-showcase-match.css';
+@import './guides-date-corner.css';
+
 /* ============================================
    DESIGN TOKENS & CSS CUSTOM PROPERTIES
    ============================================ */
@@ -443,56 +447,21 @@
 
 /* Minimal Card - Used on listing pages */
 .minimal-card {
-  background: rgba(26, 26, 26, 0.8) !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(51, 51, 51, 0.4) !important;
-  border-radius: 8px !important;
-  padding: 1.25rem !important;
-  transition: all 0.3s ease-in-out !important;
-  position: relative !important;
-  z-index: 10 !important;
-  cursor: pointer !important;
-  display: flex !important;
-  flex-direction: column !important;
-  height: 100% !important;
-  overflow: visible !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-  min-height: 320px !important;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--transition-normal);
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
 }
 
 .minimal-card:hover {
-  background: rgba(42, 42, 42, 0.8) !important;
-  border-color: rgba(64, 64, 64, 0.5) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
-}
-
-/* Grid layout to match showcase */
-.grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3.gap-6 {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-  gap: 1.5rem !important;
-  align-items: stretch !important;
-}
-
-/* Ensure all cards fill height */
-.grid > .minimal-card {
-  min-height: 320px !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* Fix content spacing */
-.minimal-card div[style*="padding: 0 1.25rem 1.25rem 1.25rem"] {
-  flex-grow: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-/* Stats at bottom */
-.minimal-card div[style*="margin-top: auto"] {
-  margin-top: auto !important;
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Card States */
@@ -2102,11 +2071,6 @@ input[type="radio"] {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Special Card - Preserve unique styling */
-.advanced-claude-card {
-  /* Keep exactly as shown in images */
 }
 
 /* Badge System */
