@@ -4,7 +4,10 @@
         'css/guides-showcase-match.css',
         'css/guides-date-corner.css',
         'css/guides-container-fix.css',
-        'css/badge-component.css'
+        'css/badge-component.css',
+        'css/vertical-centering-fix.css',
+        'css/guides-spacing-fix.css',
+        'css/guides-flex-fix.css'
     ];
     
     cssFiles.forEach(file => {

@@ -11,8 +11,8 @@
   top: 0.5rem !important;
   right: 0.75rem !important;
   display: flex !important;
-  align-items: center !important;
-  gap: 0.25rem !important; /* Reduced gap */
+  align-items: baseline !important; /* Changed to baseline for better text alignment */
+  gap: 0.25rem !important;
   z-index: 20 !important;
   margin: 0 !important;
   border: none !important;
@@ -39,10 +39,14 @@
   stroke: currentColor !important;
   opacity: 0.7 !important;
   flex-shrink: 0 !important;
-  display: inline-block !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   margin: 0 !important;
   padding: 0 !important;
-  vertical-align: middle !important;
+  vertical-align: baseline !important;
+  position: relative !important;
+  top: 0.0625rem !important; /* Micro-adjust 1px down to align with text baseline */
 }
 
 /* Date text styling */

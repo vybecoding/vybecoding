@@ -1,0 +1,43 @@
+/* Fix card flexbox layout for proper content flow */
+
+/* Ensure main content area grows to fill available space */
+.minimal-card > *:not(.mt-auto) {
+  flex-grow: 0; /* Don't grow, just take natural height */
+  flex-shrink: 0; /* Don't shrink */
+}
+
+/* Stats section should not grow but stick to bottom */
+.minimal-card .flex.items-center.justify-between.pt-3.border-t.mt-auto {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+/* Remove any forced heights from content elements */
+.minimal-card h3,
+.minimal-card p,
+.minimal-card .flex.flex-wrap.gap-2 {
+  height: auto !important;
+}
+
+/* Reset all margins first */
+.minimal-card > * {
+  margin: 0 !important;
+}
+
+/* Apply consistent spacing between all elements */
+.minimal-card > * + * {
+  margin-top: 0.75rem !important; /* 12px - consistent spacing */
+}
+
+/* Special case: Author section should have less space before title */
+.minimal-card .flex.items-center.gap-2 + h3 {
+  margin-top: 0.5rem !important; /* 8px between author and title */
+}
+
+/* Remove any bottom margins that might interfere */
+.minimal-card h3,
+.minimal-card p,
+.minimal-card .flex.items-center.gap-2,
+.minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0 !important;
+}

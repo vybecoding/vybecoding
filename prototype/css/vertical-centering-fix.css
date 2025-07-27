@@ -1,0 +1,39 @@
+/* Vertical Centering Fixes */
+
+/* Fix bottom stats section vertical centering */
+.minimal-card .flex.items-center.justify-between.pt-3.border-t {
+  margin-top: 0.5rem !important; /* 8px - move the border line down more */
+  padding-top: 0.5rem !important; /* 8px - equal to card bottom padding */
+  padding-bottom: 0 !important; /* No bottom padding - card provides the 8px */
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0 !important;
+}
+
+/* Adjust card padding to match top (8px) */
+.minimal-card {
+  padding: 1.25rem !important; /* Keep default padding */
+  padding-bottom: 0.5rem !important; /* Override bottom to 8px to match top */
+}
+
+/* Ensure the p-5 class doesn't override our bottom padding */
+.minimal-card.p-5 {
+  padding-bottom: 0.5rem !important; /* 8px to match date from top */
+}
+
+/* Ensure verified text and likes are vertically centered */
+.minimal-card .flex.items-center.justify-between.pt-3.border-t > div {
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Fix GUIDE label vertical centering */
+.minimal-card::before {
+  padding: 0.5rem 0.625rem !important;
+  padding-top: 0.6875rem !important; /* Add 3px total (0.1875rem) to push text down */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  height: auto !important;
+}
