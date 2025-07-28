@@ -2,20 +2,18 @@
 
 ## Overview
 
-Claude Code now operates with minimal human interaction, reducing prompts from ~15-20 per story to just 3-5. The system autonomously handles story selection, task delegation, error resolution, and progress tracking.
+Claude Code operates with minimal human interaction through BMAD agents and automated hooks. The system handles story selection, error resolution, and progress tracking.
 
 ## What's Now Automated
 
 ### 1. **Story Management**
-- **Auto-selection**: Picks highest priority story based on dependencies, parallelization, and patterns
+- **Auto-selection**: Picks highest priority story based on dependencies and patterns
 - **Auto-activation**: Detects story context and activates appropriate agent
-- **Auto-delegation**: Runs parallelization if score > 70%
 - **Auto-progression**: Moves to next story on completion
 
 ### 2. **Approvals & Decisions**
-- **Parallel execution plans**: Auto-approved when confidence high
 - **Security fixes**: Auto-applied if pattern matches with >90% confidence
-- **Test execution**: Automatically runs after integration
+- **Test execution**: Automatically runs after changes
 - **Known error fixes**: Applied without asking if confidence >95%
 
 ### 3. **Continuous Operations**
@@ -25,8 +23,8 @@ Claude Code now operates with minimal human interaction, reducing prompts from ~
 - **Session reviews**: Generated every 4 hours of active work
 
 ### 4. **Context Recognition**
-- **"work on X"** → Loads story, activates dev-enhanced, delegates
-- **"create stories"** → Activates sm-enhanced, analyzes PRD
+- **"work on X"** → Loads story, activates dev agent
+- **"create stories"** → Activates sm agent, analyzes PRD
 - **"what's next?"** → Shows priorities, suggests best story
 - **"fix error"** → Searches TRAIL, applies known solutions
 
@@ -35,7 +33,7 @@ Claude Code now operates with minimal human interaction, reducing prompts from ~
 ### Automation Hooks
 1. **`.claude/config/hooks/pre-session-hook.sh`**
    - Runs on session start
-   - Shows ready stories with parallelization scores
+   - Shows ready stories with priority scores
    - Displays available patterns and recent errors
 
 2. **`.claude/solutions/story-auto-select.sh`**
@@ -57,7 +55,7 @@ Claude Code now operates with minimal human interaction, reducing prompts from ~
 ## Updated CLAUDE.md Rules
 
 ### Autonomous Operation Rules Added:
-- **Story Selection Automation**: Auto-detect, analyze, delegate
+- **Story Selection Automation**: Auto-detect, analyze, track progress
 - **Smart Approval Rules**: Confidence-based auto-approvals
 - **Proactive Behaviors**: Session start checks, auto-reviews
 - **Context-Aware Activation**: Pattern recognition for commands
@@ -90,13 +88,11 @@ Claude Code now operates with minimal human interaction, reducing prompts from ~
 
 ### Old Workflow (Many Prompts):
 ```
-Human: /dev-enhanced
+Human: /dev
 Human: load story USER-001
-Human: *delegate
-Human: yes (approve delegation)
+Human: *analyze
+Human: yes (approve plan)
 Human: *status
-Human: *integrate
-Human: yes (approve integration)
 Human: *run-tests
 Human: fix the error...
 Human: mark complete
@@ -114,11 +110,11 @@ Claude: ✅ USER-AUTH complete, starting next priority...
 Human: what's ready?
 Claude: 
 📋 3 stories ready:
-⚡ USER-AUTH (85% parallel) [AUTO-DELEGATE]
-📄 DASHBOARD (45% parallel)
-📄 SETTINGS (30% parallel)
+⚡ USER-AUTH (high priority)
+📄 DASHBOARD (medium priority)
+📄 SETTINGS (low priority)
 
-Starting USER-AUTH with auto-delegation...
+Starting USER-AUTH...
 [Works autonomously]
 ```
 
@@ -136,7 +132,7 @@ Starting USER-AUTH with auto-delegation...
 - Autonomous progress tracking
 - Automatic error resolution (95% of cases)
 - 80% reduction in human interaction
-- 3-5x faster overall workflow
+- 2x faster overall workflow
 
 ## Configuration
 

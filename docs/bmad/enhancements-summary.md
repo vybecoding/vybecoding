@@ -1,6 +1,6 @@
 # BMAD Method Enhancements
 
-This document describes the `.bmad/` enhancement structure for extending BMAD's capabilities without introducing framework conflicts.
+This document describes the `.bmad/` enhancement structure for extending BMAD's capabilities with focused, practical enhancements.
 
 ## Directory Structure
 
@@ -174,4 +174,4 @@ Manage persistent context that needs to be shared across agent interactions.
 - Document breaking changes
 - Maintain compatibility
 
-This structure ensures BMAD remains the central orchestrator while allowing flexible, project-specific enhancements that improve productivity without adding confusion.
+This structure ensures BMAD remains the central workflow system while allowing flexible, project-specific enhancements that improve productivity without adding confusion.

@@ -62,20 +62,14 @@ For manual documentation analysis:
 
 ### BMAD Method Commands
 - `/dev` - Development agent
-- `/dev-enhanced` - Development with orchestration
 - `/sm` - Story management
-- `/sm-enhanced` - Story management with parallel creation
 - `/qa` - Quality assurance agent
 - `/po` - Product owner agent
 - `/pm` - Project manager agent
 
-### Sub-Agent Commands
-- `/sub-frontend-impl` - Frontend implementation
-- `/sub-backend-impl` - Backend implementation
-- `/sub-test-impl` - Test implementation
-- `/sub-integration` - Component integration
-- `/sub-doc-sync` - Documentation updates
-- `/sub-coordinator` - Result aggregation
+### Utility Commands
+- `/memory` - Access Claude.md for editing
+- `/save` - Persist session state
 
 ### Utility Commands
 - `/memory` - Edit CLAUDE.md instructions

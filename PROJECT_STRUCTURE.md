@@ -21,11 +21,7 @@ vybecoding/
 │   │   ├── memory-server.js   # MCP memory server
 │   │   ├── playwright-debug.js # Visual debugging
 │   │   └── ...               # Other TRAIL components
-│   └── sub-agents/           # BMAD sub-agents
-│       └── bmad/
-│           ├── continuous/   # Monitoring agents
-│           ├── implementation/ # Dev agents
-│           └── orchestration/  # Coordination agents
+│   └── [reserved for future use]
 │
 ├── app/                      # Next.js App Router
 │   ├── api/                 # API routes
@@ -132,7 +128,7 @@ vybecoding/
 ### Automation & AI
 - **.claude/solutions/**: TRAIL system for error learning
 - **.claude/hooks/**: Automated workflows
-- **.claude/sub-agents/**: BMAD parallel execution agents
+- **.claude/**: Claude Code configuration and tools
 - **.claude/commands/**: Slash commands for Claude
 
 ### Documentation

@@ -6,7 +6,7 @@ This guide shows only the human interactions needed during actual development. S
 
 ### 🤖 Claude Handles Automatically
 - Story selection and prioritization
-- Parallelization analysis and delegation
+- Task analysis and tracking
 - Test execution and known error fixes  
 - Progress monitoring and reporting
 - Most approvals (>90% confidence)
@@ -25,14 +25,14 @@ This guide shows only the human interactions needed during actual development. S
 "what's next?"           # Auto-selects best story
 "work on [story]"        # Starts specific story
 "create stories"         # From new PRD
-"review progress"        # Shows orchestration monitor
+"review progress"        # Shows task status
 ```
 
 ### During Development
 ```bash
 # Claude handles these automatically:
 - Story analysis and delegation
-- Sub-agent coordination
+- Task coordination
 - Test execution and fixes
 - Progress tracking
 
@@ -94,7 +94,7 @@ You: "Approved - update version to 2.0"
 "review session"         # Detailed review
 
 # Real-time dashboard (separate terminal)
-node .bmad-core/utils/orchestration-monitor.js
+# View current task progress in logs
 ```
 
 ### Automatic Reviews
@@ -118,12 +118,12 @@ node .bmad-core/utils/orchestration-monitor.js
 You: what's ready?
 
 Claude: 📋 3 stories ready:
-⚡ USER-AUTH (85% parallel) [AUTO-DELEGATE]
-📄 PROFILE-MGMT (72% parallel) [AUTO-DELEGATE]
-📄 DASHBOARD (45% parallel)
+⚡ USER-AUTH (high priority)
+📄 PROFILE-MGMT (high priority)
+📄 DASHBOARD (medium priority)
 
 Starting USER-AUTH with auto-delegation...
-🚀 Delegating to 4 sub-agents...
+🚀 Starting implementation...
 ```
 
 ### Midday
@@ -246,7 +246,7 @@ You: "approve all"
 ### Trust Metrics
 - 95%+ patterns = auto-applied
 - 90%+ confidence = auto-approved  
-- 70%+ parallel = auto-delegated
+- High priority = auto-started
 - 4 hours = auto-reviewed
 
 ## 🎯 Summary
@@ -260,7 +260,7 @@ You: "approve all"
 ### Claude Handles
 - Everything else automatically
 - 90% autonomous operation
-- 3-5x faster development
+- 2x faster development
 - Continuous improvement
 
 ### Success Metrics
@@ -271,4 +271,4 @@ You: "approve all"
 
 This workflow transforms Claude from an assistant into an autonomous development system that only needs you for what truly matters.
 
-This guide ensures you know exactly when and how to interact with the BMAD enhanced workflow for maximum efficiency while maintaining control over critical decisions.
+This guide ensures you know exactly when and how to interact with the BMAD workflow for maximum efficiency while maintaining control over critical decisions.

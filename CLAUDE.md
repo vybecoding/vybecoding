@@ -464,57 +464,26 @@ This helps identify when to break down tasks further.
 
 ## BMAD Method Integration
 
-### Sub-Agent Orchestration
-The BMAD Method has been enhanced with powerful sub-agent capabilities for parallel execution.
+The BMAD Method provides structured story management and development workflows through specialized agents.
 
-#### Available Sub-Agents
-**Implementation Specialists:**
-- `/sub-frontend-impl` - Frontend UI implementation
-- `/sub-backend-impl` - Backend API development
-- `/sub-test-impl` - Test creation and automation
-- `/sub-integration` - Component integration
-
-**Continuous Monitors:**
-- `/sub-doc-sync` - Keeps documentation updated
-- `/sub-test-runner` - Runs tests continuously
-- `/sub-security-scan` - Monitors for vulnerabilities
-- `/sub-trail-monitor` - Manages TRAIL knowledge
-
-**Orchestration:**
-- `/sub-dispatcher` - Distributes tasks intelligently
-- `/sub-coordinator` - Aggregates results
-
-#### BMAD Parallel Execution Rules
-1. **Always analyze stories for parallelization** - Dev agent should identify independent tasks
-2. **Delegate to specialized sub-agents** - Match tasks to sub-agent expertise
-3. **Track progress in TodoWrite** - All sub-agent tasks must be tracked
-4. **Use TRAIL for all agents** - Every agent/sub-agent searches and logs solutions
-5. **Integrate before completion** - Use coordinator to merge results
-
-#### Enhanced BMAD Agents
-- **Dev Enhanced** (`/dev-enhanced`) - Orchestrates parallel implementation
-- **SM Enhanced** (`/sm-enhanced`) - Creates stories for multiple epics simultaneously
-
-#### Workflow Example
-```
-Story with 4 tasks → Dev analyzes → Delegates to sub-agents:
-- Frontend task → /sub-frontend-impl
-- Backend task → /sub-backend-impl  
-- Test task → /sub-test-impl
-All run in parallel, 3x faster completion
-```
+### Available BMAD Agents
+- **Dev** (`/dev`) - Full stack development implementation
+- **SM** (`/sm`) - Story management and creation
+- **QA** (`/qa`) - Quality assurance and testing
+- **PO** (`/po`) - Product owner perspective
+- **PM** (`/pm`) - Project management
 
 ### VybeHacks + BMAD Integration
 
 #### TRAIL Integration
 - All BMAD agents use `.claude/solutions/search.sh` before tasks
-- Sub-agents share solutions automatically
-- Errors trigger learning across all agents
+- Errors trigger learning and solution storage
+- Solutions available across all agents
 
 #### Hook Integration  
-- Sub-agent changes tracked in auto-commits
-- Session reviews include parallelization metrics
-- Documentation auto-updates from all agents
+- Changes tracked in auto-commits
+- Session reviews capture all modifications
+- Documentation auto-updates after changes
 
 #### Security Enforcement
 - All agents apply CLAUDE.md security rules
@@ -522,11 +491,11 @@ All run in parallel, 3x faster completion
 - No temporary fixes allowed
 
 ### Best Practices
-1. **Use enhanced agents for complex stories** - Leverage parallelization
-2. **Let sub-agents specialize** - Don't override their expertise
-3. **Monitor with TodoWrite** - Track all parallel work
+1. **Use appropriate agent for task type** - Dev for coding, SM for stories
+2. **Follow BMAD workflows** - Each agent has specific commands
+3. **Monitor with TodoWrite** - Track all work systematically
 4. **Trust TRAIL** - Apply learned solutions immediately
-5. **Review aggregated results** - Ensure quality integration
+5. **Review session changes** - Use generate-review.sh
 
 ## Continuous Learning System
 
@@ -542,7 +511,6 @@ The project now includes an intelligent continuous learning system that improves
 ### Learning Types
 
 - **Error Resolution**: Common errors and their fixes
-- **Task Distribution**: Optimal sub-agent allocation strategies
 - **Performance Optimization**: Execution improvements
 - **Integration Conflicts**: Resolution patterns
 - **Security Fixes**: Automated security corrections
@@ -565,17 +533,14 @@ node .claude/solutions/continuous-learning.js apply '{"taskType":"frontend"}'
 
 ### Integration with BMAD
 
-- Sub-agents automatically benefit from learned patterns
-- Orchestration improves based on distribution success
-- Error patterns shared across all agents instantly
+- BMAD agents benefit from learned patterns
+- Error patterns shared across all agents
 - Performance optimizations applied automatically
 
 ### Metrics Tracked
 
 - Task completion times by type
-- Parallelization efficiency
 - Error rates and resolutions
-- Sub-agent utilization
 - Learning application success rate
 
 This creates a self-improving development system that gets faster and more reliable over time!
@@ -583,23 +548,16 @@ This creates a self-improving development system that gets faster and more relia
 ## Autonomous Operation Rules
 
 ### Story Selection Automation
-- **Auto-detect story context**: When user opens a story file or mentions a story ID, automatically activate dev-enhanced agent
-- **Auto-analyze parallelization**: When story detected, automatically run analysis without prompting
-- **Auto-delegate high-confidence**: If parallelization score > 70%, automatically run *delegate command
+- **Auto-detect story context**: When user opens a story file or mentions a story ID, automatically activate dev agent
 - **Auto-progress tracking**: Use TodoWrite to track all story tasks without prompting
 
 ### Smart Approval Rules
 **Auto-approve these without asking:**
-- Parallel execution plans when:
-  - All tasks have clear descriptions
-  - No external dependencies detected
-  - High confidence patterns available (>90%)
-  - Previous similar distributions succeeded
 - Security fixes that:
   - Match known patterns in continuous learning
   - Are marked as automated in CLAUDE.md rules
   - Have been successfully applied 3+ times before
-- Test execution after integration completes
+- Test execution after changes complete
 - Documentation updates via /update-docs
 - Session reviews and learning reports
 
@@ -614,12 +572,11 @@ This creates a self-improving development system that gets faster and more relia
 
 ### Context-Aware Activation
 **Recognize these patterns and act:**
-- "work on [story/feature]" → Activate dev-enhanced, load story
-- "create stories" → Activate sm-enhanced
+- "work on [story/feature]" → Activate dev agent, load story
+- "create stories" → Activate sm agent
 - "fix [error]" → Search TRAIL, apply known solutions
-- "review progress" → Show orchestration monitor
 - "what's next" → Show priority stories, suggest highest
-- File paths containing "story" → Analyze for orchestration
+- File paths containing "story" → Load for development
 
 ### Batching Operations
 **Group these for single approval:**
@@ -632,7 +589,6 @@ This creates a self-improving development system that gets faster and more relia
 **Apply without confirmation when:**
 - Pattern confidence > 95%
 - Similar error solved 5+ times with same fix
-- Task distribution pattern succeeded 10+ times
 - Security fix automated and tested 3+ times
 - Performance optimization with proven metrics
 

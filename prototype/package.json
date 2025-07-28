@@ -18,6 +18,7 @@
     "type-check": "jsdoc -c jsdoc.conf.json --dry-run",
     "analyze": "vite-bundle-analyzer dist",
     "test": "echo 'Tests will be added in future versions'",
+    "test:cleanup": "rm -rf __tests__/temp/*",
     "validate": "npm run lint && npm run type-check && npm run build"
   },
   "devDependencies": {

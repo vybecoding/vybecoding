@@ -73,7 +73,7 @@ The hook may create:
 Works with:
 - TRAIL system for solution lookup
 - Continuous learning for patterns
-- Story orchestration for BMAD
+- BMAD story management
 - Auto-commit for tracking
 
 ## Last Tested

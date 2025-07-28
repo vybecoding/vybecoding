@@ -31,7 +31,6 @@ The continuous learning hook analyzes patterns from errors, performance metrics,
 
 ### 2. Automatic Learning Types
 - **Error Resolution**: Common errors and their fixes
-- **Task Distribution**: Optimal sub-agent allocation strategies
 - **Performance Optimization**: Execution improvements
 - **Integration Conflicts**: Resolution patterns
 - **Security Fixes**: Automated security corrections
@@ -44,9 +43,7 @@ The continuous learning hook analyzes patterns from errors, performance metrics,
 
 ### 4. Metrics Tracked
 - Task completion times by type
-- Parallelization efficiency
 - Error rates and resolutions
-- Sub-agent utilization
 - Learning application success rate
 
 ## Installation
@@ -110,9 +107,9 @@ The system automatically runs:
 
 ## Integration with BMAD
 
-### Sub-Agent Benefits
-- Sub-agents automatically receive learned patterns
-- Orchestration improves based on success metrics
+### BMAD Agent Benefits
+- BMAD agents receive learned patterns
+- Workflows improve based on success metrics
 - Error patterns shared instantly across all agents
 - Performance optimizations applied automatically
 
@@ -150,7 +147,6 @@ The system automatically runs:
     "backend": "sub-backend-impl",
     "tests": "sub-test-impl"
   },
-  "parallelizationScore": 0.85
 }
 ```
 
@@ -158,7 +154,7 @@ The system automatically runs:
 ```javascript
 {
   "operation": "Multi-file search",
-  "optimization": "Use parallel Grep with glob patterns",
+  "optimization": "Use Grep with glob patterns",
   "improvement": "75% faster",
   "confidence": 0.92
 }

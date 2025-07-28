@@ -4,7 +4,7 @@ AI-powered development platform built with Next.js, featuring automated workflow
 
 ## 🚀 Features
 
-- **AI-Enhanced Development**: Integrated BMAD Method with parallel sub-agents for 3x faster development
+- **AI-Enhanced Development**: Integrated BMAD Method for structured story management
 - **Security-First Architecture**: Multiple layers of security including input validation, XSS prevention, and timing attack mitigation
 - **Automated Workflows**: TRAIL system for automatic error learning and resolution
 - **Real-time Collaboration**: Powered by Convex for instant data synchronization
@@ -110,17 +110,16 @@ Automatic testing, error resolution, and intelligent learning:
 - Level 3: Playwright visual debugging with trace recording
 - Pattern recognition and automatic optimization
 
-### BMAD Sub-Agents
-Parallel execution with specialized agents:
-- Frontend Implementation
-- Backend Development
-- Test Creation
-- Integration Tasks
+### BMAD Agents
+Structured development with specialized agents:
+- `/dev` - Full stack development
+- `/sm` - Story management
+- `/qa` - Quality assurance
+- `/po` - Product owner perspective
+- `/pm` - Project management
 
 ### Slash Commands
 - `/update-docs` - Automatically update documentation
-- `/dev-enhanced` - Orchestrate parallel development
-- `/sm-enhanced` - Create stories for multiple epics
 
 ## 🚀 Deployment
 

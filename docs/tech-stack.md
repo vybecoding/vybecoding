@@ -18,14 +18,14 @@ Strategic instructions that shape Claude's behavior without complex configuratio
 ### Automated Learning Systems
 Self-improving systems that get smarter with use.
 
-#### TRAIL System - Enhanced with Continuous Learning ✅
+#### TRAIL System with Continuous Learning ✅
 **Problem:** Solving the same errors repeatedly wastes time  
 **Solution:** Automatic test-and-learn system with pattern recognition and continuous improvement  
 **Implementation:** 
 - **Core TRAIL:** `.claude/solutions/` directory with hooks that detect, log, and recall solutions
 - **Continuous Learning:** Pattern recognition across errors, performance, and task distribution
 - **Auto-Application:** Learned patterns automatically applied to new tasks
-- **Cross-Agent Sharing:** Solutions shared instantly across all sub-agents
+- **Cross-Agent Sharing:** Solutions shared across all BMAD agents
 
 #### Three-Level Debugging Escalation
 **Problem:** Wasting time on complex debugging when simple solutions exist  
@@ -75,16 +75,15 @@ Includes:
 - Complete hook configuration
 - Backup strategies
 
-## 🤖 AI Agent Orchestration 🤖
+## 🤖 AI Agent Integration 🤖
 
-### BMAD Method Integration - Enhanced with Sub-Agents ✅
-**Problem:** Sequential execution limiting development speed  
-**Solution:** Parallel execution with 8 specialized sub-agents orchestrated by enhanced BMAD agents  
+### BMAD Method Integration ✅
+**Problem:** Unstructured development workflows and story management  
+**Solution:** Specialized agents for different development roles and workflows  
 **Implementation:** 
-- **Enhanced Agents:** `/dev-enhanced` and `/sm-enhanced` with delegation capabilities
-- **Sub-Agents:** Frontend, Backend, Test, Integration specialists + continuous monitors
-- **Orchestration:** Real-time monitoring, automatic task distribution, conflict resolution
-- **Results:** 3-5x faster development through parallel execution
+- **Development Agents:** `/dev` for coding, `/sm` for stories, `/qa` for testing
+- **Management Agents:** `/po` for product owner tasks, `/pm` for project management
+- **Integration:** Works with TRAIL system for error learning and solution sharing
 
 #### BMAD Setup (One-Time)
 ```bash
@@ -95,9 +94,8 @@ npm install -g bmad-method@latest
 cd /path/to/project
 bmad install --ide claude-code
 
-# Enhanced agents are pre-configured in:
-# .bmad-core/agents/dev-enhanced.md
-# .bmad-core/agents/sm-enhanced.md
+# Agents are configured in:
+# .bmad-core/agents/
 ```
 
 ### Autonomous Operation Setup ✅
@@ -124,7 +122,7 @@ bmad install --ide claude-code
 .claude/solutions/session-tracker.sh
 ```
 
-### Enhanced with PRPs Commands
+### PRPs Commands
 **Problem:** Lack of structured planning and execution workflows  
 **Solution:** Selected slash commands for systematic development  
 **Implementation:** `/create-base-prp` for planning, `/execute-base-prp` for execution
@@ -140,8 +138,7 @@ bmad install --ide claude-code
 
 #### 🤖 100% Automated
 - **Claude Code Auto-Approval** - Auto-approves safe commands without prompting
-- **BMAD Method Enhanced** - Parallel execution with sub-agents via `/dev-enhanced`, `/sm-enhanced`
-- **Orchestration Monitor** - Real-time visualization of parallel execution
+- **BMAD Method** - Structured story management via `/dev`, `/sm`, `/qa`, `/po`, `/pm`
 - **Continuous Learning** - Pattern recognition and automatic optimization
 - **Live Server Extension** - Auto-refreshes on file save
 
@@ -217,9 +214,8 @@ ps aux | grep mcp
 ### Phase 4: Testing & Quality
 
 #### 🤖 100% Automated
-- **TRAIL System** - Auto-tests, learns, and applies fixes with continuous learning (✅ Enhanced)
+- **TRAIL System** - Auto-tests, learns, and applies fixes with continuous learning (✅)
 - **Semgrep MCP** - Auto-scans code for vulnerabilities (✅ Configured)
-- **Sub-Agent Testing** - Parallel test execution with `/sub-test-impl` (✅ Configured)
 - **Continuous Learning** - Pattern-based optimization of test strategies (✅ Configured)
 
 #### 👤 Human Required
@@ -309,7 +305,7 @@ npx playwright install chromium
 
 | Tool | Repository/Package | Installation |
 |------|-------------------|--------------|
-| BMAD Method Enhanced | https://github.com/bmadcode/BMAD-METHOD.git | `npm install -g bmad-method@latest` + local enhancements |
+| BMAD Method | https://github.com/bmadcode/BMAD-METHOD.git | `npm install -g bmad-method@latest` |
 | Claude Code Auto-Approval | https://github.com/yifanzz/claude-code-boost.git | See setup script |
 | Nuclei | https://github.com/projectdiscovery/nuclei.git | `go install nuclei@latest` |
 | TRAIL System | Local Hook System (not a repo) | Copy from existing project or create fresh |
@@ -387,7 +383,6 @@ Claude Code hooks enable automated workflows that trigger on specific events. Ou
 - **[Auto-Commit Hook](./hooks/auto-commit.md)** - Git automation for Claude changes
 - **[Continuous Learning](./hooks/continuous-learning.md)** - Pattern recognition and optimization
 - **[Security Hooks](./hooks/security-hooks.md)** - Automated security measures
-- **[Orchestration Hooks](./hooks/orchestration-hooks.md)** - BMAD integration and automation
 - **[Complete Setup Guide](./hooks/setup-all-hooks.md)** - Step-by-step installation instructions
 
 ### Quick Overview
@@ -396,7 +391,6 @@ Our hook system includes:
 - **TRAIL System**: Automatically tests code, captures errors, and learns solutions
 - **Auto-Commit**: Commits all Claude changes to a separate branch
 - **Security**: Environment sanitization, XSS prevention, and threat detection
-- **Orchestration**: BMAD story automation and task delegation
 - **Learning**: Continuous improvement through pattern recognition
 
 ### Current Configuration
@@ -446,9 +440,7 @@ node .claude/solutions/continuous-learning.js report
 
 ## 🎯 Total Stack: 40+ Tools Organized by Workflow 🎯
 
-### 🚀 New Orchestration & Learning Capabilities
-- **Parallel Execution**: 3-5x faster development with sub-agent orchestration
+### 🚀 Learning Capabilities
 - **Continuous Learning**: Self-improving system that gets smarter over time
-- **Real-time Monitoring**: Dashboard, timeline, and metrics views
 - **Pattern Recognition**: Automatic optimization based on historical data
-- **Cross-Agent Knowledge Sharing**: Instant solution propagation
+- **Knowledge Sharing**: Solution propagation across agents

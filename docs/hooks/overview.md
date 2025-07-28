@@ -79,7 +79,6 @@ All hooks are now active in `.claude/config/settings.json`:
 | PostToolUse.* | Auto-Commit | ✅ Active | Commits changes to main branch |
 | PostToolUse.Edit/Write | Post-Edit Sanitize | ✅ Active | XSS prevention |
 | PostToolUse.Bash | Continuous Learning | ✅ Active | Pattern recognition |
-| PostToolUse.Edit/Write | Orchestration | ✅ Active | BMAD story automation |
 | PostResponse | Post-Response Scan | ✅ Active | Detects malicious AI patterns |
 | Stop | Task Complete | ✅ Active | Session cleanup and review |
 

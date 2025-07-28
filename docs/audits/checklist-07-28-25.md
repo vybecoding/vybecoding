@@ -103,9 +103,9 @@
 ### (Workflow)
 | ☐ | Component | Location/Details | Docs to Update |
 |---|-----------|------------------|----------------|
-| test ☐ | BMAD Method | Global npm package + local enhancements • [repo](https://github.com/bmadcode/BMAD-METHOD.git) | `docs/workflows.md` |
-| test ☐ | Slash Commands | `.claude/commands/` directory | `docs/workflows.md` |
-| test ☐ | Sub-Agents | `.claude/sub-agents/` for BMAD orchestration | `docs/workflows.md` |
+| test ✅ | BMAD Method | v4.33.0 installed with Infrastructure DevOps pack • [repo](https://github.com/bmadcode/BMAD-METHOD.git) | `docs/workflows.md` |
+| test ✅ | Slash Commands | `.claude/commands/BMad/` and `/bmadInfraDevOps/` installed | `docs/workflows.md` |
+| ❌ | Sub-Agents | Removed - not compatible with Claude Code architecture | N/A |
 | test ☐ | TRAIL System | `.claude/solutions/` complete system | `docs/workflows.md` |
 
 ---
