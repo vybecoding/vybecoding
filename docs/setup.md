@@ -39,14 +39,24 @@
 
 | Tool | Type | Status | Tier | Usage | Link |
 |------|------|--------|------|--------|------|
-| **validator.js** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐⭐⭐ | Auto-validates inputs via rules | [npm](https://www.npmjs.com/package/validator) |
-| **DOMPurify** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Hook auto-checks HTML edits | [repo](https://github.com/cure53/DOMPurify) |
-| **safe-compare** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐ | Auto-applied timing attack prevention | [npm](https://www.npmjs.com/package/safe-compare) |
+| **validator.js** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐⭐⭐ | Auto-validates inputs via rules • v13.15.15 | [npm](https://www.npmjs.com/package/validator) |
+| **DOMPurify** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Hook auto-checks HTML edits • v3.2.6 | [repo](https://github.com/cure53/DOMPurify) |
+| **safe-compare** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐ | Auto-applied timing attack prevention • v1.1.4 | [npm](https://www.npmjs.com/package/safe-compare) |
 | **Living off AI Monitor** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Auto-scans AI responses • logs to `.claude/solutions/security/` | [CUSTOM] |
-| **HashiCorp Vault** | 👤 Manual | ✅ | ⭐⭐⭐⭐⭐ | `.claude/solutions/start-vault.sh` • [UI](http://127.0.0.1:8200) | [repo](https://github.com/hashicorp/vault) |
-| **GitGuardian** | 🤖 Auto | ✅ | ⭐⭐⭐⭐⭐ | GitHub app auto-scans commits • FREE unlimited | [gitguardian.com](https://www.gitguardian.com/) |
-| **Snyk** | 👤 Manual | ✅ | ⭐⭐⭐⭐ | `snyk test`, `snyk monitor` • FREE 200/month | [snyk.io](https://snyk.io/) |
+| **HashiCorp Vault** | 👤 Manual | ✅ | ⭐⭐⭐⭐⭐ | `vault server -dev` • [UI](http://127.0.0.1:8200) • v1.15.4 | [repo](https://github.com/hashicorp/vault) |
+| **GitGuardian** | 🤖 Auto | ✅ | ⭐⭐⭐⭐⭐ | `ggshield` CLI • v1.41.0 • Pre-commit hooks | [gitguardian.com](https://www.gitguardian.com/) |
+| **Snyk** | 👤 Manual | ✅ | ⭐⭐⭐⭐ | `snyk test`, `snyk monitor` • v1.1298.1 • FREE 200/month | [snyk.io](https://snyk.io/) |
+| **Nuclei** | 👤 Manual | ✅ | ⭐⭐⭐⭐ | `nuclei -u target.com` • v3.3.7 • Template scanning | [repo](https://github.com/projectdiscovery/nuclei.git) |
+| **MCP-Scan** | 👤 Manual | ✅ | ⭐⭐⭐ | `mcp-scan scan <server>` • v0.3.2 • MCP security | [repo](https://github.com/invariantlabs-ai/mcp-scan) |
 | **Cross-tenant Tester** | 👤 Future | ⏳ | ⭐⭐⭐ | `npm run test:isolation` • when multi-tenant | [CUSTOM] |
+
+## 🎨 UI Libraries
+
+| Library | Type | Status | Usage | Link |
+|---------|------|--------|--------|------|
+| **Lucide Icons** | 🤖 Auto | ✅ | React icons • 1000+ icons • v0.532.0 | [lucide.dev](https://lucide.dev) |
+| **Shadcn/ui** | 🤖 Auto | ✅ | Component library • Button added • Configured | [ui.shadcn.com](https://ui.shadcn.com) |
+| **Tailwind CSS** | 🤖 Auto | ✅ | Utility-first CSS • v3.4.0 | [tailwindcss.com](https://tailwindcss.com) |
 
 ## 🚀 Deployment & Post-MVP
 
@@ -86,7 +96,7 @@
 | **Hooks System** | 📖 Local | Claude Code hooks documentation | `/home/happy/Projects/vybecoding/docs/tech-stack.md#-claude-code-hooks-system-` |
 | **VybeHacks** | 📖 Local | TRAIL, VERIFY-FIRST patterns | `/home/happy/Projects/vybecoding/docs/vybehacks` |
 | **BMAD Orchestration Guide** | 📖 Local | Parallel execution guide | `.bmad-core/docs/orchestration-guide.md` |
-| **Audit Checklist** | 📖 Local | Latest audit & consolidation checklist | `/home/happy/Projects/vybecoding/docs/audits/checklist-01-28-25.md` |
+| **Audit Checklist** | 📖 Local | Latest audit & consolidation checklist | `/home/happy/Projects/vybecoding/docs/audits/checklist-07-28-25.md` |
 | **BMAD Guide** | 🌐 Online | Multi-agent workflows | [wiki](https://github.com/bmadcode/BMAD-METHOD/wiki) |
 | **Convex Docs** | 🌐 Online | Database patterns | [docs.convex.dev](https://docs.convex.dev/) |
 | **Clerk Docs** | 🌐 Online | Auth implementation | [clerk.com/docs](https://clerk.com/docs) |

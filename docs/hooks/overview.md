@@ -28,10 +28,16 @@ All hooks are configured in `.claude/config/settings.json`:
 
 ## Available Hook Events
 
+- **PreSession**: Triggers when Claude Code session starts
+  - Example: Pre-session hook shows ready stories and setup status
+- **PreToolUse**: Triggers before any tool is used (for auto-approval, validation, etc.)
+  - Example: Claude Code Boost auto-approves common operations
 - **PostToolUse**: Triggers after any tool is used (Bash, Edit, Write, etc.)
   - Can be configured per tool: `PostToolUse.Bash`, `PostToolUse.Edit`, etc.
-- **PreSession**: Triggers when Claude Code session starts
 - **PostResponse**: Triggers after Claude generates a response
+  - Example: Post-response scan for malicious AI patterns
+- **Stop**: Triggers when Claude Code session ends
+  - Example: Task complete hook for session cleanup
 
 ## Hook Types in vybecoding
 
@@ -42,6 +48,7 @@ All hooks are configured in `.claude/config/settings.json`:
 - Path validation
 
 ### 2. Automation Hooks
+- Claude Code Boost (auto-approval of common operations)
 - TRAIL system (test and learn)
 - Auto-commit to git
 - Continuous learning
@@ -60,6 +67,22 @@ All hooks are configured in `.claude/config/settings.json`:
 - **Knowledge Building**: Systems learn from every interaction
 - **Workflow Optimization**: Intelligent automation speeds development
 
+## Current Hook Configuration Status ✅
+
+All hooks are now active in `.claude/config/settings.json`:
+
+| Hook Event | Hook Name | Status | Function |
+|------------|-----------|--------|----------|
+| PreSession | Pre-Session Hook | ✅ Active | Shows ready stories and setup status |
+| PreToolUse | Claude Code Boost | ✅ Active | Auto-approves Bash, Edit, MultiEdit, Write |
+| PostToolUse.* | Environment Sanitization | ✅ Active | Cleans sensitive data from outputs |
+| PostToolUse.* | Auto-Commit | ✅ Active | Commits changes to main branch |
+| PostToolUse.Edit/Write | Post-Edit Sanitize | ✅ Active | XSS prevention |
+| PostToolUse.Bash | Continuous Learning | ✅ Active | Pattern recognition |
+| PostToolUse.Edit/Write | Orchestration | ✅ Active | BMAD story automation |
+| PostResponse | Post-Response Scan | ✅ Active | Detects malicious AI patterns |
+| Stop | Task Complete | ✅ Active | Session cleanup and review |
+
 ## Quick Start
 
 1. Hooks are already configured in `.claude/config/settings.json`
@@ -77,7 +100,9 @@ All hooks are configured in `.claude/config/settings.json`:
 
 ## Related Documentation
 
+- [Claude Code Boost](https://github.com/yifanzz/claude-code-boost) - Auto-approval system (PreToolUse hook)
 - [TRAIL System Hook](./trail-system.md) - Automatic testing and learning
 - [Security Hooks](./security-hooks.md) - Security automation
 - [Auto-Commit Hook](./auto-commit.md) - Git automation
+- [Continuous Learning](./continuous-learning.md) - Pattern recognition and learning
 - [Complete Setup Guide](./setup-all-hooks.md) - Full installation instructions

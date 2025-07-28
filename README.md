@@ -19,12 +19,13 @@ AI-powered development platform built with Next.js, featuring automated workflow
 - **Framework**: Next.js 15.4 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
+- **UI Components**: Shadcn/ui + Lucide Icons
 - **Database**: Convex (real-time, serverless)
 - **Authentication**: Clerk
 - **Payments**: Stripe
 - **Email**: Resend
 - **Monitoring**: Sentry
-- **Testing**: Playwright
+- **Testing**: Playwright + TRAIL System
 
 ## 🏃 Quick Start
 
@@ -62,7 +63,8 @@ vybecoding/
 │   ├── pricing/           # Pricing page
 │   └── services/          # Services page
 ├── components/            # React components
-│   └── cal/              # Cal.com integration components
+│   ├── cal/              # Cal.com integration components
+│   └── ui/               # Shadcn/ui components
 ├── convex/               # Convex backend
 │   ├── _generated/       # Auto-generated types
 │   └── users.ts          # User data model
@@ -70,7 +72,8 @@ vybecoding/
 │   ├── booking/          # Booking utilities
 │   ├── cal/              # Cal.com service
 │   ├── email/            # Email templates and service
-│   └── stripe.ts         # Stripe configuration
+│   ├── stripe.ts         # Stripe configuration
+│   └── utils.ts          # Utility functions (cn())
 ├── docs/                 # Documentation
 │   ├── audits/           # Security and setup audits
 │   ├── bmad/             # BMAD method documentation
@@ -79,6 +82,8 @@ vybecoding/
 │   └── vybehacks/        # VybeHacks patterns
 ├── prototype/            # Demo prototype (Vite-based)
 └── .claude/              # Claude Code configuration
+    ├── config/           # Settings and MCP configuration
+    ├── hooks/            # Hook scripts
     ├── commands/         # Slash commands
     ├── solutions/        # TRAIL system & scripts
     └── sub-agents/       # BMAD sub-agents
@@ -91,15 +96,19 @@ vybecoding/
 - **Timing Attack Prevention**: Secure token comparison with safe-compare
 - **Living off AI Defense**: Automated scanning of AI responses for malicious patterns
 - **Secret Scanning**: GitGuardian integration for commit monitoring
-- **Dependency Auditing**: MCP Security Audit for npm packages
+- **Dependency Auditing**: Snyk continuous monitoring + MCP Security Audit
+- **Vulnerability Scanning**: Nuclei template-based scanning
+- **MCP Security**: MCP-Scan for MCP server security analysis
+- **Secrets Management**: HashiCorp Vault for secure storage
 
 ## 🤖 AI Development Features
 
 ### TRAIL System
 Automatic testing, error resolution, and intelligent learning:
-- Level 1: Local solutions database
+- Level 1: Local solutions database with continuous learning
 - Level 2: Web search for similar errors
-- Level 3: Playwright visual debugging
+- Level 3: Playwright visual debugging with trace recording
+- Pattern recognition and automatic optimization
 
 ### BMAD Sub-Agents
 Parallel execution with specialized agents:

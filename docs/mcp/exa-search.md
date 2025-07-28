@@ -5,8 +5,10 @@ EXA Search MCP provides Claude with AI-optimized web search capabilities across 
 
 ## Status
 ✅ **Installed**: exa-mcp-server@0.3.10
-✅ **Configured**: In `~/.config/claude/claude_desktop_config.json` with API key
+✅ **Configured**: In `.claude/config/mcp-settings.json` with API key
+✅ **Environment**: EXA_API_KEY is set
 ✅ **Running**: Available to Claude automatically (no visible process)
+✅ **Last Tested**: January 28, 2025
 
 ## How EXA Search Actually Works
 

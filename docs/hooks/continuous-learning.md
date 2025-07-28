@@ -6,15 +6,16 @@ The continuous learning hook analyzes patterns from errors, performance metrics,
 
 ## Hook Configuration
 
-**File**: `.claude/config/hooks/continuous-learning-trigger.sh`  
-**Trigger**: On task completions, after certain intervals  
-**Configuration**: Works with `.claude/solutions/continuous-learning.js`
+**File**: `.claude/hooks/continuous-learning-trigger.sh`  
+**Script**: `.claude/solutions/continuous-learning.js`  
+**Trigger**: On task completions, every 10 tool uses  
+**Data**: `.claude/solutions/patterns.json`, `metrics-history.json`
 
 ```json
 {
   "hooks": {
     "PostToolUse": {
-      "Bash": "... && /home/happy/Projects/vybecoding/.claude/config/hooks/continuous-learning-trigger.sh"
+      "Bash": "... && /home/happy/Projects/vybecoding/.claude/hooks/continuous-learning-trigger.sh"
     }
   }
 }
