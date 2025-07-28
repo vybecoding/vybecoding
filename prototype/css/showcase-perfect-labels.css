@@ -28,9 +28,9 @@ html body .minimal-card.pt-1.card-verified.rounded-lg.transition-all.cursor-poin
 }
 
 /* Title section - account for label space */
-.minimal-card h3[style*="margin-top: 2rem"] {
-  margin-top: 2rem !important; /* Space for label */
-  margin-bottom: 0.5rem !important; /* Reduce title to member spacing */
+.minimal-card h3 {
+  margin-top: 1.5rem !important; /* Reduced space for tighter label */
+  margin-bottom: 0 !important; /* No margin for compact look */
   padding: 0 !important;
 }
 

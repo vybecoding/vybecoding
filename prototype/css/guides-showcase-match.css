@@ -54,13 +54,15 @@
 /* Removed to prevent duplication with universal-card-standard.css */
 
 
-/* Fix title spacing to account for label */
+/* Fix title spacing to account for label - higher specificity */
+#guides .minimal-card h3,
+#guides-browse-content .minimal-card h3,
 .minimal-card h3 {
-  margin-top: 2rem !important;
+  margin-top: 1.5rem !important; /* Reduced for tighter label spacing */
   padding: 0 !important;
   font-size: 1.125rem !important;
   line-height: 1.5rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0 !important; /* No bottom margin for compact look */
   font-weight: 600 !important;
   color: #ffffff !important;
 }

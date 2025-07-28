@@ -49,11 +49,11 @@
 
 /* Fix title spacing to account for label */
 .minimal-card[onclick*="showAppDetail"] h3 {
-  margin-top: 2rem !important; /* Space for label - matches guides */
+  margin-top: 1.5rem !important; /* Reduced from 2rem for tighter spacing */
   padding: 0 !important;
   font-size: 1.125rem !important;
   line-height: 1.5rem !important;
-  margin-bottom: 0.5rem !important; /* Match guides spacing */
+  margin-bottom: 0 !important; /* Match guides - no bottom margin */
   font-weight: 600 !important;
   color: #ffffff !important;
 }
