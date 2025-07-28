@@ -1,0 +1,132 @@
+/* Apps Cards - Match New Guide Card Standard */
+
+/* Main grid container for apps */
+#apps-browse-content > .grid,
+.page-container .grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+/* Update minimal-card for apps to match guide standard */
+.minimal-card {
+  background: rgba(26, 26, 26, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(51, 51, 51, 0.4) !important;
+  border-radius: 8px !important;
+  padding: 1.25rem !important;
+  padding-bottom: 0.5rem !important; /* Match guide standard */
+  transition: all 0.3s ease-in-out !important;
+  position: relative !important;
+  z-index: 10 !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Remove any default padding from card classes */
+.minimal-card.p-5 {
+  padding: 1.25rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Card hover state */
+.minimal-card:hover {
+  background: rgba(42, 42, 42, 0.8) !important;
+  border-color: rgba(64, 64, 64, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Add APP label to apps cards */
+.minimal-card[onclick*="showAppDetail"]::before {
+  content: "APP";
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 0.625rem !important;
+  padding-top: 0.6875rem !important; /* Match guide centering */
+  background: rgba(251, 146, 60, 0.5625); /* Orange with same opacity as guide */
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.844rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 0 0 0.625rem 0;
+  z-index: 20;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  letter-spacing: 0.25px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: auto !important;
+}
+
+/* Fix title spacing to account for label */
+.minimal-card[onclick*="showAppDetail"] h3 {
+  margin-top: 2rem !important;
+  padding: 0 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.5rem !important;
+  margin-bottom: 0 !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+/* Move date to top-right corner */
+.minimal-card[onclick*="showAppDetail"] .flex.items-center.gap-1.text-sm.text-vybe-gray-500 {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.75rem !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 0.25rem !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Replace clock icon with calendar icon via CSS */
+.minimal-card[onclick*="showAppDetail"] .flex.items-center.gap-1.text-sm.text-vybe-gray-500 svg {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  stroke: currentColor !important;
+  opacity: 0.7 !important;
+  position: relative !important;
+  top: 0.0625rem !important;
+}
+
+/* Bottom stats section */
+.minimal-card[onclick*="showAppDetail"] .flex.items-center.justify-between.pt-3.border-t {
+  margin-top: 0.5rem !important;
+  padding-top: 0.5rem !important;
+  padding-bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0 !important;
+}
+
+/* Consistent spacing between elements */
+.minimal-card[onclick*="showAppDetail"] > * {
+  margin: 0 !important;
+}
+
+.minimal-card[onclick*="showAppDetail"] > * + * {
+  margin-top: 0.75rem !important;
+}
+
+.minimal-card[onclick*="showAppDetail"] .flex.items-center.gap-2 + h3 {
+  margin-top: 0.5rem !important;
+}
+
+/* Tags/badges spacing */
+.minimal-card[onclick*="showAppDetail"] .flex.flex-wrap.gap-2 {
+  margin-bottom: 0 !important;
+}

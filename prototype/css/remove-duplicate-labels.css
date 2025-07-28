@@ -1,0 +1,50 @@
+/* Remove Duplicate Labels Fix */
+
+/* Only show ::before labels on pages that don't have inline labels */
+/* Guide pages already have inline GUIDE text in the HTML */
+.minimal-card:has(> span:first-child:contains("GUIDE"))::before,
+.minimal-card:has(> .guide-label)::before {
+  display: none !important;
+}
+
+/* For guides page specifically - remove the ::before since guides have their own label system */
+#guides-browse-content .minimal-card::before,
+.guides-tab-content .minimal-card::before {
+  display: none !important;
+}
+
+/* Only apply ::before labels to cards that DON'T already have a label */
+/* This prevents duplication on showcase and other pages */
+.minimal-card:not(:has(> span:first-child))::before {
+  /* Label will be applied by other CSS */
+}
+
+/* Ensure inline guide labels in HTML are properly styled */
+.minimal-card > span:first-child {
+  /* Inline labels should use the same styling as ::before labels */
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  padding: 0.5rem 0.625rem !important;
+  padding-top: 0.6875rem !important;
+  background: rgba(138, 43, 226, 0.5625) !important;
+  color: rgba(255, 255, 255, 1) !important;
+  font-size: 0.844rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  border-radius: 0 0 0.625rem 0 !important;
+  z-index: 20 !important;
+  line-height: 1 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+  letter-spacing: 0.25px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: auto !important;
+}
+
+/* Alternative approach: Disable all ::before labels on guide cards globally */
+.guide-card::before,
+[data-card-type="guide"]::before {
+  display: none !important;
+}

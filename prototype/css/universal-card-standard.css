@@ -1,0 +1,270 @@
+/* Universal Card Standard - Apply guide card design to all card types */
+
+/* ============================================
+   BASE CARD STYLES - Apply to all card types
+   ============================================ */
+
+/* Base card structure */
+.minimal-card,
+.specialized-card,
+.member-card,
+.news-card,
+.app-card,
+.guide-card {
+  background: rgba(26, 26, 26, 0.8) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(51, 51, 51, 0.4) !important;
+  border-radius: 8px !important;
+  padding: 1.25rem !important;
+  padding-bottom: 0.5rem !important; /* 8px to match top date spacing */
+  transition: all 0.3s ease-in-out !important;
+  position: relative !important;
+  z-index: 10 !important;
+  cursor: pointer !important;
+  overflow: hidden !important;
+  min-height: 0 !important; /* Allow flexible height */
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+/* Card hover state */
+.minimal-card:hover,
+.specialized-card:hover,
+.member-card:hover,
+.news-card:hover,
+.app-card:hover,
+.guide-card:hover {
+  background: rgba(42, 42, 42, 0.8) !important;
+  border-color: rgba(64, 64, 64, 0.5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ============================================
+   TYPE LABELS - Different for each card type
+   ============================================ */
+
+/* Only apply ONE label per card - use priority system */
+
+/* Guide label (purple) - highest priority for guide pages */
+.minimal-card[onclick*="showGuideDetail"]::before {
+  content: "GUIDE";
+  background: rgba(138, 43, 226, 0.5625); /* Purple with reduced opacity */
+}
+
+/* App label (fuchsia) - only if not guide */
+.minimal-card[onclick*="showAppDetail"]:not([onclick*="showGuideDetail"])::before,
+.specialized-card:has(.text-xs:contains("App")):not(.minimal-card[onclick*="showGuideDetail"])::before {
+  content: "APP";
+  background: rgba(236, 72, 153, 0.5625); /* Fuchsia with same opacity */
+}
+
+/* News label (orange) - only if not guide or app */
+.minimal-card[onclick*="showNewsDetail"]:not([onclick*="showGuideDetail"]):not([onclick*="showAppDetail"])::before,
+.specialized-card:has(.text-xs:contains("News")):not(.minimal-card[onclick*="showGuideDetail"]):not(.minimal-card[onclick*="showAppDetail"])::before {
+  content: "NEWS";
+  background: rgba(251, 146, 60, 0.5625); /* Orange with same opacity */
+}
+
+/* Member label (gradient) - only if not any other type */
+.minimal-card[onclick*="showMemberProfile"]:not([onclick*="showGuideDetail"]):not([onclick*="showAppDetail"]):not([onclick*="showNewsDetail"])::before {
+  content: "MEMBER";
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.5625), rgba(236, 72, 153, 0.5625));
+}
+
+/* Base label styles - only apply to cards that should have labels */
+.minimal-card[onclick*="showGuideDetail"]::before,
+.minimal-card[onclick*="showAppDetail"]:not([onclick*="showGuideDetail"])::before,
+.minimal-card[onclick*="showNewsDetail"]:not([onclick*="showGuideDetail"]):not([onclick*="showAppDetail"])::before,
+.minimal-card[onclick*="showMemberProfile"]:not([onclick*="showGuideDetail"]):not([onclick*="showAppDetail"]):not([onclick*="showNewsDetail"])::before,
+.specialized-card:has(.text-xs):not(.minimal-card[onclick])::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.375rem 0.5rem !important;
+  padding-top: 0.5rem !important; /* Standardized sizing */
+  color: rgba(255, 255, 255, 1);
+  font-size: 0.844rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 0 0 0.625rem 0;
+  z-index: 20;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  letter-spacing: 0.25px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: auto !important;
+}
+
+/* ============================================
+   CONTENT SPACING - Consistent for all cards
+   ============================================ */
+
+/* Reset margins and apply consistent spacing */
+.minimal-card > *,
+.specialized-card > *,
+.member-card > *,
+.news-card > *,
+.app-card > *,
+.guide-card > * {
+  margin: 0 !important;
+}
+
+.minimal-card > * + *,
+.specialized-card > * + *,
+.member-card > * + *,
+.news-card > * + *,
+.app-card > * + *,
+.guide-card > * + * {
+  margin-top: 0.75rem !important; /* 12px consistent spacing */
+}
+
+/* Special spacing between author and title */
+.minimal-card .flex.items-center.gap-2 + h3,
+.specialized-card .flex.items-center.gap-2 + h3 {
+  margin-top: 0.5rem !important; /* 8px */
+}
+
+/* Title spacing to account for label */
+.minimal-card h3,
+.specialized-card h3,
+.member-card h3,
+.news-card h3,
+.app-card h3,
+.guide-card h3 {
+  margin-top: 2rem !important;
+  padding: 0 !important;
+  font-size: 1.125rem !important;
+  line-height: 1.5rem !important;
+  margin-bottom: 0 !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+}
+
+/* ============================================
+   DATE POSITIONING - Top right corner
+   ============================================ */
+
+/* Date in corner for all card types */
+.minimal-card .flex.items-center.gap-1.text-sm.text-vybe-gray-500:has(svg),
+.specialized-card .text-xs.text-vybe-gray-500:has(svg) {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.75rem !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 0.25rem !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Calendar icon styling */
+.minimal-card svg[viewBox="0 0 24 24"],
+.specialized-card svg[viewBox="0 0 24 24"] {
+  width: 0.75rem !important;
+  height: 0.75rem !important;
+  stroke: currentColor !important;
+  opacity: 0.7 !important;
+  position: relative !important;
+  top: 0.0625rem !important; /* 1px alignment adjustment */
+}
+
+/* ============================================
+   BOTTOM STATS SECTION - Pinned to bottom
+   ============================================ */
+
+/* Stats section */
+.minimal-card .flex.items-center.justify-between.pt-3.border-t,
+.specialized-card > div:last-child.flex.justify-between.pt-3.border-t {
+  margin-top: auto !important; /* Push to bottom */
+  padding-top: 0.5rem !important;
+  padding-bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 0 !important;
+  border-color: rgba(64, 64, 64, 0.5) !important;
+}
+
+/* ============================================
+   MEMBER CARDS - Special considerations
+   ============================================ */
+
+/* Member card specific adjustments */
+.member-card {
+  /* Member cards may need different internal structure */
+}
+
+.member-card .member-avatar {
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 50% !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.member-card .member-info {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.25rem !important;
+}
+
+.member-card .member-expertise {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin-top: 0.75rem !important;
+}
+
+/* ============================================
+   GRID LAYOUTS - Consistent across pages
+   ============================================ */
+
+/* Main grid containers */
+#guides-browse-content > .grid,
+#apps-browse-content > .grid,
+.showcase-section .grid,
+.page-container .grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important; /* Cards stretch to match row height */
+}
+
+/* ============================================
+   BADGE/TAG STYLING - Consistent sizing
+   ============================================ */
+
+/* All badges/tags */
+.minimal-card span[class*="bg-"],
+.specialized-card span[class*="bg-"],
+.badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 0.125rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  line-height: 1.5 !important;
+  height: auto !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+}
+
+/* ============================================
+   SPECIALIZED ADJUSTMENTS
+   ============================================ */
+
+/* Remove old showcase-specific styles */
+.specialized-card[style*="background: rgba(26, 26, 26, 0.6)"] {
+  background: rgba(26, 26, 26, 0.8) !important; /* Match new standard */
+}
+
+/* Fix any inline styles */
+.minimal-card[style],
+.specialized-card[style] {
+  /* Inline styles should be overridden by our standard */
+}

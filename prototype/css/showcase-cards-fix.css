@@ -1,0 +1,192 @@
+/* Showcase Cards Fix - Apply proper label styling and flexibility */
+
+/* ============================================
+   FIX SHOWCASE LABEL STYLING
+   ============================================ */
+
+/* Remove the inline label styles and apply proper ones */
+.specialized-card span[style*="position: absolute"][style*="GUIDE"],
+.specialized-card span[style*="position: absolute"][style*="APP"],
+.specialized-card span[style*="position: absolute"][style*="NEWS"],
+.specialized-card span[style*="position: absolute"][style*="MEMBER"] {
+  /* Reset inline styles */
+  all: unset !important;
+  
+  /* Apply proper label styles */
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  padding: 0.5rem 0.625rem !important;
+  padding-top: 0.6875rem !important;
+  font-size: 0.844rem !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  border-radius: 0 0 0.625rem 0 !important;
+  z-index: 20 !important;
+  line-height: 1 !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+  letter-spacing: 0.25px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: auto !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+/* Apply correct background colors for each type based on content */
+/* Target by the actual label position and content */
+.specialized-card > span:first-child {
+  /* Default purple for GUIDE */
+  background: rgba(138, 43, 226, 0.5625) !important;
+}
+
+/* APP cards - usually have "productivity" or "developer-tools" tags */
+.specialized-card:has(.text-xs:contains("productivity")) > span:first-child,
+.specialized-card:has(span[style*="APP"]) > span:first-child {
+  background: rgba(251, 146, 60, 0.5625) !important; /* Orange */
+}
+
+/* NEWS cards - usually have "AI News" or news-related content */
+.specialized-card:has(.text-xs:contains("News")) > span:first-child,
+.specialized-card:has(span[style*="NEWS"]) > span:first-child {
+  background: rgba(236, 72, 153, 0.5625) !important; /* Pink */
+}
+
+/* MEMBER cards - usually have member stats or ratings */
+.specialized-card:has(.text-xs:contains("Mentor")) > span:first-child,
+.specialized-card:has(span[style*="MEMBER"]) > span:first-child {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.5625), rgba(236, 72, 153, 0.5625)) !important; /* Gradient */
+}
+
+/* Alternative: Target by position in grid if order is consistent */
+.showcase-section > div > .specialized-card:nth-child(2) > span:first-child,
+.showcase-section > div > .specialized-card:nth-child(5) > span:first-child,
+.showcase-section > div > .specialized-card:nth-child(7) > span:first-child,
+.showcase-section > div > .specialized-card:nth-child(8) > span:first-child {
+  background: rgba(251, 146, 60, 0.5625) !important; /* Orange for APP */
+}
+
+.showcase-section > div > .specialized-card:nth-child(3) > span:first-child,
+.showcase-section > div > .specialized-card:nth-child(4) > span:first-child {
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.5625), rgba(236, 72, 153, 0.5625)) !important; /* Gradient for MEMBER */
+}
+
+.showcase-section > div > .specialized-card:nth-child(9) > span:first-child {
+  background: rgba(236, 72, 153, 0.5625) !important; /* Pink for NEWS */
+}
+
+/* ============================================
+   FIX SHOWCASE CARD FLEXIBILITY
+   ============================================ */
+
+/* Remove fixed height inline styles */
+.specialized-card[style*="min-height"],
+.specialized-card[style*="height"] {
+  min-height: 0 !important;
+  height: 100% !important;
+}
+
+/* Ensure proper flex layout */
+.specialized-card {
+  display: flex !important;
+  flex-direction: column !important;
+  padding-bottom: 0.5rem !important; /* Match guide standard */
+}
+
+/* Fix the grid container if it has inline styles */
+div[style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
+  align-items: stretch !important; /* Ensure cards stretch to match height */
+}
+
+/* ============================================
+   FIX ADVANCED BADGE
+   ============================================ */
+
+/* Fix Advanced badge in showcase */
+.specialized-card span.bg-red-500\\/10,
+.specialized-card span[style*="background-color: rgba(239, 68, 68, 0.1)"] {
+  all: unset !important;
+  
+  /* Apply correct badge styles */
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0.25rem 0.5rem !important;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+  height: auto !important;
+  white-space: nowrap !important;
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  color: rgb(239, 68, 68) !important;
+  border-radius: 0.25rem !important;
+}
+
+/* ============================================
+   FIX SPACING AND LAYOUT
+   ============================================ */
+
+/* Ensure title has proper spacing from label */
+.specialized-card > div:first-of-type:not(span) {
+  margin-top: 2rem !important;
+}
+
+/* Consistent spacing between elements */
+.specialized-card > * {
+  margin: 0 !important;
+}
+
+.specialized-card > * + * {
+  margin-top: 0.75rem !important;
+}
+
+/* Bottom stats section */
+.specialized-card > div:last-child {
+  margin-top: auto !important;
+  padding-top: 0.5rem !important;
+  border-top: 1px solid rgba(64, 64, 64, 0.5) !important;
+}
+
+/* ============================================
+   FIX DATE POSITIONING
+   ============================================ */
+
+/* Move dates to corner */
+.specialized-card span.text-xs.text-vybe-gray-500:has(svg),
+.specialized-card div.text-xs.text-vybe-gray-500:has(svg) {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.75rem !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 0.25rem !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ============================================
+   REMOVE DUPLICATE LABELS
+   ============================================ */
+
+/* If there are ::before pseudo-elements creating duplicate labels */
+.specialized-card[data-type]::before {
+  display: none !important;
+}
+
+/* ============================================
+   MEMBER CARD SPECIFIC FIXES
+   ============================================ */
+
+/* Member cards need special handling */
+.specialized-card:has(span:contains("MEMBER")) {
+  /* Member-specific adjustments */
+}
+
+.specialized-card:has(span:contains("MEMBER")) .member-avatar,
+.specialized-card:has(span:contains("MEMBER")) img[class*="rounded-full"] {
+  width: 3rem !important;
+  height: 3rem !important;
+  margin-bottom: 0.5rem !important;
+}
