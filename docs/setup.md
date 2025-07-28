@@ -86,6 +86,7 @@
 | **Hooks System** | 📖 Local | Claude Code hooks documentation | `/home/happy/Projects/vybecoding/docs/tech-stack.md#-claude-code-hooks-system-` |
 | **VybeHacks** | 📖 Local | TRAIL, VERIFY-FIRST patterns | `/home/happy/Projects/vybecoding/docs/vybehacks` |
 | **BMAD Orchestration Guide** | 📖 Local | Parallel execution guide | `.bmad-core/docs/orchestration-guide.md` |
+| **Audit Checklist** | 📖 Local | Latest audit & consolidation checklist | `/home/happy/Projects/vybecoding/docs/audits/checklist-01-28-25.md` |
 | **BMAD Guide** | 🌐 Online | Multi-agent workflows | [wiki](https://github.com/bmadcode/BMAD-METHOD/wiki) |
 | **Convex Docs** | 🌐 Online | Database patterns | [docs.convex.dev](https://docs.convex.dev/) |
 | **Clerk Docs** | 🌐 Online | Auth implementation | [clerk.com/docs](https://clerk.com/docs) |

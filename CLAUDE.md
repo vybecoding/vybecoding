@@ -340,28 +340,28 @@ Helper script for manual analysis:
 
 ## Auto-Commit System
 
-### Claude Branch Auto-Commits
-Every successful code change is automatically committed to a separate 'claude' branch:
+### Automatic Main Branch Commits
+Every successful code change is automatically committed to the main branch:
 
 **Features:**
-- Automatic commits to 'claude' branch after successful edits
+- Automatic commits to main branch after successful edits
 - Formatted commit messages: `claude-01-[01/27 02:30PM]: edit module/file.js`
 - Incremental numbering tracked in `.claude-commit-count`
-- Keeps 'claude' branch separate from main
-- Returns to original branch after commit
+- Only commits when on main branch (skips other branches)
 - Only commits error-free changes
+- Complexity indicators: [SIMPLE], [MEDIUM], or [COMPLEX]
 
 **View Claude Commits:**
 ```bash
-.claude/config/hooks/view-claude-commits.sh
+git log --oneline | grep "claude-"
 ```
 
 **Manual Control:**
 - Disable: Remove auto-commit from hooks in `.claude/config/settings.json`
 - Reset counter: `echo "0" > .claude-commit-count`
-- Delete branch: `git branch -D claude`
+- View log: `cat /tmp/claude-auto-commit.log`
 
-This provides a complete history of all Claude Code changes without cluttering your main branch!
+This provides a complete history of all Claude Code changes directly in your main branch!
 
 ## Task Management with TodoWrite
 
