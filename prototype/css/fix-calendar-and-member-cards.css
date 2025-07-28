@@ -1,0 +1,22 @@
+/* FIX CALENDAR ICON AND NON-MENTOR MEMBER CARDS */
+
+/* Remove bottom border/stats section from non-mentor member cards */
+/* Target member cards that don't have mentor/rating stats */
+.minimal-card:has(span:contains("MEMBER")):not(:has(.text-amber-500)):not(:has(span:contains("Mentor"))) .flex.items-center.justify-between.pt-3 {
+  display: none !important;
+}
+
+/* Alternative: Hide bottom stats for member cards without ratings */
+.minimal-card:has(span[style*="MEMBER"]):not(:has(svg.text-amber-500)) > div:last-child.flex.items-center.justify-between {
+  display: none !important;
+}
+
+/* For member cards without bottom stats, adjust padding */
+.minimal-card:has(span:contains("MEMBER")):not(:has(.flex.items-center.justify-between.pt-3)) {
+  padding-bottom: 1rem !important; /* 16px bottom padding when no stats section */
+}
+
+/* Calendar icon fix - will be replaced with proper Lucide icon */
+.calendar-icon-fix {
+  /* Placeholder for calendar icon updates */
+}

@@ -1,0 +1,38 @@
+/* UNIVERSAL BADGE SPACING - Apply 12px to ALL card types */
+
+/* Force 12px spacing on ALL cards with badge containers */
+.minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important; /* 12px */
+}
+
+/* Ensure it works on all pages */
+#guides .minimal-card .flex.flex-wrap.gap-2,
+#guides-browse-content .minimal-card .flex.flex-wrap.gap-2,
+#apps .minimal-card .flex.flex-wrap.gap-2,
+#apps-browse-content .minimal-card .flex.flex-wrap.gap-2,
+#featured .minimal-card .flex.flex-wrap.gap-2,
+#members .minimal-card .flex.flex-wrap.gap-2,
+.page-container .minimal-card .flex.flex-wrap.gap-2,
+.showcase-container .minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important; /* 12px - universal spacing */
+}
+
+/* Ultra high specificity override for any conflicting styles */
+html body .minimal-card .flex.flex-wrap.gap-2.mb-4 {
+  margin-bottom: 0.75rem !important; /* 12px - override mb-4 class */
+}
+
+/* Target by badge color classes */
+.minimal-card .flex.flex-wrap.gap-2:has(.bg-vybe-purple\\/10),
+.minimal-card .flex.flex-wrap.gap-2:has(.bg-vybe-pink\\/10),
+.minimal-card .flex.flex-wrap.gap-2:has(.bg-vybe-orange\\/10),
+.minimal-card .flex.flex-wrap.gap-2:has(.text-vybe-purple),
+.minimal-card .flex.flex-wrap.gap-2:has(.text-vybe-pink),
+.minimal-card .flex.flex-wrap.gap-2:has(.text-vybe-orange) {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Absolutely force it with maximum specificity */
+html body div.page-container div.minimal-card div.flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}

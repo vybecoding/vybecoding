@@ -18,8 +18,8 @@
   -webkit-backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(51, 51, 51, 0.4) !important;
   border-radius: 8px !important;
-  padding: 1.25rem !important;
-  padding-bottom: 0.5rem !important; /* Match guide standard */
+  padding: 1rem !important; /* 16px */
+  padding-bottom: 0.5rem !important; /* 8px to match stats padding-top */
   transition: all 0.3s ease-in-out !important;
   position: relative !important;
   z-index: 10 !important;
@@ -33,7 +33,7 @@
 
 /* Remove any default padding from card classes */
 .minimal-card.p-5 {
-  padding: 1.25rem !important;
+  padding: 1rem !important;
   padding-bottom: 0.5rem !important;
 }
 
@@ -45,37 +45,15 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Add APP label to apps cards */
-.minimal-card[onclick*="showAppDetail"]::before {
-  content: "APP";
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0.5rem 0.625rem !important;
-  padding-top: 0.6875rem !important; /* Match guide centering */
-  background: rgba(251, 146, 60, 0.5625); /* Orange with same opacity as guide */
-  color: rgba(255, 255, 255, 1);
-  font-size: 0.844rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border-radius: 0 0 0.625rem 0;
-  z-index: 20;
-  line-height: 1;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  letter-spacing: 0.25px;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  height: auto !important;
-}
+/* APP label is now handled by inline styles - no pseudo-element needed */
 
 /* Fix title spacing to account for label */
 .minimal-card[onclick*="showAppDetail"] h3 {
-  margin-top: 2rem !important;
+  margin-top: 2rem !important; /* Space for label - matches guides */
   padding: 0 !important;
   font-size: 1.125rem !important;
   line-height: 1.5rem !important;
-  margin-bottom: 0 !important;
+  margin-bottom: 0.5rem !important; /* Match guides spacing */
   font-weight: 600 !important;
   color: #ffffff !important;
 }
@@ -103,14 +81,19 @@
   top: 0.0625rem !important;
 }
 
-/* Bottom stats section */
-.minimal-card[onclick*="showAppDetail"] .flex.items-center.justify-between.pt-3.border-t {
-  margin-top: 0.5rem !important;
+/* Bottom stats section - push to bottom with auto margin */
+.minimal-card[onclick*="showAppDetail"] .flex.items-center.justify-between.pt-3.border-t.mt-auto {
+  margin-top: auto !important; /* Push to bottom like guides cards */
   padding-top: 0.5rem !important;
   padding-bottom: 0 !important;
   display: flex !important;
   align-items: center !important;
   margin-bottom: 0 !important;
+}
+
+/* Ensure mt-auto class works */
+.minimal-card .mt-auto {
+  margin-top: auto !important;
 }
 
 /* Consistent spacing between elements */
@@ -123,7 +106,12 @@
 }
 
 .minimal-card[onclick*="showAppDetail"] .flex.items-center.gap-2 + h3 {
-  margin-top: 0.5rem !important;
+  margin-top: 0.5rem !important; /* Only when preceded by author section */
+}
+
+/* Description text - allow it to grow and fill space */
+.minimal-card[onclick*="showAppDetail"] p.text-sm.text-vybe-gray-400 {
+  flex-grow: 1 !important;
 }
 
 /* Tags/badges spacing */

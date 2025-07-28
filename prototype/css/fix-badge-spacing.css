@@ -1,0 +1,37 @@
+/* FIX BADGE/TAGS SPACING - More space between tags and bottom divider */
+
+/* Increase spacing between tags section and bottom stats divider */
+.minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important; /* Reduced to 0.75rem (12px) - 50% of previous value */
+}
+
+/* Ensure the stats section has proper spacing */
+.minimal-card .flex.items-center.justify-between.pt-3 {
+  margin-top: auto !important;
+  padding-top: 0.5rem !important;
+}
+
+/* Alternative selector for maximum specificity */
+html body .minimal-card .flex.flex-wrap.gap-2:has(span[class*="px-2"][class*="py-1"]) {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Target tags that appear before the bottom stats */
+html body .minimal-card .flex.flex-wrap.gap-2 + .flex.items-center.justify-between {
+  margin-top: auto !important;
+}
+
+/* Ensure consistent spacing for all card types */
+.guide-card .flex.flex-wrap.gap-2,
+.app-card .flex.flex-wrap.gap-2,
+.member-card .flex.flex-wrap.gap-2,
+.news-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Force spacing with ultra-high specificity */
+html body .showcase-section .minimal-card .flex.flex-wrap.gap-2,
+html body .page-container .minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+  padding-bottom: 0 !important;
+}

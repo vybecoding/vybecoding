@@ -1,18 +1,29 @@
-// Ensure apps-specific CSS is loaded
+// Ensure apps-specific CSS is loaded with showcase styles
 (function() {
     const cssFiles = [
-        'css/apps-card-standard.css',
+        // Core styles
         'css/universal-card-standard.css',
         'css/badge-component.css',
-        'css/vertical-centering-fix.css'
+        // Showcase perfected styles
+        // 'css/showcase-cards-fix.css', // This is for showcase only, not apps page
+        'css/force-flexible-cards.css',
+        'css/showcase-perfect-labels.css',
+        'css/ultimate-row-spacing.css',
+        'css/fix-calendar-and-member-cards.css',
+        'css/fix-badge-spacing.css',
+        'css/apps-news-badge-spacing.css',
+        'css/universal-badge-spacing.css',
+        'css/universal-card-padding.css',
+        'css/badge-gap-fix.css',
+        'css/force-4px-badge-gap.css'
     ];
     
     cssFiles.forEach(file => {
-        const existing = document.querySelector(`link[href*="${file}"]`);
+        const existing = document.querySelector(`link[href*="${file.split('/').pop()}"]`);
         if (!existing) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = file + '?v=' + Date.now();
+            link.href = '../' + file + '?v=' + Date.now();
             document.head.appendChild(link);
         }
     });

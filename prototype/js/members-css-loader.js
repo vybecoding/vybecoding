@@ -1,13 +1,9 @@
-// Ensure guides-specific CSS is loaded
+// Ensure members-specific CSS is loaded with showcase styles
 (function() {
-        const cssFiles = [
-        'css/guides-showcase-match.css',
-        'css/guides-date-corner.css',
-        'css/guides-container-fix.css',
+    const cssFiles = [
+        // Core styles
+        'css/universal-card-standard.css',
         'css/badge-component.css',
-        'css/vertical-centering-fix.css',
-        'css/guides-spacing-fix.css',
-        'css/guides-flex-fix.css',
         // Showcase perfected styles
         'css/showcase-cards-fix.css',
         'css/force-flexible-cards.css',
@@ -15,7 +11,7 @@
         'css/ultimate-row-spacing.css',
         'css/fix-calendar-and-member-cards.css',
         'css/fix-badge-spacing.css',
-        'css/guides-badge-spacing-fix.css',
+        'css/apps-news-badge-spacing.css',
         'css/universal-badge-spacing.css',
         'css/universal-card-padding.css',
         'css/badge-gap-fix.css',

@@ -1,0 +1,30 @@
+/* GUIDES PAGE SPECIFIC - Fix badge/tag spacing */
+
+/* Override the mb-4 class on guides page tags */
+#guides .minimal-card .flex.flex-wrap.gap-2.mb-4,
+#guides-browse-content .minimal-card .flex.flex-wrap.gap-2.mb-4,
+.page-container .minimal-card .flex.flex-wrap.gap-2.mb-4 {
+  margin-bottom: 0.75rem !important; /* 12px - reduced by 50% from 24px */
+}
+
+/* Alternative selector for guides.html page */
+#guides .flex.flex-wrap.gap-2[class*="mb-4"] {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Target by parent structure */
+#guides .text-sm.text-vybe-gray-400 + .flex.flex-wrap.gap-2,
+#guides-browse-content .text-sm.text-vybe-gray-400 + .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Force override with ultra-high specificity */
+html body #guides .minimal-card div.flex.flex-wrap.gap-2:not(.justify-between) {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Also apply to the guides standalone page */
+.guides-page .minimal-card .flex.flex-wrap.gap-2.mb-4,
+.page-guides .minimal-card .flex.flex-wrap.gap-2.mb-4 {
+  margin-bottom: 0.75rem !important;
+}

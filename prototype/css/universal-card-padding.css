@@ -1,0 +1,46 @@
+/* UNIVERSAL CARD PADDING - Ensure all specialized cards have same padding */
+
+/* Apply consistent padding to ALL minimal cards across all pages */
+.minimal-card {
+  padding: 1rem !important; /* 16px all around */
+  padding-bottom: 0.5rem !important; /* 8px bottom to match stats padding-top */
+}
+
+/* Ensure it works on all page types */
+#guides .minimal-card,
+#guides-browse-content .minimal-card,
+#apps .minimal-card,
+#apps-browse-content .minimal-card,
+#featured .minimal-card,
+#members .minimal-card,
+.page-container .minimal-card,
+.showcase-container .minimal-card {
+  padding: 1rem !important; /* 16px optimized padding */
+  padding-bottom: 0.5rem !important; /* 8px to match stats padding-top exactly */
+}
+
+/* Ultra high specificity to override any conflicting styles */
+html body .page-container .minimal-card.rounded-lg {
+  padding: 1rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Ensure stats row has consistent padding */
+.minimal-card .flex.items-center.justify-between {
+  padding-top: 0.5rem !important; /* 8px */
+}
+
+/* Override any p-5 or p-6 classes */
+.minimal-card.p-5,
+.minimal-card.p-6 {
+  padding: 1rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Force all card variants */
+.minimal-card.card-verified,
+.minimal-card.card-needs-verification,
+.minimal-card.card-mentor {
+  padding: 1rem !important;
+  padding-bottom: 0.5rem !important;
+}

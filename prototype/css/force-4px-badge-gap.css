@@ -1,0 +1,54 @@
+/* FORCE 4px BADGE GAP - Override Tailwind's gap-2 */
+
+/* Override the gap-2 utility class globally */
+.gap-2 {
+  gap: 0.25rem !important; /* 4px instead of 0.5rem (8px) */
+}
+
+/* Ensure flexbox gap properties are all set */
+.flex.gap-2,
+.flex-wrap.gap-2 {
+  gap: 4px !important;
+  column-gap: 4px !important;
+  row-gap: 4px !important;
+}
+
+/* Target all badge containers specifically */
+.minimal-card .flex.flex-wrap.gap-2 {
+  gap: 4px !important;
+  column-gap: 4px !important;
+  row-gap: 4px !important;
+}
+
+/* Page-specific overrides with high specificity */
+#guides .minimal-card .flex.flex-wrap.gap-2,
+#guides-browse-content .minimal-card .flex.flex-wrap.gap-2,
+#apps .minimal-card .flex.flex-wrap.gap-2,
+#apps-browse-content .minimal-card .flex.flex-wrap.gap-2,
+#featured .minimal-card .flex.flex-wrap.gap-2,
+#members .minimal-card .flex.flex-wrap.gap-2 {
+  gap: 4px !important;
+  column-gap: 4px !important;
+  row-gap: 4px !important;
+}
+
+/* Ultra-specific for apps page */
+html body #apps .minimal-card .flex.flex-wrap.gap-2,
+html body .page-container#apps .minimal-card .flex.flex-wrap.gap-2,
+html body div[id="apps"] .minimal-card .flex.flex-wrap.gap-2 {
+  gap: 4px !important;
+  column-gap: 4px !important;
+  row-gap: 4px !important;
+}
+
+/* Target by badge color */
+.flex.flex-wrap.gap-2:has(.bg-vybe-pink\\/10),
+.flex.flex-wrap.gap-2:has(.bg-vybe-purple\\/10),
+.flex.flex-wrap.gap-2:has(.bg-vybe-orange\\/10) {
+  gap: 4px !important;
+}
+
+/* Remove margins that might affect spacing */
+.minimal-card .flex.flex-wrap.gap-2 > * {
+  margin: 0 !important;
+}

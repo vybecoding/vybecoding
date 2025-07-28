@@ -1,0 +1,50 @@
+/* FIX BADGE GAP - Decrease padding between badges by 50% */
+
+/* Override gap-2 (0.5rem/8px) to gap-1 (0.25rem/4px) for all badge containers */
+.minimal-card .flex.flex-wrap.gap-2 {
+  gap: 0.25rem !important; /* 4px - 50% of original 8px */
+  column-gap: 0.25rem !important;
+  row-gap: 0.25rem !important;
+}
+
+/* Ensure it works on all pages */
+#guides .minimal-card .flex.flex-wrap.gap-2,
+#guides-browse-content .minimal-card .flex.flex-wrap.gap-2,
+#apps .minimal-card .flex.flex-wrap.gap-2,
+#apps-browse-content .minimal-card .flex.flex-wrap.gap-2,
+#featured .minimal-card .flex.flex-wrap.gap-2,
+#members .minimal-card .flex.flex-wrap.gap-2,
+.page-container .minimal-card .flex.flex-wrap.gap-2,
+.showcase-container .minimal-card .flex.flex-wrap.gap-2 {
+  gap: 0.25rem !important; /* 4px - consistent across all pages */
+  column-gap: 0.25rem !important;
+  row-gap: 0.25rem !important;
+}
+
+/* Ultra high specificity override */
+html body .minimal-card .flex.flex-wrap.gap-2 {
+  gap: 0.25rem !important;
+  column-gap: 0.25rem !important;
+  row-gap: 0.25rem !important;
+}
+
+/* Target specific badge containers */
+.minimal-card div.flex.flex-wrap.gap-2:has(span.bg-vybe-pink\\/10),
+.minimal-card div.flex.flex-wrap.gap-2:has(span.bg-vybe-purple\\/10),
+.minimal-card div.flex.flex-wrap.gap-2:has(span.bg-vybe-orange\\/10) {
+  gap: 0.25rem !important;
+  column-gap: 0.25rem !important;
+  row-gap: 0.25rem !important;
+}
+
+/* ABSOLUTE OVERRIDE - Maximum specificity */
+html body div.page-container div.minimal-card div.flex.flex-wrap.gap-2 {
+  gap: 4px !important;
+  column-gap: 4px !important;
+  row-gap: 4px !important;
+}
+
+/* Remove any default margins on badges */
+.minimal-card .flex.flex-wrap.gap-2 > span {
+  margin: 0 !important;
+}

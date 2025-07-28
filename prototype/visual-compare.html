@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP Label Color Comparison</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid rgba(51, 51, 51, 0.4);
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            height: 150px;
+        }
+        .label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.375rem 0.5rem;
+            padding-top: 0.5rem;
+            font-size: 0.844rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 0 0 0.625rem 0;
+            z-index: 20;
+            line-height: 1;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            letter-spacing: 0.25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            color: rgba(255, 255, 255, 1);
+        }
+        .current {
+            background: rgba(236, 72, 153, 0.5625);
+        }
+        .pure-pink {
+            background: rgba(217, 70, 160, 0.5625);
+        }
+        .info {
+            margin-top: 60px;
+            font-size: 14px;
+            color: #888;
+        }
+        h3 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>APP Label Color Analysis</h2>
+    
+    <div class="comparison">
+        <div>
+            <h3>Current (Apps Page)</h3>
+            <div class="card">
+                <span class="label current">APP</span>
+                <div class="info">
+                    rgba(236, 72, 153, 0.5625)<br>
+                    #EC4899 at 56.25% opacity<br>
+                    (Tailwind pink-500)
+                </div>
+            </div>
+        </div>
+        
+        <div>
+            <h3>Alternative (Pure Vybe Pink)</h3>
+            <div class="card">
+                <span class="label pure-pink">APP</span>
+                <div class="info">
+                    rgba(217, 70, 160, 0.5625)<br>
+                    #D946A0 at 56.25% opacity<br>
+                    (--color-vybe-pink)
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 40px;">
+        <p>The showcase appears to be using the same color as the apps page (rgba(236, 72, 153, 0.5625)).</p>
+        <p>The visual difference might be due to:</p>
+        <ul>
+            <li>Different background colors or patterns behind the cards</li>
+            <li>Browser rendering differences</li>
+            <li>Monitor color calibration</li>
+            <li>The nebula background effects on the apps page</li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* APPS AND NEWS CARDS - Fix badge/tag spacing to match guides */
+
+/* Override default spacing for app cards */
+.minimal-card:has(span[style*="APP"]) .flex.flex-wrap.gap-2,
+.app-card .flex.flex-wrap.gap-2,
+#apps .minimal-card .flex.flex-wrap.gap-2,
+#apps-browse-content .minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important; /* 12px - same as guides */
+}
+
+/* Override default spacing for news cards */
+.minimal-card:has(span[style*="NEWS"]) .flex.flex-wrap.gap-2,
+.news-card .flex.flex-wrap.gap-2,
+#news .minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important; /* 12px - same as guides */
+}
+
+/* Target apps page specifically */
+.page-container .minimal-card:has(.bg-vybe-pink) .flex.flex-wrap.gap-2,
+.page-container .minimal-card:has(.text-vybe-pink) .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Target featured page cards */
+#featured .minimal-card .flex.flex-wrap.gap-2,
+.featured-page .minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Ultra-high specificity for apps standalone page */
+html body .page-container .minimal-card .flex.flex-wrap.gap-2:has(span.bg-vybe-pink\\/10) {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Ultra-high specificity for news cards */
+html body .minimal-card .flex.flex-wrap.gap-2:has(span.bg-vybe-purple\\/10:contains("AI News")) {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Alternative targeting by content */
+.minimal-card:has(span:contains("productivity")) .flex.flex-wrap.gap-2,
+.minimal-card:has(span:contains("developer-tools")) .flex.flex-wrap.gap-2,
+.minimal-card:has(span:contains("AI News")) .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Even more specific for apps page with pink badges */
+html body .page-container #apps-browse-content .minimal-card .flex.flex-wrap.gap-2,
+html body .page-container .minimal-card .flex.flex-wrap.gap-2:has(.bg-vybe-pink\\/10),
+html body .page-container .minimal-card .flex.flex-wrap.gap-2:has(.text-vybe-pink) {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Force all flex wrap containers in apps/news cards */
+.minimal-card:has(span[style*="background: rgba(236, 72, 153"]) .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+}
