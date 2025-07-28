@@ -22,7 +22,7 @@ Self-improving systems that get smarter with use.
 **Problem:** Solving the same errors repeatedly wastes time  
 **Solution:** Automatic test-and-learn system with pattern recognition and continuous improvement  
 **Implementation:** 
-- **Core TRAIL:** `.solutions/` directory with hooks that detect, log, and recall solutions
+- **Core TRAIL:** `.claude/solutions/` directory with hooks that detect, log, and recall solutions
 - **Continuous Learning:** Pattern recognition across errors, performance, and task distribution
 - **Auto-Application:** Learned patterns automatically applied to new tasks
 - **Cross-Agent Sharing:** Solutions shared instantly across all sub-agents
@@ -38,7 +38,7 @@ Intelligent hooks that work behind the scenes.
 #### Smart Hook Architecture
 **Problem:** Manual documentation of problems and solutions  
 **Solution:** Post-tool hooks that automatically capture context  
-**Implementation:** `.claude-code/settings.json` with intelligent detection
+**Implementation:** `.claude/config/settings.json` with intelligent detection
 
 #### Zero-Config Test Detection
 **Problem:** Different projects use different test commands  
@@ -112,16 +112,16 @@ bmad install --ide claude-code
 #### Automation Files Created
 ```bash
 # Pre-session analysis (shows ready stories)
-.claude-code/hooks/pre-session-hook.sh
+.claude/config/hooks/pre-session-hook.sh
 
 # Story selection intelligence
-.solutions/story-auto-select.sh
+.claude/solutions/story-auto-select.sh
 
 # Auto-approval decision engine
-.claude-code/hooks/auto-approval-engine.js
+.claude/config/hooks/auto-approval-engine.js
 
 # Session tracking for reviews
-.solutions/session-tracker.sh
+.claude/solutions/session-tracker.sh
 ```
 
 ### Enhanced with PRPs Commands
@@ -151,6 +151,18 @@ bmad install --ide claude-code
 
 ### 🤖 MCP Intelligence Layer 🤖
 
+Model Context Protocol (MCP) servers extend Claude's capabilities with specialized tools for code analysis, security scanning, and external integrations.
+
+### 📚 MCP Documentation
+
+- **[MCP Overview](./mcp/overview.md)** - Introduction to the MCP intelligence layer
+- **[Automated Servers](./mcp/automated-servers.md)** - Servers that work without prompting
+- **[Manual Servers](./mcp/manual-servers.md)** - Servers requiring explicit activation
+- **[Setup Guide](./mcp/setup-guide.md)** - Complete installation instructions
+- **[Security Hardening](./mcp/security.md)** - Security measures and best practices
+
+### Quick Overview
+
 #### 🤖 100% Automated (Claude uses without prompting)
 - **REF MCP** - Auto-searches docs when Claude needs info
 - **GitHub MCP** - Auto-handles git operations 
@@ -164,15 +176,16 @@ bmad install --ide claude-code
 - **EXA Search MCP** - Ask Claude to "search the web"
 - **MCP-Scan** - Run manually: `uvx mcp-scan@latest`
 
-#### 🔒 MCP Security Measures
-**Addressing Top MCP Vulnerabilities:**
-1. **Tool Poisoning Prevention**: All MCP servers from verified sources only
-2. **Token Protection**: OAuth tokens stored securely, never in plaintext
-3. **Command Injection Defense**: Input validation on all MCP server interactions
-4. **Admin Bypass Protection**: Strict identity verification for all MCP operations
-5. **Audit Logging**: Comprehensive logs of all MCP server actions
-6. **Least Privilege**: MCP servers limited to minimum required permissions
-7. **Tool Shadowing Defense**: Whitelist of approved MCP servers only
+### Current Configuration
+
+MCP servers are configured in `.claude/config/mcp-settings.json`. Check status:
+```bash
+# View configuration
+cat .claude/config/mcp-settings.json | jq .
+
+# Check running servers
+ps aux | grep mcp
+```
 
 ## 🎯 Development Workflow 🎯
 
@@ -265,7 +278,7 @@ go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
 # Install TRAIL System
 # Option 1: Copy from existing project
 cp -r /path/to/existing/project/.solutions ./
-chmod +x .solutions/*.sh .solutions/*.js
+chmod +x .claude/solutions/*.sh .claude/solutions/*.js
 
 # Option 2: Create from scratch (see detailed instructions below)
 
@@ -303,15 +316,10 @@ npx playwright install chromium
 
 ### MCP Servers
 
-| MCP Server | Package | Notes |
-|------------|---------|--------|
-| REF | https://github.com/ref-tools/ref-tools-mcp | 85% token reduction |
-| GitHub | @modelcontextprotocol/server-github | Needs GITHUB_TOKEN |
-| Playwright | @modelcontextprotocol/server-playwright | Browser testing |
-| BrowserTools | Chrome Extension | Install from store |
-| MCP-Scan | https://github.com/invariantlabs-ai/mcp-scan | Run with: uvx mcp-scan@latest |
-| MCP Security Audit | https://github.com/qianniuspace/mcp-security-audit | npm dependency auditing |
-| Serena | https://github.com/oraios/serena | Symbol-level code navigation |
+See the comprehensive MCP documentation:
+- **[MCP Setup Guide](./mcp/setup-guide.md)** - Complete installation instructions for all servers
+- **[Automated Servers](./mcp/automated-servers.md)** - REF, GitHub, Semgrep, Serena, etc.
+- **[Manual Servers](./mcp/manual-servers.md)** - Playwright, EXA Search, MCP-Scan, etc.
 
 ### Service Registrations
 
@@ -367,6 +375,52 @@ The guide includes:
 - **Automated Scanning**: GitGuardian (installed), Snyk (installed), MCP-Scan
 - **Secure Defaults**: Input validation, constant-time comparisons, no hardcoded secrets
 - **Human-in-the-Loop**: AI augments but doesn't replace security review
+
+## 🪝 Claude Code Hooks System 🪝
+
+Claude Code hooks enable automated workflows that trigger on specific events. Our comprehensive hook system provides security, automation, and development efficiency.
+
+### 📚 Hook Documentation
+
+- **[Hook System Overview](./hooks/overview.md)** - Introduction to Claude Code hooks
+- **[TRAIL System Hook](./hooks/trail-system.md)** - Automatic testing and learning system
+- **[Auto-Commit Hook](./hooks/auto-commit.md)** - Git automation for Claude changes
+- **[Continuous Learning](./hooks/continuous-learning.md)** - Pattern recognition and optimization
+- **[Security Hooks](./hooks/security-hooks.md)** - Automated security measures
+- **[Orchestration Hooks](./hooks/orchestration-hooks.md)** - BMAD integration and automation
+- **[Complete Setup Guide](./hooks/setup-all-hooks.md)** - Step-by-step installation instructions
+
+### Quick Overview
+
+Our hook system includes:
+- **TRAIL System**: Automatically tests code, captures errors, and learns solutions
+- **Auto-Commit**: Commits all Claude changes to a separate branch
+- **Security**: Environment sanitization, XSS prevention, and threat detection
+- **Orchestration**: BMAD story automation and task delegation
+- **Learning**: Continuous improvement through pattern recognition
+
+### Current Configuration
+
+Hooks are configured in `.claude/config/settings.json`. View current hooks:
+```bash
+cat .claude/config/settings.json | jq .
+```
+
+### Quick Commands
+
+```bash
+# View auto-commits
+.claude/config/hooks/view-claude-commits.sh
+
+# Search TRAIL solutions
+.claude/solutions/search.sh "error message"
+
+# Check security alerts
+tail -f .claude/solutions/security/living-off-ai-alerts.log
+
+# Generate learning report
+node .claude/solutions/continuous-learning.js report
+```
 
 ## 🎯 Current Status 🎯
 

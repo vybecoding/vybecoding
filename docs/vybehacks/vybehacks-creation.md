@@ -80,15 +80,15 @@ EOF
 
 ### Step 1: Create Directory Structure
 ```bash
-mkdir -p .solutions/debug
-touch .solutions/solutions.log
+mkdir -p .claude/solutions/debug
+touch .claude/solutions/solutions.log
 ```
 
 ### Step 2: Create Core Scripts
 
 #### verify-and-learn.sh (Main Orchestrator)
 ```bash
-cat > .solutions/verify-and-learn.sh << 'EOF'
+cat > .claude/solutions/verify-and-learn.sh << 'EOF'
 #!/bin/bash
 
 # Test-and-Learn System with 3-Level Escalation
@@ -190,12 +190,12 @@ if [ -d "$DEBUG_DIR" ]; then
     ls -t "$DEBUG_DIR" | grep "session_" | tail -n +11 | xargs -I {} rm -rf "$DEBUG_DIR/{}" 2>/dev/null
 fi
 EOF
-chmod +x .solutions/verify-and-learn.sh
+chmod +x .claude/solutions/verify-and-learn.sh
 ```
 
 #### search.sh (Search Utility)
 ```bash
-cat > .solutions/search.sh << 'EOF'
+cat > .claude/solutions/search.sh << 'EOF'
 #!/bin/bash
 # Search utility for solutions database
 
@@ -215,12 +215,12 @@ else
     echo "No solutions found yet. The system will build knowledge as you fix errors."
 fi
 EOF
-chmod +x .solutions/search.sh
+chmod +x .claude/solutions/search.sh
 ```
 
 #### log-solution.sh (Manual Solution Logger)
 ```bash
-cat > .solutions/log-solution.sh << 'EOF'
+cat > .claude/solutions/log-solution.sh << 'EOF'
 #!/bin/bash
 # Manually log a solution
 
@@ -247,16 +247,16 @@ EOF
 
 echo "Solution logged successfully!"
 EOF
-chmod +x .solutions/log-solution.sh
+chmod +x .claude/solutions/log-solution.sh
 ```
 
 ### Step 3: Configure Claude Code Hooks
 ```bash
 mkdir -p .claude-code
-cat > .claude-code/settings.json << 'EOF'
+cat > .claude/config/settings.json << 'EOF'
 {
   "hooks": {
-    "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.solutions/verify-and-learn.sh"
+    "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.claude/solutions/verify-and-learn.sh"
   }
 }
 EOF
@@ -459,35 +459,35 @@ VERIFY
 
 # Setup TRAIL System
 echo "Setting up TRAIL system..."
-mkdir -p .solutions/debug
-touch .solutions/solutions.log
+mkdir -p .claude/solutions/debug
+touch .claude/solutions/solutions.log
 
 # Create all TRAIL scripts
-cat > .solutions/verify-and-learn.sh << 'TRAIL'
+cat > .claude/solutions/verify-and-learn.sh << 'TRAIL'
 #!/bin/bash
 # [Full verify-and-learn.sh content from above]
 TRAIL
-chmod +x .solutions/verify-and-learn.sh
+chmod +x .claude/solutions/verify-and-learn.sh
 
-cat > .solutions/search.sh << 'SEARCH'
+cat > .claude/solutions/search.sh << 'SEARCH'
 #!/bin/bash
 # [Full search.sh content from above]
 SEARCH
-chmod +x .solutions/search.sh
+chmod +x .claude/solutions/search.sh
 
-cat > .solutions/log-solution.sh << 'LOG'
+cat > .claude/solutions/log-solution.sh << 'LOG'
 #!/bin/bash
 # [Full log-solution.sh content from above]
 LOG
-chmod +x .solutions/log-solution.sh
+chmod +x .claude/solutions/log-solution.sh
 
 # Configure hooks
 echo "Configuring Claude Code hooks..."
 mkdir -p .claude-code
-cat > .claude-code/settings.json << 'HOOKS'
+cat > .claude/config/settings.json << 'HOOKS'
 {
   "hooks": {
-    "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.solutions/verify-and-learn.sh"
+    "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.claude/solutions/verify-and-learn.sh"
   }
 }
 HOOKS
@@ -496,7 +496,7 @@ echo "✅ All VybeHacks installed successfully!"
 echo ""
 echo "Next steps:"
 echo "1. Install Playwright if needed: npm install -D playwright"
-echo "2. Test TRAIL: .solutions/search.sh test"
+echo "2. Test TRAIL: .claude/solutions/search.sh test"
 echo "3. Read CLAUDE.md and VERIFY-FIRST.md"
 EOF
 chmod +x setup-vybehacks.sh
@@ -521,7 +521,7 @@ Or if you have this file, just run:
 ## Backup Strategy
 
 1. **Add to Git**: Always commit these files to your repository
-2. **Create Archive**: `tar -czf vybehacks-backup.tar.gz CLAUDE.md VERIFY-FIRST.md .solutions/ .claude-code/`
+2. **Create Archive**: `tar -czf vybehacks-backup.tar.gz CLAUDE.md VERIFY-FIRST.md .claude/solutions/ .claude/config/`
 3. **Cloud Backup**: Store the setup script in a Gist or cloud storage
 4. **Documentation**: Keep this guide accessible
 
@@ -532,13 +532,13 @@ After installation, verify everything works:
 ```bash
 # Check files exist
 ls -la CLAUDE.md VERIFY-FIRST.md
-ls -la .solutions/
-cat .claude-code/settings.json
+ls -la .claude/solutions/
+cat .claude/config/settings.json
 
 # Test TRAIL search
-.solutions/search.sh "test"
+.claude/solutions/search.sh "test"
 
 # Manually log a test solution
-.solutions/log-solution.sh "Test error" "Test solution"
-.solutions/search.sh "Test"
+.claude/solutions/log-solution.sh "Test error" "Test solution"
+.claude/solutions/search.sh "Test"
 ```

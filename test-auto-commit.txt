@@ -1,2 +1,1 @@
-This is a test file to verify auto-commit functionality.
-Created at: 2025-07-27
+test auto-commit hook - edited by Claude

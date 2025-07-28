@@ -42,8 +42,8 @@
 | **validator.js** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐⭐⭐ | Auto-validates inputs via rules | [npm](https://www.npmjs.com/package/validator) |
 | **DOMPurify** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Hook auto-checks HTML edits | [repo](https://github.com/cure53/DOMPurify) |
 | **safe-compare** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐ | Auto-applied timing attack prevention | [npm](https://www.npmjs.com/package/safe-compare) |
-| **Living off AI Monitor** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Auto-scans AI responses • logs to `.solutions/security/` | [CUSTOM] |
-| **HashiCorp Vault** | 👤 Manual | ✅ | ⭐⭐⭐⭐⭐ | `.solutions/start-vault.sh` • [UI](http://127.0.0.1:8200) | [repo](https://github.com/hashicorp/vault) |
+| **Living off AI Monitor** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Auto-scans AI responses • logs to `.claude/solutions/security/` | [CUSTOM] |
+| **HashiCorp Vault** | 👤 Manual | ✅ | ⭐⭐⭐⭐⭐ | `.claude/solutions/start-vault.sh` • [UI](http://127.0.0.1:8200) | [repo](https://github.com/hashicorp/vault) |
 | **GitGuardian** | 🤖 Auto | ✅ | ⭐⭐⭐⭐⭐ | GitHub app auto-scans commits • FREE unlimited | [gitguardian.com](https://www.gitguardian.com/) |
 | **Snyk** | 👤 Manual | ✅ | ⭐⭐⭐⭐ | `snyk test`, `snyk monitor` • FREE 200/month | [snyk.io](https://snyk.io/) |
 | **Cross-tenant Tester** | 👤 Future | ⏳ | ⭐⭐⭐ | `npm run test:isolation` • when multi-tenant | [CUSTOM] |
@@ -61,9 +61,9 @@
 | Tool | Type | Status | Usage | Link |
 |------|------|--------|--------|------|
 | **BMAD Orchestration** | 🤖 Auto | ✅ | Parallel task execution • Monitor: `node .bmad-core/utils/orchestration-monitor.js` | [LOCAL] |
-| **Continuous Learning** | 🤖 Auto | ✅ | Pattern recognition • `node .solutions/continuous-learning.js analyze` | [LOCAL] |
+| **Continuous Learning** | 🤖 Auto | ✅ | Pattern recognition • `node .claude/solutions/continuous-learning.js analyze` | [LOCAL] |
 | **Sub-Agents** | 🤖 Auto | ✅ | 8 specialized agents • Frontend, Backend, Test, Integration, etc. | `.claude/sub-agents/bmad/` |
-| **TRAIL System** | 🤖 Auto | ✅ | Error learning & solution recall • `.solutions/search.sh "pattern"` | [LOCAL] |
+| **TRAIL System** | 🤖 Auto | ✅ | Error learning & solution recall • `.claude/solutions/search.sh "pattern"` | [LOCAL] |
 | **Orchestration Monitor** | 👤 Manual | ✅ | Real-time execution dashboard • 3 view modes | `.bmad-core/utils/` |
 
 ## 📚 Security Resources & Documentation
@@ -82,6 +82,8 @@
 | Doc | Type | Usage | Link |
 |-----|------|--------|------|
 | **vybecoding Docs** | 📖 Local | Reference anytime via filesystem | `/home/happy/Projects/vybecoding/docs` |
+| **Tech Stack** | 📖 Local | Complete technology stack documentation | `/home/happy/Projects/vybecoding/docs/tech-stack.md` |
+| **Hooks System** | 📖 Local | Claude Code hooks documentation | `/home/happy/Projects/vybecoding/docs/tech-stack.md#-claude-code-hooks-system-` |
 | **VybeHacks** | 📖 Local | TRAIL, VERIFY-FIRST patterns | `/home/happy/Projects/vybecoding/docs/vybehacks` |
 | **BMAD Orchestration Guide** | 📖 Local | Parallel execution guide | `.bmad-core/docs/orchestration-guide.md` |
 | **BMAD Guide** | 🌐 Online | Multi-agent workflows | [wiki](https://github.com/bmadcode/BMAD-METHOD/wiki) |

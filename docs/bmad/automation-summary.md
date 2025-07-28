@@ -33,23 +33,23 @@ Claude Code now operates with minimal human interaction, reducing prompts from ~
 ## New Files Created
 
 ### Automation Hooks
-1. **`.claude-code/hooks/pre-session-hook.sh`**
+1. **`.claude/config/hooks/pre-session-hook.sh`**
    - Runs on session start
    - Shows ready stories with parallelization scores
    - Displays available patterns and recent errors
 
-2. **`.solutions/story-auto-select.sh`**
+2. **`.claude/solutions/story-auto-select.sh`**
    - Intelligently scores and selects stories
    - Considers priority, dependencies, patterns
    - Outputs selection with reasoning
 
-3. **`.claude-code/hooks/auto-approval-engine.js`**
+3. **`.claude/config/hooks/auto-approval-engine.js`**
    - Evaluates delegation plans
    - Assesses security fixes
    - Makes confidence-based decisions
    - Logs all auto-approvals
 
-4. **`.solutions/session-tracker.sh`**
+4. **`.claude/solutions/session-tracker.sh`**
    - Tracks session duration
    - Triggers 4-hour reviews
    - Maintains review history
@@ -143,7 +143,7 @@ Starting USER-AUTH with auto-delegation...
 All automation features are active by default. To adjust:
 
 ### Disable specific auto-approvals:
-Edit `.claude-code/hooks/auto-approval-engine.js` criteria
+Edit `.claude/config/hooks/auto-approval-engine.js` criteria
 
 ### Change auto-delegation threshold:
 Update CLAUDE.md rule from 70% to desired percentage
@@ -152,9 +152,9 @@ Update CLAUDE.md rule from 70% to desired percentage
 Edit `FOUR_HOURS` in `session-tracker.sh`
 
 ### View automation logs:
-- Auto-approvals: `.solutions/auto-approvals.log`
-- Session reviews: `.solutions/session-reviews/`
-- Learning applications: `.solutions/learning-report.md`
+- Auto-approvals: `.claude/solutions/auto-approvals.log`
+- Session reviews: `.claude/solutions/session-reviews/`
+- Learning applications: `.claude/solutions/learning-report.md`
 
 ## Best Practices
 

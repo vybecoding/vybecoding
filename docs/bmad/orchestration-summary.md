@@ -70,16 +70,16 @@ The vybecoding project now features advanced parallel execution capabilities thr
 **Commands:**
 ```bash
 # Analyze patterns
-node .solutions/continuous-learning.js analyze
+node .claude/solutions/continuous-learning.js analyze
 
 # Monitor continuously
-node .solutions/continuous-learning.js monitor
+node .claude/solutions/continuous-learning.js monitor
 
 # Generate report
-node .solutions/continuous-learning.js report
+node .claude/solutions/continuous-learning.js report
 
 # Apply learning
-node .solutions/continuous-learning.js apply '{"context":"..."}'
+node .claude/solutions/continuous-learning.js apply '{"context":"..."}'
 ```
 
 ### 5. Integration Features

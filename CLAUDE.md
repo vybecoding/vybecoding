@@ -31,9 +31,9 @@ This project has an intelligent 3-level debugging system that automatically test
 
 ### Search for past fixes:
 ```bash
-.solutions/search.sh "tailwind"
-.solutions/search.sh "syntax error"
-.solutions/search.sh "config"
+.claude/solutions/search.sh "tailwind"
+.claude/solutions/search.sh "syntax error"
+.claude/solutions/search.sh "config"
 ```
 
 ### MCP Memory Access:
@@ -45,11 +45,11 @@ When Claude Code starts with MCP enabled, it can access:
 ## Architecture
 
 ```
-.claude-code/
+.claude/config/
 ├── settings.json          # Hooks configuration
 └── mcp-settings.json      # MCP server config
 
-.solutions/
+.claude/solutions/
 ├── verify-and-learn.sh    # Main testing & learning script
 ├── playwright-debug.js    # Visual debugging with Playwright
 ├── search.sh              # Search utility
@@ -77,7 +77,7 @@ When triggered, Playwright:
 - Records everything (video, screenshots, traces)
 - Captures synchronized console logs and network activity
 - Creates comprehensive debug session with all artifacts
-- View trace with: `npx playwright show-trace .solutions/debug/session_*/trace.zip`
+- View trace with: `npx playwright show-trace .claude/solutions/debug/session_*/trace.zip`
 
 ### Automatic Learning:
 - When tests pass after failing, the fix is automatically logged
@@ -255,7 +255,7 @@ Remember: Smaller changes = fewer bugs, easier reviews, cleaner history!
 ### Living off AI Defense (Automated)
 - **Hook automatically scans all AI responses** for malicious patterns
 - Detects hidden instructions, prompt injections, role confusion attacks
-- Logs suspicious activity to `.solutions/security/living-off-ai-alerts.log`
+- Logs suspicious activity to `.claude/solutions/security/living-off-ai-alerts.log`
 - Always verify AI suggestions independently before execution
 
 ## Parallel Task Execution
@@ -304,7 +304,7 @@ A sound will play after each response to notify completion:
 
 When working on bug fixes, check Sentry for recent errors:
 ```bash
-.solutions/sentry-monitor.sh fetch
+.claude/solutions/sentry-monitor.sh fetch
 ```
 
 This helps identify patterns and recurring issues that TRAIL can learn from.
@@ -335,7 +335,7 @@ Features:
 
 Helper script for manual analysis:
 ```bash
-.solutions/update-docs.sh
+.claude/solutions/update-docs.sh
 ```
 
 ## Auto-Commit System
@@ -353,11 +353,11 @@ Every successful code change is automatically committed to a separate 'claude' b
 
 **View Claude Commits:**
 ```bash
-.claude-code/hooks/view-claude-commits.sh
+.claude/config/hooks/view-claude-commits.sh
 ```
 
 **Manual Control:**
-- Disable: Remove auto-commit from hooks in `.claude-code/settings.json`
+- Disable: Remove auto-commit from hooks in `.claude/config/settings.json`
 - Reset counter: `echo "0" > .claude-commit-count`
 - Delete branch: `git branch -D claude`
 
@@ -408,7 +408,7 @@ When using plan mode with TodoWrite:
 
 Generate comprehensive session reviews:
 ```bash
-.solutions/generate-review.sh
+.claude/solutions/generate-review.sh
 ```
 
 Reviews include:
@@ -471,7 +471,7 @@ All run in parallel, 3x faster completion
 ### VybeHacks + BMAD Integration
 
 #### TRAIL Integration
-- All BMAD agents use `.solutions/search.sh` before tasks
+- All BMAD agents use `.claude/solutions/search.sh` before tasks
 - Sub-agents share solutions automatically
 - Errors trigger learning across all agents
 
@@ -515,16 +515,16 @@ The project now includes an intelligent continuous learning system that improves
 
 ```bash
 # Analyze and extract patterns
-node .solutions/continuous-learning.js analyze
+node .claude/solutions/continuous-learning.js analyze
 
 # Start continuous monitoring
-node .solutions/continuous-learning.js monitor
+node .claude/solutions/continuous-learning.js monitor
 
 # Generate learning report
-node .solutions/continuous-learning.js report
+node .claude/solutions/continuous-learning.js report
 
 # Apply learning to current context
-node .solutions/continuous-learning.js apply '{"taskType":"frontend"}'
+node .claude/solutions/continuous-learning.js apply '{"taskType":"frontend"}'
 ```
 
 ### Integration with BMAD
