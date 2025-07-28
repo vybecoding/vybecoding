@@ -252,7 +252,8 @@
   }
   
   .minimal-card {
-    min-height: 280px !important;
+    min-height: 0 !important;
+    height: auto !important;
   }
 }
 

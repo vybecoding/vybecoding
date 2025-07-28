@@ -1,0 +1,37 @@
+/* FORCE FLEXIBLE CARDS - HIGHEST PRIORITY */
+
+/* Remove ALL height constraints with maximum specificity */
+html body .showcase-section div[style*="display: grid"] .minimal-card,
+html body .showcase-section .minimal-card.pt-1.card-verified.rounded-lg.transition-all.cursor-pointer.group.overflow-hidden,
+html body .minimal-card.pt-1.card-verified.rounded-lg.transition-all.cursor-pointer.group.overflow-hidden {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  flex: 0 1 auto !important;
+}
+
+/* Force grid container to be flexible */
+html body .showcase-section > div[style*="display: grid"][style*="grid-template-columns"],
+html body div[style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
+  height: auto !important;
+  min-height: 0 !important;
+  align-items: start !important;
+}
+
+/* Override ANY height rules */
+[class*="minimal-card"] {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Specifically target showcase cards */
+.showcase-section * {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Reset flex properties */
+.showcase-section .minimal-card {
+  flex: 0 1 auto !important;
+  align-self: start !important;
+}

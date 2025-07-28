@@ -1,0 +1,94 @@
+/* PERFECT SHOWCASE LABELS - Fix corners and padding */
+
+/* Fix label corners to not extend past card borders */
+.minimal-card span[style*="position: absolute"][style*="top: 0"][style*="left: 0"] {
+  /* Ensure label stays within card boundaries */
+  border-radius: 0.5rem 0 0.625rem 0 !important; /* Match card's border radius on top-left */
+  top: 0 !important;
+  left: 0 !important;
+  overflow: hidden !important;
+  z-index: 10 !important; /* Keep below other content but visible */
+}
+
+/* Match card border radius exactly */
+.minimal-card.rounded-lg span[style*="position: absolute"][style*="top: 0"][style*="left: 0"] {
+  border-radius: 0.5rem 0 0.625rem 0 !important; /* rounded-lg = 0.5rem */
+}
+
+/* Ensure card overflow is handled properly */
+.minimal-card.overflow-hidden {
+  overflow: hidden !important;
+  border-radius: 0.5rem !important; /* Ensure consistent border radius */
+}
+
+/* Optimize padding for better space usage */
+html body .minimal-card.pt-1.card-verified.rounded-lg.transition-all.cursor-pointer.group.overflow-hidden {
+  padding: 1rem !important; /* 16px optimized card padding */
+  padding-bottom: 0.5rem !important; /* 8px to match stats padding-top exactly */
+}
+
+/* Title section - account for label space */
+.minimal-card h3[style*="margin-top: 2rem"] {
+  margin-top: 2rem !important; /* Space for label */
+  margin-bottom: 0.5rem !important; /* Reduce title to member spacing */
+  padding: 0 !important;
+}
+
+/* Author/meta section - member info row */
+.minimal-card .flex.items-center.gap-2:not(.justify-between) {
+  margin-bottom: 0.5rem !important; /* Keep perfect member to guides/apps spacing */
+  padding: 0 !important;
+}
+
+/* Stats row (8 guides • 3 apps) - needs more space after */
+.minimal-card .flex.items-center.gap-2:nth-of-type(2) {
+  margin-bottom: 0.75rem !important; /* Increase guides/apps to description spacing */
+}
+
+/* Description */
+.minimal-card p.text-sm.text-vybe-gray-400 {
+  margin-bottom: 0.75rem !important;
+  padding: 0 !important;
+  line-height: 1.5 !important;
+}
+
+/* Tags section */
+.minimal-card .flex.flex-wrap.gap-2 {
+  margin-bottom: 0.75rem !important;
+  padding: 0 !important;
+}
+
+/* Bottom stats section - padding only above border, card handles bottom */
+html body .minimal-card .flex.items-center.justify-between.pt-3 {
+  margin-top: auto !important;
+  padding-top: 0.5rem !important; /* 8px to match card bottom padding */
+  padding-bottom: 0 !important;
+  border-top: 1px solid rgba(75, 85, 99, 0.3) !important;
+  margin-bottom: 0 !important;
+}
+
+/* Ensure consistent spacing between all content sections */
+.minimal-card > * + * {
+  margin-top: 0 !important; /* Reset any margin-top */
+}
+
+/* Apply equal spacing between sections */
+.minimal-card h3 + .flex.items-center.gap-2 {
+  margin-top: 0.5rem !important; /* Title to member row */
+}
+
+.minimal-card .flex.items-center.gap-2:nth-of-type(2) + p {
+  margin-top: 0.75rem !important; /* Stats row to description - increase spacing */
+}
+
+.minimal-card .flex.items-center.gap-2:first-of-type + p {
+  margin-top: 0.5rem !important; /* Member row to description when no stats */
+}
+
+.minimal-card p + .flex.flex-wrap.gap-2 {
+  margin-top: 0.75rem !important; /* Description to tags */
+}
+
+.minimal-card .flex.flex-wrap.gap-2 + .flex.items-center.justify-between {
+  margin-top: auto !important; /* Tags to bottom stats */
+}

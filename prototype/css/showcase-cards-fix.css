@@ -79,23 +79,47 @@
    FIX SHOWCASE CARD FLEXIBILITY
    ============================================ */
 
-/* Remove fixed height inline styles */
-.specialized-card[style*="min-height"],
-.specialized-card[style*="height"] {
+/* Remove fixed height constraints from showcase cards */
+.minimal-card[style*="min-height"],
+.minimal-card[style*="height"] {
   min-height: 0 !important;
-  height: 100% !important;
+  height: auto !important;
 }
 
-/* Ensure proper flex layout */
-.specialized-card {
+/* Make showcase cards flexible */
+.minimal-card {
   display: flex !important;
   flex-direction: column !important;
-  padding-bottom: 0.5rem !important; /* Match guide standard */
+  min-height: 0 !important;
+  height: auto !important;
 }
 
-/* Fix the grid container if it has inline styles */
+/* Fix the grid container for flexible cards */
 div[style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
-  align-items: stretch !important; /* Ensure cards stretch to match height */
+  align-items: start !important; /* Cards start at top, grow naturally */
+  height: auto !important; /* Remove fixed grid height */
+}
+
+/* Also target the specific showcase grid */
+.showcase-section > div[style*="display: grid"] {
+  height: auto !important;
+  align-items: start !important;
+}
+
+/* Remove any CSS forcing fixed heights on showcase page */
+.showcase-section .minimal-card {
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* Override all other CSS rules that force fixed heights */
+.grid > .minimal-card:not([data-card-type="news"]),
+#guides-results-grid .minimal-card,
+#guides-browse-content > .grid .minimal-card,
+.grid > .minimal-card,
+.minimal-card, .specialized-card, .member-card, .news-card, .app-card, .guide-card {
+  min-height: 0 !important;
+  height: auto !important;
 }
 
 /* ============================================
@@ -141,11 +165,23 @@ div[style*="display: grid"][style*="grid-template-columns: repeat(3, 1fr)"] {
   margin-top: 0.75rem !important;
 }
 
-/* Bottom stats section */
-.specialized-card > div:last-child {
+/* Bottom stats section - proper spacing */
+.minimal-card > div:last-child,
+.minimal-card .flex.items-center.justify-between.pt-3 {
   margin-top: auto !important;
-  padding-top: 0.5rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
   border-top: 1px solid rgba(64, 64, 64, 0.5) !important;
+}
+
+/* Ensure equal spacing between content and bottom border */
+.minimal-card {
+  padding-bottom: 1.25rem !important;
+}
+
+/* Fix stats section spacing */
+.minimal-card .flex.items-center.justify-between.pt-3[style*="margin-top: auto"] {
+  padding-bottom: 0 !important; /* Remove duplicate padding */
 }
 
 /* ============================================
