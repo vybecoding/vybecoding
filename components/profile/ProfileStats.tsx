@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code, BookOpen, Users, Star, TrendingUp } from "lucide-react";
@@ -18,12 +20,13 @@ interface StatItem {
 }
 
 export function ProfileStats({ userId }: ProfileStatsProps) {
-  // TODO: Replace with actual data fetching from Convex
-  // For now, using mock data to establish the component structure
+  // Fetch app statistics
+  const appStats = useQuery(api.apps.getUserAppStats, { userId });
+  
   const stats: StatItem[] = [
     {
       label: "Apps Submitted",
-      value: 0, // TODO: Query from apps table
+      value: appStats?.approved || 0,
       icon: Code,
       color: "text-blue-600 dark:text-blue-400"
     },
