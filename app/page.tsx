@@ -26,13 +26,13 @@ export default function Home() {
                   <GradientText gradient="brand">vybecoding.ai</GradientText>
                 </span>
               </h1>
-              <p className="text-2xl md:text-4xl text-vybe-gray-300 font-light mb-8">
+              <p className="text-2xl md:text-4xl text-gray-300 font-light mb-8">
                 Where <GradientText gradient="brand">vibe coding</GradientText> meets<br/>
                 <span className="bg-gradient-to-r from-vybe-orange via-vybe-pink to-vybe-purple bg-clip-text text-transparent">
                   context engineering
                 </span>.
               </p>
-              <h2 className="text-xl md:text-2xl text-vybe-gray-300 font-light mb-8">
+              <h2 className="text-xl md:text-2xl text-gray-300 font-light mb-8">
                 Learn from AI builders who've shipped real products.<br/>
                 Get <span className="text-vybe-purple-light">guides</span>, showcase <span className="text-vybe-pink">apps</span>, connect with <span className="text-vybe-orange">mentors</span>.
               </h2>
@@ -46,10 +46,10 @@ export default function Home() {
               >
                 Start Building with AI
               </Link>
-              <p className="text-sm text-vybe-gray-400 mt-4">Start free • No credit card required</p>
+              <p className="text-sm text-gray-400 mt-4">Start free • No credit card required</p>
               
               {/* Subtle Credibility */}
-              <div className="flex justify-center items-center gap-6 text-xs text-vybe-gray-500 mt-6">
+              <div className="flex justify-center items-center gap-6 text-xs text-gray-500 mt-6">
                 <span className="flex items-center gap-1">
                   <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -68,7 +68,7 @@ export default function Home() {
           
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-0 right-0">
-            <svg className="w-12 h-12 text-vybe-gray-500 mx-auto animate-gentle-bounce" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+            <svg className="w-12 h-12 text-gray-500 mx-auto animate-gentle-bounce" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <polyline points="19 12 12 19 5 12"></polyline>
             </svg>
@@ -84,7 +84,7 @@ export default function Home() {
                   Learn from <GradientText gradient="title">Featured Mentors</GradientText>
                 </h3>
                 
-                <p className="text-vybe-gray-400 text-center mb-8">
+                <p className="text-gray-400 text-center mb-8">
                   Connect with AI developers who've already built successful projects and can guide your journey.
                 </p>
               </div>
@@ -106,10 +106,10 @@ export default function Home() {
                         </div>
                         <div className="flex-1">
                           <h5 className="font-medium text-white">{mentor.name}</h5>
-                          <p className="text-xs text-vybe-gray-400">{mentor.role}</p>
+                          <p className="text-xs text-gray-400">{mentor.role}</p>
                           <div className="flex items-center gap-2 mt-1">
                             <span className="text-yellow-400 text-xs">★★★★★</span>
-                            <span className="text-xs text-vybe-gray-500">{mentor.rating} ({mentor.reviews})</span>
+                            <span className="text-xs text-gray-500">{mentor.rating} ({mentor.reviews})</span>
                           </div>
                         </div>
                         <button 
@@ -141,42 +141,46 @@ export default function Home() {
                 Yes, AI Can Be <GradientText gradient="title">Frustrating</GradientText>
               </h3>
               <div className="py-2">
-                <p className="text-lg text-vybe-gray-300 mb-8 text-center">I know what you're thinking...</p>
+                <p className="text-lg text-gray-300 mb-8 text-center">I know what you're thinking...</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                  {[
-                    {
-                      color: "purple",
-                      title: '"But AI hallucinates!"',
-                      description: "True. AI will confidently invent APIs and \"solutions\" that don't exist. We'll show you how to catch and prevent this."
-                    },
-                    {
-                      color: "pink",
-                      title: '"It\'s just toxic positivity!"',
-                      description: "Also true. Getting honest feedback from AI is hard. Our workflows teach you how to get critical, useful responses."
-                    },
-                    {
-                      color: "orange",
-                      title: '"All AI sites look the same!"',
-                      description: "Yes, including ours. AI works best with familiar patterns it's trained on. Learn how to add unique touches while keeping AI-friendly foundations."
-                    },
-                    {
-                      color: "red",
-                      title: '"It breaks with complex logic!"',
-                      description: "Multi-step workflows and intricate business logic confuse AI. We'll teach you how to break down complexity into AI-digestible chunks."
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className={`w-5 h-5 rounded-full bg-vybe-${item.color}/20 flex-shrink-0 mt-0.5 flex items-center justify-center`}>
-                        <div className={`w-2 h-2 rounded-full bg-vybe-${item.color}`}></div>
-                      </div>
-                      <div>
-                        <h4 className="text-lg font-medium text-vybe-gray-100 mb-1">{item.title}</h4>
-                        <p className="text-sm text-vybe-gray-400">{item.description}</p>
-                      </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-vybe-purple/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-vybe-purple"></div>
                     </div>
-                  ))}
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100 mb-1">"But AI hallucinates!"</h4>
+                      <p className="text-sm text-gray-400">True. AI will confidently invent APIs and "solutions" that don't exist. We'll show you how to catch and prevent this.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-vybe-pink/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-vybe-pink"></div>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100 mb-1">"It's just toxic positivity!"</h4>
+                      <p className="text-sm text-gray-400">Also true. Getting honest feedback from AI is hard. Our workflows teach you how to get critical, useful responses.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-vybe-orange/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-vybe-orange"></div>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100 mb-1">"All AI sites look the same!"</h4>
+                      <p className="text-sm text-gray-400">Yes, including ours. AI works best with familiar patterns it's trained on. Learn how to add unique touches while keeping AI-friendly foundations.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-red-800/20 flex-shrink-0 mt-0.5 flex items-center justify-center">
+                      <div className="w-2 h-2 rounded-full bg-red-800"></div>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-gray-100 mb-1">"It breaks with complex logic!"</h4>
+                      <p className="text-sm text-gray-400">Multi-step workflows and intricate business logic confuse AI. We'll teach you how to break down complexity into AI-digestible chunks.</p>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-vybe-gray-300 mt-8 text-center">
+                <p className="text-sm text-gray-300 mt-8 text-center">
                   <span className="text-vybe-pink font-medium">These challenges are real, but they're solvable.</span> 
                   That's why our guides focus on practical workflows that actually work.
                 </p>
@@ -194,36 +198,35 @@ export default function Home() {
             
             {/* Feature Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
-              {[
-                {
-                  color: "purple",
-                  icon: "📝",
-                  title: "Create & Share",
-                  description: "Build and share your AI workflows, apps, and learnings with the community"
-                },
-                {
-                  color: "pink",
-                  icon: "🚀",
-                  title: "Showcase Apps",
-                  description: "Display your AI-powered projects and get feedback from experienced developers"
-                },
-                {
-                  color: "orange",
-                  icon: "🧑‍🏫",
-                  title: "Learn from Mentors",
-                  description: "Book 1-on-1 sessions with AI experts who've shipped production apps"
-                }
-              ].map((feature, index) => (
-                <GlassCard key={index} className="p-5" glow={feature.color as any}>
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className={`w-12 h-12 bg-vybe-${feature.color}/20 rounded-lg flex items-center justify-center flex-shrink-0`}>
-                      <span className="text-2xl">{feature.icon}</span>
-                    </div>
-                    <h4 className="text-lg font-medium text-white">{feature.title}</h4>
+              <GlassCard className="p-5" glow="purple">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-12 h-12 bg-vybe-purple/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">📝</span>
                   </div>
-                  <p className="text-sm text-vybe-gray-400">{feature.description}</p>
-                </GlassCard>
-              ))}
+                  <h4 className="text-lg font-medium text-white">Create & Share</h4>
+                </div>
+                <p className="text-sm text-gray-400">Build and share your AI workflows, apps, and learnings with the community</p>
+              </GlassCard>
+
+              <GlassCard className="p-5" glow="pink">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-12 h-12 bg-vybe-pink/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">🚀</span>
+                  </div>
+                  <h4 className="text-lg font-medium text-white">Showcase Apps</h4>
+                </div>
+                <p className="text-sm text-gray-400">Display your AI-powered projects and get feedback from experienced developers</p>
+              </GlassCard>
+
+              <GlassCard className="p-5" glow="orange">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-12 h-12 bg-vybe-orange/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-2xl">🧑‍🏫</span>
+                  </div>
+                  <h4 className="text-lg font-medium text-white">Learn from Mentors</h4>
+                </div>
+                <p className="text-sm text-gray-400">Book 1-on-1 sessions with AI experts who've shipped production apps</p>
+              </GlassCard>
             </div>
           </div>
         </section>
