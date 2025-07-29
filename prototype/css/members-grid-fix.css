@@ -1,22 +1,28 @@
 /* Members Page Grid Fix - Force proper layout */
 
-/* Ensure container uses full available width */
-#members-page > div {
+/* Target the dynamic content container */
+#dynamic-content .page-container > div,
+#dynamic-content > .page-container > div {
   width: 100% !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
 }
 
-/* Override inline grid styles */
-#members-page .grid[style*="grid-template-columns"] {
-  grid-template-columns: repeat(3, 1fr) !important;
+/* Override inline grid styles with higher specificity */
+#dynamic-content .grid[style*="grid-template-columns"],
+#dynamic-content .grid[style*="display"],
+.page-container .grid[style*="grid-template-columns"],
+.page-container .grid[style*="display"] {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 }
 
 /* Force the grid container to use proper grid layout */
-#members-page .grid,
-#members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+#dynamic-content .grid,
+#dynamic-content .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3,
+.page-container .grid {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 1.5rem !important;
   max-width: 100% !important;
   margin: 0 !important;
@@ -25,10 +31,11 @@
 
 /* Force 3 columns on large screens */
 @media (min-width: 1024px) {
-  #members-page .grid,
-  #members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3,
-  #members-page .grid[style*="grid-template-columns"] {
-    grid-template-columns: repeat(3, 1fr) !important;
+  #dynamic-content .grid,
+  #dynamic-content .grid[style],
+  .page-container .grid,
+  .page-container .grid[style] {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   }
 }
 

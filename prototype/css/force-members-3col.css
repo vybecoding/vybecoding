@@ -1,0 +1,32 @@
+/* Force 3-column grid for members page - Ultimate override */
+
+/* Target all possible selectors for the grid */
+#dynamic-content .grid[style],
+#dynamic-content .grid,
+.page.active .grid,
+.page-container .grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(320px, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Extra specificity to override inline styles */
+body #main-content #dynamic-content .grid[style*="grid-template-columns"] {
+    grid-template-columns: repeat(3, minmax(320px, 1fr)) !important;
+}
+
+/* Ensure cards don't expand */
+#dynamic-content .minimal-card,
+.page-container .minimal-card {
+    width: 100% !important;
+    max-width: 400px !important;
+}
+
+/* Container width fix */
+#dynamic-content .mx-auto[style*="max-width"],
+.page-container .mx-auto[style*="max-width"] {
+    max-width: 1200px !important;
+}
