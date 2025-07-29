@@ -114,6 +114,28 @@ MCP servers are configured in `.claude/config/mcp-settings.json`:
 4. **Token Security**: Use environment variables for sensitive data
 5. **Minimal Permissions**: Grant only necessary access rights
 
+## Available MCP Servers
+
+### Development & Database
+- [Convex MCP](./convex.md) - Database introspection and query execution
+- [GitHub MCP](./github.md) - Repository management and code operations
+- [Shadcn UI MCP](./shadcn-ui.md) - Component generation and styling
+
+### Security & Analysis
+- [Security Audit MCP](./security-audit.md) - Vulnerability scanning
+- [Semgrep MCP](./semgrep.md) - Static code analysis
+- [Nuclei MCP](./nuclei.md) - Security testing
+
+### Productivity & Search
+- [Solutions Memory MCP](./solutions-memory.md) - Pattern recognition and learning
+- [Exa Search MCP](./exa-search.md) - Advanced web searching
+- [Sequential Thinking MCP](./sequential-thinking.md) - Complex problem solving
+
+### Testing & Automation
+- [Playwright MCP](./playwright.md) - Browser automation and testing
+- [Ref Tools MCP](./ref-tools.md) - Documentation and reference management
+- [Serena MCP](./serena.md) - Project management assistance
+
 ## Related Documentation
 
 - [Automated MCP Servers](./automated-servers.md) - Servers that work automatically

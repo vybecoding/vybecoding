@@ -377,6 +377,34 @@ git log --oneline | grep "claude-"
 
 This provides a complete history of all Claude Code changes directly in your main branch!
 
+## Convex MCP Integration ✅
+
+The Convex MCP server is now configured to enhance database operations:
+
+### Available Convex Tools
+When working with Convex data, these MCP tools are automatically available:
+- `convex_list_tables` - View all tables and schemas
+- `convex_query_table` - Query data with filtering/pagination
+- `convex_execute_function` - Run deployed Convex functions
+- `convex_run_query` - Execute custom JavaScript queries
+- `convex_get_env_vars` - List environment variables
+
+### Usage in Development Workflow
+1. **Before implementing features**: Use `convex_list_tables` to understand schema
+2. **During development**: Test functions with `convex_execute_function`
+3. **Debugging issues**: Query data directly with `convex_query_table`
+4. **Complex analysis**: Write custom queries with `convex_run_query`
+
+### Example Workflows
+```bash
+# Check guides implementation
+"Use convex_query_table to show all published guides"
+"Execute guides.getGuideStats for user xxx"
+"Run a query to count guides by category"
+```
+
+See [docs/mcp/convex.md](docs/mcp/convex.md) for detailed documentation.
+
 ## Active Claude Code Hooks ✅
 
 All hooks are now properly configured in `.claude/settings.json`:
@@ -484,7 +512,27 @@ The BMAD Method v4.33.0 provides structured story management through specialized
 ### Completed Stories
 - **USER-001**: User Profile System ✅ (Comprehensive profiles with avatars, skills, social links)
 - **USER-002**: Apps Submission System ✅ (Multi-step form, image uploads, submission workflow)
-- **USER-003**: Guides Publishing System 📝 (Ready for development)
+- **USER-003**: Guides Publishing System ✅ (Markdown editor, syntax highlighting, analytics)
+
+### Active Migration: Demo to Production
+The demo migration is being completed following user flow order for continuous testing:
+
+#### Migration Order (User Journey)
+1. **Landing Page** → First user touchpoint
+2. **Navigation** → Enables exploration
+3. **Apps Browse** → Discover content
+4. **Guides Browse** → More content discovery
+5. **Sign Up/In** → User registration
+6. **Dashboard** → User home base
+7. **Profile** → User identity
+8. **Create Content** → Apps/Guides submission
+
+#### Migration Progress
+- **Functional Implementation**: 70% ✅
+- **Visual Fidelity**: 20% 🔄
+- **Page Coverage**: 40% 🔄
+
+See [docs/demo-migration-plan.md](docs/demo-migration-plan.md) for detailed pixel-perfect requirements.
 
 ### Available BMAD Agents
 **Core Agents (Slash Commands and Sub-Agents):**

@@ -36,6 +36,41 @@ Claude automatically uses REF when:
 - Finding configuration examples
 - Retrieving best practices
 
+## Convex MCP - Database Operations
+
+**Purpose**: Direct database introspection and query execution  
+**Package**: convex@latest (via npx)  
+**Key Benefit**: Test and debug database operations without writing code
+
+### Features
+- Table schema introspection
+- Direct data querying with pagination
+- Function execution with arguments
+- Sandboxed JavaScript queries
+- Environment variable management
+
+### Configuration
+```json
+{
+  "convex": {
+    "command": "npx",
+    "args": ["-y", "convex@latest", "mcp", "start"],
+    "env": {
+      "CONVEX_URL": "${CONVEX_URL}",
+      "CONVEX_DEPLOY_KEY": "${CONVEX_DEPLOY_KEY}"
+    }
+  }
+}
+```
+
+### Automatic Usage
+Claude automatically uses Convex MCP when:
+- Verifying database schema changes
+- Testing Convex functions
+- Debugging data issues
+- Analyzing query performance
+- Checking data integrity
+
 ## GitHub MCP - Git Operations
 
 **Purpose**: Seamless Git and GitHub operations  

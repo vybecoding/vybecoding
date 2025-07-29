@@ -32,21 +32,60 @@ module.exports = {
   				DEFAULT: 'hsl(var(--card))',
   				foreground: 'hsl(var(--card-foreground))'
   			},
+  			// Brand colors with exact values from demo
   			brand: {
-  				primary: 'hsl(var(--brand-primary))',
-  				secondary: 'hsl(var(--brand-secondary))',
-  				accent: 'hsl(var(--brand-accent))',
-                    ...colors.brand
+  				primary: '#8a2be2',
+  				secondary: '#d946a0',
+  				accent: '#e96b3a',
   			},
-  			purple: 'colors.purple',
-  			pink: 'colors.pink',
-  			orange: 'colors.orange',
-  			ai: 'colors.ai',
-  			gray: 'colors.neutral',
-  			success: 'hsl(var(--success))',
-  			warning: 'hsl(var(--warning))',
-  			error: 'hsl(var(--error))',
-  			info: 'hsl(var(--info))'
+  			// Vybe color palette from demo
+  			vybe: {
+  				// Neutral palette
+  				'void': '#000000',
+  				'dark': '#0a0a0a',
+  				'midnight': '#111111',
+  				'shadow': '#1a1a1a',
+  				'steel': '#242424',
+  				'slate': '#2a2a2a',
+  				'carbon': '#333333',
+  				'pewter': '#404040',
+  				'silver': '#666666',
+  				'mist': '#888888',
+  				'fog': '#aaaaaa',
+  				'light': '#cccccc',
+  				
+  				// Purple to Orange Spectrum
+  				'purple': '#8a2be2',
+  				'purple-light': '#a855f7',
+  				'purple-lighter': '#a855f7',
+  				'violet': '#8B5CF6',
+  				'indigo': '#6366F1',
+  				'magenta': '#ff1493',
+  				'coral': '#ff6b9d',
+  				'pink': '#d946a0',
+  				'orange': '#e96b3a',
+  				'amber': '#F59E0B',
+  				
+  				// AI Accent Colors
+  				'matrix-green': '#00ff88',
+  				'neural-purple': '#8844ff',
+  				'quantum-orange': '#ff8800',
+  				'plasma-pink': '#ff44aa',
+  				'fusion-cyan': '#0066ff',
+  				'laser-red': '#ff4444',
+  				'volt-yellow': '#ffff00',
+  			},
+  			// Extended color palettes
+  			purple: colors.purple,
+  			pink: colors.pink,
+  			orange: colors.orange,
+  			ai: colors.ai,
+  			gray: colors.neutral,
+  			// Semantic colors
+  			success: '#00ff88',
+  			warning: '#ff8800',
+  			error: '#ff4444',
+  			info: '#0066ff'
   		},
   		backgroundImage: {
   			'gradient-vybe': 'linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%)',
@@ -68,7 +107,13 @@ module.exports = {
   			'gradient-y': 'gradient-y 3s ease infinite',
   			'gradient-xy': 'gradient-xy 3s ease infinite',
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			'fade-in': 'fadeIn 0.8s ease-out',
+  			'slide-up': 'slideUp 0.6s ease-out',
+  			'gentle-bounce': 'gentleBounce 2s ease-in-out infinite',
+  			'subtle-pulse': 'subtlePulse 3s ease-in-out infinite',
+  			'particle-float': 'particleFloat 12.5s linear infinite',
+  			'neural-pulse': 'neuralPulse 5s ease-in-out infinite',
   		},
   		keyframes: {
   			glow: {
@@ -123,6 +168,60 @@ module.exports = {
   				},
   				to: {
   					height: '0'
+  				}
+  			},
+  			fadeIn: {
+  				from: { 
+  					opacity: '0', 
+  					transform: 'translateY(20px)' 
+  				},
+  				to: { 
+  					opacity: '1', 
+  					transform: 'translateY(0)' 
+  				}
+  			},
+  			slideUp: {
+  				from: { 
+  					opacity: '0', 
+  					transform: 'translateY(40px)' 
+  				},
+  				to: { 
+  					opacity: '1', 
+  					transform: 'translateY(0)' 
+  				}
+  			},
+  			gentleBounce: {
+  				'0%, 100%': { transform: 'translateY(0px)' },
+  				'50%': { transform: 'translateY(-3px)' }
+  			},
+  			subtlePulse: {
+  				'0%, 100%': { opacity: '0.7' },
+  				'50%': { opacity: '1' }
+  			},
+  			particleFloat: {
+  				'0%': {
+  					transform: 'translateY(100vh) rotate(0deg)',
+  					opacity: '0'
+  				},
+  				'10%': {
+  					opacity: '0.35'
+  				},
+  				'90%': {
+  					opacity: '0.35'
+  				},
+  				'100%': {
+  					transform: 'translateY(-100vh) rotate(720deg)',
+  					opacity: '0'
+  				}
+  			},
+  			neuralPulse: {
+  				'0%, 100%': {
+  					transform: 'scale(1)',
+  					opacity: '0.15'
+  				},
+  				'50%': {
+  					transform: 'scale(1.5)',
+  					opacity: '0.3'
   				}
   			}
   		}
