@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "./ConvexClientProvider";
+import { ThemeProvider, ThemeScript } from "@/contexts/ThemeContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,9 +16,18 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body>
-          <ConvexClientProvider>{children}</ConvexClientProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <ThemeScript />
+        </head>
+        <body suppressHydrationWarning>
+          <ThemeProvider
+            defaultTheme="dark"
+            storageKey="vybe-theme"
+            enableSystem
+          >
+            <ConvexClientProvider>{children}</ConvexClientProvider>
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
