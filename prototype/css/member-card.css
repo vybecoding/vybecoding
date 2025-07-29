@@ -1,0 +1,38 @@
+/* Styles for minimal-card, specifically for member cards */
+.minimal-card {
+    background: rgba(26, 26, 26, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(51, 51, 51, 0.4) !important;
+    border-radius: 8px !important;
+    padding: 1.25rem !important;
+    transition: all 0.3s ease-in-out !important;
+    position: relative !important;
+    z-index: 10 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    overflow: visible !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.minimal-card:hover {
+    background: rgba(42, 42, 42, 0.8) !important;
+    border-color: rgba(64, 64, 64, 0.5) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+.minimal-card.mentor-card {
+    border: 1px solid rgba(217, 70, 160, 0.3) !important;
+}
+
+.minimal-card.mentor-card:hover {
+    border-color: rgba(217, 70, 160, 0.4) !important;
+}
+
+/* Ensure bottom stats section stays at bottom */
+.minimal-card div[style*="margin-top: auto"] {
+    margin-top: auto !important;
+}
