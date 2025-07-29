@@ -52,3 +52,14 @@
         grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     }
 }
+
+/* Target grid with data attribute */
+[data-members-grid="true"] {
+    display: grid !important;
+}
+
+@media screen and (min-width: 1024px) {
+    [data-members-grid="true"] {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}

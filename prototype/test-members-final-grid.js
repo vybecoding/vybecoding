@@ -28,7 +28,7 @@ async function testMembersFinalGrid() {
   
   // Check grid layout
   const gridInfo = await page.evaluate(() => {
-    const grid = document.querySelector('.grid');
+    const grid = document.querySelector('.members-grid');
     const cards = document.querySelectorAll('.minimal-card');
     
     if (!grid) return { error: 'No grid found' };
