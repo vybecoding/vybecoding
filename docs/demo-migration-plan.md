@@ -1,12 +1,12 @@
-# Prototype to Next.js Migration Plan
+# Demo to Next.js Migration Plan
 
 ## Overview
 
-This document outlines the strategy for creating a pixel-perfect replication of the vybecoding prototype using Next.js, React, Tailwind CSS, and Shadcn/ui components while following best practices and avoiding messy code.
+This document outlines the strategy for creating a pixel-perfect replication of the vybecoding demo using Next.js, React, Tailwind CSS, and Shadcn/ui components while following best practices and avoiding messy code.
 
 ## Current State Analysis
 
-### Prototype Structure
+### Demo Structure
 - **Technology**: Vite-based static site
 - **Pages**: 30+ HTML pages with complex navigation
 - **Styling**: Custom CSS with design tokens + Tailwind configuration
@@ -26,7 +26,7 @@ This document outlines the strategy for creating a pixel-perfect replication of 
 
 #### 1.1 Design System Configuration
 ```typescript
-// tailwind.config.js - Port from prototype
+// tailwind.config.js - Port from demo
 {
   theme: {
     extend: {
@@ -294,7 +294,7 @@ export function AnimatedCard({ children }) {
 ### Visual Verification Strategy
 
 Each story includes explicit visual verification tasks to ensure pixel-perfect replication. This approach:
-- Prevents drift from the prototype design
+- Prevents drift from the demo design
 - Catches issues early before they compound
 - Creates learning patterns for TRAIL system
 - Provides clear definition of "done"
@@ -306,7 +306,7 @@ STORY-XXX: [Component/Feature Name]
 
 ## Implementation Tasks
 - [ ] Create component file structure
-- [ ] Port HTML structure from prototype
+- [ ] Port HTML structure from demo
 - [ ] Apply Tailwind classes and design tokens
 - [ ] Add interactivity and state management
 - [ ] Implement error handling
@@ -314,14 +314,14 @@ STORY-XXX: [Component/Feature Name]
 ## Visual Verification Tasks
 - [ ] VERIFY: Start dev server (`npm run dev`)
 - [ ] VERIFY: Component renders without errors
-- [ ] VERIFY: Visual match to prototype/pages/[page].html
+- [ ] VERIFY: Visual match to demo/pages/[page].html
 - [ ] VERIFY: All hover/active states work correctly
-- [ ] VERIFY: Animations match prototype timing and easing
+- [ ] VERIFY: Animations match demo timing and easing
 
 ## Responsive Verification
-- [ ] VERIFY: Mobile (375px) layout matches prototype
-- [ ] VERIFY: Tablet (768px) layout matches prototype
-- [ ] VERIFY: Desktop (1440px) layout matches prototype
+- [ ] VERIFY: Mobile (375px) layout matches demo
+- [ ] VERIFY: Tablet (768px) layout matches demo
+- [ ] VERIFY: Desktop (1440px) layout matches demo
 - [ ] VERIFY: No horizontal scroll at any breakpoint
 
 ## Quality Checks
@@ -333,15 +333,15 @@ STORY-XXX: [Component/Feature Name]
 
 ### Epic Structure with Verification
 ```
-EPIC: Migrate Prototype to Production Next.js App
+EPIC: Migrate Demo to Production Next.js App
 ├── STORY-001: Setup Design System and Base Components
 │   ├── Implementation Tasks
-│   │   ├── Port Tailwind configuration from prototype
+│   │   ├── Port Tailwind configuration from demo
 │   │   ├── Create gradient text component
 │   │   ├── Create glassmorphism component
 │   │   └── Setup component library structure
 │   └── Verification Tasks
-│       ├── VERIFY: Colors match prototype exactly
+│       ├── VERIFY: Colors match demo exactly
 │       ├── VERIFY: Gradients render correctly
 │       └── VERIFY: Glass effects work on all backgrounds
 │
@@ -352,7 +352,7 @@ EPIC: Migrate Prototype to Production Next.js App
 │   │   ├── Add active state management
 │   │   └── Setup sticky scroll behavior
 │   └── Verification Tasks
-│       ├── VERIFY: Matches prototype navigation exactly
+│       ├── VERIFY: Matches demo navigation exactly
 │       ├── VERIFY: Mobile menu animation timing (300ms)
 │       ├── VERIFY: Glassmorphism blur effect (12px)
 │       └── VERIFY: Active states highlight correctly
@@ -364,7 +364,7 @@ EPIC: Migrate Prototype to Production Next.js App
 │   │   ├── Add CTA buttons with hover states
 │   │   └── Setup background nebula effect
 │   └── Verification Tasks
-│       ├── VERIFY: Text sizes match prototype (6xl/8xl)
+│       ├── VERIFY: Text sizes match demo (6xl/8xl)
 │       ├── VERIFY: Gradient angles are correct (135deg)
 │       ├── VERIFY: Animations match (fade-in 0.8s, slide-up 0.6s)
 │       └── VERIFY: Mobile layout stacks correctly
@@ -377,7 +377,7 @@ EPIC: Migrate Prototype to Production Next.js App
 │   │   └── Add loading states for tab content
 │   └── Verification Tasks
 │       ├── VERIFY: Tab switching preserves state
-│       ├── VERIFY: Active tab styling matches prototype
+│       ├── VERIFY: Active tab styling matches demo
 │       ├── VERIFY: Content transitions smoothly
 │       └── VERIFY: Mobile dashboard is accessible
 │
@@ -400,7 +400,7 @@ EPIC: Migrate Prototype to Production Next.js App
 │   │   ├── Add category filtering
 │   │   └── Setup grid layout with proper spacing
 │   └── Verification Tasks
-│       ├── VERIFY: Grid matches prototype (3 columns desktop)
+│       ├── VERIFY: Grid matches demo (3 columns desktop)
 │       ├── VERIFY: Filter animations work smoothly
 │       ├── VERIFY: Featured badge positioning
 │       └── VERIFY: Mobile layout (1 column)
@@ -412,7 +412,7 @@ EPIC: Migrate Prototype to Production Next.js App
 │   │   ├── Implement progress indicators
 │   │   └── Add form validation and error states
 │   └── Verification Tasks
-│       ├── VERIFY: Step indicators match prototype styling
+│       ├── VERIFY: Step indicators match demo styling
 │       ├── VERIFY: Form fields have correct styling
 │       ├── VERIFY: Validation messages appear correctly
 │       └── VERIFY: Progress saves between steps
@@ -424,7 +424,7 @@ EPIC: Migrate Prototype to Production Next.js App
     │   ├── Optimize images and fonts
     │   └── Setup error boundaries
     └── Verification Tasks
-        ├── VERIFY: All animations match prototype timing
+        ├── VERIFY: All animations match demo timing
         ├── VERIFY: Loading states appear correctly
         ├── VERIFY: Lighthouse score >90
         └── VERIFY: No console errors in production build
@@ -446,7 +446,7 @@ EPIC: Migrate Prototype to Production Next.js App
 # bmad-dev creates the component
 
 # 2. Run verification
-"Verify Navigation component against prototype"
+"Verify Navigation component against demo"
 # bmad-qa runs through all verification tasks
 
 # 3. Fix issues if needed
@@ -536,7 +536,7 @@ const schema = z.object({
 - **Days 1-2**: Setup and design system configuration
 - **Days 3-4**: Base component creation
 - **Day 5**: Visual verification of all base components
-- **Milestone**: All colors, gradients, and effects match prototype ✓
+- **Milestone**: All colors, gradients, and effects match demo ✓
 
 ### Week 2: Navigation and Home Page
 - **Days 1-2**: Navigation component with mobile menu
@@ -554,13 +554,13 @@ const schema = z.object({
 - **Days 1-2**: Card components and grids
 - **Days 3-4**: Listing pages with filters
 - **Day 5**: Detail pages and verification
-- **Milestone**: All content pages match prototype ✓
+- **Milestone**: All content pages match demo ✓
 
 ### Week 5: Interactive Features
 - **Days 1-2**: Multi-step form implementation
 - **Days 3-4**: Submission workflows
 - **Day 5**: End-to-end form verification
-- **Milestone**: Forms work identically to prototype ✓
+- **Milestone**: Forms work identically to demo ✓
 
 ### Week 6: Polish and Production
 - **Days 1-2**: Animation polish and loading states
@@ -571,7 +571,7 @@ const schema = z.object({
 ## Success Criteria
 
 ### Visual Fidelity
-1. **Pixel-Perfect Match**: Every component matches prototype exactly
+1. **Pixel-Perfect Match**: Every component matches demo exactly
    - Colors, gradients, shadows are identical
    - Spacing and layout match at all breakpoints
    - Animations have same timing and easing
@@ -597,7 +597,7 @@ const schema = z.object({
 ### Verification Checklist
 - [ ] All 30+ pages migrated and verified
 - [ ] Every component passes visual verification
-- [ ] Mobile experience matches prototype
+- [ ] Mobile experience matches demo
 - [ ] No console errors or warnings
 - [ ] TRAIL system has captured all learnings
 - [ ] Documentation complete for all components
@@ -613,10 +613,10 @@ npm install -D playwright @playwright/test
 # tests/visual-verification.spec.ts
 import { test, expect } from '@playwright/test'
 
-test('Navigation matches prototype', async ({ page }) => {
-  // Load prototype
-  await page.goto('file:///path/to/prototype/index.html')
-  const prototypeNav = await page.locator('nav').screenshot()
+test('Navigation matches demo', async ({ page }) => {
+  // Load demo
+  await page.goto('file:///path/to/demo/index.html')
+  const demoNav = await page.locator('nav').screenshot()
   
   // Load Next.js version
   await page.goto('http://localhost:3000')
@@ -628,7 +628,7 @@ test('Navigation matches prototype', async ({ page }) => {
 ```
 
 ### Manual Verification Process
-1. Open prototype in one browser tab
+1. Open demo in one browser tab
 2. Open Next.js app in another tab
 3. Use browser DevTools to:
    - Compare computed styles
