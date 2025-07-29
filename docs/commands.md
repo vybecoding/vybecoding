@@ -61,19 +61,24 @@ For manual documentation analysis:
 ## Other Available Commands
 
 ### BMAD Method Commands
-- `/dev` - Development agent
-- `/sm` - Story management
-- `/qa` - Quality assurance agent
-- `/po` - Product owner agent
-- `/pm` - Project manager agent
+**Core Agent Commands:**
+- `/dev` - Development agent (also available as sub-agent `bmad-dev`)
+- `/sm` - Story management (also available as sub-agent `bmad-sm`)
+- `/qa` - Quality assurance (also available as sub-agent `bmad-qa`)
+- `/po` - Product owner (also available as sub-agent `bmad-po`)
+- `/pm` - Project manager (also available as sub-agent `bmad-pm`)
 
-### Utility Commands
-- `/memory` - Access Claude.md for editing
-- `/save` - Persist session state
+**Task Commands:**
+- `/create-next-story` - Generate new user stories
+- `/review-story` - Review and validate stories
+- `/validate-next-story` - Check story readiness
+- `/execute-checklist` - Run through task checklists
+- `/document-project` - Generate project documentation
 
 ### Utility Commands
 - `/memory` - Edit CLAUDE.md instructions
 - `/compact` - Compact response mode
+- `/save` - Persist session state
 
 ## Creating Custom Commands
 

@@ -169,7 +169,7 @@ chmod +x .claude/config/hooks/*.sh
 
 ## Configuration
 
-Add to `.claude/config/settings.json`:
+Add to `.claude/settings.json`:
 ```json
 {
   "hooks": {

@@ -253,7 +253,7 @@ chmod +x .claude/solutions/log-solution.sh
 ### Step 3: Configure Claude Code Hooks
 ```bash
 mkdir -p .claude-code
-cat > .claude/config/settings.json << 'EOF'
+cat > .claude/settings.json << 'EOF'
 {
   "hooks": {
     "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.claude/solutions/verify-and-learn.sh"
@@ -484,7 +484,7 @@ chmod +x .claude/solutions/log-solution.sh
 # Configure hooks
 echo "Configuring Claude Code hooks..."
 mkdir -p .claude-code
-cat > .claude/config/settings.json << 'HOOKS'
+cat > .claude/settings.json << 'HOOKS'
 {
   "hooks": {
     "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.claude/solutions/verify-and-learn.sh"
@@ -533,7 +533,7 @@ After installation, verify everything works:
 # Check files exist
 ls -la CLAUDE.md VERIFY-FIRST.md
 ls -la .claude/solutions/
-cat .claude/config/settings.json
+cat .claude/settings.json
 
 # Test TRAIL search
 .claude/solutions/search.sh "test"

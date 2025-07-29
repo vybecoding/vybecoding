@@ -5,23 +5,29 @@
 ```
 vybecoding/
 ├── .claude/                    # Claude Code configuration and automation
-│   ├── config/                # Settings and MCP configurations
-│   │   ├── settings.json      # Hooks configuration
+│   ├── settings.json          # Hooks configuration
+│   ├── config/                # MCP configurations
 │   │   └── mcp-settings.json  # MCP server settings
 │   ├── hooks/                 # Hook scripts for automation
 │   │   ├── auto-commit.sh     # Git auto-commit functionality
 │   │   ├── post-edit-sanitize.js  # XSS prevention
 │   │   ├── post-response-scan.js  # AI security scanning
 │   │   └── ...                # Other hook scripts
+│   ├── agents/                # Claude Code sub-agents
+│   │   ├── bmad-dev.md       # Development agent (James)
+│   │   ├── bmad-sm.md        # Story management (Stella)
+│   │   ├── bmad-qa.md        # Quality assurance (Quinn)
+│   │   ├── bmad-po.md        # Product owner (Olivia)
+│   │   ├── bmad-architect.md # Architecture (Alex)
+│   │   └── bmad-doc-writer.md # Documentation (Dana)
 │   ├── commands/              # Slash commands
 │   │   ├── BMad/             # BMAD method commands
 │   │   └── update-docs.md    # Documentation updater
-│   ├── solutions/            # TRAIL system
-│   │   ├── continuous-learning.js  # Pattern recognition
-│   │   ├── memory-server.js   # MCP memory server
-│   │   ├── playwright-debug.js # Visual debugging
-│   │   └── ...               # Other TRAIL components
-│   └── [reserved for future use]
+│   └── solutions/            # TRAIL system
+│       ├── continuous-learning.js  # Pattern recognition
+│       ├── memory-server.js   # MCP memory server
+│       ├── playwright-debug.js # Visual debugging
+│       └── ...               # Other TRAIL components
 │
 ├── app/                      # Next.js App Router
 │   ├── api/                 # API routes
@@ -93,6 +99,13 @@ vybecoding/
 ├── public/              # Static assets
 │   └── (favicon, images, etc.)
 │
+├── BMAD Method Directories
+│   ├── .bmad-core/         # BMAD Method v4.33.0 core
+│   │   ├── agents/        # Core agent definitions
+│   │   ├── tasks/         # Task commands
+│   │   └── utils/         # Utilities
+│   └── .bmad-infrastructure-devops/  # DevOps expansion
+│
 ├── Configuration Files
 │   ├── next.config.js      # Next.js config
 │   ├── tailwind.config.js  # Tailwind config
@@ -116,7 +129,7 @@ vybecoding/
 ### Configuration
 - **CLAUDE.md**: Instructions and rules for Claude Code
 - **components.json**: Shadcn/ui component configuration
-- **.claude/config/settings.json**: Hook configurations
+- **.claude/settings.json**: Hook configurations
 - **.claude/config/mcp-settings.json**: MCP server settings
 
 ### Core Application

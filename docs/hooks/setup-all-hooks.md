@@ -32,7 +32,7 @@ npm install -D dompurify jsdom validator safe-compare playwright
 
 # Create main settings.json
 echo "⚙️ Configuring Claude Code hooks..."
-cat > .claude/config/settings.json << 'EOF'
+cat > .claude/settings.json << 'EOF'
 {
   "hooks": {
     "PostToolUse": {
@@ -302,7 +302,7 @@ Create each hook file from the examples in the individual documentation:
 - [Orchestration](./orchestration-hooks.md)
 
 ### 4. Configure settings.json
-Update `.claude/config/settings.json` with your hook configuration.
+Update `.claude/settings.json` with your hook configuration.
 
 ### 5. Set Permissions
 ```bash

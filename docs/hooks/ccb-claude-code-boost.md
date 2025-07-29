@@ -21,7 +21,7 @@ Claude Code Boost is already installed and configured in this project.
 - **Location**: `~/.claude/mcp/claude-code-boost/`
 
 ### Configuration
-Configured as a PreToolUse hook in `.claude/config/settings.json`:
+Configured as a PreToolUse hook in `.claude/settings.json`:
 
 ```json
 {

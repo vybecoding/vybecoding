@@ -1,0 +1,686 @@
+                    <!-- Main container wrapper -->
+                    <div class="py-6 space-y-8">
+                        <!-- Earnings/Analytics Tabs -->
+                        <div class="mb-8">
+                            <div class="flex gap-4 border-b border-vybe-gray-800 flex-wrap justify-center">
+                                <button onclick="showOverviewSection('earnings')" class="overview-section-btn px-6 py-3 font-medium rounded-lg active" data-section="earnings">
+                                    Overview
+                                </button>
+                                <button onclick="showOverviewSection('analytics')" class="overview-section-btn px-6 py-3 font-medium rounded-lg" data-section="analytics">
+                                    Insights <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Overview Section (Free Tier) -->
+                        <div id="overview-earnings-section" class="overview-section">
+                            <!-- Current Balance & Performance Summary -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <!-- Current Balance Card -->
+                                <div class="vybe-card p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-lg font-medium text-white flex items-center gap-2">
+                                            💰 Current Balance
+                                        </h4>
+                                    </div>
+                                    <p class="text-4xl font-semibold text-white mb-2">$1,874</p>
+                                    <p class="text-sm text-vybe-gray-400 mb-2">Next payout: Friday</p>
+                                    <p class="text-xs text-vybe-gray-500">
+                                        Automatic weekly payouts via Stripe (minimum $50)
+                                    </p>
+                                </div>
+                                
+                                <!-- Last 30 Days Performance Card -->
+                                <div class="vybe-card p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <h4 class="text-lg font-medium text-white flex items-center gap-2">
+                                            📈 Last 30 Days Performance
+                                        </h4>
+                                    </div>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-vybe-gray-400">Sales</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-lg font-medium text-white">287</span>
+                                                <span class="text-xs text-green-400">↑ 23%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-vybe-gray-400">Revenue</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-lg font-medium text-white">$4,527</span>
+                                                <span class="text-xs text-green-400">↑ 18%</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <span class="text-sm text-vybe-gray-400">Avg. Sale</span>
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-lg font-medium text-white">$15.78</span>
+                                                <span class="text-xs text-red-400">↓ 4%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Daily Revenue Chart -->
+                            <div class="vybe-card mb-6">
+                                <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                    <h4 class="vybe-section-header flex items-center gap-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Daily Revenue Trend
+                                        <span class="text-xs text-vybe-gray-400">(Last 7 days)</span>
+                                    </h4>
+                                </div>
+                                <div class="p-6">
+                                    <div class="space-y-3">
+                                        <!-- Monday -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Mon</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 78%;">
+                                                    <span class="text-xs text-white font-medium">$267</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(12 sales)</span>
+                                        </div>
+                                        <!-- Tuesday -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Tue</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 58%;">
+                                                    <span class="text-xs text-white font-medium">$198</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(8 sales)</span>
+                                        </div>
+                                        <!-- Wednesday -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Wed</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 69%;">
+                                                    <span class="text-xs text-white font-medium">$234</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(11 sales)</span>
+                                        </div>
+                                        <!-- Thursday -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Thu</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 46%;">
+                                                    <span class="text-xs text-white font-medium">$156</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(7 sales)</span>
+                                        </div>
+                                        <!-- Friday -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Fri</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 82%;">
+                                                    <span class="text-xs text-white font-medium">$278</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(13 sales)</span>
+                                        </div>
+                                        <!-- Saturday - Best Day -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Sat</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 100%;">
+                                                    <span class="text-xs text-white font-medium">$341</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(16 sales)</span>
+                                            <span class="text-xs text-green-400 font-medium">📈 Best!</span>
+                                        </div>
+                                        <!-- Sunday -->
+                                        <div class="flex items-center gap-4">
+                                            <span class="text-sm text-vybe-gray-400 w-12">Sun</span>
+                                            <div class="flex-1 bg-vybe-gray-800 rounded-full h-8 relative overflow-hidden">
+                                                <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink h-full rounded-full flex items-center px-3" style="width: 65%;">
+                                                    <span class="text-xs text-white font-medium">$223</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-xs text-vybe-gray-400">(10 sales)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <!-- Top Performers This Month (Free Tier) -->
+                        <div class="vybe-card mb-6">
+                            <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                <h4 class="vybe-section-header flex items-center gap-3">
+                                    <div class="vybe-gradient-accent-bar"></div>
+                                    Top Performers This Month
+                                </h4>
+                            </div>
+                            <div class="p-6">
+                                    <!-- Top 3 Items Only -->
+                                    <div class="flex items-center justify-between p-3 bg-vybe-gray-900/30 rounded-lg hover:bg-vybe-gray-900/50 transition-colors mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 bg-gradient-to-r from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center">
+                                                <span class="text-xs font-bold text-white">1</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="text-sm font-medium text-white">Claude + VSCode Mastery</h6>
+                                                <p class="text-xs text-vybe-gray-400">Guide • 23 sales</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-lg font-semibold text-green-400">$430</p>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 bg-vybe-gray-900/30 rounded-lg hover:bg-vybe-gray-900/50 transition-colors mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 bg-vybe-gray-700 rounded-full flex items-center justify-center">
+                                                <span class="text-xs font-bold text-white">2</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="text-sm font-medium text-white">AI Workflow Automation</h6>
+                                                <p class="text-xs text-vybe-gray-400">Guide • 15 sales</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-lg font-semibold text-green-400">$234</p>
+                                    </div>
+                                    
+                                    <div class="flex items-center justify-between p-3 bg-vybe-gray-900/30 rounded-lg hover:bg-vybe-gray-900/50 transition-colors mb-2">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-6 h-6 bg-vybe-gray-700 rounded-full flex items-center justify-center">
+                                                <span class="text-xs font-bold text-white">3</span>
+                                            </div>
+                                            <div>
+                                                <h6 class="text-sm font-medium text-white">React AI Components</h6>
+                                                <p class="text-xs text-vybe-gray-400">Guide • 11 sales</p>
+                                            </div>
+                                        </div>
+                                        <p class="text-lg font-semibold text-green-400">$185</p>
+                                    </div>
+                                    
+                                    <!-- Pro Upgrade Teaser -->
+                                    <div class="mt-4 p-4 bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 rounded-lg border border-vybe-purple/40">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <p class="text-sm font-medium text-white flex items-center gap-2">
+                                                    <span class="text-lg">✨</span> Unlock Pro Analytics
+                                                </p>
+                                                <p class="text-xs text-vybe-gray-300">Views, engagement rates, audience insights & more</p>
+                                            </div>
+                                            <button onclick="showOverviewSection('analytics')" class="px-5 py-2.5 bg-gradient-to-r from-vybe-purple to-vybe-pink text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-vybe-purple/25 transition-all transform hover:scale-105">
+                                                Upgrade to Pro
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <!-- Sales History (Free Tier) -->
+                            <div class="vybe-card">
+                            <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="vybe-section-header flex items-center gap-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Recent Transactions
+                                    </h4>
+                                    <span class="text-xs text-vybe-gray-400">(Latest activity)</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <!-- Sales Summary -->
+                                <div class="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-vybe-gray-700/30">
+                                    <div class="text-center">
+                                        <p class="text-2xl font-semibold text-white">42</p>
+                                        <p class="text-xs text-vybe-gray-400">Total Sales</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-semibold text-white">$1,327</p>
+                                        <p class="text-xs text-vybe-gray-400">Revenue</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <p class="text-2xl font-semibold text-white">$31.59</p>
+                                        <p class="text-xs text-vybe-gray-400">Avg. Sale</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Recent Transactions -->
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between py-2 border-b border-vybe-gray-700/50">
+                                        <div>
+                                            <p class="text-sm font-medium text-white">Claude + VSCode Mastery</p>
+                                            <p class="text-xs text-vybe-gray-400">2 hours ago</p>
+                                        </div>
+                                        <p class="text-sm font-medium text-green-400">+$47</p>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2 border-b border-vybe-gray-700/50">
+                                        <div>
+                                            <p class="text-sm font-medium text-white">TypeScript Pro Patterns</p>
+                                            <p class="text-xs text-vybe-gray-400">5 hours ago</p>
+                                        </div>
+                                        <p class="text-sm font-medium text-green-400">+$37</p>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2 border-b border-vybe-gray-700/50">
+                                        <div>
+                                            <p class="text-sm font-medium text-white">React Best Practices 2024</p>
+                                            <p class="text-xs text-vybe-gray-400">Yesterday</p>
+                                        </div>
+                                        <p class="text-sm font-medium text-green-400">+$29</p>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2 border-b border-vybe-gray-700/50">
+                                        <div>
+                                            <p class="text-sm font-medium text-white">AI Agents Crash Course</p>
+                                            <p class="text-xs text-vybe-gray-400">Yesterday</p>
+                                        </div>
+                                        <p class="text-sm font-medium text-green-400">+$67</p>
+                                    </div>
+                                    <div class="flex items-center justify-between py-2">
+                                        <div>
+                                            <p class="text-sm font-medium text-white">Tailwind CSS Components</p>
+                                            <p class="text-xs text-vybe-gray-400">2 days ago</p>
+                                        </div>
+                                        <p class="text-sm font-medium text-green-400">+$19</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- View More CTA -->
+                                <div class="mt-6 text-center">
+                                    <button onclick="showOverviewSection('analytics')" class="px-4 py-2 bg-vybe-gray-800 hover:bg-vybe-gray-700 text-vybe-purple hover:text-vybe-pink transition-all text-sm font-medium rounded-lg border border-vybe-gray-700">
+                                        View Complete History (Pro) →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Earnings Section -->
+                        </div>
+                        
+                        <!-- Insights Pro Section -->
+                        <div id="overview-analytics-section" class="overview-section hidden">
+                        <!-- Performance Insights Container -->
+                        <div class="vybe-card mb-6">
+                            <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="vybe-section-header flex items-center gap-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Performance Insights
+                                    </h4>
+                                    <!-- Time Period Toggle -->
+                                    <div class="flex gap-1 bg-vybe-gray-800/50 p-1 rounded-lg">
+                                        <button onclick="updateAnalyticsPeriod('7d')" class="analytics-period-btn px-3 py-1 text-xs font-medium text-vybe-gray-400 rounded transition-all hover:text-white" data-period="7d">7 Days</button>
+                                        <button onclick="updateAnalyticsPeriod('30d')" class="analytics-period-btn px-3 py-1 text-xs font-medium text-white bg-vybe-purple rounded transition-all" data-period="30d">30 Days</button>
+                                        <button onclick="updateAnalyticsPeriod('all')" class="analytics-period-btn px-3 py-1 text-xs font-medium text-vybe-gray-400 rounded transition-all hover:text-white" data-period="all">All Time</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <!-- Key Insights -->
+                                <div class="mb-6 p-4 bg-gradient-to-r from-vybe-purple/10 to-vybe-pink/10 rounded-lg border border-vybe-purple/30">
+                                    <h5 class="text-sm font-medium text-white mb-3 flex items-center gap-2">
+                                        💡 Key Insights
+                                    </h5>
+                                    <ul class="space-y-2">
+                                        <li class="text-sm text-vybe-gray-300 flex items-start gap-2">
+                                            <span class="text-green-400">•</span>
+                                            Your TypeScript content converts <span class="text-white font-medium">3.2x better</span> than other topics
+                                        </li>
+                                        <li class="text-sm text-vybe-gray-300 flex items-start gap-2">
+                                            <span class="text-green-400">•</span>
+                                            Posting on Thursdays gets <span class="text-white font-medium">47% more views</span>
+                                        </li>
+                                        <li class="text-sm text-vybe-gray-300 flex items-start gap-2">
+                                            <span class="text-green-400">•</span>
+                                            $45-65 price point has <span class="text-white font-medium">highest conversion rate</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <!-- Growth Metrics -->
+                                <h5 class="text-sm font-medium text-white mb-4">📈 Growth Metrics</h5>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                    <!-- Views -->
+                                    <div class="bg-vybe-gray-800/30 p-4 rounded-lg">
+                                        <div class="flex items-start justify-between mb-2">
+                                            <p class="text-xs text-vybe-gray-400">Views</p>
+                                            <span class="text-xs text-green-400 font-medium">↑ 12%</span>
+                                        </div>
+                                        <p class="text-2xl font-semibold text-white">127K</p>
+                                        <div class="mt-2 h-8">
+                                            <!-- Mini sparkline chart placeholder -->
+                                            <svg class="w-full h-full" viewBox="0 0 100 30">
+                                                <path d="M0,25 L20,20 L40,22 L60,15 L80,10 L100,5" 
+                                                      stroke="url(#gradient)" 
+                                                      stroke-width="2" 
+                                                      fill="none"/>
+                                                <defs>
+                                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                                                        <stop offset="100%" style="stop-color:#d946a0;stop-opacity:1" />
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Conversion -->
+                                    <div class="bg-vybe-gray-800/30 p-4 rounded-lg">
+                                        <div class="flex items-start justify-between mb-2">
+                                            <p class="text-xs text-vybe-gray-400">Conversion</p>
+                                            <span class="text-xs text-green-400 font-medium">↑ 0.3%</span>
+                                        </div>
+                                        <p class="text-2xl font-semibold text-white">5.2%</p>
+                                        <div class="mt-2 h-8">
+                                            <svg class="w-full h-full" viewBox="0 0 100 30">
+                                                <path d="M0,20 L20,18 L40,15 L60,12 L80,8 L100,10" 
+                                                      stroke="url(#gradient2)" 
+                                                      stroke-width="2" 
+                                                      fill="none"/>
+                                                <defs>
+                                                    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                                                        <stop offset="100%" style="stop-color:#d946a0;stop-opacity:1" />
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Avg Sale -->
+                                    <div class="bg-vybe-gray-800/30 p-4 rounded-lg">
+                                        <div class="flex items-start justify-between mb-2">
+                                            <p class="text-xs text-vybe-gray-400">Avg Sale</p>
+                                            <span class="text-xs text-green-400 font-medium">↑ $3</span>
+                                        </div>
+                                        <p class="text-2xl font-semibold text-white">$47</p>
+                                        <div class="mt-2 h-8">
+                                            <svg class="w-full h-full" viewBox="0 0 100 30">
+                                                <path d="M0,22 L20,20 L40,18 L60,14 L80,12 L100,8" 
+                                                      stroke="url(#gradient3)" 
+                                                      stroke-width="2" 
+                                                      fill="none"/>
+                                                <defs>
+                                                    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                                                        <stop offset="100%" style="stop-color:#d946a0;stop-opacity:1" />
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Followers -->
+                                    <div class="bg-vybe-gray-800/30 p-4 rounded-lg">
+                                        <div class="flex items-start justify-between mb-2">
+                                            <p class="text-xs text-vybe-gray-400">Followers</p>
+                                            <span class="text-xs text-green-400 font-medium">↑ 23</span>
+                                        </div>
+                                        <p class="text-2xl font-semibold text-white">287</p>
+                                        <div class="mt-2 h-8">
+                                            <svg class="w-full h-full" viewBox="0 0 100 30">
+                                                <path d="M0,25 L20,22 L40,20 L60,15 L80,12 L100,5" 
+                                                      stroke="url(#gradient4)" 
+                                                      stroke-width="2" 
+                                                      fill="none"/>
+                                                <defs>
+                                                    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                                                        <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+                                                        <stop offset="100%" style="stop-color:#d946a0;stop-opacity:1" />
+                                                    </linearGradient>
+                                                </defs>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Optimization Opportunities -->
+                        <div class="vybe-card mb-6">
+                            <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                <h4 class="vybe-section-header flex items-center gap-3">
+                                    <div class="vybe-gradient-accent-bar"></div>
+                                    Optimization Opportunities
+                                </h4>
+                            </div>
+                            <div class="p-6">
+                                <div class="mb-4 p-4 bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-lg border border-green-500/30">
+                                    <p class="text-lg font-medium text-white">💰 Potential Revenue: <span class="text-green-400">+$842/month</span></p>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    <!-- Underpriced Content -->
+                                    <div class="p-4 bg-vybe-gray-800/30 rounded-lg">
+                                        <h5 class="text-sm font-medium text-white mb-2">1. Underpriced Content</h5>
+                                        <p class="text-sm text-vybe-gray-300 mb-2">
+                                            "React AI Components" could be <span class="text-white font-medium">$85</span> (not $65)
+                                        </p>
+                                        <p class="text-xs text-vybe-gray-400">Based on: Similar content performance metrics</p>
+                                    </div>
+                                    
+                                    <!-- Content Gap -->
+                                    <div class="p-4 bg-vybe-gray-800/30 rounded-lg">
+                                        <h5 class="text-sm font-medium text-white mb-2">2. Content Gap</h5>
+                                        <p class="text-sm text-vybe-gray-300 mb-2">
+                                            Your audience wants more <span class="text-white font-medium">"System Design"</span> content
+                                        </p>
+                                        <p class="text-xs text-vybe-gray-400">Based on: Search queries & engagement patterns</p>
+                                    </div>
+                                    
+                                    <!-- Timing Optimization -->
+                                    <div class="p-4 bg-vybe-gray-800/30 rounded-lg">
+                                        <h5 class="text-sm font-medium text-white mb-2">3. Timing Optimization</h5>
+                                        <p class="text-sm text-vybe-gray-300 mb-2">
+                                            Release new guides <span class="text-white font-medium">Thursday 2-4 PM EST</span>
+                                        </p>
+                                        <p class="text-xs text-vybe-gray-400">Based on: Your audience activity patterns</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Comparative Analysis -->
+                        <div class="vybe-card mb-6">
+                            <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                <h4 class="vybe-section-header flex items-center gap-3">
+                                    <div class="vybe-gradient-accent-bar"></div>
+                                    Comparative Analysis
+                                </h4>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-sm text-vybe-gray-400 mb-4">You vs Similar Creators:</p>
+                                
+                                <div class="overflow-x-auto">
+                                    <table class="w-full">
+                                        <thead>
+                                            <tr class="border-b border-vybe-gray-700">
+                                                <th class="text-left text-xs text-vybe-gray-400 font-medium pb-3">Metric</th>
+                                                <th class="text-center text-xs text-vybe-gray-400 font-medium pb-3">You</th>
+                                                <th class="text-center text-xs text-vybe-gray-400 font-medium pb-3">Avg</th>
+                                                <th class="text-center text-xs text-vybe-gray-400 font-medium pb-3">Top 10%</th>
+                                                <th class="text-right text-xs text-vybe-gray-400 font-medium pb-3">Your Rank</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-vybe-gray-800">
+                                            <tr>
+                                                <td class="py-3 text-sm text-vybe-gray-300">View Rate</td>
+                                                <td class="py-3 text-sm text-white text-center font-medium">4.2%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">3.1%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">5.8%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-300 text-right">Top 35%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-3 text-sm text-vybe-gray-300">Conversion</td>
+                                                <td class="py-3 text-sm text-white text-center font-medium">5.2%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">2.8%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">7.1%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-300 text-right">Top 25% 🎉</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-3 text-sm text-vybe-gray-300">Avg Sale</td>
+                                                <td class="py-3 text-sm text-white text-center font-medium">$47</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">$38</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">$72</td>
+                                                <td class="py-3 text-sm text-vybe-gray-300 text-right">Top 40%</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-3 text-sm text-vybe-gray-300">Retention</td>
+                                                <td class="py-3 text-sm text-white text-center font-medium">68%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">51%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-400 text-center">84%</td>
+                                                <td class="py-3 text-sm text-vybe-gray-300 text-right">Top 30% 🎉</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Complete Sales History (Pro Feature) -->
+                        <div class="vybe-card mb-6">
+                            <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="vybe-section-header flex items-center gap-3">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Complete Sales History
+                                    </h4>
+                                    <div class="flex gap-2">
+                                        <!-- Filter Options -->
+                                        <input type="text" placeholder="Search..." class="bg-vybe-gray-800 text-white text-xs px-3 py-1 rounded border border-vybe-gray-700 focus:border-vybe-purple w-32">
+                                        <select class="bg-vybe-gray-800 text-white text-xs px-3 py-1 rounded border border-vybe-gray-700 focus:border-vybe-purple">
+                                            <option>All Products</option>
+                                            <option>Guides</option>
+                                            <option>Apps</option>
+                                            <option>Mentorship</option>
+                                        </select>
+                                        <select class="bg-vybe-gray-800 text-white text-xs px-3 py-1 rounded border border-vybe-gray-700 focus:border-vybe-purple">
+                                            <option>Last 30 Days</option>
+                                            <option>Last 90 Days</option>
+                                            <option>This Year</option>
+                                            <option>All Time</option>
+                                        </select>
+                                        <button class="bg-vybe-purple text-white text-xs px-3 py-1 rounded hover:bg-vybe-pink transition-colors">
+                                            Export CSV
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <!-- Transaction Metrics -->
+                                <div class="grid grid-cols-4 gap-4 mb-6">
+                                    <div class="text-center p-3 bg-vybe-gray-800/30 rounded-lg">
+                                        <p class="text-2xl font-semibold text-white">$31.45</p>
+                                        <p class="text-xs text-vybe-gray-400">Avg. Order Value</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-vybe-gray-800/30 rounded-lg">
+                                        <p class="text-2xl font-semibold text-white">1.7</p>
+                                        <p class="text-xs text-vybe-gray-400">Items per Order</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-vybe-gray-800/30 rounded-lg">
+                                        <p class="text-2xl font-semibold text-white">87%</p>
+                                        <p class="text-xs text-vybe-gray-400">Payment Success</p>
+                                    </div>
+                                    <div class="text-center p-3 bg-vybe-gray-800/30 rounded-lg">
+                                        <p class="text-2xl font-semibold text-white">4.2 days</p>
+                                        <p class="text-xs text-vybe-gray-400">Avg. Time to Buy</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Detailed Transaction History -->
+                                <div class="overflow-x-auto">
+                                    <p class="text-sm font-medium text-white mb-3">1,847 Total Transactions</p>
+                                    <table class="w-full">
+                                        <thead>
+                                            <tr class="border-b border-vybe-gray-700">
+                                                <th class="text-left py-3 text-xs font-medium text-vybe-gray-400">Date</th>
+                                                <th class="text-left py-3 text-xs font-medium text-vybe-gray-400">Product</th>
+                                                <th class="text-left py-3 text-xs font-medium text-vybe-gray-400">Customer</th>
+                                                <th class="text-center py-3 text-xs font-medium text-vybe-gray-400">Type</th>
+                                                <th class="text-center py-3 text-xs font-medium text-vybe-gray-400">Country</th>
+                                                <th class="text-right py-3 text-xs font-medium text-vybe-gray-400">Net</th>
+                                                <th class="text-right py-3 text-xs font-medium text-vybe-gray-400">Fee</th>
+                                                <th class="text-right py-3 text-xs font-medium text-vybe-gray-400">Total</th>
+                                                <th class="text-center py-3 text-xs font-medium text-vybe-gray-400">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-vybe-gray-700/50">
+                                            <tr class="hover:bg-vybe-gray-800/20 transition-colors">
+                                                <td class="py-3 text-xs text-vybe-gray-300">Dec 22, 2:34 PM</td>
+                                                <td class="py-3 text-xs text-white">Claude + VSCode Mastery</td>
+                                                <td class="py-3 text-xs text-vybe-gray-300">j.smith@g***</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full">Guide</span>
+                                                </td>
+                                                <td class="py-3 text-xs text-center text-vybe-gray-400">🇺🇸 US</td>
+                                                <td class="py-3 text-xs text-vybe-gray-400 text-right">$44.82</td>
+                                                <td class="py-3 text-xs text-vybe-gray-500 text-right">$2.18</td>
+                                                <td class="py-3 text-xs text-white text-right font-medium">$47.00</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">Paid</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-vybe-gray-800/20 transition-colors">
+                                                <td class="py-3 text-xs text-vybe-gray-300">Dec 22, 11:21 AM</td>
+                                                <td class="py-3 text-xs text-white">TypeScript Pro Patterns</td>
+                                                <td class="py-3 text-xs text-vybe-gray-300">dev.pro@t***</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full">Guide</span>
+                                                </td>
+                                                <td class="py-3 text-xs text-center text-vybe-gray-400">🇬🇧 UK</td>
+                                                <td class="py-3 text-xs text-vybe-gray-400 text-right">$35.27</td>
+                                                <td class="py-3 text-xs text-vybe-gray-500 text-right">$1.73</td>
+                                                <td class="py-3 text-xs text-white text-right font-medium">$37.00</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">Paid</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-vybe-gray-800/20 transition-colors">
+                                                <td class="py-3 text-xs text-vybe-gray-300">Dec 21, 9:45 PM</td>
+                                                <td class="py-3 text-xs text-white">1-on-1 Mentorship</td>
+                                                <td class="py-3 text-xs text-vybe-gray-300">startup@v***</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-pink-500/20 text-pink-400 text-xs rounded-full">Session</span>
+                                                </td>
+                                                <td class="py-3 text-xs text-center text-vybe-gray-400">🇨🇦 CA</td>
+                                                <td class="py-3 text-xs text-vybe-gray-400 text-right">$142.50</td>
+                                                <td class="py-3 text-xs text-vybe-gray-500 text-right">$7.50</td>
+                                                <td class="py-3 text-xs text-white text-right font-medium">$150.00</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-yellow-500/20 text-yellow-400 text-xs rounded-full">Pending</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="hover:bg-vybe-gray-800/20 transition-colors">
+                                                <td class="py-3 text-xs text-vybe-gray-300">Dec 21, 3:12 PM</td>
+                                                <td class="py-3 text-xs text-white">AI Agents Crash Course</td>
+                                                <td class="py-3 text-xs text-vybe-gray-300">tech.lead@m***</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full">Guide</span>
+                                                </td>
+                                                <td class="py-3 text-xs text-center text-vybe-gray-400">🇦🇺 AU</td>
+                                                <td class="py-3 text-xs text-vybe-gray-400 text-right">$63.84</td>
+                                                <td class="py-3 text-xs text-vybe-gray-500 text-right">$3.16</td>
+                                                <td class="py-3 text-xs text-white text-right font-medium">$67.00</td>
+                                                <td class="py-3 text-xs text-center">
+                                                    <span class="px-2 py-0.5 bg-green-500/20 text-green-400 text-xs rounded-full">Paid</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <!-- Customer Insights -->
+                                <div class="mt-6 p-4 bg-gradient-to-r from-vybe-purple/10 to-vybe-pink/10 rounded-lg border border-vybe-purple/30">
+                                    <h5 class="text-sm font-medium text-white mb-3">🎯 Customer Insights</h5>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <p class="text-xs text-vybe-gray-400 mb-1">Top Customer Segment</p>
+                                            <p class="text-sm text-white font-medium">Senior Developers (42%)</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-vybe-gray-400 mb-1">Peak Purchase Time</p>
+                                            <p class="text-sm text-white font-medium">Weekdays 2-5 PM EST</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End of Analytics Section -->
+                        </div>
+                    </div>

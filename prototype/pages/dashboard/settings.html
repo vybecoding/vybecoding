@@ -1,0 +1,27 @@
+                    <div class="py-6 space-y-8">
+                    <!-- Settings Sub-tabs Navigation -->
+                    <div class="mb-8">
+                        <div class="flex gap-4 border-b border-vybe-gray-800 flex-wrap justify-center">
+                            <button onclick="showSettingsSection('profile')" class="settings-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800 active" data-section="profile">
+                                Profile
+                            </button>
+                            <button onclick="showSettingsSection('account')" class="settings-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800" data-section="account">
+                                Account
+                            </button>
+                            <button onclick="showSettingsSection('notifications')" class="settings-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800" data-section="notifications">
+                                Notifications
+                            </button>
+                            <button onclick="showSettingsSection('privacy')" class="settings-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800" data-section="privacy">
+                                Privacy
+                            </button>
+                            <button onclick="showSettingsSection('billing')" class="settings-tab px-6 py-3 text-white font-medium rounded-lg transition-all hover:bg-vybe-gray-800" data-section="billing">
+                                Billing & Subscription
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Settings Content -->
+                    <div id="settings-content-container" class="space-y-6">
+                        <!-- Content for sub-tabs will be loaded here -->
+                    </div>
+                </div>

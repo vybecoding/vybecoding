@@ -4,7 +4,7 @@
 
 | Tool | Type | Status | Usage | Link |
 |------|------|--------|--------|------|
-| **BMAD Method** | 🤖 Built-in | ✅ | Story management • `/dev`, `/sm`, `/qa`, `/po`, `/pm` | [repo](https://github.com/bmadcode/BMAD-METHOD.git) |
+| **BMAD Method** | 🤖 Built-in | ✅ | Story management • Slash commands + Claude Code sub-agents | [repo](https://github.com/bmadcode/BMAD-METHOD.git) |
 | **PRPs Engineering** | 🤖 CLAUDE.md | ✅ | `/create-base-prp`, `/execute-base-prp` | [repo](https://github.com/Wirasm/PRPs-agentic-eng.git) |
 | **SuperClaude Framework** | 🤖 CLAUDE.md | ✅ | Personas auto-activate by context | [repo](https://github.com/SuperClaude-Org/SuperClaude_Framework.git) |
 | **Ultra Wide Turbo** | 👤 Manual | ✅ | Manually select workflow patterns | [repo](https://github.com/its-brianwithai/ultra-wide-turbo-workspace.git) |

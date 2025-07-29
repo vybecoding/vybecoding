@@ -13,7 +13,7 @@ Claude Code hooks enable automated workflows that trigger on specific events dur
 
 ## Hook Configuration
 
-All hooks are configured in `.claude/config/settings.json`:
+All hooks are configured in `.claude/settings.json`:
 
 ```json
 {
@@ -69,7 +69,7 @@ All hooks are configured in `.claude/config/settings.json`:
 
 ## Current Hook Configuration Status ✅
 
-All hooks are now active in `.claude/config/settings.json`:
+All hooks are now active in `.claude/settings.json`:
 
 | Hook Event | Hook Name | Status | Function |
 |------------|-----------|--------|----------|
@@ -84,7 +84,7 @@ All hooks are now active in `.claude/config/settings.json`:
 
 ## Quick Start
 
-1. Hooks are already configured in `.claude/config/settings.json`
+1. Hooks are already configured in `.claude/settings.json`
 2. View hook activity: `.claude/config/hooks/view-claude-commits.sh`
 3. Check security alerts: `tail -f .claude/solutions/security/living-off-ai-alerts.log`
 4. Search learned solutions: `.claude/solutions/search.sh "error"`

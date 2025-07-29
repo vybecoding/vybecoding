@@ -1,0 +1,146 @@
+                <!-- My Content Tab -->
+                <div id="dashboard-review-content" class="dashboard-tab-content" data-tab-content="review">
+                    <div class="py-6 space-y-8">
+                    <!-- Spacing to match sub-tabs -->
+                    <div class="mb-8"></div>
+                    <!-- Guide Review Queue -->
+                    <div class="vybe-card p-6">
+                        <!-- Header -->
+                        <div class="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4 -m-6 mb-6">
+                            <h3 class="vybe-section-header">
+                                <div class="vybe-gradient-accent-bar"></div>
+                                Guide Review Queue
+                            </h3>
+                            <p class="text-sm text-vybe-gray-400 mt-1">Automated quality assessment for submitted guides</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <!-- Queue Items -->
+                            <div class="lg:col-span-2 space-y-3">
+                            <!-- Needs Revision (Highest Priority) -->
+                            <div class="border border-red-500/30 bg-red-900/10 rounded-lg p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-white text-sm">Quick AI Tips</h4>
+                                        <p class="text-xs text-vybe-gray-400">Submitted by Mike Johnson • 2 days ago</p>
+                                    </div>
+                                    <span class="ml-4 px-2 py-1 bg-red-500/20 text-red-400 text-xs font-medium rounded">
+                                        ● NEEDS REVISION
+                                    </span>
+                                </div>
+                                <div class="text-xs text-red-400 mb-2">AI Score: 42/100 • 247 words</div>
+                                <div class="text-xs text-vybe-gray-400 mb-3">Issues: Content too brief, Missing examples, Incomplete conclusion</div>
+                                <div class="flex justify-end">
+                                    <button class="w-20 px-4 py-2 text-sm bg-transparent border border-red-400/40 text-red-400 rounded hover:bg-red-400/10 transition-colors">Edit</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Pending Review (Medium Priority) -->
+                            <div class="border border-yellow-500/30 bg-yellow-900/10 rounded-lg p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-white text-sm">Building AI Agents with Claude</h4>
+                                        <p class="text-xs text-vybe-gray-400">Submitted by Alex Developer • 3 hours ago</p>
+                                    </div>
+                                    <span class="ml-4 px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs font-medium rounded">
+                                        ● PENDING
+                                    </span>
+                                </div>
+                                <div class="text-xs text-yellow-400 mb-3">1890 words • Awaiting review</div>
+                                <div class="flex justify-end">
+                                    <button class="w-20 px-4 py-2 text-sm bg-transparent border border-yellow-500/40 text-yellow-500 rounded hover:bg-yellow-500/10 transition-colors">Review</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Approved (Lowest Priority) -->
+                            <div class="border border-green-500/30 bg-green-900/10 rounded-lg p-4">
+                                <div class="flex justify-between items-start mb-2">
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-white text-sm">Advanced Claude Prompting Techniques</h4>
+                                        <p class="text-xs text-vybe-gray-400">Submitted by Sarah Chen • 1 day ago</p>
+                                    </div>
+                                    <span class="ml-4 px-2 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded">
+                                        ● APPROVED
+                                    </span>
+                                </div>
+                                <div class="text-xs text-green-400 mb-3">AI Score: 87/100 • 2158 words • 12 prompt examples</div>
+                                <div class="flex justify-end">
+                                    <button class="w-20 px-4 py-2 text-sm bg-transparent border border-green-500/40 text-green-500 rounded hover:bg-green-500/10 transition-colors">Publish</button>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="space-y-6">
+                                <!-- Review Statistics -->
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h4 class="vybe-section-header">
+                                            <div class="vybe-gradient-accent-bar"></div>
+                                            Review Statistics
+                                        </h4>
+                                    </div>
+                                    <div class="p-6">
+                                        <div class="space-y-4">
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-5 h-5 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                                </div>
+                                                <div class="flex-1 flex items-center justify-between">
+                                                    <span class="text-sm text-vybe-gray-300">Approved Today</span>
+                                                    <span class="text-green-500 font-semibold">0</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-5 h-5 bg-red-500/20 rounded-lg flex items-center justify-center">
+                                                    <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                                                </div>
+                                                <div class="flex-1 flex items-center justify-between">
+                                                    <span class="text-sm text-vybe-gray-300">Need Revision</span>
+                                                    <span class="text-red-400 font-semibold">1</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-5 h-5 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                                                    <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                                </div>
+                                                <div class="flex-1 flex items-center justify-between">
+                                                    <span class="text-sm text-vybe-gray-300">Pending Review</span>
+                                                    <span class="text-yellow-500 font-semibold">1</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center gap-3">
+                                                <div class="w-5 h-5 bg-vybe-purple/20 rounded-lg flex items-center justify-center">
+                                                    <div class="w-2 h-2 bg-vybe-purple rounded-full"></div>
+                                                </div>
+                                                <div class="flex-1 flex items-center justify-between">
+                                                    <span class="text-sm text-vybe-gray-300">Avg AI Score</span>
+                                                    <span class="text-vybe-purple font-semibold">87/100</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Review Criteria Sidebar -->
+                                <div class="vybe-card overflow-hidden">
+                                <div class="vybe-card-header">
+                                    <h4 class="vybe-section-header">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Review Criteria
+                                    </h4>
+                                </div>
+                                <div class="p-6">
+                                    <div class="space-y-3 text-sm text-vybe-gray-400">
+                                        <p class="flex items-center gap-2"><span class="text-vybe-purple">•</span> Minimum 500 words</p>
+                                        <p class="flex items-center gap-2"><span class="text-vybe-purple">•</span> Effective prompts/content engineering</p>
+                                        <p class="flex items-center gap-2"><span class="text-vybe-purple">•</span> Clear structure (intro, body, conclusion)</p>
+                                        <p class="flex items-center gap-2"><span class="text-vybe-purple">•</span> AI score ≥70/100</p>
+                                        <p class="flex items-center gap-2"><span class="text-vybe-purple">•</span> Practical implementation focus</p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>

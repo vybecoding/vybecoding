@@ -1,0 +1,380 @@
+                            <!-- Profile Settings Section -->
+                            <div id="settings-profile" class="settings-section">
+                                <div class="vybe-card overflow-hidden">
+                                    <div class="vybe-card-header">
+                                        <h3 class="vybe-section-header">
+                                            <div class="vybe-gradient-accent-bar"></div>
+                                            Profile Settings
+                                        </h3>
+                                    </div>
+                                    <div class="p-6">
+                                    
+                                    <form class="space-y-6">
+                                        <!-- Two Column Layout -->
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                            <!-- Left Column: Simple Inputs -->
+                                            <div class="space-y-6">
+                                                <div>
+                                                    <label class="form-label">Real Name <span class="text-xs text-vybe-gray-400">(Optional)</span></label>
+                                                    <input id="full-name" type="text" value="Alex Developer" class="form-input w-full px-4 py-2 rounded-lg" placeholder="Your real name" onchange="updateDisplayName()">
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">Leave blank to use username instead</p>
+                                                </div>
+                                                <div>
+                                                    <label class="form-label">Username</label>
+                                                    <input id="username" type="text" value="alexdev" class="form-input w-full px-4 py-2 rounded-lg" placeholder="username" onchange="updateDisplayName()">
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">Your public username (shown as @alexdev)</p>
+                                                </div>
+                                                
+                                                <div>
+                                                    <label class="form-label">Discord Name</label>
+                                                    <input type="text" value="alexdev#1234" class="form-input w-full px-4 py-2 rounded-lg" placeholder="username#1234">
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">Your Discord username and tag for community connections</p>
+                                                </div>
+                                                
+                                                <div>
+                                                    <label class="form-label">Professional Title</label>
+                                                    <div class="relative">
+                                                        <select class="form-select w-full px-4 py-2 rounded-lg appearance-none cursor-pointer">
+                                                            <option value="">Select your title...</option>
+                                                        <option value="">Leave blank</option>
+                                                        <option value="Vibe Coder">Vibe Coder</option>
+                                                        <optgroup label="Developer Roles">
+                                                            <option value="Junior Developer">Junior Developer</option>
+                                                            <option value="Developer">Developer</option>
+                                                            <option value="Senior Developer">Senior Developer</option>
+                                                            <option value="Lead Developer">Lead Developer</option>
+                                                        </optgroup>
+                                                        <optgroup label="Engineering Roles">
+                                                            <option value="Staff Engineer">Staff Engineer</option>
+                                                            <option value="Principal Engineer">Principal Engineer</option>
+                                                            <option value="Software Architect">Software Architect</option>
+                                                        </optgroup>
+                                                        <optgroup label="Leadership Roles">
+                                                            <option value="Engineering Manager">Engineering Manager</option>
+                                                            <option value="Technical Lead">Technical Lead</option>
+                                                        </optgroup>
+                                                        <optgroup label="Specialized Roles">
+                                                            <option value="Full-Stack Developer">Full-Stack Developer</option>
+                                                            <option value="Frontend Developer">Frontend Developer</option>
+                                                            <option value="Backend Developer">Backend Developer</option>
+                                                            <option value="AI Engineer">AI Engineer</option>
+                                                            <option value="ML Engineer">ML Engineer</option>
+                                                            <option value="Data Engineer">Data Engineer</option>
+                                                        </optgroup>
+                                                        <optgroup label="Executive Roles">
+                                                            <option value="CTO">CTO</option>
+                                                            <option value="VP of Engineering">VP of Engineering</option>
+                                                            <option value="Founder">Founder</option>
+                                                            <option value="Co-Founder">Co-Founder</option>
+                                                        </optgroup>
+                                                        <optgroup label="Other Roles">
+                                                            <option value="Consultant">Consultant</option>
+                                                            <option value="Freelancer">Freelancer</option>
+                                                        </optgroup>
+                                                    </select>
+                                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                                        <svg class="w-4 h-4 text-vybe-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                        </svg>
+                                                    </div>
+                                                    </div>
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">Your professional title shown on your profile</p>
+                                                </div>
+                                                <div>
+                                                    <label class="form-label">Industry/Focus</label>
+                                                    <div class="relative">
+                                                        <select class="form-select w-full px-4 py-2 rounded-lg appearance-none cursor-pointer">
+                                                        <option value="">Select your industry...</option>
+                                                        <option value="">Leave blank</option>
+                                                        <option value="Vibe Coding">Vibe Coding</option>
+                                                        <optgroup label="Tech & Innovation">
+                                                            <option value="SaaS / Tech">SaaS / Tech</option>
+                                                            <option value="AI / ML">AI / ML</option>
+                                                            <option value="Fintech">Fintech</option>
+                                                            <option value="Healthtech">Healthtech</option>
+                                                            <option value="Edtech">Edtech</option>
+                                                            <option value="E-commerce">E-commerce</option>
+                                                            <option value="Gaming">Gaming</option>
+                                                            <option value="Blockchain / Web3">Blockchain / Web3</option>
+                                                            <option value="Cybersecurity">Cybersecurity</option>
+                                                            <option value="Data Science">Data Science</option>
+                                                            <option value="IoT">IoT</option>
+                                                            <option value="Mobile Apps">Mobile Apps</option>
+                                                            <option value="Enterprise Software">Enterprise Software</option>
+                                                            <option value="Open Source">Open Source</option>
+                                                            <option value="Cloud Services">Cloud Services</option>
+                                                            <option value="DevOps">DevOps</option>
+                                                            <option value="AR/VR">AR/VR</option>
+                                                            <option value="Robotics">Robotics</option>
+                                                            <option value="Biotech">Biotech</option>
+                                                            <option value="CleanTech">CleanTech</option>
+                                                        </optgroup>
+                                                        <optgroup label="Creative & Media">
+                                                            <option value="Media / Entertainment">Media / Entertainment</option>
+                                                            <option value="Creative Agency">Creative Agency</option>
+                                                            <option value="Marketing Tech">Marketing Tech</option>
+                                                            <option value="Social Media">Social Media</option>
+                                                            <option value="Streaming">Streaming</option>
+                                                            <option value="Publishing">Publishing</option>
+                                                            <option value="Advertising">Advertising</option>
+                                                            <option value="Design">Design</option>
+                                                            <option value="Photography">Photography</option>
+                                                            <option value="Music Tech">Music Tech</option>
+                                                        </optgroup>
+                                                        <optgroup label="Business & Finance">
+                                                            <option value="Finance">Finance</option>
+                                                            <option value="Insurance">Insurance</option>
+                                                            <option value="Real Estate">Real Estate</option>
+                                                            <option value="Retail">Retail</option>
+                                                            <option value="Consulting">Consulting</option>
+                                                            <option value="Legal Tech">Legal Tech</option>
+                                                            <option value="HR Tech">HR Tech</option>
+                                                            <option value="Supply Chain">Supply Chain</option>
+                                                            <option value="Logistics">Logistics</option>
+                                                            <option value="Travel">Travel</option>
+                                                            <option value="Hospitality">Hospitality</option>
+                                                            <option value="Food Tech">Food Tech</option>
+                                                        </optgroup>
+                                                        <optgroup label="Other Industries">
+                                                            <option value="Government">Government</option>
+                                                            <option value="Non-Profit">Non-Profit</option>
+                                                            <option value="Education">Education</option>
+                                                            <option value="Healthcare">Healthcare</option>
+                                                            <option value="Energy">Energy</option>
+                                                            <option value="Transportation">Transportation</option>
+                                                            <option value="Agriculture">Agriculture</option>
+                                                            <option value="Manufacturing">Manufacturing</option>
+                                                            <option value="Construction">Construction</option>
+                                                            <option value="Telecommunications">Telecommunications</option>
+                                                            <option value="Other">Other</option>
+                                                        </optgroup>
+                                                    </select>
+                                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                                        <svg class="w-4 h-4 text-vybe-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                                        </svg>
+                                                    </div>
+                                                    </div>
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">Your primary industry or area of focus</p>
+                                                </div>
+                                                
+                                                <!-- About Me -->
+                                                <div>
+                                                    <label class="form-label">About Me</label>
+                                                    <textarea class="form-textarea w-full px-4 py-2 rounded-lg h-40" placeholder="Tell us about yourself, your background, and what you're passionate about...">With over 8 years of experience in full-stack development, I specialize in building scalable web applications and mentoring developers. I've worked with startups and established companies to create robust, modern applications using the latest AI technologies and best practices.</textarea>
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">This will be displayed on your public profile</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Right Column: Complex Elements -->
+                                            <div class="space-y-6">
+                                                <!-- Profile Photo -->
+                                                <div>
+                                                    <label class="form-label">Profile Photo</label>
+                                                    <div class="flex items-center gap-4">
+                                                        <div class="w-20 h-20 bg-gradient-to-br from-vybe-purple to-vybe-orange rounded-full flex items-center justify-center text-2xl font-bold text-white">
+                                                            AD
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary">
+                                                            Change Photo
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Profile Display Preference -->
+                                                <div>
+                                                    <label class="form-label">Profile Display Preference</label>
+                                                    <div class="space-y-3">
+                                                        <label class="flex items-center gap-3 cursor-pointer">
+                                                            <input id="display-real-name" type="radio" name="display-preference" value="real-name" checked onchange="updateDisplayName()" class="text-vybe-purple-light focus:ring-vybe-purple">
+                                                            <div>
+                                                                <span class="text-sm">Show real name when available</span>
+                                                                <p class="text-xs text-vybe-gray-400">Display: <span id="real-name-preview" class="text-white">Alex Developer</span></p>
+                                                            </div>
+                                                        </label>
+                                                        <label class="flex items-center gap-3 cursor-pointer">
+                                                            <input id="display-username" type="radio" name="display-preference" value="username" onchange="updateDisplayName()" class="text-vybe-purple-light focus:ring-vybe-purple">
+                                                            <div>
+                                                                <span class="text-sm">Always show username</span>
+                                                                <p class="text-xs text-vybe-gray-400">Display: <span id="username-preview" class="text-white">@alexdev</span></p>
+                                                            </div>
+                                                        </label>
+                                                    </div>
+                                                    <p class="text-xs text-vybe-gray-400 mt-2">Choose how your name appears on your public profile</p>
+                                                </div>
+                                                
+                                                <!-- Core Expertise -->
+                                                <div>
+                                                    <label class="form-label">Core Expertise</label>
+                                            <div class="flex flex-wrap gap-2 mb-3">
+                                                <div class="bg-purple-500/10 border border-purple-500/20 rounded px-3 py-1.5 flex items-center gap-1.5">
+                                                    <span class="text-purple-300 text-xs">React & Next.js</span>
+                                                    <button type="button" class="text-purple-300 hover:text-purple-200" onclick="removeSkill(this)">
+                                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5">
+                                                    <span class="text-vybe-purple-light text-xs">Node.js</span>
+                                                    <button type="button" class="text-vybe-purple-light hover:text-white" onclick="removeSkill(this)">
+                                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5">
+                                                    <span class="text-vybe-purple-light text-xs">TypeScript</span>
+                                                    <button type="button" class="text-vybe-purple-light hover:text-white" onclick="removeSkill(this)">
+                                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5">
+                                                    <span class="text-vybe-purple-light text-xs">System Design</span>
+                                                    <button type="button" class="text-vybe-purple-light hover:text-white" onclick="removeSkill(this)">
+                                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5">
+                                                    <span class="text-vybe-purple-light text-xs">AI Integration</span>
+                                                    <button type="button" class="text-red-300 hover:text-red-200" onclick="removeSkill(this)">
+                                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                <div class="bg-vybe-purple/10 border border-vybe-purple/20 rounded px-3 py-1.5 flex items-center gap-1.5">
+                                                    <span class="text-vybe-purple-light text-xs">MongoDB</span>
+                                                    <button type="button" class="text-vybe-purple-light hover:text-white" onclick="removeSkill(this)">
+                                                        <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- Add/Remove Button with Dropdown -->
+                                            <div class="relative">
+                                                <button type="button" onclick="toggleSkillDropdown()" class="btn btn-secondary text-sm">
+                                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                                                    </svg>
+                                                    Add/Remove Skills
+                                                </button>
+                                                
+                                                <!-- Dropdown Menu -->
+                                                <div id="skill-dropdown" class="absolute left-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50 hidden">
+                                                    <div class="p-3 border-b border-gray-700">
+                                                        <input type="text" id="skill-search" placeholder="Search skills..." class="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-sm text-white placeholder-gray-400 focus:outline-none focus:border-vybe-purple" onkeyup="filterSkills()">
+                                                    </div>
+                                                    <div class="max-h-64 overflow-y-auto">
+                                                        <div id="skill-list" class="p-2 space-y-1">
+                                                            <!-- Frontend Skills -->
+                                                            <div class="text-xs text-gray-500 px-2 py-1 font-semibold">Frontend</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('React', 'purple')">React</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('React & Next.js', 'purple')">React & Next.js</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Vue.js', 'green')">Vue.js</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Angular', 'red')">Angular</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Svelte', 'orange')">Svelte</div>
+                                                            
+                                                            <!-- Backend Skills -->
+                                                            <div class="text-xs text-gray-500 px-2 py-1 font-semibold mt-2">Backend</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Node.js', 'green')">Node.js</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Python', 'blue')">Python</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Ruby on Rails', 'red')">Ruby on Rails</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Java', 'orange')">Java</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('PHP', 'purple')">PHP</div>
+                                                            
+                                                            <!-- Programming Languages -->
+                                                            <div class="text-xs text-gray-500 px-2 py-1 font-semibold mt-2">Languages</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('TypeScript', 'blue')">TypeScript</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('JavaScript', 'yellow')">JavaScript</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Go', 'teal')">Go</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Rust', 'orange')">Rust</div>
+                                                            
+                                                            <!-- Databases -->
+                                                            <div class="text-xs text-gray-500 px-2 py-1 font-semibold mt-2">Databases</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('MongoDB', 'teal')">MongoDB</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('PostgreSQL', 'blue')">PostgreSQL</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('MySQL', 'orange')">MySQL</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Redis', 'red')">Redis</div>
+                                                            
+                                                            <!-- Other Skills -->
+                                                            <div class="text-xs text-gray-500 px-2 py-1 font-semibold mt-2">Other</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('AI Integration', 'red')">AI Integration</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('System Design', 'amber')">System Design</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('DevOps', 'green')">DevOps</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Cloud Services', 'blue')">Cloud Services</div>
+                                                            <div class="skill-item px-3 py-2 hover:bg-gray-700 rounded cursor-pointer text-sm" onclick="toggleSkill('Machine Learning', 'purple')">Machine Learning</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                    
+                                                    <p class="text-xs text-vybe-gray-400 mt-2">Add or remove skills that represent your expertise</p>
+                                                </div>
+                                                
+                                                <!-- Social Links -->
+                                                <div>
+                                                    <label class="form-label">Social Links</label>
+                                                    <div class="space-y-3">
+                                                        <div class="flex gap-3">
+                                                            <input type="url" value="https://github.com/alexdev" class="form-input flex-1 px-4 py-2 rounded-lg" placeholder="GitHub URL">
+                                                            <button type="button" class="px-4 py-2 text-vybe-gray-400 hover:text-white">
+                                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="flex gap-3">
+                                                            <input type="url" value="https://linkedin.com/in/alexdev" class="form-input flex-1 px-4 py-2 rounded-lg" placeholder="LinkedIn URL">
+                                                            <button type="button" class="px-4 py-2 text-vybe-gray-400 hover:text-white">
+                                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                        <div class="flex gap-3">
+                                                            <input type="url" value="https://youtube.com/@alexdev" class="form-input flex-1 px-4 py-2 rounded-lg" placeholder="YouTube URL">
+                                                            <button type="button" class="px-4 py-2 text-vybe-gray-400 hover:text-white">
+                                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-xs text-vybe-gray-400 mt-1">Add your social media profiles</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="bg-vybe-gray-800/30 rounded-lg p-4 mb-6">
+                                            <h4 class="text-sm font-medium text-white mb-3 flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-vybe-orange" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                                                </svg>
+                                                Demo: Privacy Controls
+                                            </h4>
+                                            <p class="text-xs text-vybe-gray-400 mb-3">Click the button below to see what happens when First Name and Last Name are removed and changes are saved:</p>
+                                            <button onclick="simulateClearNamesAndSave()" class="px-4 py-2 bg-vybe-orange/20 border border-vybe-orange/30 rounded-lg text-vybe-orange hover:bg-vybe-orange/30 transition-colors text-sm">
+                                                Clear Names & Save Demo
+                                            </button>
+                                        </div>
+                                        
+                                        <div class="flex gap-4">
+                                            <button type="submit" class="btn btn-primary-fuchsia" onclick="showSaveSuccess(); return false;">
+                                                Save Changes
+                                            </button>
+                                            <button type="button" class="btn btn-secondary">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>

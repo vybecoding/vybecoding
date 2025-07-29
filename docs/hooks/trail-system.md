@@ -8,7 +8,7 @@ TRAIL (Test, Resolve, And Intelligently Learn) is an automated testing and learn
 
 **File**: `.claude/solutions/verify-and-learn.sh`  
 **Trigger**: After every Bash command via PostToolUse hook  
-**Configuration**: In `.claude/config/settings.json`:
+**Configuration**: In `.claude/settings.json`:
 
 ```json
 {
@@ -144,7 +144,7 @@ TRAIL integrates with the continuous learning system:
 ## Troubleshooting
 
 ### Hook Not Triggering
-1. Check `.claude/config/settings.json` includes the hook
+1. Check `.claude/settings.json` includes the hook
 2. Verify script permissions: `chmod +x .claude/solutions/*.sh`
 3. Test manually: `.claude/solutions/verify-and-learn.sh`
 

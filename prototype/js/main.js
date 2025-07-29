@@ -160,15 +160,36 @@ class VybeApp {
      */
     initializeDashboardFunctions() {
         console.log('Initializing dashboard functions...');
+
+        // Function to load HTML content into a container
+        const loadTabContent = async (containerId, filePath) => {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const html = await response.text();
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = html;
+                } else {
+                    console.error(`Container with ID ${containerId} not found.`);
+                }
+            } catch (error) {
+                console.error(`Failed to load content from ${filePath}:`, error);
+                // Optionally display an error message to the user
+            }
+        };
+
         // Overview section switching (Earnings/Analytics)
-        window.showOverviewSection = (section) => {
-            console.log('Switching to section:', section);
-            
+        window.showOverviewSection = async (section) => {
+            console.log('Switching to overview section:', section);
+
             // Update tab styles
             document.querySelectorAll('.overview-section-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Set active tab
             const activeBtn = document.querySelector(`.overview-section-btn[data-section="${section}"]`);
             if (activeBtn) {
@@ -176,144 +197,135 @@ class VybeApp {
             } else {
                 console.warn('Button not found for section:', section);
             }
-            
-            // Hide all sections
-            document.querySelectorAll('.overview-section').forEach(sec => {
-                sec.classList.add('hidden');
-            });
-            
-            // Show selected section
-            const targetSection = document.getElementById(`overview-${section}-section`);
-            if (targetSection) {
-                targetSection.classList.remove('hidden');
-            } else {
-                console.warn('Section not found:', `overview-${section}-section`);
-            }
+
+            // Load content dynamically
+            await loadTabContent('overview-content-container', `/pages/dashboard/overview/${section}.html`);
         };
-        
+
+        // Settings section switching
+        window.showSettingsSection = async (section) => {
+            console.log('Switching to settings section:', section);
+
+            // Update tab styles
+            document.querySelectorAll('.settings-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Set active tab
+            const activeBtn = document.querySelector(`.settings-tab[data-section="${section}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            } else {
+                console.warn('Button not found for section:', section);
+            }
+
+            // Load content dynamically
+            await loadTabContent('settings-content-container', `/pages/dashboard/settings/${section}.html`);
+        };
+
         // Initialize dashboard tab switching
-        window.showDashboardTab = (tabName) => {
+        window.showDashboardTab = async (tabName) => {
             console.log('showDashboardTab called with:', tabName);
-            
+
             // Always use the global app instance
             const app = window.vybeApp;
             if (!app) {
                 console.error('VybeApp not found!');
                 return;
             }
-            
+
             // Save tab preference for navigation
             sessionStorage.setItem('dashboardTab', tabName);
-            
-            // First use the existing tabs functionality
-            if (app.dashboardTabs) {
-                app.dashboardTabs.showDashboardTab(tabName);
-                
-                // Ensure dashboard navigation link stays active
-                if (app.navigation) {
-                    app.navigation.ensureDashboardActive();
-                }
-            } else {
-                // If tabs aren't initialized yet, manually handle everything
-                // Remove active class from all tabs
-                document.querySelectorAll('.dashboard-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
-                // Hide all tab content
-                document.querySelectorAll('.dashboard-tab-content').forEach(content => {
-                    content.classList.add('hidden');
-                });
-                
-                // Add active class to target tab
-                const targetTab = document.querySelector(`.dashboard-tab[data-tab="${tabName}"]`);
-                if (targetTab) {
-                    targetTab.classList.add('active');
-                }
-                
-                // Show target content
-                const targetContent = document.getElementById(`dashboard-${tabName}-content`);
-                if (targetContent) {
-                    targetContent.classList.remove('hidden');
-                }
-                
-                // Ensure dashboard navigation link stays active
-                if (app.navigation) {
-                    app.navigation.ensureDashboardActive();
-                }
+
+            // Remove active class from all tabs
+            document.querySelectorAll('.dashboard-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Add active class to target tab
+            const targetTab = document.querySelector(`.dashboard-tab[data-tab="${tabName}"]`);
+            if (targetTab) {
+                targetTab.classList.add('active');
             }
-            
+
+            // Load content dynamically
+            await loadTabContent('dashboard-content-container', `/pages/dashboard/${tabName}.html`);
+
+            // Ensure dashboard navigation link stays active
+            if (app.navigation) {
+                app.navigation.ensureDashboardActive();
+            }
+
             // If showing overview tab, ensure overview section is initialized
             if (tabName === 'overview') {
-                // Call initializeDashboardFunctions immediately to ensure it's available
-                if (window.vybeApp) {
-                    window.vybeApp.initializeDashboardFunctions();
-                }
-                
-                // Ensure overview section is shown with proper timing
                 requestAnimationFrame(() => {
-                    if (typeof window.showOverviewSection === 'function') {
-                        // Check if no overview section is active, then activate earnings
-                        const activeOverviewBtn = document.querySelector('.overview-section-btn.active');
-                        if (!activeOverviewBtn) {
-                            window.showOverviewSection('earnings');
-                        }
-                    } else {
-                        // Fallback: manually activate earnings section
-                        const earningsBtn = document.querySelector('.overview-section-btn[data-section="earnings"]');
-                        if (earningsBtn && !earningsBtn.classList.contains('active')) {
-                            earningsBtn.click();
-                        }
+                    const activeOverviewBtn = document.querySelector('.overview-section-btn.active');
+                    if (!activeOverviewBtn) {
+                        window.showOverviewSection('earnings');
+                    }
+                });
+            } else if (tabName === 'settings') {
+                requestAnimationFrame(() => {
+                    const activeSettingsBtn = document.querySelector('.settings-tab.active');
+                    if (!activeSettingsBtn) {
+                        window.showSettingsSection('profile');
                     }
                 });
             }
         };
-        
-        // Other dashboard functions can be added here
+
         console.log('✅ Dashboard functions initialized');
     }
-    
+
     /**
      * Initialize profile-specific functions
      * @private
      */
     initializeProfileFunctions() {
-        // Profile tab switching
-        window.showProfileTab = (tabName) => {
-            // First use the existing tabs functionality
-            if (this.profileTabs) {
-                this.profileTabs.showProfileTab(tabName);
-            } else {
-                // Fallback implementation if ProfileTabs not initialized yet
-                // Hide all profile tab contents
-                document.querySelectorAll('.profile-tab-content').forEach(content => {
-                    content.classList.add('hidden');
-                });
-                
-                // Remove active from all profile tabs
-                document.querySelectorAll('.profile-tab').forEach(tab => {
-                    tab.classList.remove('active');
-                });
-                
-                // Show selected content
-                const targetContent = document.getElementById(`profile-${tabName}-content`);
-                if (targetContent) {
-                    targetContent.classList.remove('hidden');
+        // Function to load HTML content into a container
+        const loadTabContent = async (containerId, filePath) => {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
-                
-                // Set active tab
-                const activeTab = document.querySelector(`.profile-tab[data-tab="${tabName}"]`);
-                if (activeTab) {
-                    activeTab.classList.add('active');
+                const html = await response.text();
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = html;
+                } else {
+                    console.error(`Container with ID ${containerId} not found.`);
                 }
-                
-                // Initialize booking calendar if needed
-                if (tabName === 'booking' && typeof initializeBookingCalendar === 'function') {
-                    initializeBookingCalendar();
-                }
+            } catch (error) {
+                console.error(`Failed to load content from ${filePath}:`, error);
+                // Optionally display an error message to the user
             }
         };
-        
+
+        // Profile tab switching
+        window.showProfileTab = async (tabName) => {
+            console.log('showProfileTab called with:', tabName);
+
+            // Remove active class from all profile tabs
+            document.querySelectorAll('.profile-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Add active class to target tab
+            const targetTab = document.querySelector(`.profile-tab[data-tab="${tabName}"]`);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+
+            // Load content dynamically
+            await loadTabContent('profile-content-container', `/pages/profile/${tabName}.html`);
+
+            // Initialize booking calendar if needed
+            if (tabName === 'booking' && typeof initializeBookingCalendar === 'function') {
+                initializeBookingCalendar();
+            }
+        };
+
         console.log('✅ Profile functions initialized');
     }
     
@@ -392,46 +404,55 @@ class VybeApp {
         };
         
         // Support for old tab functions
-        
-        window.showProfileTab = (tabName) => {
-            this.profileTabs?.showProfileTab(tabName);
+        // Profile tab switching
+        window.showProfileTab = async (tabName) => {
+            console.log('showProfileTab called with:', tabName);
+
+            // Remove active class from all profile tabs
+            document.querySelectorAll('.profile-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Add active class to target tab
+            const targetTab = document.querySelector(`.profile-tab[data-tab="${tabName}"]`);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+
+            // Load content dynamically
+            await loadTabContent('profile-content-container', `/pages/profile/${tabName}.html`);
+
+            // Initialize booking calendar if needed
+            if (tabName === 'booking' && typeof initializeBookingCalendar === 'function') {
+                initializeBookingCalendar();
+            }
         };
         
         // Support for guides tab
-        window.showGuidesTab = (tabName) => {
+        window.showGuidesTab = async (tabName) => {
             const tabButton = document.querySelector(`.guides-tab[data-tab="${tabName}"]`);
             if (tabButton) {
                 // Remove active class from all tabs
                 document.querySelectorAll('.guides-tab').forEach(tab => tab.classList.remove('active'));
                 // Add active class to selected tab
                 tabButton.classList.add('active');
-                
-                // Hide all tab contents
-                document.querySelectorAll('.guides-tab-content').forEach(content => content.classList.add('hidden'));
-                // Show selected tab content
-                const tabContent = document.getElementById(`guides-${tabName}-content`);
-                if (tabContent) {
-                    tabContent.classList.remove('hidden');
-                }
+
+                // Load content dynamically
+                await loadTabContent('guides-content-container', `/pages/guides/${tabName}.html`);
             }
         };
         
         // Support for apps tab
-        window.showAppsTab = (tabName) => {
+        window.showAppsTab = async (tabName) => {
             const tabButton = document.querySelector(`.apps-tab[data-tab="${tabName}"]`);
             if (tabButton) {
                 // Remove active class from all tabs
                 document.querySelectorAll('.apps-tab').forEach(tab => tab.classList.remove('active'));
                 // Add active class to selected tab
                 tabButton.classList.add('active');
-                
-                // Hide all tab contents
-                document.querySelectorAll('.apps-tab-content').forEach(content => content.classList.add('hidden'));
-                // Show selected tab content
-                const tabContent = document.getElementById(`apps-${tabName}-content`);
-                if (tabContent) {
-                    tabContent.classList.remove('hidden');
-                }
+
+                // Load content dynamically
+                await loadTabContent('apps-content-container', `/pages/apps/${tabName}.html`);
             }
         };
         

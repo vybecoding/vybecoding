@@ -1,0 +1,188 @@
+                <!-- Browse Apps Tab -->
+                <div id="apps-browse-content" class="apps-tab-content">
+                    <!-- Search Results Section (Hidden by default) -->
+                    <div id="sites-search-results" class="hidden">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-2xl font-light">Search Results</h2>
+                            <p class="text-sm text-vybe-gray-400"><span id="apps-result-count">0</span> results found</p>
+                        </div>
+                        <div id="apps-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Dynamically populated search results -->
+                        </div>
+                    </div>
+                    <!-- Header Section -->
+                    <!-- Apps Grid - Universal Design -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- AI Code Review Assistant Card (Needs Verification) -->
+                        <div class="minimal-card card-needs-verification rounded-lg p-5 transition-all cursor-pointer group flex flex-col" onclick="showAppDetail('members', '0000001', '0000001-code-review-assistant')">
+                            <!-- Type label -->
+                            <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; padding-top: 0.5rem; background: rgba(236, 72, 153, 0.5625); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px; display: flex; align-items: center; justify-content: center; height: auto;">APP</span>
+                            <!-- Title and creator -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                AI Code Review Assistant
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @devtools
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                    <span>01/02/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Interactive tool that analyzes your code for bugs, suggests improvements, and explains best practices using Claude AI.
+                            </p>
+                            
+                            <!-- App Tags and Technologies -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <!-- App Tags -->
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">productivity</span>
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">developer-tools</span>
+                                <!-- Technologies -->
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50 mt-auto">
+                                <div class="flex items-center gap-1 text-vybe-gray-500 text-xs">
+                                    <span class="text-xs">⚪</span>
+                                    <span>Needs verification</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>89</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Code Assistant Pro Card (Unpurchased) -->
+                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative flex flex-col" onclick="showAppDetail('vibe-coding', '0000002', '0000002-code-assistant-pro')">
+                            <!-- Type label -->
+                            <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; padding-top: 0.5rem; background: rgba(236, 72, 153, 0.5625); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px; display: flex; align-items: center; justify-content: center; height: auto;">APP</span>
+                            <!-- Title -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                AI Code Assistant Pro
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @buildtools
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                    <span>01/10/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Production-ready code assistant with advanced refactoring, test generation, and team collaboration features.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">productivity</span>
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats with lock icon -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50 mt-auto">
+                                <div class="flex items-center gap-1 text-amber-500 text-xs">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zM9 7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9V7zm4 10.723V20h-2v-2.277a1.993 1.993 0 01-.567-3.677A1.99 1.99 0 0112 14a1.99 1.99 0 011.567.046 1.993 1.993 0 01-.567 3.677z"/>
+                                    </svg>
+                                    <span>Premium • $35</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>285</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Code Assistant Pro Card (Purchased) -->
+                        <div class="minimal-card rounded-lg p-5 transition-all cursor-pointer group relative flex flex-col" onclick="showAppDetail('vibe-coding', '0000002', '0000002-code-assistant-pro')">
+                            <!-- Type label -->
+                            <span style="position: absolute; top: 0; left: 0; padding: 0.375rem 0.5rem; padding-top: 0.5rem; background: rgba(236, 72, 153, 0.5625); color: rgba(255, 255, 255, 1); font-size: 0.844rem; font-weight: 600; text-transform: uppercase; border-radius: 0 0 0.625rem 0; z-index: 20; line-height: 1; box-shadow: 0 1px 2px rgba(0,0,0,0.2); letter-spacing: 0.25px; display: flex; align-items: center; justify-content: center; height: auto;">APP</span>
+                            <!-- Title -->
+                            <h3 class="text-lg font-medium text-white mb-2 group-hover:text-vybe-orange transition-colors">
+                                AI Code Assistant Pro
+                            </h3>
+                            
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-pink rounded-full"></div>
+                                <span class="text-sm text-vybe-gray-400">
+                                    @buildtools
+                                    <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                                </span>
+                                <span class="text-vybe-gray-500">•</span>
+                                <div class="flex items-center gap-1 text-sm text-vybe-gray-500">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                                    <span>01/10/25</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Description -->
+                            <p class="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                                Production-ready code assistant with advanced refactoring, test generation, and team collaboration features.
+                            </p>
+                            
+                            <!-- Tags -->
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">productivity</span>
+                                <span class="px-2 py-1 bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink text-xs rounded">TypeScript</span>
+                            </div>
+                            
+                            <!-- Stats with purchased status -->
+                            <div class="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50 mt-auto">
+                                <div class="flex items-center gap-1 text-green-500 text-xs">
+                                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                                    </svg>
+                                    <span>Purchased</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-xs">
+                                    <div class="flex items-center gap-1 text-vybe-gray-400">
+                                        <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                        <span>285</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>

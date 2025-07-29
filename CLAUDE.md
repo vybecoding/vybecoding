@@ -1,7 +1,7 @@
 # CLAUDE.md - Project Instructions and Context
 
-**Last Updated:** 2025-07-28  
-**Version:** 2.1  
+**Last Updated:** 2025-01-28  
+**Version:** 2.2  
 **Review Schedule:** Weekly or after major changes
 
 ## TRAIL - Test, Resolve, And Intelligently Learn
@@ -45,9 +45,10 @@ When Claude Code starts with MCP enabled, it can access:
 ## Architecture
 
 ```
-.claude/config/
+.claude/
 ├── settings.json          # Hooks configuration
-└── mcp-settings.json      # MCP server config
+├── config/
+│   └── mcp-settings.json  # MCP server config
 
 .claude/solutions/
 ├── verify-and-learn.sh    # Main testing & learning script
@@ -362,7 +363,7 @@ Every successful code change is automatically committed to the main branch:
 - Only commits error-free changes
 - Complexity indicators: [SIMPLE], [MEDIUM], or [COMPLEX]
 
-**Configuration Status**: Active in `.claude/config/settings.json` PostToolUse hooks
+**Configuration Status**: Active in `.claude/settings.json` PostToolUse hooks
 
 **View Claude Commits:**
 ```bash
@@ -370,7 +371,7 @@ git log --oneline | grep "claude-"
 ```
 
 **Manual Control:**
-- Disable: Remove auto-commit from hooks in `.claude/config/settings.json`
+- Disable: Remove auto-commit from hooks in `.claude/settings.json`
 - Reset counter: `echo "0" > .claude-commit-count`
 - View log: `cat /tmp/claude-auto-commit.log`
 
@@ -378,7 +379,7 @@ This provides a complete history of all Claude Code changes directly in your mai
 
 ## Active Claude Code Hooks ✅
 
-All hooks are now properly configured in `.claude/config/settings.json`:
+All hooks are now properly configured in `.claude/settings.json`:
 
 ### PreSession Hook
 - **Pre-Session Hook**: Shows ready stories and setup status on startup
@@ -464,14 +465,32 @@ This helps identify when to break down tasks further.
 
 ## BMAD Method Integration
 
-The BMAD Method provides structured story management and development workflows through specialized agents.
+The BMAD Method v4.33.0 provides structured story management through specialized agents, now available as Claude Code sub-agents for automatic delegation.
 
 ### Available BMAD Agents
-- **Dev** (`/dev`) - Full stack development implementation
-- **SM** (`/sm`) - Story management and creation
-- **QA** (`/qa`) - Quality assurance and testing
-- **PO** (`/po`) - Product owner perspective
-- **PM** (`/pm`) - Project management
+**Slash Commands and Sub-Agents:**
+- **Dev** (`/dev` or `bmad-dev`) - Full stack development (James)
+- **SM** (`/sm` or `bmad-sm`) - Story management (Stella)
+- **QA** (`/qa` or `bmad-qa`) - Quality assurance (Quinn)
+- **PO** (`/po` or `bmad-po`) - Product owner (Olivia)
+- **PM** (`/pm` or `bmad-pm`) - Project management (Parker)
+
+**Additional Sub-Agents:**
+- `bmad-architect` - System architecture (Alex)
+- `bmad-doc-writer` - Documentation (Dana)
+- `bmad-analyst` - Business analysis
+- `bmad-ux` - User experience design
+- `bmad-devops` - Infrastructure and deployment
+
+### Claude Code Sub-Agent Integration
+
+BMAD agents are now available as Claude Code sub-agents in `.claude/agents/`:
+- **Automatic Delegation**: Claude Code selects the appropriate agent based on your request
+- **Context Isolation**: Each sub-agent has its own clean context window
+- **Tool Specialization**: Each agent only has access to relevant tools
+- **Structured Reporting**: Sub-agents report back in a format Claude Code can present clearly
+
+Example: When you say "create a story for user login", Claude Code automatically delegates to `bmad-sm`.
 
 ### VybeHacks + BMAD Integration
 

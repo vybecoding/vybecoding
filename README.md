@@ -110,13 +110,14 @@ Automatic testing, error resolution, and intelligent learning:
 - Level 3: Playwright visual debugging with trace recording
 - Pattern recognition and automatic optimization
 
-### BMAD Agents
-Structured development with specialized agents:
-- `/dev` - Full stack development
-- `/sm` - Story management
-- `/qa` - Quality assurance
-- `/po` - Product owner perspective
-- `/pm` - Project management
+### BMAD Method Integration
+Structured development with specialized agents available as both slash commands and Claude Code sub-agents:
+- `/dev` or `bmad-dev` - Full stack development (James)
+- `/sm` or `bmad-sm` - Story management (Stella)
+- `/qa` or `bmad-qa` - Quality assurance (Quinn)
+- `/po` or `bmad-po` - Product owner perspective (Olivia)
+- `/pm` or `bmad-pm` - Project management (Parker)
+- Additional sub-agents: `bmad-architect`, `bmad-doc-writer`, `bmad-analyst`
 
 ### Slash Commands
 - `/update-docs` - Automatically update documentation

@@ -1,0 +1,391 @@
+                <!-- Mentorship Tab -->
+                <div id="dashboard-mentorship-content" class="dashboard-tab-content" data-tab-content="mentorship">
+                    <div class="max-w-7xl mx-auto">
+                        <div class="py-6">
+                        
+                        <!-- Two Column Layout (60% / 40%) -->
+                        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                            
+                            <!-- Main Content Column (60%) -->
+                            <div class="col-span-1 lg:col-span-3 space-y-6">
+                                
+                                <!-- Bio Section -->
+                                <div class="vybe-card overflow-hidden">
+                                    <!-- Bio Header -->
+                                    <div class="vybe-card-header">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="vybe-section-header">
+                                                <div class="vybe-gradient-accent-bar"></div>
+                                                Mentor Bio
+                                            </h4>
+                                            <button id="edit-bio-btn" class="px-3 py-1.5 text-sm bg-transparent border border-vybe-purple text-vybe-purple rounded-lg hover:bg-vybe-purple/20 transition-all">
+                                                Edit
+                                            </button>
+                                            <button id="save-bio-btn" class="px-3 py-1.5 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hidden">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Bio Content -->
+                                    <div class="p-6">
+                                        <div class="mb-6">
+                                        <textarea id="mentor-bio" class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple h-24 resize-none" placeholder="Describe your expertise and what you help mentees with..." readonly>I'm a senior developer with 8+ years in SaaS and React development, specializing in full-stack development & career growth for developers. I help developers level up their technical skills, navigate career growth, and build confidence in system design.</textarea>
+                                    </div>
+                                    
+                                    <!-- Quick Settings -->
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="text-xs font-medium text-vybe-gray-400 block mb-1">Experience</label>
+                                            <select class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple">
+                                                <option selected>8+ years</option>
+                                                <option>5-8 years</option>
+                                                <option>3-5 years</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div>
+                                            <label class="text-xs font-medium text-vybe-gray-400 block mb-1">Response Time</label>
+                                            <select class="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple">
+                                                <option selected>Within 24 hours</option>
+                                                <option>Within 4 hours</option>
+                                                <option>Within 1 hour</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>                                
+                                <!-- Availability Calendar -->
+                                <div class="vybe-card overflow-hidden">
+                                    <!-- Calendar Header -->
+                                    <div class="vybe-card-header">
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="vybe-section-header">
+                                                <div class="vybe-gradient-accent-bar"></div>
+                                                Availability Calendar
+                                            </h4>
+                                            <div class="flex items-center gap-3">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="text-sm text-vybe-gray-300">EST (UTC-5)</span>
+                                                    <button class="px-2 py-1 text-xs bg-vybe-gray-800 text-vybe-gray-400 rounded hover:bg-vybe-gray-700 transition-colors" onclick="showTimezoneSelector()">
+                                                        Change
+                                                    </button>
+                                                </div>
+                                                <button id="edit-availability-btn" class="px-3 py-1.5 text-sm bg-transparent border border-vybe-purple text-vybe-purple rounded-lg hover:bg-vybe-purple/20 transition-all" onclick="toggleEditMode()">
+                                                    Edit Availability
+                                                </button>
+                                                <button id="save-availability-btn" class="px-3 py-1.5 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors hidden" onclick="saveAvailabilityChanges()">
+                                                    Save Changes
+                                                </button>
+                                                <button id="cancel-availability-btn" class="px-3 py-1.5 text-sm bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors hidden" onclick="cancelEditMode()">
+                                                    Cancel
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Calendar Body -->
+                                    <div class="p-6">
+                                        <!-- Month Navigation -->
+                                        <div class="flex items-center justify-between mb-3">
+                                            <h5 class="text-white font-medium">January 2025</h5>
+                                            <div class="flex items-center gap-2">
+                                                <button class="p-1 text-vybe-gray-400 hover:text-white rounded transition-colors" onclick="previousMonth()" aria-label="Previous month">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                                    </svg>
+                                                </button>
+                                                <button class="px-3 py-1 text-xs bg-vybe-gray-800 text-white rounded-lg hover:bg-vybe-gray-700 transition-colors" onclick="goToToday()">
+                                                    Today
+                                                </button>
+                                                <button class="p-1 text-vybe-gray-400 hover:text-white rounded transition-colors" onclick="nextMonth()" aria-label="Next month">
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Bulk Actions (Only visible in edit mode) -->
+                                        <div id="bulk-actions" class="flex gap-2 flex-wrap hidden">
+                                            <button class="px-3 py-1 text-xs bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/30 rounded-lg hover:bg-vybe-purple/30 transition-colors" onclick="blockWeekends()">
+                                                Block Weekends
+                                            </button>
+                                            <button class="px-3 py-1 text-xs bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors" onclick="copyLastWeek()">
+                                                Copy Last Week
+                                            </button>
+                                            <button class="px-3 py-1 text-xs bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors" onclick="clearAllAvailability()">
+                                                Clear All
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- View Mode Info (Only visible when not editing) -->
+                                        <div id="view-mode-info" class="text-sm text-vybe-gray-400">
+                                            <p>Your current availability is shown below. Click "Edit Availability" to make changes.</p>
+                                        </div>
+                                        
+                                        <!-- Calendar Grid -->
+                                        <div class="grid grid-cols-7 gap-2 mb-3 w-full">
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">S</div>
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">M</div>
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">T</div>
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">W</div>
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">T</div>
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">F</div>
+                                            <div class="text-center text-xs text-vybe-gray-500 py-1">S</div>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-7 gap-2 select-none w-full" id="mentor-availability-calendar" role="grid" aria-label="Monthly availability calendar" data-drag-selection="false" data-edit-mode="false">
+                                            <!-- January 2025 Calendar Days -->
+                                            <!-- Week 1 -->
+                                            <div class="text-center py-2 text-vybe-gray-600"></div>
+                                            <div class="text-center py-2 text-vybe-gray-600"></div>
+                                            <div class="text-center py-2 text-vybe-gray-600"></div>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">1</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">2</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">3</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">4</button>
+                                            
+                                            <!-- Week 2 -->
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">5</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">6</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">7</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">8</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">9</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">10</button>
+                                            <button class="text-center py-2 text-sm bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition-colors">11</button>
+                                            
+                                            <!-- Week 3 -->
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">12</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">13</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">14</button>
+                                            <button class="text-center py-2 text-sm bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition-colors">15</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">16</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">17</button>
+                                            <button class="text-center py-2 text-sm bg-red-600 text-white rounded-md font-medium cursor-not-allowed">18</button>
+                                            
+                                            <!-- Week 4 -->
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">19</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">20</button>
+                                            <button class="text-center py-2 text-sm bg-purple-600 text-white rounded-md font-medium hover:bg-purple-700 transition-colors">21</button>
+                                            <button class="text-center py-2 text-sm bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition-colors">22</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">23</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">24</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">25</button>
+                                            
+                                            <!-- Week 5 -->
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">26</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">27</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">28</button>
+                                            <button class="text-center py-2 text-sm bg-green-600 text-white rounded-md font-medium hover:bg-green-700 transition-colors">29</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">30</button>
+                                            <button class="text-center py-2 text-sm text-white hover:bg-vybe-gray-800 rounded cursor-pointer transition-colors">31</button>
+                                            <div class="text-center py-2 text-vybe-gray-600"></div>
+                                        </div>
+                                        
+                                        <!-- Enhanced Legend with cal.com-style indicators -->
+                                        <div class="flex flex-wrap items-center justify-center gap-4 mt-4 p-3 bg-vybe-gray-800/30 rounded-lg">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-3 h-3 bg-green-600 rounded-full"></div>
+                                                <span class="text-vybe-gray-300 text-sm">Available</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-3 h-3 bg-purple-600 rounded-full"></div>
+                                                <span class="text-vybe-gray-300 text-sm">Today</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-3 h-3 bg-red-600 rounded-full"></div>
+                                                <span class="text-vybe-gray-300 text-sm">Booked</span>
+                                            </div>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-3 h-3 bg-vybe-gray-600 rounded-full"></div>
+                                                <span class="text-vybe-gray-300 text-sm">Unavailable</span>
+                                            </div>
+                                            <div class="text-xs text-vybe-gray-400">💡 Tip: Click and drag to select multiple dates</div>
+                                        </div>
+                                        
+                                        <!-- Available Times Selection for Selected Date -->
+                                        <div id="time-selection-panel" class="mt-6 p-4 bg-vybe-gray-800/50 rounded-lg">
+                                            <h5 class="text-white font-semibold mb-3" id="selected-date-title">Available Times on January 11</h5>
+                                            <div class="grid grid-cols-3 gap-2 mb-4">
+                                                <button class="px-3 py-2 text-sm bg-gradient-to-b from-vybe-purple to-vybe-purple/80 text-white rounded-lg hover:from-vybe-purple/90 hover:to-vybe-purple/70 transition-all shadow-sm time-slot" data-time="9:00 AM">9:00 AM</button>
+                                                <button class="px-3 py-2 text-sm border border-vybe-gray-600 text-vybe-gray-400 rounded-lg hover:border-vybe-purple hover:text-white transition-colors time-slot" data-time="10:00 AM">10:00 AM</button>
+                                                <button class="px-3 py-2 text-sm border border-vybe-gray-600 text-vybe-gray-400 rounded-lg hover:border-vybe-purple hover:text-white transition-colors time-slot" data-time="11:00 AM">11:00 AM</button>
+                                                <button class="px-3 py-2 text-sm border border-vybe-gray-600 text-vybe-gray-400 rounded-lg hover:border-vybe-purple hover:text-white transition-colors time-slot" data-time="2:00 PM">2:00 PM</button>
+                                                <button class="px-3 py-2 text-sm bg-gradient-to-b from-vybe-purple to-vybe-purple/80 text-white rounded-lg hover:from-vybe-purple/90 hover:to-vybe-purple/70 transition-all shadow-sm time-slot" data-time="3:00 PM">3:00 PM</button>
+                                                <button class="px-3 py-2 text-sm border border-vybe-gray-600 text-vybe-gray-400 rounded-lg hover:border-vybe-purple hover:text-white transition-colors time-slot" data-time="4:00 PM">4:00 PM</button>
+                                            </div>
+                                            
+                                            <!-- Quick Time Selection Options (Only visible in edit mode) -->
+                                            <div id="time-selection-actions" class="hidden">
+                                                <div class="flex gap-2 flex-wrap mb-3">
+                                                    <button class="px-3 py-1 text-xs bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/30 rounded-lg hover:bg-vybe-purple/30 transition-colors" onclick="selectAllMorning()">
+                                                        Select All Morning
+                                                    </button>
+                                                    <button class="px-3 py-1 text-xs bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/30 rounded-lg hover:bg-vybe-purple/30 transition-colors" onclick="selectAllAfternoon()">
+                                                        Select All Afternoon
+                                                    </button>
+                                                    <button class="px-3 py-1 text-xs bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors" onclick="clearAllTimes()">
+                                                        Clear All
+                                                    </button>
+                                                </div>
+                                                
+                                                <div class="flex justify-between items-center">
+                                                    <p class="text-xs text-vybe-gray-400">💡 Click times to toggle availability</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- View Mode Time Display -->
+                                            <div id="time-view-mode" class="text-sm text-vybe-gray-400">
+                                                <p>Available times for the selected date are shown above.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Session Pricing -->
+                                <div class="vybe-card p-6">
+                                    <h4 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Session Pricing
+                                    </h4>
+                                    
+                                    <div class="overflow-hidden rounded-lg border border-vybe-gray-700">
+                                        <table class="w-full">
+                                            <thead class="bg-vybe-gray-800/50">
+                                                <tr>
+                                                    <th class="px-4 py-3 text-left text-xs font-medium text-vybe-gray-400 uppercase tracking-wider">Type</th>
+                                                    <th class="px-4 py-3 text-center text-xs font-medium text-vybe-gray-400 uppercase tracking-wider">Duration</th>
+                                                    <th class="px-4 py-3 text-right text-xs font-medium text-vybe-gray-400 uppercase tracking-wider">Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-vybe-gray-700">
+                                                <tr class="bg-vybe-gray-800/30 hover:bg-vybe-gray-800/50 transition-colors">
+                                                    <td class="px-4 py-3">
+                                                        <div class="text-sm font-medium text-white">Quick Chat</div>
+                                                    </td>
+                                                    <td class="px-4 py-3 text-center">
+                                                        <span class="text-sm text-vybe-gray-300">30 min</span>
+                                                    </td>
+                                                    <td class="px-4 py-3 text-right">
+                                                        <span class="text-sm font-semibold text-white">$75</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-vybe-gray-800/30 hover:bg-vybe-gray-800/50 transition-colors">
+                                                    <td class="px-4 py-3">
+                                                        <div class="text-sm font-medium text-white">Standard</div>
+                                                    </td>
+                                                    <td class="px-4 py-3 text-center">
+                                                        <span class="text-sm text-vybe-gray-300">60 min</span>
+                                                    </td>
+                                                    <td class="px-4 py-3 text-right">
+                                                        <span class="text-sm font-semibold text-white">$100</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-vybe-gray-800/30 hover:bg-vybe-gray-800/50 transition-colors">
+                                                    <td class="px-4 py-3">
+                                                        <div class="text-sm font-medium text-white">Deep Dive</div>
+                                                    </td>
+                                                    <td class="px-4 py-3 text-center">
+                                                        <span class="text-sm text-vybe-gray-300">90 min</span>
+                                                    </td>
+                                                    <td class="px-4 py-3 text-right">
+                                                        <span class="text-sm font-semibold text-white">$150</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    <div class="mt-4 flex gap-3">
+                                        <button class="flex-1 px-3 py-2 bg-gradient-to-b from-vybe-purple to-vybe-purple/80 text-white rounded-lg hover:from-vybe-purple/90 hover:to-vybe-purple/70 transition-all shadow-sm text-sm font-medium">
+                                            + Add Session Type
+                                        </button>
+                                        <button class="px-3 py-2 bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors text-sm">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Platform Preferences -->
+                                <div class="vybe-card p-6">
+                                    <h4 class="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Platform Preferences
+                                    </h4>
+                                    
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <label class="group flex items-center gap-3 p-3 bg-vybe-gray-900/30 rounded-lg cursor-pointer border border-vybe-purple/30 bg-vybe-purple/10 hover:bg-vybe-purple/20 transition-colors">
+                                            <input type="checkbox" name="platform" value="zoom" class="w-4 h-4 text-vybe-purple-light bg-transparent border-2 border-vybe-purple rounded focus:ring-vybe-purple focus:ring-2" checked>
+                                            <span class="text-white font-medium">Zoom</span>
+                                        </label>
+                                        
+                                        <label class="group flex items-center gap-3 p-3 bg-vybe-gray-900/30 rounded-lg cursor-pointer border border-vybe-purple/30 bg-vybe-purple/10 hover:bg-vybe-purple/20 transition-colors">
+                                            <input type="checkbox" name="platform" value="discord" class="w-4 h-4 text-vybe-purple-light bg-transparent border-2 border-vybe-purple rounded focus:ring-vybe-purple focus:ring-2" checked>
+                                            <span class="text-white font-medium">Discord</span>
+                                        </label>
+                                        
+                                        <label class="group flex items-center gap-3 p-3 bg-vybe-gray-900/30 rounded-lg cursor-pointer border border-vybe-gray-600 hover:bg-vybe-gray-800/30 hover:border-vybe-gray-500 transition-colors">
+                                            <input type="checkbox" name="platform" value="meet" class="w-4 h-4 text-vybe-purple-light bg-transparent border-2 border-vybe-gray-600 rounded focus:ring-vybe-purple focus:ring-2">
+                                            <span class="text-vybe-gray-400 group-hover:text-vybe-gray-300 font-medium">Meet</span>
+                                        </label>
+                                        
+                                        <label class="group flex items-center gap-3 p-3 bg-vybe-gray-900/30 rounded-lg cursor-pointer border border-vybe-gray-600 hover:bg-vybe-gray-800/30 hover:border-vybe-gray-500 transition-colors">
+                                            <input type="checkbox" name="platform" value="teams" class="w-4 h-4 text-vybe-purple-light bg-transparent border-2 border-vybe-gray-600 rounded focus:ring-vybe-purple focus:ring-2">
+                                            <span class="text-vybe-gray-400 group-hover:text-vybe-gray-300 font-medium">Teams</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Right Column: Booking Summary (40%) -->
+                            <div class="col-span-1 lg:col-span-2">
+                                <div class="vybe-card p-6 sticky top-20">
+                                    <h4 class="vybe-section-header mb-4">
+                                        <div class="vybe-gradient-accent-bar"></div>
+                                        Booking Summary
+                                    </h4>
+                                    
+                                    <!-- Selected Date & Time -->
+                                    <div class="mb-4 pb-4 border-b border-vybe-gray-800">
+                                        <p class="text-sm text-vybe-gray-400 mb-1">Date & Time</p>
+                                        <p class="text-white">January 11, 2025 at 3:00 PM EST</p>
+                                    </div>
+                                    
+                                    <!-- Service Type -->
+                                    <div class="mb-4 pb-4 border-b border-vybe-gray-800">
+                                        <p class="text-sm text-vybe-gray-400 mb-1">Service</p>
+                                        <p class="text-white">1-on-1 Mentoring Session</p>
+                                        <p class="text-sm text-vybe-gray-500">60 minutes</p>
+                                    </div>
+                                    
+                                    <!-- Pricing -->
+                                    <div class="mb-6">
+                                        <div class="flex justify-between mb-2">
+                                            <span class="text-vybe-gray-400">Session Rate</span>
+                                            <span class="text-white">$120</span>
+                                        </div>
+                                        <div class="flex justify-between pt-2 border-t border-vybe-gray-800">
+                                            <span class="text-white font-medium">Total</span>
+                                            <span class="text-white font-medium">$120</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Book Button -->
+                                    <button class="w-full py-3 bg-gradient-to-r from-vybe-purple to-vybe-orange text-white rounded-lg hover:opacity-90 transition-opacity font-medium">
+                                        Book Session
+                                    </button>
+                                    
+                                    <!-- Terms -->
+                                    <p class="text-xs text-vybe-gray-500 mt-4 text-center">
+                                        By booking, you agree to our terms and cancellation policy
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>

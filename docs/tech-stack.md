@@ -38,7 +38,7 @@ Intelligent hooks that work behind the scenes.
 #### Smart Hook Architecture
 **Problem:** Manual documentation of problems and solutions  
 **Solution:** Post-tool hooks that automatically capture context  
-**Implementation:** `.claude/config/settings.json` with intelligent detection
+**Implementation:** `.claude/settings.json` with intelligent detection
 
 #### Zero-Config Test Detection
 **Problem:** Different projects use different test commands  
@@ -79,10 +79,12 @@ Includes:
 
 ### BMAD Method Integration ✅
 **Problem:** Unstructured development workflows and story management  
-**Solution:** Specialized agents for different development roles and workflows  
+**Solution:** Specialized agents available as both slash commands and Claude Code sub-agents  
 **Implementation:** 
-- **Development Agents:** `/dev` for coding, `/sm` for stories, `/qa` for testing
-- **Management Agents:** `/po` for product owner tasks, `/pm` for project management
+- **Slash Commands:** `/dev`, `/sm`, `/qa`, `/po`, `/pm` for direct agent access
+- **Sub-Agents:** `bmad-dev`, `bmad-sm`, `bmad-qa`, etc. in `.claude/agents/`
+- **Auto-Delegation:** Claude Code automatically selects appropriate agent based on task
+- **Context Isolation:** Each sub-agent has its own clean context window
 - **Integration:** Works with TRAIL system for error learning and solution sharing
 
 #### BMAD Setup (One-Time)
@@ -395,9 +397,9 @@ Our hook system includes:
 
 ### Current Configuration
 
-Hooks are configured in `.claude/config/settings.json`. View current hooks:
+Hooks are configured in `.claude/settings.json`. View current hooks:
 ```bash
-cat .claude/config/settings.json | jq .
+cat .claude/settings.json | jq .
 ```
 
 ### Quick Commands
