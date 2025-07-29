@@ -19,7 +19,8 @@
         // Members page specific fixes
         'css/members-grid-fix.css',
         'css/force-members-3col.css',
-        'css/members-3-column-grid.css'
+        'css/members-3-column-grid.css',
+        'css/members-grid-override.css'
     ];
     
     // Determine the correct path prefix based on current location
