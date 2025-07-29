@@ -7,10 +7,14 @@ import { Card, AppCard, GuideCard, MemberCard } from '@/components/ui/card';
 import { Button, ButtonGroup, IconButton } from '@/components/ui/button';
 import { Input, Label, Textarea, Select, Checkbox, Radio, RadioGroup, FormField } from '@/components/ui/form';
 import { Header, Footer, Logo } from '@/components/ui/navigation';
+import { Modal, Dialog, ConfirmDialog } from '@/components/ui/modal';
 import { ArrowRight, Download, Heart, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 export default function SimpleShowcasePage() {
   const [showPassword, setShowPassword] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [confirmOpen, setConfirmOpen] = React.useState(false);
 
   return (
     <div className="min-h-screen bg-gray-950">
@@ -220,6 +224,76 @@ export default function SimpleShowcasePage() {
               <Box>
                 <Text size="sm" color="muted" className="mb-2">Header and Footer are shown at the top and bottom of this page</Text>
               </Box>
+            </Stack>
+          </Section>
+
+          <Divider />
+
+          {/* Modals and Dialogs */}
+          <Section>
+            <Heading as="h2">Modal and Dialog Components</Heading>
+            <Stack gap="lg">
+              <Stack direction="row" gap="md">
+                <Button onClick={() => setModalOpen(true)}>
+                  Open Modal
+                </Button>
+                <Button variant="secondary" onClick={() => setDialogOpen(true)}>
+                  Open Dialog
+                </Button>
+                <Button variant="outline" onClick={() => setConfirmOpen(true)}>
+                  Open Confirm Dialog
+                </Button>
+              </Stack>
+
+              {/* Modal Example */}
+              <Modal
+                isOpen={modalOpen}
+                onClose={() => setModalOpen(false)}
+                title="Example Modal"
+                description="This is a modal with customizable content and footer"
+                footer={
+                  <>
+                    <Button variant="ghost" onClick={() => setModalOpen(false)}>
+                      Cancel
+                    </Button>
+                    <Button variant="primary" onClick={() => setModalOpen(false)}>
+                      Save Changes
+                    </Button>
+                  </>
+                }
+              >
+                <Stack gap="md">
+                  <FormField label="Name" required>
+                    <Input placeholder="Enter your name" />
+                  </FormField>
+                  <FormField label="Description">
+                    <Textarea placeholder="Add a description..." rows={3} />
+                  </FormField>
+                </Stack>
+              </Modal>
+
+              {/* Dialog Example */}
+              <Dialog
+                isOpen={dialogOpen}
+                onClose={() => setDialogOpen(false)}
+                type="success"
+                title="Success!"
+                message="Your changes have been saved successfully."
+                confirmText="Great!"
+              />
+
+              {/* Confirm Dialog Example */}
+              <ConfirmDialog
+                isOpen={confirmOpen}
+                onClose={() => setConfirmOpen(false)}
+                title="Delete Item?"
+                message="Are you sure you want to delete this item? This action cannot be undone."
+                confirmText="Delete"
+                cancelText="Cancel"
+                onConfirm={() => {
+                  console.log('Item deleted');
+                }}
+              />
             </Stack>
           </Section>
         </Stack>
