@@ -13,6 +13,7 @@ import { Modal as OldModal, Dialog as OldDialog } from '@/components/ui/modal';
 
 // New components (Shadcn)
 import { Button } from '@/components/ui/button';
+import { Button as MigratedButton } from '@/components/ui/button-migrated';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -53,12 +54,34 @@ export default function ShowcaseComparisonPage() {
                 </Stack>
               </Box>
               <Box>
-                <Text size="sm" weight="bold" className="mb-4">Shadcn Button</Text>
+                <Text size="sm" weight="bold" className="mb-4">Shadcn Button (Direct)</Text>
                 <Stack direction="row" gap="md">
                   <Button>Default</Button>
                   <Button variant="default">Primary</Button>
                   <Button variant="secondary">Secondary</Button>
                   <Button variant="outline">Outline</Button>
+                </Stack>
+              </Box>
+            </Grid>
+            <Grid cols={2} gap="lg" className="mt-4">
+              <Box>
+                <Text size="sm" weight="bold" className="mb-4">Migrated Button (Wrapper)</Text>
+                <Stack direction="row" gap="md">
+                  <MigratedButton>Default</MigratedButton>
+                  <MigratedButton variant="primary">Primary</MigratedButton>
+                  <MigratedButton variant="secondary">Secondary</MigratedButton>
+                  <MigratedButton variant="outline">Outline</MigratedButton>
+                  <MigratedButton variant="danger">Danger</MigratedButton>
+                  <MigratedButton variant="success">Success</MigratedButton>
+                </Stack>
+              </Box>
+              <Box>
+                <Text size="sm" weight="bold" className="mb-4">Special Features</Text>
+                <Stack direction="row" gap="md">
+                  <MigratedButton loading>Loading</MigratedButton>
+                  <MigratedButton leftIcon="✨">With Icon</MigratedButton>
+                  <MigratedButton size="xs">XS Size</MigratedButton>
+                  <MigratedButton fullWidth>Full Width</MigratedButton>
                 </Stack>
               </Box>
             </Grid>

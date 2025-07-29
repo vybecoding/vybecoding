@@ -1,3 +1,6 @@
-export { Button, type ButtonProps } from './Button';
-export { ButtonGroup, type ButtonGroupProps } from './ButtonGroup';
-export { IconButton, type IconButtonProps } from './IconButton';
+// Re-export everything from the migrated button
+export { Button } from './Button';
+export type { ButtonProps } from './Button';
+export { ButtonGroup } from './ButtonGroup';
+export { IconButton } from './IconButton';
+export type { IconButtonProps } from './IconButton';
