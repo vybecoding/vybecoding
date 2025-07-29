@@ -45,4 +45,53 @@ export default defineSchema({
     body: v.string(),
     user: v.string(),
   }),
+
+  // Apps submission system
+  apps: defineTable({
+    // Creator info
+    userId: v.string(),
+    
+    // Basic info
+    name: v.string(),
+    shortDescription: v.string(),
+    fullDescription: v.string(),
+    category: v.string(),
+    tags: v.optional(v.array(v.string())),
+    
+    // Visual assets
+    iconUrl: v.string(),
+    screenshots: v.array(v.string()),
+    demoVideoUrl: v.optional(v.string()),
+    
+    // Links
+    liveUrl: v.optional(v.string()),
+    appStoreUrl: v.optional(v.string()),
+    playStoreUrl: v.optional(v.string()),
+    githubUrl: v.optional(v.string()),
+    documentationUrl: v.optional(v.string()),
+    
+    // Technical
+    techStack: v.array(v.string()),
+    platforms: v.array(v.string()),
+    license: v.string(),
+    
+    // Metadata
+    status: v.string(), // draft, submitted, in-review, approved, rejected
+    statusHistory: v.array(v.object({
+      status: v.string(),
+      timestamp: v.number(),
+      reason: v.optional(v.string())
+    })),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+    submittedAt: v.optional(v.number()),
+    approvedAt: v.optional(v.number()),
+    featured: v.optional(v.boolean()),
+    views: v.optional(v.number()),
+    likes: v.optional(v.number())
+  })
+    .index("by_user", ["userId"])
+    .index("by_status", ["status"])
+    .index("by_category", ["category"])
+    .index("by_created", ["createdAt"]),
 });
