@@ -21,7 +21,7 @@ global.localStorage = {
 };
 
 // Mock matchMedia
-global.matchMedia = (query) => ({
+global.window.matchMedia = (query) => ({
   matches: query === '(prefers-color-scheme: dark)',
   media: query,
   addEventListener: () => {},
@@ -30,6 +30,7 @@ global.matchMedia = (query) => ({
   removeListener: () => {},
   dispatchEvent: () => {}
 });
+global.matchMedia = global.window.matchMedia;
 
 console.log('🧪 Running Theme Provider QA Tests...\n');
 
