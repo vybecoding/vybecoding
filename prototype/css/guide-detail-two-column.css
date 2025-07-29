@@ -1,0 +1,48 @@
+/* Force 2-column layout for guide detail page */
+@media (min-width: 1024px) {
+    /* Force the grid container to use 12 columns */
+    .grid.grid-cols-12 {
+        display: grid !important;
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    }
+    
+    /* Main content area - 60% (8/12 columns) */
+    .col-span-12.lg\\:col-span-8 {
+        grid-column: span 8 / span 8 !important;
+    }
+    
+    /* Sidebar area - 40% (4/12 columns) */
+    .col-span-12.lg\\:col-span-4 {
+        grid-column: span 4 / span 4 !important;
+    }
+    
+    /* Ensure proper gap between columns */
+    .grid.gap-8 {
+        gap: 2rem !important;
+    }
+}
+
+/* Alternative approach using flexbox if grid doesn't work */
+@media (min-width: 1024px) {
+    /* If the parent container uses flex */
+    .grid.grid-cols-12 {
+        display: flex !important;
+        gap: 2rem !important;
+    }
+    
+    .grid.grid-cols-12 > .col-span-12.lg\\:col-span-8 {
+        flex: 0 0 calc(60% - 1rem) !important;
+        max-width: calc(60% - 1rem) !important;
+    }
+    
+    .grid.grid-cols-12 > .col-span-12.lg\\:col-span-4 {
+        flex: 0 0 calc(40% - 1rem) !important;
+        max-width: calc(40% - 1rem) !important;
+    }
+}
+
+/* Ensure sticky sidebar works */
+.lg\\:sticky {
+    position: sticky !important;
+    top: 1.5rem !important;
+}

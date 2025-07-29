@@ -544,17 +544,35 @@ class VybeApp {
         };
         
         // Support for guide creation step navigation
-        window.goToGuideStep = (step, fromIndicator = false) => {
+        window.goToGuideStep = async (step, fromIndicator = false) => {
             console.log('goToGuideStep called with step:', step);
-            // Hide all steps
-            document.querySelectorAll('.guide-creation-step').forEach(s => s.classList.add('hidden'));
-            
-            // Show selected step
-            const targetStep = document.getElementById(`guide-creation-step-${step}`);
-            if (targetStep) {
-                targetStep.classList.remove('hidden');
+
+            // Define the container for the steps
+            const stepsContainer = document.getElementById('guide-step-content-container');
+            if (!stepsContainer) {
+                console.error('guide-step-content-container not found.');
+                return;
             }
-            
+
+            // Clear previous step content
+            stepsContainer.innerHTML = '';
+
+            // Load content dynamically
+            const filePath = `/pages/guides/submit/step${step}.html`;
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const html = await response.text();
+                stepsContainer.innerHTML = html;
+            } catch (error) {
+                console.error(`Failed to load guide step content from ${filePath}:`, error);
+                // Optionally display an error message to the user
+                stepsContainer.innerHTML = `<p class="text-red-500">Failed to load step ${step}. Please try again.</p>`;
+                return;
+            }
+
             // Update progress indicators
             for (let i = 1; i <= 5; i++) {
                 const indicator = document.getElementById(`guide-step-indicator-${i}`);
