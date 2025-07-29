@@ -1,0 +1,64 @@
+/* Members Page Grid Fix - Force proper layout */
+
+/* Force the grid container to use proper grid layout */
+#members .grid,
+.page-container .grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  gap: 1.5rem !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  align-items: stretch !important;
+}
+
+/* Ensure cards have flexible height */
+#members .minimal-card,
+.page-container .minimal-card {
+  height: auto !important;
+  min-height: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Fix card internal structure */
+#members .minimal-card > div:not(.flex),
+.page-container .minimal-card > div:not(.flex) {
+  flex-grow: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Ensure proper username styling */
+#members .minimal-card h3,
+.page-container .minimal-card h3 {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+/* Fix padding for non-mentor cards */
+#members .minimal-card:not(.mentor-card),
+.page-container .minimal-card:not(.mentor-card) {
+  padding: 1.25rem !important;
+  padding-bottom: 1rem !important;
+}
+
+/* Fix padding for mentor cards */
+#members .minimal-card.mentor-card,
+.page-container .minimal-card.mentor-card {
+  padding: 1.25rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Override any conflicting height rules */
+body .page-container .minimal-card {
+  height: auto !important;
+}
+
+/* Ensure bottom stats section stays at bottom for mentor cards */
+#members .minimal-card.mentor-card .flex.items-center.justify-between.pt-3,
+.page-container .minimal-card.mentor-card .flex.items-center.justify-between.pt-3 {
+  margin-top: auto !important;
+}
