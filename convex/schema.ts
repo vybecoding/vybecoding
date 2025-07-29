@@ -98,7 +98,7 @@ export default defineSchema({
   // Guides publishing system
   guides: defineTable({
     // Author info
-    authorId: v.string(),
+    authorId: v.id("users"),
     
     // Content
     title: v.string(),
@@ -154,15 +154,15 @@ export default defineSchema({
   guideSeries: defineTable({
     name: v.string(),
     description: v.string(),
-    authorId: v.string(),
+    authorId: v.id("users"),
     coverImage: v.optional(v.string()),
     createdAt: v.number()
   })
     .index("by_author", ["authorId"]),
 
   guideReadingProgress: defineTable({
-    guideId: v.string(),
-    userId: v.string(),
+    guideId: v.id("guides"),
+    userId: v.id("users"),
     progress: v.number(), // 0-100 percentage
     lastReadAt: v.number(),
     bookmarked: v.boolean(),
