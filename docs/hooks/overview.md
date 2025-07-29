@@ -85,7 +85,7 @@ All hooks are now active in `.claude/settings.json`:
 ## Quick Start
 
 1. Hooks are already configured in `.claude/settings.json`
-2. View hook activity: `.claude/config/hooks/view-claude-commits.sh`
+2. View hook activity: `.claude/hooks/view-claude-commits.sh`
 3. Check security alerts: `tail -f .claude/solutions/security/living-off-ai-alerts.log`
 4. Search learned solutions: `.claude/solutions/search.sh "error"`
 

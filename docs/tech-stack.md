@@ -112,13 +112,13 @@ bmad install --ide claude-code
 #### Automation Files Created
 ```bash
 # Pre-session analysis (shows ready stories)
-.claude/config/hooks/pre-session-hook.sh
+.claude/hooks/pre-session-hook.sh
 
 # Story selection intelligence
 .claude/solutions/story-auto-select.sh
 
 # Auto-approval decision engine
-.claude/config/hooks/auto-approval-engine.js
+.claude/hooks/auto-approval-engine.js
 
 # Session tracking for reviews
 .claude/solutions/session-tracker.sh
@@ -406,7 +406,7 @@ cat .claude/settings.json | jq .
 
 ```bash
 # View auto-commits
-.claude/config/hooks/view-claude-commits.sh
+.claude/hooks/view-claude-commits.sh
 
 # Search TRAIL solutions
 .claude/solutions/search.sh "error message"

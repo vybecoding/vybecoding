@@ -8,7 +8,7 @@ Security hooks provide automated protection against various attack vectors inclu
 
 ### 1. Environment Sanitization Hook
 
-**File**: `.claude/config/hooks/sanitize-env.sh`  
+**File**: `.claude/hooks/sanitize-env.sh`  
 **Purpose**: Sanitizes environment variables to prevent injection attacks  
 **Trigger**: First in every hook chain
 
@@ -32,7 +32,7 @@ exit 0
 
 ### 2. Post-Edit Sanitization Hook
 
-**File**: `.claude/config/hooks/post-edit-sanitize.js`  
+**File**: `.claude/hooks/post-edit-sanitize.js`  
 **Purpose**: Prevents XSS vulnerabilities in edited files  
 **Trigger**: After file edits
 
@@ -78,7 +78,7 @@ process.exit(0);
 
 ### 3. Living off AI Detection Hook
 
-**File**: `.claude/config/hooks/post-response-scan.js`  
+**File**: `.claude/hooks/post-response-scan.js`  
 **Purpose**: Detects malicious patterns in AI responses  
 **Trigger**: After AI generates responses
 
@@ -154,7 +154,7 @@ if (safeCompare(userToken, expectedToken)) {
 
 ```bash
 # Create security hooks directory
-mkdir -p .claude/config/hooks
+mkdir -p .claude/hooks
 mkdir -p .claude/solutions/security
 
 # Install required packages
@@ -164,7 +164,7 @@ npm install -D dompurify jsdom validator safe-compare
 # [Create each script from examples above]
 
 # Make executable
-chmod +x .claude/config/hooks/*.sh
+chmod +x .claude/hooks/*.sh
 ```
 
 ## Configuration
@@ -215,7 +215,7 @@ Add to `.claude/settings.json`:
 tail -f .claude/solutions/security/living-off-ai-alerts.log
 
 # All security warnings
-grep -r "Warning:" .claude/config/hooks/
+grep -r "Warning:" .claude/hooks/
 
 # Check sanitization logs
 cat .claude/solutions/security/sanitization.log

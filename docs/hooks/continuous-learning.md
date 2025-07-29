@@ -52,7 +52,7 @@ The continuous learning system is created as part of the TRAIL setup:
 
 ```bash
 # The trigger script
-cat > .claude/config/hooks/continuous-learning-trigger.sh << 'EOF'
+cat > .claude/hooks/continuous-learning-trigger.sh << 'EOF'
 #!/bin/bash
 # Trigger continuous learning analysis
 
@@ -78,7 +78,7 @@ node .claude/solutions/continuous-learning.js analyze > /dev/null 2>&1 &
 exit 0
 EOF
 
-chmod +x .claude/config/hooks/continuous-learning-trigger.sh
+chmod +x .claude/hooks/continuous-learning-trigger.sh
 ```
 
 ## Usage

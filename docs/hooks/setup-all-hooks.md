@@ -22,7 +22,7 @@ Save and run this script to set up all hooks at once:
 echo "🚀 Starting complete hook setup..."
 
 # Create directory structure
-mkdir -p .claude/config/hooks
+mkdir -p .claude/hooks
 mkdir -p .claude/solutions/debug
 mkdir -p .claude/solutions/security
 
@@ -36,8 +36,8 @@ cat > .claude/settings.json << 'EOF'
 {
   "hooks": {
     "PostToolUse": {
-      "Bash": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && /home/happy/Projects/vybecoding/.claude/config/hooks/sanitize-env.sh && /home/happy/Projects/vybecoding/.claude/solutions/verify-and-learn.sh && /home/happy/Projects/vybecoding/.claude/config/hooks/auto-commit-claude.sh && /home/happy/Projects/vybecoding/.claude/config/hooks/continuous-learning-trigger.sh",
-      "Edit": "export FILE_PATH='{{filePath}}' && /home/happy/Projects/vybecoding/.claude/config/hooks/sanitize-env.sh && /home/happy/Projects/vybecoding/.claude/config/hooks/post-edit-sanitize.js '{{filePath}}' && /home/happy/Projects/vybecoding/.claude/config/hooks/story-orchestration-trigger.sh '{{filePath}}'"
+      "Bash": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && /home/happy/Projects/vybecoding/.claude/hooks/sanitize-env.sh && /home/happy/Projects/vybecoding/.claude/solutions/verify-and-learn.sh && /home/happy/Projects/vybecoding/.claude/hooks/auto-commit-claude.sh && /home/happy/Projects/vybecoding/.claude/hooks/continuous-learning-trigger.sh",
+      "Edit": "export FILE_PATH='{{filePath}}' && /home/happy/Projects/vybecoding/.claude/hooks/sanitize-env.sh && /home/happy/Projects/vybecoding/.claude/hooks/post-edit-sanitize.js '{{filePath}}' && /home/happy/Projects/vybecoding/.claude/hooks/story-orchestration-trigger.sh '{{filePath}}'"
     }
   }
 }
@@ -45,7 +45,7 @@ EOF
 
 # Create environment sanitization hook
 echo "🔒 Creating security hooks..."
-cat > .claude/config/hooks/sanitize-env.sh << 'EOF'
+cat > .claude/hooks/sanitize-env.sh << 'EOF'
 #!/bin/bash
 # Sanitize environment variables to prevent injection
 
@@ -65,7 +65,7 @@ EOF
 
 # Create auto-commit hook
 echo "📝 Creating auto-commit hook..."
-cat > .claude/config/hooks/auto-commit-claude.sh << 'EOF'
+cat > .claude/hooks/auto-commit-claude.sh << 'EOF'
 #!/bin/bash
 # Auto-commit Claude changes to separate branch
 
@@ -103,7 +103,7 @@ EOF
 
 # Create continuous learning trigger
 echo "🧠 Creating continuous learning hook..."
-cat > .claude/config/hooks/continuous-learning-trigger.sh << 'EOF'
+cat > .claude/hooks/continuous-learning-trigger.sh << 'EOF'
 #!/bin/bash
 # Trigger continuous learning analysis
 
@@ -131,7 +131,7 @@ EOF
 
 # Create post-edit sanitization
 echo "🛡️ Creating XSS prevention hook..."
-cat > .claude/config/hooks/post-edit-sanitize.js << 'EOF'
+cat > .claude/hooks/post-edit-sanitize.js << 'EOF'
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
@@ -173,7 +173,7 @@ EOF
 
 # Create story orchestration trigger
 echo "📋 Creating orchestration hooks..."
-cat > .claude/config/hooks/story-orchestration-trigger.sh << 'EOF'
+cat > .claude/hooks/story-orchestration-trigger.sh << 'EOF'
 #!/bin/bash
 # Detect and trigger story orchestration
 
@@ -201,7 +201,7 @@ EOF
 
 # Create view commits helper
 echo "📊 Creating helper scripts..."
-cat > .claude/config/hooks/view-claude-commits.sh << 'EOF'
+cat > .claude/hooks/view-claude-commits.sh << 'EOF'
 #!/bin/bash
 # View all Claude auto-commits
 
@@ -231,8 +231,8 @@ fi
 
 # Make all scripts executable
 echo "🔧 Setting permissions..."
-chmod +x .claude/config/hooks/*.sh
-chmod +x .claude/config/hooks/*.js
+chmod +x .claude/hooks/*.sh
+chmod +x .claude/hooks/*.js
 chmod +x .claude/solutions/*.sh
 chmod +x .claude/solutions/*.js
 
@@ -268,7 +268,7 @@ echo
 echo "🎯 Next steps:"
 echo "1. Restart Claude Code to activate hooks"
 echo "2. Test with a simple file edit"
-echo "3. Check auto-commits with: .claude/config/hooks/view-claude-commits.sh"
+echo "3. Check auto-commits with: .claude/hooks/view-claude-commits.sh"
 echo "4. Search solutions with: .claude/solutions/search.sh 'keyword'"
 echo
 echo "📚 Documentation:"
@@ -283,7 +283,7 @@ If you prefer to set up hooks manually:
 
 ### 1. Create Directory Structure
 ```bash
-mkdir -p .claude/config/hooks
+mkdir -p .claude/hooks
 mkdir -p .claude/solutions/debug
 mkdir -p .claude/solutions/security
 ```
@@ -306,7 +306,7 @@ Update `.claude/settings.json` with your hook configuration.
 
 ### 5. Set Permissions
 ```bash
-chmod +x .claude/config/hooks/*.sh
+chmod +x .claude/hooks/*.sh
 chmod +x .claude/solutions/*.sh
 ```
 
@@ -330,7 +330,7 @@ rm test.js
 
 ### 2. Check Auto-Commits
 ```bash
-.claude/config/hooks/view-claude-commits.sh
+.claude/hooks/view-claude-commits.sh
 ```
 
 ### 3. Verify TRAIL System
@@ -352,13 +352,13 @@ tail -f .claude/solutions/security/living-off-ai-alerts.log
 ### Hooks Not Running
 1. Ensure Claude Code has hooks enabled
 2. Check settings.json syntax
-3. Verify script permissions: `ls -la .claude/config/hooks/`
+3. Verify script permissions: `ls -la .claude/hooks/`
 4. Test hooks manually
 
 ### Permission Errors
 ```bash
 # Fix all permissions
-find .claude/config/hooks -name "*.sh" -exec chmod +x {} \;
+find .claude/hooks -name "*.sh" -exec chmod +x {} \;
 find .solutions -name "*.sh" -exec chmod +x {} \;
 ```
 
