@@ -54,3 +54,12 @@ next-env.d.ts
 .artifacts/
 .claude/
 .claude-code/
+
+# playwright
+test-results/
+playwright-report/
+playwright/.cache/
+visual-snapshots/
+/test-results/
+/playwright-report/
+/playwright/.cache/
