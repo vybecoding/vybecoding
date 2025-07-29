@@ -7,6 +7,11 @@
   margin: 0 auto !important;
 }
 
+/* Override inline grid styles */
+#members-page .grid[style*="grid-template-columns"] {
+  grid-template-columns: repeat(3, 1fr) !important;
+}
+
 /* Force the grid container to use proper grid layout */
 #members-page .grid,
 #members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
@@ -21,20 +26,23 @@
 /* Force 3 columns on large screens */
 @media (min-width: 1024px) {
   #members-page .grid,
-  #members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+  #members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3,
+  #members-page .grid[style*="grid-template-columns"] {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
 /* Responsive grid */
 @media (max-width: 1023px) and (min-width: 768px) {
-  #members-page .grid {
+  #members-page .grid,
+  #members-page .grid[style*="grid-template-columns"] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 }
 
 @media (max-width: 767px) {
-  #members-page .grid {
+  #members-page .grid,
+  #members-page .grid[style*="grid-template-columns"] {
     grid-template-columns: 1fr !important;
   }
 }
