@@ -24,7 +24,7 @@ const codeVariants = cva(
   }
 );
 
-interface CodeProps
+export interface CodeProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof codeVariants> {
   as?: 'code' | 'pre';

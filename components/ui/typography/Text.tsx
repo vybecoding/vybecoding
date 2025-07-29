@@ -59,7 +59,7 @@ const textVariants = cva(
   }
 );
 
-interface TextProps
+export interface TextProps
   extends React.HTMLAttributes<HTMLElement>,
     VariantProps<typeof textVariants> {
   as?: 'p' | 'span' | 'div' | 'small' | 'label';

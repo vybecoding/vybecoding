@@ -45,13 +45,13 @@ const listItemVariants = cva(
   }
 );
 
-interface ListProps
+export interface ListProps
   extends React.HTMLAttributes<HTMLUListElement | HTMLOListElement>,
     VariantProps<typeof listVariants> {
   as?: 'ul' | 'ol';
 }
 
-interface ListItemProps
+export interface ListItemProps
   extends React.HTMLAttributes<HTMLLIElement>,
     VariantProps<typeof listItemVariants> {
   icon?: React.ReactNode;
