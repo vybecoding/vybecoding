@@ -274,10 +274,10 @@ No additional setup needed!
 
 ## 4. VERIFY-FIRST Protocol (Anti-Hallucination)
 
-Create `VERIFY-FIRST.md`:
+Create `vybehacks-creation.md`:
 
 ```bash
-cat > VERIFY-FIRST.md << 'EOF'
+cat > vybehacks-creation.md << 'EOF'
 # VERIFY-FIRST Protocol
 
 ## Core Rule: Verify Before Claiming
@@ -372,7 +372,104 @@ Before making ANY claims about functionality:
 EOF
 ```
 
-## 5. Complete VybeHacks Setup Script
+## 5. Additional Custom Hook VybeHacks
+
+### Task Complete Audio Notification
+```bash
+cat > .claude/hooks/task-complete.sh << 'EOF'
+#!/bin/bash
+# Task completion audio notification
+echo "[$(date)] task-complete.sh triggered from $PWD (PID: $$)" >> /tmp/claude-hooks.log
+sleep 0.1
+echo "Task complete"
+sleep 0.1
+aplay -q /usr/share/sounds/sound-icons/guitar-12.wav 2>/dev/null
+sleep 1.925
+aplay -q /usr/share/sounds/sound-icons/guitar-12.wav 2>/dev/null
+EOF
+chmod +x .claude/hooks/task-complete.sh
+```
+
+### Documentation Update Reminder
+```bash
+cat > .claude/hooks/doc-update-reminder.sh << 'EOF'
+#!/bin/bash
+# Documentation Update Reminder Hook
+# Tracks code changes and reminds about documentation updates
+
+# Only process file edits
+if [ "$TOOL_NAME" != "Edit" ] && [ "$TOOL_NAME" != "MultiEdit" ] && [ "$TOOL_NAME" != "Write" ]; then
+    exit 0
+fi
+
+# Skip if editing documentation files
+if [[ "$FILE_PATH" == *.md ]]; then
+    exit 0
+fi
+
+# Track changes in a temporary file
+CHANGE_LOG="/tmp/vybecoding-changes.log"
+echo "$(date): $FILE_PATH modified" >> "$CHANGE_LOG"
+
+# Count non-doc file changes
+CHANGE_COUNT=$(grep -v "\.md" "$CHANGE_LOG" 2>/dev/null | wc -l)
+
+# Remind about documentation updates every 5 code changes
+if [ "$CHANGE_COUNT" -ge 5 ]; then
+    echo ""
+    echo "📚 Documentation Reminder: You've made $CHANGE_COUNT code changes."
+    echo "💡 Consider running /update-docs to update documentation!"
+    echo ""
+    
+    # Reset counter
+    > "$CHANGE_LOG"
+fi
+EOF
+chmod +x .claude/hooks/doc-update-reminder.sh
+```
+
+### Story Orchestration Trigger
+```bash
+cat > .claude/hooks/story-orchestration-trigger.sh << 'EOF'
+#!/bin/bash
+# BMAD Story Orchestration Trigger Hook
+# Automatically analyzes stories for parallel execution opportunities
+
+# Check if this is a story file being edited
+if [[ "${1:-}" == *".bmad-core/stories/"* ]] || [[ "${1:-}" == *"story"* ]]; then
+    STORY_FILE="${1:-}"
+    
+    # Check if story is ready for development (not in draft)
+    if [ -f "$STORY_FILE" ] && grep -q "Status: Ready for Development" "$STORY_FILE" 2>/dev/null; then
+        echo "🚀 Story ready for development - Analyzing for parallel execution..."
+        
+        # Run orchestration analysis with timeout
+        ANALYSIS=$(timeout 30s node .bmad-core/utils/bmad-orchestration-bridge.js analyze "$STORY_FILE" 2>&1)
+        
+        if [ $? -eq 0 ]; then
+            # Extract parallelization score
+            SCORE=$(echo "$ANALYSIS" | jq -r '.parallelizationOpportunity // 0' 2>/dev/null || echo 0)
+            
+            if [ "${SCORE:-0}" -gt 50 ]; then
+                echo "⚡ High parallelization opportunity detected: ${SCORE}%"
+                echo "💡 Suggestion: Use '*delegate' command in dev-enhanced agent for faster execution"
+                
+                # Log to TRAIL for pattern recognition (if log script exists)
+                if [ -x ".claude/solutions/log-solution.sh" ]; then
+                    echo "{\"type\":\"ORCHESTRATION_OPPORTUNITY\",\"story\":\"$STORY_FILE\",\"score\":$SCORE}" | .claude/solutions/log-solution.sh
+                fi
+            fi
+        fi
+    fi
+fi
+
+# Continue with normal execution
+exit 0
+EOF
+chmod +x .claude/hooks/story-orchestration-trigger.sh
+```
+
+## 6. Complete VybeHacks Setup Script
 
 Create a single script to set up all VybeHacks:
 
@@ -430,9 +527,9 @@ Before documenting ANY external resource:
 4. **Test Before Claiming**: Never say "This will work" without testing
 CLAUDE
 
-# Create VERIFY-FIRST.md
-echo "Creating VERIFY-FIRST.md..."
-cat > VERIFY-FIRST.md << 'VERIFY'
+# Create vybehacks-creation.md
+echo "Creating vybehacks-creation.md..."
+cat > vybehacks-creation.md << 'VERIFY'
 # VERIFY-FIRST Protocol
 
 ## Core Rule: Verify Before Claiming
@@ -481,13 +578,99 @@ cat > .claude/solutions/log-solution.sh << 'LOG'
 LOG
 chmod +x .claude/solutions/log-solution.sh
 
+# Create additional custom hooks
+echo "Creating additional VybeHack hooks..."
+mkdir -p .claude/hooks
+
+cat > .claude/hooks/task-complete.sh << 'TASK'
+#!/bin/bash
+# Task completion audio notification
+echo "[$(date)] task-complete.sh triggered from $PWD (PID: $$)" >> /tmp/claude-hooks.log
+sleep 0.1
+echo "Task complete"
+sleep 0.1
+aplay -q /usr/share/sounds/sound-icons/guitar-12.wav 2>/dev/null
+sleep 1.925
+aplay -q /usr/share/sounds/sound-icons/guitar-12.wav 2>/dev/null
+TASK
+chmod +x .claude/hooks/task-complete.sh
+
+cat > .claude/hooks/doc-update-reminder.sh << 'DOC'
+#!/bin/bash
+# Documentation Update Reminder Hook
+# Only process file edits
+if [ "$TOOL_NAME" != "Edit" ] && [ "$TOOL_NAME" != "MultiEdit" ] && [ "$TOOL_NAME" != "Write" ]; then
+    exit 0
+fi
+# Skip if editing documentation files
+if [[ "$FILE_PATH" == *.md ]]; then
+    exit 0
+fi
+# Track changes in a temporary file
+CHANGE_LOG="/tmp/vybecoding-changes.log"
+echo "$(date): $FILE_PATH modified" >> "$CHANGE_LOG"
+# Count non-doc file changes
+CHANGE_COUNT=$(grep -v "\.md" "$CHANGE_LOG" 2>/dev/null | wc -l)
+# Remind about documentation updates every 5 code changes
+if [ "$CHANGE_COUNT" -ge 5 ]; then
+    echo ""
+    echo "📚 Documentation Reminder: You've made $CHANGE_COUNT code changes."
+    echo "💡 Consider running /update-docs to update documentation!"
+    echo ""
+    > "$CHANGE_LOG"
+fi
+DOC
+chmod +x .claude/hooks/doc-update-reminder.sh
+
+cat > .claude/hooks/story-orchestration-trigger.sh << 'STORY'
+#!/bin/bash
+# BMAD Story Orchestration Trigger Hook
+# Check if this is a story file being edited
+if [[ "${1:-}" == *".bmad-core/stories/"* ]] || [[ "${1:-}" == *"story"* ]]; then
+    STORY_FILE="${1:-}"
+    if [ -f "$STORY_FILE" ] && grep -q "Status: Ready for Development" "$STORY_FILE" 2>/dev/null; then
+        echo "🚀 Story ready for development - Analyzing for parallel execution..."
+        ANALYSIS=$(timeout 30s node .bmad-core/utils/bmad-orchestration-bridge.js analyze "$STORY_FILE" 2>&1)
+        if [ $? -eq 0 ]; then
+            SCORE=$(echo "$ANALYSIS" | jq -r '.parallelizationOpportunity // 0' 2>/dev/null || echo 0)
+            if [ "${SCORE:-0}" -gt 50 ]; then
+                echo "⚡ High parallelization opportunity detected: ${SCORE}%"
+                echo "💡 Suggestion: Use '*delegate' command in dev-enhanced agent for faster execution"
+            fi
+        fi
+    fi
+fi
+exit 0
+STORY
+chmod +x .claude/hooks/story-orchestration-trigger.sh
+
 # Configure hooks
 echo "Configuring Claude Code hooks..."
-mkdir -p .claude-code
+mkdir -p .claude
 cat > .claude/settings.json << 'HOOKS'
 {
   "hooks": {
-    "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.claude/solutions/verify-and-learn.sh"
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.claude/solutions/verify-and-learn.sh && $(pwd)/.claude/hooks/doc-update-reminder.sh && $(pwd)/.claude/hooks/story-orchestration-trigger.sh '{{filePath}}'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$(pwd)/.claude/hooks/task-complete.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 HOOKS
@@ -497,7 +680,7 @@ echo ""
 echo "Next steps:"
 echo "1. Install Playwright if needed: npm install -D playwright"
 echo "2. Test TRAIL: .claude/solutions/search.sh test"
-echo "3. Read CLAUDE.md and VERIFY-FIRST.md"
+echo "3. Read CLAUDE.md and vybehacks-creation.md"
 EOF
 chmod +x setup-vybehacks.sh
 ```
@@ -521,7 +704,7 @@ Or if you have this file, just run:
 ## Backup Strategy
 
 1. **Add to Git**: Always commit these files to your repository
-2. **Create Archive**: `tar -czf vybehacks-backup.tar.gz CLAUDE.md VERIFY-FIRST.md .claude/solutions/ .claude/config/`
+2. **Create Archive**: `tar -czf vybehacks-backup.tar.gz CLAUDE.md vybehacks-creation.md .claude/solutions/ .claude/config/`
 3. **Cloud Backup**: Store the setup script in a Gist or cloud storage
 4. **Documentation**: Keep this guide accessible
 
@@ -531,7 +714,7 @@ After installation, verify everything works:
 
 ```bash
 # Check files exist
-ls -la CLAUDE.md VERIFY-FIRST.md
+ls -la CLAUDE.md vybehacks-creation.md
 ls -la .claude/solutions/
 cat .claude/settings.json
 

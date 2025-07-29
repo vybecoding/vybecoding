@@ -58,9 +58,26 @@ Preventing hallucination and toxic positivity in AI interactions.
 **Solution:** Realistic timelines, acknowledged limitations, documented failures  
 **Implementation:** Anti-toxic-positivity rules in CLAUDE.md and VERIFY-FIRST.md
 
+### 5. Additional Custom VybeHacks
+
+#### Task Complete Audio Notification
+**Problem:** No feedback when long-running tasks complete in background  
+**Solution:** Plays guitar sound notification when tasks finish  
+**Implementation:** `.claude/hooks/task-complete.sh` triggered on Stop event
+
+#### Documentation Update Reminder
+**Problem:** Code changes accumulate without documentation updates  
+**Solution:** Tracks edits and reminds after 5 non-doc file changes  
+**Implementation:** `.claude/hooks/doc-update-reminder.sh` monitors file modifications
+
+#### Story Orchestration Trigger
+**Problem:** Missing parallelization opportunities in BMAD stories  
+**Solution:** Analyzes stories for parallel execution potential when edited  
+**Implementation:** `.claude/hooks/story-orchestration-trigger.sh` with BMAD integration
+
 ### 🚨 Creating All VybeHacks From Scratch 🚨
 
-**Complete recreation guide available:** See `docs/vybehacks/VYBEHACKS-FROM-SCRATCH.md` for step-by-step instructions to recreate every VybeHack if your project is deleted.
+**Complete recreation guide available:** See `docs/vybehacks/vybehacks-creation.md` for step-by-step instructions to recreate every VybeHack if your project is deleted.
 
 Quick setup:
 ```bash

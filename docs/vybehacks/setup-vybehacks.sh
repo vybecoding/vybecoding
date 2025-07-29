@@ -765,13 +765,121 @@ module.exports = { debugWithPlaywright };
 PLAYWRIGHT_EOF
 chmod +x .solutions/playwright-debug.js
 
-# Configure Claude Code hooks
+# Create additional custom VybeHack hooks
+echo "Creating additional VybeHack hooks..."
+mkdir -p .claude/hooks
+
+# Task Complete Audio Notification
+cat > .claude/hooks/task-complete.sh << 'TASK_EOF'
+#!/bin/bash
+# Task completion audio notification
+echo "[$(date)] task-complete.sh triggered from $PWD (PID: $$)" >> /tmp/claude-hooks.log
+sleep 0.1
+echo "Task complete"
+sleep 0.1
+aplay -q /usr/share/sounds/sound-icons/guitar-12.wav 2>/dev/null
+sleep 1.925
+aplay -q /usr/share/sounds/sound-icons/guitar-12.wav 2>/dev/null
+TASK_EOF
+chmod +x .claude/hooks/task-complete.sh
+
+# Documentation Update Reminder
+cat > .claude/hooks/doc-update-reminder.sh << 'DOC_EOF'
+#!/bin/bash
+# Documentation Update Reminder Hook
+# Tracks code changes and reminds about documentation updates
+
+# Only process file edits
+if [ "$TOOL_NAME" != "Edit" ] && [ "$TOOL_NAME" != "MultiEdit" ] && [ "$TOOL_NAME" != "Write" ]; then
+    exit 0
+fi
+
+# Skip if editing documentation files
+if [[ "$FILE_PATH" == *.md ]]; then
+    exit 0
+fi
+
+# Track changes in a temporary file
+CHANGE_LOG="/tmp/vybecoding-changes.log"
+echo "$(date): $FILE_PATH modified" >> "$CHANGE_LOG"
+
+# Count non-doc file changes
+CHANGE_COUNT=$(grep -v "\.md" "$CHANGE_LOG" 2>/dev/null | wc -l)
+
+# Remind about documentation updates every 5 code changes
+if [ "$CHANGE_COUNT" -ge 5 ]; then
+    echo ""
+    echo "📚 Documentation Reminder: You've made $CHANGE_COUNT code changes."
+    echo "💡 Consider running /update-docs to update documentation!"
+    echo ""
+    
+    # Reset counter
+    > "$CHANGE_LOG"
+fi
+DOC_EOF
+chmod +x .claude/hooks/doc-update-reminder.sh
+
+# Story Orchestration Trigger
+cat > .claude/hooks/story-orchestration-trigger.sh << 'STORY_EOF'
+#!/bin/bash
+# BMAD Story Orchestration Trigger Hook
+# Automatically analyzes stories for parallel execution opportunities
+
+# Check if this is a story file being edited
+if [[ "${1:-}" == *".bmad-core/stories/"* ]] || [[ "${1:-}" == *"story"* ]]; then
+    STORY_FILE="${1:-}"
+    
+    # Check if story is ready for development (not in draft)
+    if [ -f "$STORY_FILE" ] && grep -q "Status: Ready for Development" "$STORY_FILE" 2>/dev/null; then
+        echo "🚀 Story ready for development - Analyzing for parallel execution..."
+        
+        # Run orchestration analysis with timeout
+        ANALYSIS=$(timeout 30s node .bmad-core/utils/bmad-orchestration-bridge.js analyze "$STORY_FILE" 2>&1)
+        
+        if [ $? -eq 0 ]; then
+            # Extract parallelization score
+            SCORE=$(echo "$ANALYSIS" | jq -r '.parallelizationOpportunity // 0' 2>/dev/null || echo 0)
+            
+            if [ "${SCORE:-0}" -gt 50 ]; then
+                echo "⚡ High parallelization opportunity detected: ${SCORE}%"
+                echo "💡 Suggestion: Use '*delegate' command in dev-enhanced agent for faster execution"
+            fi
+        fi
+    fi
+fi
+
+# Continue with normal execution
+exit 0
+STORY_EOF
+chmod +x .claude/hooks/story-orchestration-trigger.sh
+
+# Configure Claude Code hooks with all VybeHacks
 echo "Configuring Claude Code hooks..."
-mkdir -p .claude-code
-cat > .claude-code/settings.json << 'HOOKS_EOF'
+mkdir -p .claude
+cat > .claude/settings.json << 'HOOKS_EOF'
 {
   "hooks": {
-    "postToolUse": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.solutions/verify-and-learn.sh"
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "export TOOL_NAME='{{toolName}}' TOOL_OUTPUT='{{toolOutput}}' TIMESTAMP='{{timestamp}}' FILE_PATH='{{filePath}}' && $(pwd)/.solutions/verify-and-learn.sh && $(pwd)/.claude/hooks/doc-update-reminder.sh && $(pwd)/.claude/hooks/story-orchestration-trigger.sh '{{filePath}}'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$(pwd)/.claude/hooks/task-complete.sh"
+          }
+        ]
+      }
+    ]
   }
 }
 HOOKS_EOF
@@ -898,7 +1006,10 @@ echo "Created files:"
 echo "  - CLAUDE.md (AI behavior rules)"
 echo "  - VERIFY-FIRST.md (Anti-hallucination protocol)"
 echo "  - .solutions/ (TRAIL system with 5 scripts)"
-echo "  - .claude-code/settings.json (Hook configuration)"
+echo "  - .claude/hooks/task-complete.sh (Audio notification)"
+echo "  - .claude/hooks/doc-update-reminder.sh (Documentation reminder)"
+echo "  - .claude/hooks/story-orchestration-trigger.sh (BMAD story analysis)"
+echo "  - .claude/settings.json (Hook configuration)"
 echo ""
 echo "Next steps:"
 echo "1. Install Playwright if needed: npm install -D playwright"
@@ -908,5 +1019,5 @@ echo "4. Read CLAUDE.md and VERIFY-FIRST.md"
 echo "5. Commit all files to version control"
 echo ""
 echo "Backup command:"
-echo "  tar -czf vybehacks-backup.tar.gz CLAUDE.md VERIFY-FIRST.md .solutions/ .claude-code/"
+echo "  tar -czf vybehacks-backup.tar.gz CLAUDE.md VERIFY-FIRST.md .solutions/ .claude/"
 echo ""

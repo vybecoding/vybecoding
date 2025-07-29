@@ -1,4 +1,0 @@
-Test auto-commit functionality after restoring .bmad-core/
-Timestamp: 2025-01-28 18:21 UTC
-Edit test: 18:22 UTC
-Auto-commit test: 18:23 UTC

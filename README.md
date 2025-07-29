@@ -79,12 +79,8 @@ vybecoding/
 │   ├── bmad/             # BMAD method documentation
 │   ├── hooks/            # Claude Code hooks docs
 │   ├── mcp/              # Model Context Protocol docs
+│   ├── update/           # Documentation update logs
 │   └── vybehacks/        # VybeHacks patterns
-├── prototype/            # Demo prototype (Vite-based)
-│   └── pages/           # New structured pages
-│       ├── apps/        # Apps showcase pages
-│       ├── dashboard/   # Dashboard sub-pages
-│       └── guides/      # Guides browsing
 ├── .claude/              # Claude Code configuration
 │   ├── settings.json     # Hook configurations
 │   ├── config/          # MCP configuration

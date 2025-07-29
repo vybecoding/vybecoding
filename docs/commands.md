@@ -18,6 +18,7 @@ Automatically updates all documentation files (READMEs, docs/*.md, CLAUDE.md) ba
 - Generates accurate file structures and API references
 - Updates configuration documentation
 - Maintains consistent documentation style
+- Saves update summary to `docs/update/update-YYYY-MM-DD-HHMMSS.md`
 
 ### What It Updates
 - README.md files at all levels
@@ -48,6 +49,7 @@ For manual documentation analysis:
 5. Generates updated content
 6. Preserves custom sections
 7. Maintains markdown formatting
+8. Saves summary to `docs/update/update-YYYY-MM-DD-HHMMSS.md`
 
 ### Example Output
 ```
