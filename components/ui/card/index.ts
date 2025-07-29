@@ -1,17 +1,23 @@
-export { Card } from './Card';
-export type { CardProps, CardVariant } from './Card';
+// Re-export Shadcn card components
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from '@/components/ui/card';
 
-export { CardGrid } from './CardGrid';
-export type { CardGridProps } from './CardGrid';
-
-export { GuideCard } from './GuideCard';
-export type { GuideCardProps } from './GuideCard';
-
+// Re-export our custom card variants
 export { AppCard } from './AppCard';
-export type { AppCardProps } from './AppCard';
-
+export { GuideCard } from './GuideCard';
 export { MemberCard } from './MemberCard';
-export type { MemberCardProps } from './MemberCard';
-
 export { NewsCard } from './NewsCard';
+export { CardGrid } from './CardGrid';
+
+// Re-export types
+export type { AppCardProps } from './AppCard';
+export type { GuideCardProps } from './GuideCard';
+export type { MemberCardProps } from './MemberCard';
 export type { NewsCardProps } from './NewsCard';
+export type { CardGridProps } from './CardGrid';
