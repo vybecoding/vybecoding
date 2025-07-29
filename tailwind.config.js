@@ -8,11 +8,39 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./design-system/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: ["class"],
   theme: {
     extend: {
       colors: {
+        // CSS Variable based colors
+        background: {
+          DEFAULT: 'hsl(var(--background))',
+          secondary: 'hsl(var(--background-secondary))',
+          tertiary: 'hsl(var(--background-tertiary))',
+          elevated: 'hsl(var(--background-elevated))',
+        },
+        foreground: {
+          DEFAULT: 'hsl(var(--foreground))',
+          secondary: 'hsl(var(--foreground-secondary))',
+          tertiary: 'hsl(var(--foreground-tertiary))',
+          muted: 'hsl(var(--foreground-muted))',
+        },
+        border: {
+          DEFAULT: 'hsl(var(--border))',
+          subtle: 'hsl(var(--border-subtle))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+        
         // Brand Colors
-        brand: colors.brand,
+        brand: {
+          primary: 'hsl(var(--brand-primary))',
+          secondary: 'hsl(var(--brand-secondary))',
+          accent: 'hsl(var(--brand-accent))',
+          ...colors.brand,
+        },
         
         // Extended Palette
         purple: colors.purple,
@@ -26,10 +54,10 @@ module.exports = {
         gray: colors.neutral,
         
         // Semantic
-        success: colors.semantic.success,
-        warning: colors.semantic.warning,
-        error: colors.semantic.error,
-        info: colors.semantic.info,
+        success: 'hsl(var(--success))',
+        warning: 'hsl(var(--warning))',
+        error: 'hsl(var(--error))',
+        info: 'hsl(var(--info))',
       },
       
       // Custom gradients
