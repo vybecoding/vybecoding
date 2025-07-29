@@ -11,6 +11,83 @@ import { Modal, Dialog, ConfirmDialog } from '@/components/ui/modal';
 import { Badge, Tag, TagGroup } from '@/components/ui/badge';
 import { useToast } from '@/components/ui/toast';
 import { ArrowRight, Download, Heart, Mail, Lock, Eye, EyeOff, Star, Zap, TrendingUp } from 'lucide-react';
+import { DataTable, createSortableHeader, createCheckboxColumn, createActionsColumn } from '@/components/ui/data-table';
+import { ColumnDef } from '@tanstack/react-table';
+
+// Sample data for DataTable
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  status: 'active' | 'inactive';
+  lastLogin: string;
+}
+
+const sampleUsers: User[] = [
+  { id: '1', name: 'John Doe', email: 'john@example.com', role: 'Admin', status: 'active', lastLogin: '2025-01-29' },
+  { id: '2', name: 'Jane Smith', email: 'jane@example.com', role: 'Developer', status: 'active', lastLogin: '2025-01-29' },
+  { id: '3', name: 'Bob Johnson', email: 'bob@example.com', role: 'Designer', status: 'inactive', lastLogin: '2025-01-28' },
+  { id: '4', name: 'Alice Brown', email: 'alice@example.com', role: 'Manager', status: 'active', lastLogin: '2025-01-29' },
+  { id: '5', name: 'Charlie Wilson', email: 'charlie@example.com', role: 'Developer', status: 'active', lastLogin: '2025-01-27' },
+];
+
+function DataTableExample() {
+  const columns: ColumnDef<User>[] = [
+    createCheckboxColumn<User>(),
+    {
+      ...createSortableHeader<User>('name', 'Name'),
+      cell: ({ row }) => <div className="font-medium">{row.getValue('name')}</div>,
+    },
+    {
+      ...createSortableHeader<User>('email', 'Email'),
+    },
+    {
+      ...createSortableHeader<User>('role', 'Role'),
+      cell: ({ row }) => (
+        <Badge variant="secondary">{row.getValue('role')}</Badge>
+      ),
+    },
+    {
+      accessorKey: 'status',
+      header: 'Status',
+      cell: ({ row }) => {
+        const status = row.getValue('status') as string;
+        return (
+          <Badge variant={status === 'active' ? 'success' : 'secondary'}>
+            {status}
+          </Badge>
+        );
+      },
+    },
+    {
+      ...createSortableHeader<User>('lastLogin', 'Last Login'),
+      cell: ({ row }) => {
+        const date = new Date(row.getValue('lastLogin'));
+        return date.toLocaleDateString();
+      },
+    },
+    createActionsColumn<User>([
+      {
+        label: 'Edit',
+        onClick: (user) => console.log('Edit', user),
+      },
+      {
+        label: 'Delete',
+        onClick: (user) => console.log('Delete', user),
+      },
+    ]),
+  ];
+
+  return (
+    <DataTable 
+      columns={columns} 
+      data={sampleUsers}
+      pageSize={5}
+      searchPlaceholder="Search users..."
+    />
+  );
+}
 
 export default function SimpleShowcasePage() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -356,6 +433,14 @@ export default function SimpleShowcasePage() {
                 }}
               />
             </Stack>
+          </Section>
+
+          <Divider />
+
+          {/* Data Table */}
+          <Section>
+            <Heading as="h2">Data Table</Heading>
+            <DataTableExample />
           </Section>
 
           <Divider />
