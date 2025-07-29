@@ -6,7 +6,7 @@ import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
-import { ProfileView, ProfileActivityFeed } from "@/components/profile";
+import { ProfileView, ProfileActivityFeed, ProfileApps } from "@/components/profile";
 import { Container } from "@/components/ui/layout";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -159,6 +159,12 @@ export default function ProfilePage({ params }: ProfilePageProps) {
           user={profileUser}
           isOwnProfile={!!isOwnProfile}
           onEditProfile={handleEditProfile}
+        />
+
+        {/* Apps Section */}
+        <ProfileApps 
+          userId={profileUser._id}
+          isOwnProfile={!!isOwnProfile}
         />
 
         {/* Activity Feed */}
