@@ -21,7 +21,7 @@ function verifyWebhookSignature(payload: string, signature: string, secret: stri
 export async function POST(req: Request) {
   try {
     const body = await req.text();
-    const headersList = headers();
+    const headersList = await headers();
     const signature = headersList.get('cal-signature');
     
     // Verify webhook signature if secret is set
