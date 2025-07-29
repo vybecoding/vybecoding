@@ -2,26 +2,168 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  /* Dark theme (default) */
+  :root,
+  .dark {
+    /* Background colors */
+    --background: 0 0% 0%;           /* #000000 - void */
+    --background-secondary: 0 0% 4%;  /* #0a0a0a - dark */
+    --background-tertiary: 0 0% 7%;   /* #111111 - midnight */
+    --background-elevated: 0 0% 10%;  /* #1a1a1a - shadow */
+    
+    /* Foreground colors */
+    --foreground: 0 0% 100%;          /* #ffffff - white */
+    --foreground-secondary: 0 0% 80%; /* #cccccc - light */
+    --foreground-tertiary: 0 0% 67%;  /* #aaaaaa - fog */
+    --foreground-muted: 0 0% 53%;     /* #888888 - mist */
+    
+    /* Brand colors */
+    --brand-primary: 271 75% 53%;     /* #8a2be2 - purple */
+    --brand-secondary: 323 66% 58%;   /* #d946a0 - pink */
+    --brand-accent: 21 82% 56%;       /* #e96b3a - orange */
+    
+    /* Semantic colors */
+    --success: 151 100% 50%;          /* #00ff88 */
+    --warning: 30 100% 50%;           /* #ff8800 */
+    --error: 0 100% 63%;              /* #ff4444 */
+    --info: 219 100% 50%;             /* #0066ff */
+    
+    /* Border and divider */
+    --border: 0 0% 14%;               /* #242424 - steel */
+    --border-subtle: 0 0% 10%;        /* #1a1a1a - shadow */
+    
+    /* Card and surface */
+    --card: 0 0% 4%;                  /* #0a0a0a - dark */
+    --card-foreground: 0 0% 100%;     /* #ffffff */
+    
+    /* Interactive states */
+    --hover: 0 0% 16%;                /* #2a2a2a - slate */
+    --active: 0 0% 20%;               /* #333333 - carbon */
+    
+    /* Shadows (with transparency) */
+    --shadow-sm: 0 0% 0% / 0.1;
+    --shadow-md: 0 0% 0% / 0.2;
+    --shadow-lg: 0 0% 0% / 0.3;
+    
+    /* Glow effects */
+    --glow-purple: 271 75% 53% / 0.3;
+    --glow-pink: 323 66% 58% / 0.3;
+    --glow-orange: 21 82% 56% / 0.3;
+  }
+  
+  /* Light theme */
+  .light {
+    /* Background colors */
+    --background: 0 0% 100%;          /* #ffffff - white */
+    --background-secondary: 0 0% 98%; /* #fafafa */
+    --background-tertiary: 0 0% 96%;  /* #f5f5f5 */
+    --background-elevated: 0 0% 100%; /* #ffffff */
+    
+    /* Foreground colors */
+    --foreground: 0 0% 0%;            /* #000000 - void */
+    --foreground-secondary: 0 0% 20%; /* #333333 - carbon */
+    --foreground-tertiary: 0 0% 40%;  /* #666666 - silver */
+    --foreground-muted: 0 0% 53%;     /* #888888 - mist */
+    
+    /* Brand colors (slightly adjusted for light mode) */
+    --brand-primary: 271 75% 53%;     /* #8a2be2 - purple */
+    --brand-secondary: 323 66% 58%;   /* #d946a0 - pink */
+    --brand-accent: 21 82% 56%;       /* #e96b3a - orange */
+    
+    /* Semantic colors */
+    --success: 151 100% 40%;          /* Darker green for light mode */
+    --warning: 30 100% 45%;           /* Darker orange for light mode */
+    --error: 0 100% 55%;              /* Darker red for light mode */
+    --info: 219 100% 45%;             /* Darker blue for light mode */
+    
+    /* Border and divider */
+    --border: 0 0% 90%;               /* #e5e5e5 */
+    --border-subtle: 0 0% 95%;        /* #f2f2f2 */
+    
+    /* Card and surface */
+    --card: 0 0% 100%;                /* #ffffff */
+    --card-foreground: 0 0% 0%;       /* #000000 */
+    
+    /* Interactive states */
+    --hover: 0 0% 96%;                /* #f5f5f5 */
+    --active: 0 0% 92%;               /* #ebebeb */
+    
+    /* Shadows (with transparency) */
+    --shadow-sm: 0 0% 0% / 0.05;
+    --shadow-md: 0 0% 0% / 0.1;
+    --shadow-lg: 0 0% 0% / 0.15;
+    
+    /* Glow effects (reduced for light mode) */
+    --glow-purple: 271 75% 53% / 0.2;
+    --glow-pink: 323 66% 58% / 0.2;
+    --glow-orange: 21 82% 56% / 0.2;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Smooth transitions for theme changes */
+  * {
+    transition: background-color 0.3s ease, 
+                border-color 0.3s ease,
+                color 0.3s ease;
+  }
+  
+  /* Disable transitions on theme change to prevent FOUC */
+  .changing-theme * {
+    transition: none !important;
+  }
+}
+
+/* Utility classes for using CSS variables */
+@layer utilities {
+  .bg-background-secondary {
+    background-color: hsl(var(--background-secondary));
+  }
+  
+  .bg-background-tertiary {
+    background-color: hsl(var(--background-tertiary));
+  }
+  
+  .bg-background-elevated {
+    background-color: hsl(var(--background-elevated));
+  }
+  
+  .text-foreground-secondary {
+    color: hsl(var(--foreground-secondary));
+  }
+  
+  .text-foreground-tertiary {
+    color: hsl(var(--foreground-tertiary));
+  }
+  
+  .text-foreground-muted {
+    color: hsl(var(--foreground-muted));
+  }
+  
+  .border-subtle {
+    border-color: hsl(var(--border-subtle));
+  }
+  
+  .shadow-glow-purple {
+    box-shadow: 0 0 20px hsl(var(--glow-purple));
+  }
+  
+  .shadow-glow-pink {
+    box-shadow: 0 0 20px hsl(var(--glow-pink));
+  }
+  
+  .shadow-glow-orange {
+    box-shadow: 0 0 20px hsl(var(--glow-orange));
+  }
 }
