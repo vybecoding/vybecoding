@@ -167,3 +167,166 @@
     box-shadow: 0 0 20px hsl(var(--glow-orange));
   }
 }
+
+/* ============================================
+   DEMO STYLES - AUTH PAGE BACKGROUNDS & ANIMATIONS
+   ============================================ */
+
+/* Vybe Card styling - matching demo */
+.vybe-card {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.vybe-card:hover {
+  background: rgba(42, 42, 42, 0.8);
+  border-color: rgba(64, 64, 64, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Background Effects */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+              radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.6), transparent),
+              radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.8), transparent),
+              radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4), transparent);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  animation: sparkle 20s linear infinite;
+}
+
+.nebula-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 20% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 20%, rgba(217, 70, 160, 0.1) 0%, transparent 50%),
+              radial-gradient(ellipse at 40% 80%, rgba(233, 107, 58, 0.08) 0%, transparent 50%);
+  animation: nebula-drift 30s ease-in-out infinite;
+}
+
+.floating-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 25% 25%, rgba(138, 43, 226, 0.3) 0%, transparent 2%),
+              radial-gradient(circle at 75% 75%, rgba(217, 70, 160, 0.2) 0%, transparent 2%),
+              radial-gradient(circle at 50% 50%, rgba(233, 107, 58, 0.15) 0%, transparent 2%);
+  background-size: 400px 400px;
+  animation: float-particles 25s linear infinite;
+}
+
+/* Logo Animations */
+@keyframes gentleColorShift {
+  0% { 
+    transform: rotate(0deg);
+  }
+  25% { 
+    transform: rotate(90deg);
+  }
+  50% { 
+    transform: rotate(180deg);
+  }
+  75% { 
+    transform: rotate(270deg);
+  }
+  100% { 
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes letterRotate {
+  0% { 
+    transform: rotateY(0deg) translateY(-1px);
+  }
+  25% { 
+    transform: rotateY(90deg) translateY(-1px);
+  }
+  50% { 
+    transform: rotateY(180deg) translateY(-1px);
+  }
+  75% { 
+    transform: rotateY(270deg) translateY(-1px);
+  }
+  100% { 
+    transform: rotateY(360deg) translateY(-1px);
+  }
+}
+
+/* Background Animations */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes nebula-drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-10px, -20px) rotate(1deg);
+  }
+  66% {
+    transform: translate(10px, -10px) rotate(-1deg);
+  }
+}
+
+@keyframes float-particles {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Tailwind color utilities for Vybe colors */
+@layer utilities {
+  .text-vybe-purple { color: #8a2be2; }
+  .text-vybe-purple-light { color: #a855f7; }
+  .text-vybe-pink { color: #d946a0; }
+  .text-vybe-orange { color: #e96b3a; }
+  .text-vybe-gray-300 { color: #d1d5db; }
+  .text-vybe-gray-400 { color: #888888; }
+  .text-vybe-gray-500 { color: #6b7280; }
+  .text-vybe-gray-700 { color: #374151; }
+  .text-vybe-gray-800 { color: #1f2937; }
+  
+  .bg-vybe-purple { background-color: #8a2be2; }
+  .bg-vybe-pink { background-color: #d946a0; }
+  .bg-vybe-orange { background-color: #e96b3a; }
+  .bg-vybe-gray-700 { background-color: #374151; }
+  .bg-vybe-gray-800 { background-color: #1f2937; }
+  
+  .border-vybe-purple { border-color: #8a2be2; }
+  .border-vybe-gray-700 { border-color: #374151; }
+  
+  .ring-vybe-purple { --tw-ring-color: #8a2be2; }
+  
+  .focus\:border-vybe-purple:focus { border-color: #8a2be2; }
+  .focus\:ring-vybe-purple:focus { --tw-ring-color: #8a2be2; }
+  
+  .hover\:from-vybe-purple\/90:hover { --tw-gradient-from: rgb(138 43 226 / 0.9); }
+  .hover\:to-vybe-purple\/70:hover { --tw-gradient-to: rgb(138 43 226 / 0.7); }
+  
+  .from-vybe-purple { --tw-gradient-from: #8a2be2; }
+  .to-vybe-purple\/80 { --tw-gradient-to: rgb(138 43 226 / 0.8); }
+}
