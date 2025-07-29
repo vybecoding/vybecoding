@@ -18,8 +18,9 @@ AI-powered development platform built with Next.js, featuring automated workflow
 
 - **Framework**: Next.js 15.4 with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS + CSS Modules
-- **UI Components**: Shadcn/ui + Custom Card System + Lucide Icons
+- **Styling**: Tailwind CSS + CSS Modules hybrid approach
+- **UI Components**: Custom component library with CVA (class-variance-authority)
+- **Icons**: Lucide React (1000+ icons)
 - **Database**: Convex (real-time, serverless)
 - **Authentication**: Clerk
 - **Payments**: Stripe
@@ -68,14 +69,34 @@ vybecoding/
 │   └── test-error/        # Error boundary testing
 ├── components/            # React components
 │   ├── cal/              # Cal.com integration components
-│   ├── ui/               # Shadcn/ui components
+│   ├── ui/               # UI component library
+│   │   ├── button/       # Button component system
+│   │   │   ├── Button.tsx
+│   │   │   └── Button.module.css
 │   │   ├── card/         # Card component system
-│   │   │   ├── Card.tsx  # Base card component
+│   │   │   ├── Card.tsx  # Base card with CVA variants
 │   │   │   ├── AppCard.tsx
 │   │   │   ├── GuideCard.tsx
-│   │   │   ├── MemberCard.tsx
-│   │   │   └── NewsCard.tsx
-│   │   └── button.tsx
+│   │   │   └── MemberCard.tsx
+│   │   ├── form/         # Form components
+│   │   │   ├── Input.tsx
+│   │   │   ├── Select.tsx
+│   │   │   ├── Textarea.tsx
+│   │   │   ├── Checkbox.tsx
+│   │   │   └── Radio.tsx
+│   │   ├── layout/       # Layout components
+│   │   │   ├── Container.tsx
+│   │   │   ├── Section.tsx
+│   │   │   ├── Stack.tsx
+│   │   │   └── Grid.tsx
+│   │   ├── navigation/   # Navigation components
+│   │   │   ├── Header.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Logo.tsx
+│   │   │   └── MobileMenu.tsx
+│   │   └── typography/   # Typography components
+│   │       ├── Typography.tsx
+│   │       └── Typography.module.css
 │   ├── ThemeToggle.tsx   # Theme switcher
 │   └── test-libraries.tsx
 ├── convex/               # Convex backend
@@ -188,8 +209,16 @@ npm test
 # Test with Playwright (visual)
 npx playwright test
 
-# Security scanning
-snyk test
+# Quick security check
+.claude/scripts/security-check.sh
+
+# Full security audit (all tools)
+.claude/scripts/full-security-audit.sh
+
+# Manual security scanning
+snyk test                    # Dependency vulnerabilities
+ggshield secret scan path .  # Secret detection
+nuclei -u $DEPLOY_URL        # Web vulnerability scan
 ```
 
 ## 🤝 Contributing

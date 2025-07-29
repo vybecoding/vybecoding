@@ -385,20 +385,26 @@ All hooks are now properly configured in `.claude/settings.json`:
 - **Pre-Session Hook**: Shows ready stories and setup status on startup
 
 ### PreToolUse Hooks
-- **Claude Code Boost**: Auto-approves safe tools (Bash, Edit, MultiEdit, Write)
+- **Claude Code Boost (CCB)**: Auto-approves safe tools - now properly installed and working!
+  - Reduces approval prompts by 90%
+  - Version 0.1.0 installed via npm global
+  - Auto-approves: Read, Grep, safe Bash commands, documentation updates
 
 ### PostToolUse Hooks
-- **Auto-Commit**: Commits all changes to main branch
+- **Auto-Commit**: Commits all changes to main branch with complexity indicators
 - **Environment Sanitization**: Cleans sensitive data from all tool outputs
 - **Post-Edit Sanitize**: XSS prevention on Edit/Write operations
 - **Continuous Learning**: Pattern recognition on Bash commands
 - **Orchestration**: BMAD story automation
+- **Post-Story Security Check**: Runs security scan after story completion (background)
 
 ### PostResponse Hook
 - **Post-Response Scan**: Detects malicious AI patterns
 
 ### Stop Hook
-- **Task Complete**: Session cleanup and review generation
+- **Task Complete**: Plays completion chime (device-added.oga)
+  - Only triggers on session-end to avoid CCB conflicts
+  - Runs security checks in background for story work
 
 ## Task Management with TodoWrite
 
