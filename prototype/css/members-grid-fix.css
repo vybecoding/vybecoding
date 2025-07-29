@@ -1,18 +1,46 @@
 /* Members Page Grid Fix - Force proper layout */
 
-/* Force the grid container to use proper grid layout */
-#members .grid,
-.page-container .grid {
-  display: grid !important;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
-  gap: 1.5rem !important;
+/* Ensure container uses full available width */
+#members-page > div {
+  width: 100% !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
+}
+
+/* Force the grid container to use proper grid layout */
+#members-page .grid,
+#members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.5rem !important;
+  max-width: 100% !important;
+  margin: 0 !important;
   align-items: stretch !important;
 }
 
+/* Force 3 columns on large screens */
+@media (min-width: 1024px) {
+  #members-page .grid,
+  #members-page .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Responsive grid */
+@media (max-width: 1023px) and (min-width: 768px) {
+  #members-page .grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #members-page .grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* Ensure cards have flexible height */
-#members .minimal-card,
+#members-page .minimal-card,
 .page-container .minimal-card {
   height: auto !important;
   min-height: 0 !important;
@@ -21,7 +49,7 @@
 }
 
 /* Fix card internal structure */
-#members .minimal-card > div:not(.flex),
+#members-page .minimal-card > div:not(.flex),
 .page-container .minimal-card > div:not(.flex) {
   flex-grow: 1 !important;
   display: flex !important;
@@ -29,7 +57,7 @@
 }
 
 /* Ensure proper username styling */
-#members .minimal-card h3,
+#members-page .minimal-card h3,
 .page-container .minimal-card h3 {
   font-size: 1.125rem !important;
   line-height: 1.75rem !important;
@@ -39,14 +67,14 @@
 }
 
 /* Fix padding for non-mentor cards */
-#members .minimal-card:not(.mentor-card),
+#members-page .minimal-card:not(.mentor-card),
 .page-container .minimal-card:not(.mentor-card) {
   padding: 1.25rem !important;
   padding-bottom: 1rem !important;
 }
 
 /* Fix padding for mentor cards */
-#members .minimal-card.mentor-card,
+#members-page .minimal-card.mentor-card,
 .page-container .minimal-card.mentor-card {
   padding: 1.25rem !important;
   padding-bottom: 0.5rem !important;
@@ -58,7 +86,7 @@ body .page-container .minimal-card {
 }
 
 /* Ensure bottom stats section stays at bottom for mentor cards */
-#members .minimal-card.mentor-card .flex.items-center.justify-between.pt-3,
+#members-page .minimal-card.mentor-card .flex.items-center.justify-between.pt-3,
 .page-container .minimal-card.mentor-card .flex.items-center.justify-between.pt-3 {
   margin-top: auto !important;
 }

@@ -15,7 +15,9 @@
         'css/universal-badge-spacing.css',
         'css/universal-card-padding.css',
         'css/badge-gap-fix.css',
-        'css/force-4px-badge-gap.css'
+        'css/force-4px-badge-gap.css',
+        // Members page specific fixes
+        'css/members-grid-fix.css'
     ];
     
     cssFiles.forEach(file => {
