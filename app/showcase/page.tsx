@@ -6,23 +6,27 @@ import { Heading, Text, Code, List, ListItem } from '@/components/ui/typography'
 import { Card, AppCard, GuideCard, MemberCard } from '@/components/ui/card';
 import { Button, ButtonGroup, IconButton } from '@/components/ui/button';
 import { Input, Label, Textarea, Select, Checkbox, Radio, RadioGroup, FormField } from '@/components/ui/form';
+import { Header, Footer, Logo } from '@/components/ui/navigation';
 import { ArrowRight, Download, Heart, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
 export default function SimpleShowcasePage() {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-950 p-8">
-      <Container>
-        <Stack gap="xl">
-          <Section>
-            <Heading as="h1" color="gradient" align="center">
-              Component Showcase
-            </Heading>
-            <Text color="muted" align="center">
-              All components implemented in the vybecoding platform
-            </Text>
-          </Section>
+    <div className="min-h-screen bg-gray-950">
+      <Header />
+      
+      <main className="pt-20 pb-8 px-8">
+        <Container>
+          <Stack gap="xl">
+            <Section>
+              <Heading as="h1" color="gradient" align="center">
+                Component Showcase
+              </Heading>
+              <Text color="muted" align="center">
+                All components implemented in the vybecoding platform
+              </Text>
+            </Section>
 
           <Divider />
 
@@ -196,8 +200,33 @@ export default function SimpleShowcasePage() {
               </Stack>
             </Grid>
           </Section>
+
+          <Divider />
+
+          {/* Navigation */}
+          <Section>
+            <Heading as="h2">Navigation Components</Heading>
+            <Stack gap="lg">
+              <Box padding="md" border="thin" rounded="lg">
+                <Text size="sm" color="muted" className="mb-2">Logo Variations:</Text>
+                <Stack direction="row" gap="lg" align="center">
+                  <Logo size="sm" />
+                  <Logo size="md" />
+                  <Logo size="lg" />
+                  <Logo size="md" showText={false} />
+                </Stack>
+              </Box>
+              
+              <Box>
+                <Text size="sm" color="muted" className="mb-2">Header and Footer are shown at the top and bottom of this page</Text>
+              </Box>
+            </Stack>
+          </Section>
         </Stack>
       </Container>
+      </main>
+      
+      <Footer />
     </div>
   );
 }
