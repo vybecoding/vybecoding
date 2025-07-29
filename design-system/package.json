@@ -1,0 +1,12 @@
+{
+  "name": "@vybecoding/design-system",
+  "version": "1.0.0",
+  "description": "Core design system for VybeCoding platform",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": ["design-system", "css-modules", "tailwind"],
+  "license": "MIT"
+}
