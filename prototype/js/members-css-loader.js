@@ -20,12 +20,17 @@
         'css/members-grid-fix.css'
     ];
     
+    // Determine the correct path prefix based on current location
+    const currentPath = window.location.pathname;
+    const isInPagesDir = currentPath.includes('/pages/');
+    const pathPrefix = isInPagesDir ? '../' : '';
+    
     cssFiles.forEach(file => {
         const existing = document.querySelector(`link[href*="${file.split('/').pop()}"]`);
         if (!existing) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = '../' + file + '?v=' + Date.now();
+            link.href = pathPrefix + file + '?v=' + Date.now();
             document.head.appendChild(link);
         }
     });
