@@ -1,13 +1,15 @@
 'use client';
 
 import React from 'react';
-import { Container, Section, Stack, Divider } from '@/components/ui/layout';
+import { Container, Section, Stack } from '@/components/ui/layout';
 import { Heading, Text } from '@/components/ui/typography';
-import { CardExamples } from '@/components/ui/card/examples';
-import { TypographyExamples } from '@/components/ui/typography/examples';
-import { LayoutExamples } from '@/components/ui/layout/examples';
-import { ButtonExamples } from '@/components/ui/button/examples';
-import { FormExamples } from '@/components/ui/form/examples';
+
+// Lazy load examples to avoid build issues
+const CardExamples = React.lazy(() => import('@/components/ui/card/examples').then(m => ({ default: m.CardExamples })));
+const TypographyExamples = React.lazy(() => import('@/components/ui/typography/examples').then(m => ({ default: m.TypographyExamples })));
+const LayoutExamples = React.lazy(() => import('@/components/ui/layout/examples').then(m => ({ default: m.LayoutExamples })));
+const ButtonExamples = React.lazy(() => import('@/components/ui/button/examples').then(m => ({ default: m.ButtonExamples })));
+const FormExamples = React.lazy(() => import('@/components/ui/form/examples').then(m => ({ default: m.FormExamples })));
 
 export default function ShowcasePage() {
   const [activeSection, setActiveSection] = React.useState('cards');
@@ -59,7 +61,9 @@ export default function ShowcasePage() {
       {/* Component Display */}
       <Section spacing="none">
         <div data-testid={`showcase-${activeSection}`}>
-          <ActiveComponent />
+          <React.Suspense fallback={<div className="p-8 text-center">Loading components...</div>}>
+            <ActiveComponent />
+          </React.Suspense>
         </div>
       </Section>
 
