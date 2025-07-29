@@ -25,6 +25,7 @@ import Link from "next/link";
 import { DIFFICULTY_LEVELS } from "@/lib/constants/guides";
 import { formatDistanceToNow } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
+import { cn } from "@/lib/utils";
 
 interface GuideDetailsPageProps {
   params: {
