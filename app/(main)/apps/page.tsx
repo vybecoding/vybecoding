@@ -75,7 +75,7 @@ function AppCard({ app }: { app: any }) {
 
       {/* Tags */}
       <div className="flex flex-wrap gap-1 mt-3">
-        {app.techStack.slice(0, 3).map((tech) => (
+        {app.techStack.slice(0, 3).map((tech: string) => (
           <span 
             key={tech}
             className="bg-vybe-pink/10 border border-vybe-pink/20 text-vybe-pink px-2 py-1 text-xs rounded"

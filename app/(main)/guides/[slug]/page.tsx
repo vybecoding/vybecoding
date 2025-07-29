@@ -28,9 +28,9 @@ import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 
 interface GuideDetailsPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default function GuideDetailsPage({ params }: GuideDetailsPageProps) {
@@ -40,9 +40,15 @@ export default function GuideDetailsPage({ params }: GuideDetailsPageProps) {
   
   const [readingProgress, setReadingProgress] = useState(0);
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [slug, setSlug] = useState<string | null>(null);
+
+  // Extract slug from params Promise
+  useEffect(() => {
+    params.then(({ slug }) => setSlug(slug));
+  }, [params]);
 
   // Fetch guide by slug
-  const guide = useQuery(api.guides.getGuideBySlug, { slug: params.slug });
+  const guide = useQuery(api.guides.getGuideBySlug, slug ? { slug } : "skip");
   
   // Track view mutation
   const trackView = useMutation(api.guides.trackView);

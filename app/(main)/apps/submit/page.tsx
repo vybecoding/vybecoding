@@ -17,6 +17,7 @@ export default function AppSubmitPage() {
   
   // Get app ID from query params if editing
   const appId = searchParams.get("id") as Id<"apps"> | null;
+  const appIdOrUndefined = appId || undefined;
 
   // Redirect to sign in if not authenticated
   React.useEffect(() => {
@@ -54,7 +55,7 @@ export default function AppSubmitPage() {
           </Button>
           
           <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-            {appId ? "Edit App" : "Submit Your App"}
+            {appIdOrUndefined ? "Edit App" : "Submit Your App"}
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
             Share your creation with the VybeCoding community
@@ -62,7 +63,7 @@ export default function AppSubmitPage() {
         </div>
 
         {/* Submission Form */}
-        <AppSubmissionForm appId={appId} />
+        <AppSubmissionForm appId={appIdOrUndefined} />
       </div>
     </Container>
   );

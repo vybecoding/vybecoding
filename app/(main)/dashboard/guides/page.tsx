@@ -57,8 +57,8 @@ export default function DashboardGuidesPage() {
 
   // Get current user from Convex
   const currentUser = useQuery(
-    api.users.getCurrentUser,
-    isSignedIn ? {} : "skip"
+    api.users.getUser,
+    isSignedIn && user?.id ? { clerkId: user.id } : "skip"
   );
 
   // Get user's guides
