@@ -12,9 +12,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AppGrid } from "@/components/apps/AppGrid";
 import { AppStatusBadge } from "@/components/apps/AppStatusBadge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Plus, Edit, Eye, Trash2, Send, Clock } from "lucide-react";
+import { Plus, Edit, Eye, Trash2, Send, Clock, Check } from "lucide-react";
 import { formatDistanceToNow } from "@/lib/utils";
 import { APP_STATUS } from "@/lib/constants/apps";
+import Image from "next/image";
 
 export default function DashboardAppsPage() {
   const { isLoaded, isSignedIn } = useUser();
