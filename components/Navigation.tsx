@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useUser, UserButton } from '@clerk/nextjs'
-import { Menu, X, Bell, Settings, ChevronDown } from 'lucide-react'
+import { Menu, X, Bell, Settings } from 'lucide-react'
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -22,83 +22,86 @@ const Navigation = () => {
   return (
     <>
       {/* Main Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50">
-        <div className="nav-container">
-          <div className="nav-content">
-            {/* Logo */}
-            <Link href="/" className="logo-wrapper">
-              <div className="logo-container">
-                <div className="logo-gradient-border">
-                  <div className="logo-inner">
-                    <span className="logo-v">v</span>
-                    <span className="logo-slash">/</span>
-                    <span className="logo-c">c</span>
-                  </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/40 backdrop-blur-[12px] border-b border-white/8">
+        <div className="max-w-[1400px] mx-auto px-6 h-[72px] flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <div className="relative w-12 h-12">
+              {/* Animated gradient border */}
+              <div className="absolute inset-0 p-0.5 rounded-xl bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 animate-gradient-x">
+                <div className="bg-[#1a1a1a] rounded-[10px] w-full h-full flex items-center justify-center text-xl font-semibold text-white">
+                  <span className="animate-spin-slow">v</span>
+                  <span className="text-white/50 mx-0.5">/</span>
+                  <span className="animate-spin-slow">c</span>
                 </div>
               </div>
-            </Link>
+            </div>
+          </Link>
 
-            {/* Desktop Navigation */}
-            <div className="desktop-nav">
-              <div className="nav-items">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="nav-link"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* User Section */}
-              <div className="user-section">
-                {isSignedIn ? (
-                  <>
-                    <button className="icon-button">
-                      <Bell className="w-5 h-5" />
-                    </button>
-                    <button className="icon-button">
-                      <Settings className="w-5 h-5" />
-                    </button>
-                    <div className="user-avatar-wrapper">
-                      <UserButton afterSignOutUrl="/" />
-                    </div>
-                  </>
-                ) : (
-                  <Link href="/sign-in" className="sign-in-button">
-                    Sign In
-                  </Link>
-                )}
-              </div>
+          {/* Desktop Navigation */}
+          <div className="hidden xl:flex items-center gap-12">
+            <div className="flex items-center gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-white/80 hover:text-white text-[15px] font-medium transition-all duration-200 relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
+                </Link>
+              ))}
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="mobile-menu-button"
-            >
-              {mobileMenuOpen ? (
-                <X className="w-6 h-6" />
+            {/* User Section */}
+            <div className="flex items-center gap-4">
+              {isSignedIn ? (
+                <>
+                  <button className="w-10 h-10 rounded-lg bg-white/5 border border-white/8 text-white/80 hover:bg-white/8 hover:text-white hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center">
+                    <Bell className="w-5 h-5" />
+                  </button>
+                  <button className="w-10 h-10 rounded-lg bg-white/5 border border-white/8 text-white/80 hover:bg-white/8 hover:text-white hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center">
+                    <Settings className="w-5 h-5" />
+                  </button>
+                  <div className="w-10 h-10 rounded-lg overflow-hidden border-2 border-white/10">
+                    <UserButton afterSignOutUrl="/" />
+                  </div>
+                </>
               ) : (
-                <Menu className="w-6 h-6" />
+                <Link 
+                  href="/sign-in" 
+                  className="px-5 py-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg text-white text-sm font-medium hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
+                >
+                  Sign In
+                </Link>
               )}
-            </button>
+            </div>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="xl:hidden w-10 h-10 rounded-lg bg-white/5 border border-white/8 text-white hover:bg-white/8 transition-all duration-200 flex items-center justify-center"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="mobile-menu-overlay">
-          <div className="mobile-menu-container">
-            <div className="mobile-menu-content">
+        <div className="fixed top-[72px] left-0 right-0 bottom-0 bg-black/50 z-40 xl:hidden">
+          <div className="bg-black/90 backdrop-blur-[20px] mx-4 rounded-b-xl border border-white/8 border-t-0">
+            <div className="p-6">
               {navItems.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="mobile-nav-link"
+                  className="block py-4 text-white/80 hover:text-white hover:pl-2 text-base font-medium border-b border-white/5 last:border-b-0 transition-all duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
@@ -106,21 +109,21 @@ const Navigation = () => {
               ))}
               
               {isSignedIn ? (
-                <div className="mobile-user-section">
-                  <Link href="/notifications" className="mobile-nav-link">
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <Link href="/notifications" className="block py-4 text-white/80 hover:text-white hover:pl-2 text-base font-medium transition-all duration-200">
                     Notifications
                   </Link>
-                  <Link href="/settings" className="mobile-nav-link">
+                  <Link href="/settings" className="block py-4 text-white/80 hover:text-white hover:pl-2 text-base font-medium transition-all duration-200">
                     Settings
                   </Link>
-                  <Link href="/profile" className="mobile-nav-link">
+                  <Link href="/profile" className="block py-4 text-white/80 hover:text-white hover:pl-2 text-base font-medium transition-all duration-200">
                     Profile
                   </Link>
                 </div>
               ) : (
                 <Link
                   href="/sign-in"
-                  className="mobile-sign-in-button"
+                  className="block w-full mt-6 py-3 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg text-white text-center text-base font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Sign In
@@ -130,274 +133,6 @@ const Navigation = () => {
           </div>
         </div>
       )}
-
-      <style jsx>{`
-        /* Navigation Container */
-        .nav-container {
-          background: rgba(26, 26, 26, 0.4);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .nav-content {
-          max-width: 1400px;
-          margin: 0 auto;
-          padding: 0 24px;
-          height: 72px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-
-        /* Logo Styles */
-        .logo-wrapper {
-          display: flex;
-          align-items: center;
-          text-decoration: none;
-        }
-
-        .logo-container {
-          position: relative;
-          width: 48px;
-          height: 48px;
-        }
-
-        .logo-gradient-border {
-          position: absolute;
-          inset: 0;
-          padding: 2px;
-          border-radius: 12px;
-          background: linear-gradient(135deg, #ff006e, #8338ec, #3a86ff);
-          background-size: 400% 400%;
-          animation: gradient-shift 8s ease infinite;
-        }
-
-        @keyframes gradient-shift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        .logo-inner {
-          background: #1a1a1a;
-          border-radius: 10px;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 20px;
-          font-weight: 600;
-          color: white;
-        }
-
-        .logo-v, .logo-c {
-          display: inline-block;
-          animation: rotate-letter 8s linear infinite;
-        }
-
-        .logo-slash {
-          margin: 0 2px;
-          color: rgba(255, 255, 255, 0.5);
-        }
-
-        @keyframes rotate-letter {
-          0% { transform: rotateY(0deg); }
-          100% { transform: rotateY(360deg); }
-        }
-
-        /* Desktop Navigation */
-        .desktop-nav {
-          display: none;
-          align-items: center;
-          gap: 48px;
-        }
-
-        @media (min-width: 1250px) {
-          .desktop-nav {
-            display: flex;
-          }
-        }
-
-        .nav-items {
-          display: flex;
-          align-items: center;
-          gap: 32px;
-        }
-
-        .nav-link {
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          font-size: 15px;
-          font-weight: 500;
-          transition: all 0.2s ease;
-          position: relative;
-        }
-
-        .nav-link:hover {
-          color: white;
-        }
-
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #ff006e, #8338ec);
-          transform: scaleX(0);
-          transition: transform 0.2s ease;
-        }
-
-        .nav-link:hover::after {
-          transform: scaleX(1);
-        }
-
-        /* User Section */
-        .user-section {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-        }
-
-        .icon-button {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: rgba(255, 255, 255, 0.8);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s ease;
-          cursor: pointer;
-        }
-
-        .icon-button:hover {
-          background: rgba(255, 255, 255, 0.08);
-          color: white;
-          transform: translateY(-1px);
-        }
-
-        .user-avatar-wrapper {
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          overflow: hidden;
-          border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sign-in-button {
-          padding: 8px 20px;
-          background: linear-gradient(135deg, #ff006e, #8338ec);
-          border-radius: 8px;
-          color: white;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 500;
-          transition: all 0.2s ease;
-        }
-
-        .sign-in-button:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 4px 20px rgba(131, 56, 236, 0.4);
-        }
-
-        /* Mobile Menu Button */
-        .mobile-menu-button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          color: white;
-          cursor: pointer;
-          transition: all 0.2s ease;
-        }
-
-        @media (min-width: 1250px) {
-          .mobile-menu-button {
-            display: none;
-          }
-        }
-
-        .mobile-menu-button:hover {
-          background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu-overlay {
-          position: fixed;
-          top: 72px;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 49;
-        }
-
-        .mobile-menu-container {
-          background: rgba(26, 26, 26, 0.9);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-radius: 0 0 20px 20px;
-          margin: 0 16px;
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-top: none;
-        }
-
-        .mobile-menu-content {
-          padding: 24px;
-        }
-
-        .mobile-nav-link {
-          display: block;
-          padding: 16px 0;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          font-size: 16px;
-          font-weight: 500;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-          transition: all 0.2s ease;
-        }
-
-        .mobile-nav-link:hover {
-          color: white;
-          padding-left: 8px;
-        }
-
-        .mobile-user-section {
-          margin-top: 24px;
-          padding-top: 24px;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .mobile-sign-in-button {
-          display: block;
-          width: 100%;
-          padding: 12px;
-          margin-top: 24px;
-          background: linear-gradient(135deg, #ff006e, #8338ec);
-          border-radius: 10px;
-          color: white;
-          text-align: center;
-          text-decoration: none;
-          font-size: 16px;
-          font-weight: 500;
-          transition: all 0.2s ease;
-        }
-
-        .mobile-sign-in-button:hover {
-          transform: translateY(-1px);
-          box-shadow: 0 4px 20px rgba(131, 56, 236, 0.4);
-        }
-      `}</style>
     </>
   )
 }
