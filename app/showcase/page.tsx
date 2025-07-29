@@ -8,7 +8,8 @@ import { Button, ButtonGroup, IconButton } from '@/components/ui/button';
 import { Input, Label, Textarea, Select, Checkbox, Radio, RadioGroup, FormField } from '@/components/ui/form';
 import { Header, Footer, Logo } from '@/components/ui/navigation';
 import { Modal, Dialog, ConfirmDialog } from '@/components/ui/modal';
-import { ArrowRight, Download, Heart, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { Badge, Tag, TagGroup } from '@/components/ui/badge';
+import { ArrowRight, Download, Heart, Mail, Lock, Eye, EyeOff, Star, Zap, TrendingUp } from 'lucide-react';
 
 export default function SimpleShowcasePage() {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -203,6 +204,64 @@ export default function SimpleShowcasePage() {
                 </Box>
               </Stack>
             </Grid>
+          </Section>
+
+          <Divider />
+
+          {/* Badges and Tags */}
+          <Section>
+            <Heading as="h2">Badge and Tag Components</Heading>
+            <Stack gap="lg">
+              {/* Badge Variants */}
+              <Box>
+                <Text size="sm" color="muted" className="mb-4">Badge Variants:</Text>
+                <Stack gap="md">
+                  <Stack direction="row" gap="md" align="center">
+                    <Badge>Default</Badge>
+                    <Badge variant="primary">Primary</Badge>
+                    <Badge variant="secondary">Secondary</Badge>
+                    <Badge variant="success">Success</Badge>
+                    <Badge variant="warning">Warning</Badge>
+                    <Badge variant="danger">Danger</Badge>
+                    <Badge variant="info">Info</Badge>
+                    <Badge variant="outline">Outline</Badge>
+                  </Stack>
+                  
+                  <Stack direction="row" gap="md" align="center">
+                    <Badge size="sm">Small</Badge>
+                    <Badge size="md">Medium</Badge>
+                    <Badge size="lg">Large</Badge>
+                    <Badge size="sm" icon={<Star size={12} />}>With Icon</Badge>
+                    <Badge removable onRemove={() => console.log('Removed')}>Removable</Badge>
+                  </Stack>
+                </Stack>
+              </Box>
+
+              {/* Tag Examples */}
+              <Box>
+                <Text size="sm" color="muted" className="mb-4">Tag Examples:</Text>
+                <Stack gap="md">
+                  <TagGroup>
+                    <Tag>javascript</Tag>
+                    <Tag variant="primary">react</Tag>
+                    <Tag variant="secondary">nextjs</Tag>
+                    <Tag showHash={false}>no-hash</Tag>
+                  </TagGroup>
+                  
+                  <TagGroup gap="lg">
+                    <Tag href="#" size="sm">small-link</Tag>
+                    <Tag href="#" size="md">medium-link</Tag>
+                    <Tag href="#" size="lg">large-link</Tag>
+                  </TagGroup>
+                  
+                  <TagGroup>
+                    <Tag onClick={() => console.log('clicked')}>clickable</Tag>
+                    <Tag variant="primary" onClick={() => console.log('clicked')}>primary-click</Tag>
+                    <Tag variant="outline" onClick={() => console.log('clicked')}>outline-click</Tag>
+                  </TagGroup>
+                </Stack>
+              </Box>
+            </Stack>
           </Section>
 
           <Divider />
