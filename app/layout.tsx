@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ThemeProvider, ThemeScript } from "@/contexts/ThemeContext";
+import { ToastProvider, ToastContainer } from "@/components/ui/toast";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -26,7 +27,10 @@ export default function RootLayout({
             storageKey="vybe-theme"
             enableSystem
           >
-            <ConvexClientProvider>{children}</ConvexClientProvider>
+            <ToastProvider>
+              <ConvexClientProvider>{children}</ConvexClientProvider>
+              <ToastContainer />
+            </ToastProvider>
           </ThemeProvider>
         </body>
       </html>

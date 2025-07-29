@@ -9,6 +9,7 @@ import { Input, Label, Textarea, Select, Checkbox, Radio, RadioGroup, FormField 
 import { Header, Footer, Logo } from '@/components/ui/navigation';
 import { Modal, Dialog, ConfirmDialog } from '@/components/ui/modal';
 import { Badge, Tag, TagGroup } from '@/components/ui/badge';
+import { useToast } from '@/components/ui/toast';
 import { ArrowRight, Download, Heart, Mail, Lock, Eye, EyeOff, Star, Zap, TrendingUp } from 'lucide-react';
 
 export default function SimpleShowcasePage() {
@@ -16,6 +17,7 @@ export default function SimpleShowcasePage() {
   const [modalOpen, setModalOpen] = React.useState(false);
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [confirmOpen, setConfirmOpen] = React.useState(false);
+  const { addToast } = useToast();
 
   return (
     <div className="min-h-screen bg-gray-950">
@@ -353,6 +355,83 @@ export default function SimpleShowcasePage() {
                   console.log('Item deleted');
                 }}
               />
+            </Stack>
+          </Section>
+
+          <Divider />
+
+          {/* Toast Notifications */}
+          <Section>
+            <Heading as="h2">Toast Notifications</Heading>
+            <Stack gap="md">
+              <Text size="sm" color="muted" className="mb-2">
+                Click buttons to show different toast types
+              </Text>
+              <Stack direction="row" gap="md">
+                <Button
+                  variant="secondary"
+                  onClick={() => addToast({
+                    type: 'success',
+                    title: 'Success!',
+                    message: 'Your changes have been saved.'
+                  })}
+                >
+                  Success Toast
+                </Button>
+                <Button
+                  variant="danger"
+                  onClick={() => addToast({
+                    type: 'error',
+                    title: 'Error occurred',
+                    message: 'Failed to save changes. Please try again.'
+                  })}
+                >
+                  Error Toast
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => addToast({
+                    type: 'warning',
+                    title: 'Warning',
+                    message: 'This action cannot be undone.'
+                  })}
+                >
+                  Warning Toast
+                </Button>
+                <Button
+                  variant="primary"
+                  onClick={() => addToast({
+                    type: 'info',
+                    title: 'New update available',
+                    message: 'Version 2.0 is now available. Click to learn more.'
+                  })}
+                >
+                  Info Toast
+                </Button>
+              </Stack>
+              <Stack direction="row" gap="md">
+                <Button
+                  variant="ghost"
+                  onClick={() => addToast({
+                    type: 'info',
+                    title: 'Quick notification',
+                    duration: 2000
+                  })}
+                >
+                  Short Duration (2s)
+                </Button>
+                <Button
+                  variant="ghost"
+                  onClick={() => addToast({
+                    type: 'info',
+                    title: 'Persistent notification',
+                    message: 'This will stay until manually closed.',
+                    duration: 0
+                  })}
+                >
+                  No Auto-dismiss
+                </Button>
+              </Stack>
             </Stack>
           </Section>
         </Stack>
