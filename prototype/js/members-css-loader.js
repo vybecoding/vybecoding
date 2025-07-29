@@ -17,7 +17,8 @@
         'css/badge-gap-fix.css',
         'css/force-4px-badge-gap.css',
         // Members page specific fixes
-        'css/members-grid-fix.css'
+        'css/members-grid-fix.css',
+        'css/force-members-3col.css'
     ];
     
     // Determine the correct path prefix based on current location

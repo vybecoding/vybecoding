@@ -1,0 +1,43 @@
+/* Force 3-column grid layout for members page */
+
+/* Main grid container */
+.page-container .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3,
+#dynamic-content .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    display: grid !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    gap: 1.5rem !important;
+}
+
+/* Force 3 columns on large screens */
+@media (min-width: 1024px) {
+    .page-container .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3,
+    #dynamic-content .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Force 2 columns on medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .page-container .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3,
+    #dynamic-content .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Single column on small screens */
+@media (max-width: 767px) {
+    .page-container .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3,
+    #dynamic-content .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ensure cards don't exceed reasonable width */
+.page-container .minimal-card,
+#dynamic-content .minimal-card {
+    max-width: 400px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+}
