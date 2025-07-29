@@ -545,6 +545,111 @@ Example: When you say "create a story for user login", Claude Code automatically
 4. **Trust TRAIL** - Apply learned solutions immediately
 5. **Review session changes** - Use generate-review.sh
 
+## Story & Epic Completion Workflows
+
+### Overview
+
+Proper completion workflows ensure quality, security, and documentation stay current throughout development. We use a two-tier system:
+
+- **Story Completion**: Quick verification after each user story
+- **Epic Completion**: Comprehensive audit after completing a feature epic
+
+### Story Completion Workflow
+
+**Run after completing each story (e.g., USER-001):**
+
+1. **Visual & Functional Verification**
+   ```bash
+   .claude/scripts/story-complete.sh
+   ```
+   This script runs:
+   - TypeScript build check
+   - Playwright visual tests with screenshots
+   - Component showcase verification
+   - Security checks (Snyk, GitGuardian, MCP-Scan)
+   - Code quality checks (console.logs, TODOs)
+
+2. **Fix Any Issues**
+   - Address all failures before proceeding
+   - Use TRAIL system to learn from any errors
+   - Re-run script until all checks pass
+
+3. **Update Documentation**
+   ```bash
+   /update-docs
+   ```
+   - Updates all documentation to reflect changes
+   - Creates timestamped update summary
+   - Ensures docs match implementation
+
+4. **Only Then: Move to Next Story**
+   - Never start a new story with failing checks
+   - Documentation must be current
+   - All tests must pass
+
+### Epic Completion Workflow
+
+**Run after completing all stories in an epic (e.g., after USER-001, USER-002, USER-003):**
+
+1. **Comprehensive Security Audit**
+   ```bash
+   .claude/scripts/full-security-audit.sh
+   ```
+   This includes all manual tools from setup.md:
+   - Snyk dependency scan + monitoring
+   - GitGuardian deep scan
+   - MCP security audit
+   - Nuclei vulnerability scan (if deployed)
+   - npm audit
+   - Hardcoded secret detection
+   - HTTPS/TLS verification
+   - Environment variable audit
+
+2. **Address Security Findings**
+   - Fix any vulnerabilities found
+   - Update dependencies if needed
+   - Document security decisions
+
+3. **Epic Summary Documentation**
+   ```bash
+   /update-docs
+   ```
+   - Create epic completion summary
+   - Document all stories completed
+   - Note any architectural decisions
+
+4. **Manual Checks (if applicable)**
+   - **Stripe**: Test webhooks if payment features added
+   - **Cal.com**: Verify booking flow if calendar features added
+   - **HashiCorp Vault**: Audit secrets if new keys added
+
+### Epic Structure Example
+
+```
+Epic: User Management (epic-01-user-management/)
+├── USER-001: User Profile System ✅
+├── USER-002: Apps Submission Platform ✅
+└── USER-003: Guides Publishing System 🔄
+
+After each story → story-complete.sh → /update-docs
+After all stories → full-security-audit.sh → epic summary
+```
+
+### Quick Reference
+
+| Workflow | When to Run | Script | Time |
+|----------|------------|--------|------|
+| Story Completion | After each story | `story-complete.sh` | ~5 min |
+| Documentation Update | After all checks pass | `/update-docs` | ~1 min |
+| Epic Completion | After all epic stories | `full-security-audit.sh` | ~15 min |
+
+### Important Notes
+
+- **Never skip steps**: Each step catches different types of issues
+- **Fix immediately**: Don't accumulate technical debt
+- **Learn patterns**: TRAIL system captures all fixes automatically
+- **Stay current**: Documentation drift causes confusion
+
 ## Continuous Learning System
 
 The project now includes an intelligent continuous learning system that improves execution over time.
@@ -699,5 +804,6 @@ See [docs/prototype-migration-plan.md](docs/prototype-migration-plan.md) for mig
 - When workflow patterns change
 - If automation rules need adjustment
 - At least once per week during active development
+- After completing each epic (comprehensive review)
 
 Use `/memory` to edit this file or update directly with improvements learned during development.
