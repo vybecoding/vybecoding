@@ -19,8 +19,8 @@ AI-powered development platform built with Next.js, featuring automated workflow
 - **Framework**: Next.js 15.4 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS + CSS Modules hybrid approach
-- **UI Components**: Custom component library with CVA (class-variance-authority)
-- **Icons**: Lucide React (1000+ icons)
+- **UI Components**: Shadcn UI components with custom wrapper layers
+- **Icons**: Lucide React (1000+ tree-shakeable icons)
 - **Database**: Convex (real-time, serverless)
 - **Authentication**: Clerk
 - **Payments**: Stripe
@@ -28,6 +28,7 @@ AI-powered development platform built with Next.js, featuring automated workflow
 - **Monitoring**: Sentry
 - **Testing**: Playwright + TRAIL System
 - **Theme**: Dark/Light mode with system preference support
+- **Tables**: TanStack Table for advanced data management
 
 ## 🏃 Quick Start
 
@@ -69,21 +70,30 @@ vybecoding/
 │   └── test-error/        # Error boundary testing
 ├── components/            # React components
 │   ├── cal/              # Cal.com integration components
-│   ├── ui/               # UI component library
-│   │   ├── button/       # Button component system
-│   │   │   ├── Button.tsx
-│   │   │   └── Button.module.css
-│   │   ├── card/         # Card component system
-│   │   │   ├── Card.tsx  # Base card with CVA variants
+│   ├── ui/               # Shadcn UI + custom components
+│   │   ├── button/       # Button wrapper system
+│   │   │   ├── Button.tsx     # Shadcn wrapper
+│   │   │   ├── ButtonGroup.tsx
+│   │   │   └── IconButton.tsx
+│   │   ├── card/         # Card wrapper system
+│   │   │   ├── Card.tsx       # Shadcn wrapper
 │   │   │   ├── AppCard.tsx
 │   │   │   ├── GuideCard.tsx
 │   │   │   └── MemberCard.tsx
-│   │   ├── form/         # Form components
-│   │   │   ├── Input.tsx
-│   │   │   ├── Select.tsx
-│   │   │   ├── Textarea.tsx
-│   │   │   ├── Checkbox.tsx
-│   │   │   └── Radio.tsx
+│   │   ├── form/         # Form wrapper components
+│   │   │   ├── Form.tsx       # Shadcn form wrapper
+│   │   │   ├── FormField.tsx
+│   │   │   └── validation.ts
+│   │   ├── data-table/   # Advanced data tables
+│   │   │   └── DataTable.tsx  # TanStack Table
+│   │   ├── modal/        # Modal/Dialog wrappers
+│   │   │   ├── Modal.tsx      # Shadcn dialog wrapper
+│   │   │   └── Dialog.tsx
+│   │   ├── toast/        # Toast notification wrapper
+│   │   │   └── Toast.tsx      # Sonner wrapper
+│   │   ├── badge/        # Badge component wrapper
+│   │   │   ├── Badge.tsx      # Shadcn wrapper
+│   │   │   └── Tag.tsx
 │   │   ├── layout/       # Layout components
 │   │   │   ├── Container.tsx
 │   │   │   ├── Section.tsx
@@ -94,9 +104,10 @@ vybecoding/
 │   │   │   ├── Footer.tsx
 │   │   │   ├── Logo.tsx
 │   │   │   └── MobileMenu.tsx
-│   │   └── typography/   # Typography components
-│   │       ├── Typography.tsx
-│   │       └── Typography.module.css
+│   │   ├── typography/   # Typography components
+│   │   │   ├── Typography.tsx
+│   │   │   └── Typography.module.css
+│   │   └── [30+ Shadcn components].tsx
 │   ├── ThemeToggle.tsx   # Theme switcher
 │   └── test-libraries.tsx
 ├── convex/               # Convex backend
@@ -150,6 +161,36 @@ vybecoding/
 - **Vulnerability Scanning**: Nuclei template-based scanning
 - **MCP Security**: MCP-Scan for MCP server security analysis
 - **Secrets Management**: HashiCorp Vault for secure storage
+
+## 🎨 UI Component System
+
+### Shadcn UI Integration
+The project uses Shadcn UI components with custom wrapper layers that maintain backward compatibility while providing enhanced functionality:
+
+- **Wrapper Pattern**: Each Shadcn component has a wrapper that maintains our custom API
+- **Zero Breaking Changes**: Existing code continues to work with the new components
+- **Enhanced Features**: Additional props and functionality on top of Shadcn defaults
+- **Theme Integration**: Seamless dark/light mode support with CSS variables
+- **Type Safety**: Full TypeScript support with enhanced prop types
+
+### Component Architecture
+```typescript
+// Example: Button wrapper maintains custom API while using Shadcn
+import { Button as ShadcnButton } from "@/components/ui/button"
+
+export function Button({ variant, gradientFrom, gradientTo, ...props }) {
+  // Map custom variants to Shadcn variants
+  // Add gradient support on top of Shadcn
+}
+```
+
+### Data Table System
+Advanced data tables powered by TanStack Table v8:
+- Sorting, filtering, and pagination
+- Row selection and actions
+- Column visibility controls
+- Responsive design
+- Server-side data support
 
 ## 🤖 AI Development Features
 

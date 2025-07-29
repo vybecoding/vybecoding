@@ -261,7 +261,7 @@ Remember: Smaller changes = fewer bugs, easier reviews, cleaner history!
 - Detects hidden instructions, prompt injections, role confusion attacks
 - Logs suspicious activity to `.claude/solutions/security/living-off-ai-alerts.log`
 - Always verify AI suggestions independently before execution
-- **Status**: Active via PostResponse hook
+- **Status**: Active via UserPromptSubmit hook
 
 ### Additional Security Tools ✅
 - **GitGuardian**: Automatic secret scanning (ggshield v1.41.0)
@@ -381,14 +381,13 @@ This provides a complete history of all Claude Code changes directly in your mai
 
 All hooks are now properly configured in `.claude/settings.json`:
 
-### PreSession Hook
+### SessionStart Hook
 - **Pre-Session Hook**: Shows ready stories and setup status on startup
 
 ### PreToolUse Hooks
-- **Claude Code Boost (CCB)**: Auto-approves safe tools - now properly installed and working!
-  - Reduces approval prompts by 90%
-  - Version 0.1.0 installed via npm global
-  - Auto-approves: Read, Grep, safe Bash commands, documentation updates
+- **Claude Code Boost (CCB)**: Auto-approves safe tools
+  - Auto-approves: Bash, Edit, MultiEdit, Write operations
+  - Configured via `ccb auto-approve-tools` command
 
 ### PostToolUse Hooks
 - **Auto-Commit**: Commits all changes to main branch with complexity indicators
@@ -396,15 +395,24 @@ All hooks are now properly configured in `.claude/settings.json`:
 - **Post-Edit Sanitize**: XSS prevention on Edit/Write operations
 - **Continuous Learning**: Pattern recognition on Bash commands
 - **Orchestration**: BMAD story automation
-- **Post-Story Security Check**: Runs security scan after story completion (background)
 
-### PostResponse Hook
-- **Post-Response Scan**: Detects malicious AI patterns
+### UserPromptSubmit Hook
+- **Post-Response Scan**: Detects malicious AI patterns in responses
 
 ### Stop Hook
-- **Task Complete**: Plays completion chime (device-added.oga)
-  - Only triggers on session-end to avoid CCB conflicts
-  - Runs security checks in background for story work
+- Currently empty - task completion sounds handled by CCB
+
+### Valid Hook Types
+- PreToolUse
+- PostToolUse
+- Notification
+- UserPromptSubmit
+- SessionStart
+- Stop
+- SubagentStop
+- PreCompact
+
+Note: PostResponse is not a valid hook type in the current Claude CLI version.
 
 ## Task Management with TodoWrite
 

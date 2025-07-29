@@ -1,13 +1,15 @@
 # VybeCoding Design System
 
-A modern design system using CSS Modules + Tailwind CSS hybrid approach to prevent CSS cascade issues.
+A modern design system built on Shadcn UI components with custom enhancements, using CSS Modules + Tailwind CSS hybrid approach.
 
 ## Architecture
 
-This design system uses a hybrid approach:
+This design system uses a layered approach:
+- **Shadcn UI**: Base component primitives with consistent behavior
 - **Tailwind CSS**: For utility classes and rapid prototyping
 - **CSS Modules**: For component-specific styles that can't be expressed with utilities
 - **TypeScript**: For type-safe component props and design tokens
+- **CVA (class-variance-authority)**: For managing component variants
 
 ## Directory Structure
 
@@ -125,14 +127,58 @@ export const MyComponent = ({ variant = 'primary' }) => {
 <div className="animate-glow" />
 ```
 
+## Shadcn UI Integration
+
+### Component Structure
+All UI components follow a wrapper pattern:
+```tsx
+// components/ui/button/Button.tsx
+import { Button as ShadcnButton } from "@/components/ui/button"
+
+export function Button({ variant, gradientFrom, gradientTo, ...props }) {
+  const variantMap = {
+    primary: "default",
+    danger: "destructive",
+    success: "default", // with custom styling
+  }
+  
+  // Add gradient support on top of Shadcn
+  // Maintain backward compatibility
+}
+```
+
+### Available Shadcn Components
+- **Forms**: Input, Select, Textarea, Checkbox, Radio, Form validation
+- **Layout**: Card, Accordion, Tabs, Separator
+- **Feedback**: Alert Dialog, Dialog, Toast (Sonner), Sheet
+- **Navigation**: Navigation Menu, Dropdown Menu
+- **Data Display**: Table, Badge, Label
+- **Advanced**: Data Table with TanStack Table integration
+
+### Customization
+Each Shadcn component is enhanced with:
+- Custom variants (gradient buttons, specialized cards)
+- Additional props for VybeCoding-specific features
+- CSS Module overrides for unique styling needs
+- Dark/light theme variables
+
 ## Benefits
 
 1. **No Cascade Issues**: CSS Modules ensure styles don't leak between components
-2. **Type Safety**: All design tokens are typed
-3. **Consistency**: Single source of truth for design values
-4. **Performance**: Tailwind purges unused styles, CSS Modules are scoped
+2. **Type Safety**: All design tokens and component props are typed
+3. **Consistency**: Shadcn provides consistent base behavior
+4. **Performance**: Tree-shakeable components, scoped styles
 5. **Developer Experience**: IntelliSense for all design tokens and utilities
+6. **Maintainability**: Updates from Shadcn are easy to integrate
 
-## Migration from Demo
+## Migration Strategy
 
-This design system ports all the design tokens from the demo while solving the CSS cascade issues through proper scoping and the hybrid approach.
+### From Custom Components to Shadcn
+1. Install Shadcn component: `npx shadcn-ui@latest add [component]`
+2. Create wrapper in `components/ui/[component]/[Component].tsx`
+3. Map existing props to Shadcn variants
+4. Add custom functionality as needed
+5. Update imports throughout codebase
+
+### Zero Breaking Changes
+The wrapper pattern ensures all existing code continues to work while benefiting from Shadcn's robust foundation.
