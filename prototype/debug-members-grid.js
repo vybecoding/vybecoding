@@ -15,8 +15,8 @@ async function debugMembersGrid() {
   
   // Debug grid and cards
   const debugInfo = await page.evaluate(() => {
-    const grid = document.querySelector('.members-grid');
-    const cards = Array.from(document.querySelectorAll('.members-grid .minimal-card'));
+    const grid = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
+    const cards = Array.from(document.querySelectorAll('.minimal-card'));
     
     if (!grid) return { error: 'No grid found' };
     
@@ -74,7 +74,7 @@ async function debugMembersGrid() {
   await page.screenshot({ path: 'members-debug.png', fullPage: true });
   
   // Take grid-only screenshot
-  const gridEl = await page.$('.members-grid');
+  const gridEl = await page.$('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3');
   if (gridEl) {
     await gridEl.screenshot({ path: 'members-grid-only.png' });
   }
