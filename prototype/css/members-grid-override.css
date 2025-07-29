@@ -1,0 +1,54 @@
+/* Ultimate override for members grid - force 3 columns */
+
+/* Target the exact class combination */
+.grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    display: grid !important;
+}
+
+/* Force 3 columns on desktop */
+@media screen and (min-width: 1024px) {
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Force 2 columns on tablet */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+}
+
+/* Single column on mobile */
+@media screen and (max-width: 767px) {
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Ensure gap is consistent */
+.grid.gap-6 {
+    gap: 1.5rem !important;
+}
+
+/* Container max width */
+.page-container .mx-auto {
+    max-width: 1200px !important;
+}
+
+/* Prevent cards from expanding too much */
+.grid .minimal-card {
+    max-width: 400px !important;
+    width: 100% !important;
+}
+
+/* Extra specificity for dynamic content */
+#dynamic-content .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    display: grid !important;
+}
+
+@media screen and (min-width: 1024px) {
+    #dynamic-content .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+}
