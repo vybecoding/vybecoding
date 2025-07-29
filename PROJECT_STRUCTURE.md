@@ -86,7 +86,23 @@ vybecoding/
 ├── prototype/             # Vite-based demo prototype
 │   ├── dist/             # Build output
 │   ├── images/           # Demo images
-│   └── ...               # Demo files
+│   ├── pages/            # Structured HTML pages
+│   │   ├── apps/         # Apps showcase
+│   │   │   ├── browse.html
+│   │   │   └── submit.html
+│   │   ├── dashboard/    # Dashboard sections
+│   │   │   ├── overview.html
+│   │   │   ├── profile.html
+│   │   │   ├── mentorship.html
+│   │   │   └── settings/
+│   │   ├── guides/       # Guides showcase
+│   │   │   ├── browse.html
+│   │   │   └── submit.html
+│   │   └── profile/      # Public profiles
+│   │       ├── info.html
+│   │       └── booking.html
+│   ├── js/              # JavaScript modules
+│   └── css/             # Stylesheets
 │
 ├── styles/               # Global styles
 │   └── globals.css       # Tailwind imports
@@ -101,10 +117,16 @@ vybecoding/
 │
 ├── BMAD Method Directories
 │   ├── .bmad-core/         # BMAD Method v4.33.0 core
-│   │   ├── agents/        # Core agent definitions
-│   │   ├── tasks/         # Task commands
-│   │   └── utils/         # Utilities
-│   └── .bmad-infrastructure-devops/  # DevOps expansion
+│   │   ├── bmad-core/     # Core implementation
+│   │   │   ├── agents/    # Agent definitions
+│   │   │   ├── tasks/     # Task templates
+│   │   │   ├── checklists/ # Quality checklists
+│   │   │   ├── templates/ # Story/PRD templates
+│   │   │   └── workflows/ # Development workflows
+│   │   ├── expansion-packs/ # Additional capabilities
+│   │   │   └── bmad-infrastructure-devops/
+│   │   └── tools/         # CLI and utilities
+│   └── .bmad-infrastructure-devops/  # DevOps expansion (installed)
 │
 ├── Configuration Files
 │   ├── next.config.js      # Next.js config

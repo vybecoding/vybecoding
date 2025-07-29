@@ -60,20 +60,35 @@ For manual documentation analysis:
 
 ## Other Available Commands
 
-### BMAD Method Commands
-**Core Agent Commands:**
-- `/dev` - Development agent (also available as sub-agent `bmad-dev`)
-- `/sm` - Story management (also available as sub-agent `bmad-sm`)
-- `/qa` - Quality assurance (also available as sub-agent `bmad-qa`)
-- `/po` - Product owner (also available as sub-agent `bmad-po`)
-- `/pm` - Project manager (also available as sub-agent `bmad-pm`)
+### BMAD Method v4.33.0 Commands
+
+**Core Agent Commands** (also available as sub-agents):
+- `/dev` - Full stack development (James) - `bmad-dev`
+- `/sm` - Story management (Stella) - `bmad-sm`
+- `/qa` - Quality assurance (Quinn) - `bmad-qa`
+- `/po` - Product owner (Olivia) - `bmad-po`
+- `/pm` - Project manager (Parker) - `bmad-pm`
+
+**Additional Agent Commands:**
+- `/analyst` - Business requirements analysis
+- `/architect` - System architecture design (Alex)
+- `/ux-expert` - User experience design
+- `/bmad-master` - Meta orchestration
+- `/bmad-orchestrator` - Workflow coordination
+- `/infra-devops-platform` - Infrastructure management
 
 **Task Commands:**
 - `/create-next-story` - Generate new user stories
-- `/review-story` - Review and validate stories
-- `/validate-next-story` - Check story readiness
+- `/create-doc` - Create documentation
+- `/correct-course` - Course correction guidance
 - `/execute-checklist` - Run through task checklists
-- `/document-project` - Generate project documentation
+- `/facilitate-brainstorming-session` - Lead brainstorming
+- `/shard-doc` - Split large documents
+- `/validate-next-story` - Check story readiness
+
+**BMAD Utilities:**
+- Various task-specific commands in `.claude/commands/BMad/tasks/`
+- Infrastructure tasks in `.claude/commands/bmadInfraDevOps/tasks/`
 
 ### Utility Commands
 - `/memory` - Edit CLAUDE.md instructions

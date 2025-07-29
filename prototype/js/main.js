@@ -403,6 +403,26 @@ class VybeApp {
             }
         };
         
+        // Function to load HTML content into a container (moved here for broader access)
+        const loadTabContent = async (containerId, filePath) => {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const html = await response.text();
+                const container = document.getElementById(containerId);
+                if (container) {
+                    container.innerHTML = html;
+                } else {
+                    console.error(`Container with ID ${containerId} not found.`);
+                }
+            } catch (error) {
+                console.error(`Failed to load content from ${filePath}:`, error);
+                // Optionally display an error message to the user
+            }
+        };
+
         // Support for old tab functions
         // Profile tab switching
         window.showProfileTab = async (tabName) => {
@@ -797,11 +817,9 @@ class VybeApp {
             }
             
             // Show loading state
-            const submitBtn = document.getElementById('submit-app-btn');
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.textContent = 'Submitting...';
-            }
+            const submitBtn = event.target;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
             
             // Simulate submission
             setTimeout(() => {

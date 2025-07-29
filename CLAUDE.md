@@ -1,7 +1,7 @@
 # CLAUDE.md - Project Instructions and Context
 
 **Last Updated:** 2025-01-28  
-**Version:** 2.2  
+**Version:** 2.3  
 **Review Schedule:** Weekly or after major changes
 
 ## TRAIL - Test, Resolve, And Intelligently Learn
@@ -463,24 +463,34 @@ Every change is tracked with complexity indicators:
 
 This helps identify when to break down tasks further.
 
-## BMAD Method Integration
+## BMAD Method v4.33.0 Integration
 
 The BMAD Method v4.33.0 provides structured story management through specialized agents, now available as Claude Code sub-agents for automatic delegation.
 
 ### Available BMAD Agents
-**Slash Commands and Sub-Agents:**
+**Core Agents (Slash Commands and Sub-Agents):**
 - **Dev** (`/dev` or `bmad-dev`) - Full stack development (James)
 - **SM** (`/sm` or `bmad-sm`) - Story management (Stella)
 - **QA** (`/qa` or `bmad-qa`) - Quality assurance (Quinn)
 - **PO** (`/po` or `bmad-po`) - Product owner (Olivia)
 - **PM** (`/pm` or `bmad-pm`) - Project management (Parker)
 
-**Additional Sub-Agents:**
+**Additional Agents (Slash Commands):**
+- **Analyst** (`/analyst`) - Business requirements analysis
+- **Architect** (`/architect`) - System architecture design (Alex)
+- **UX Expert** (`/ux-expert`) - User experience design
+- **BMAD Master** (`/bmad-master`) - Meta orchestration
+- **BMAD Orchestrator** (`/bmad-orchestrator`) - Workflow coordination
+
+**Additional Sub-Agents (Claude Code Delegation):**
 - `bmad-architect` - System architecture (Alex)
 - `bmad-doc-writer` - Documentation (Dana)
 - `bmad-analyst` - Business analysis
 - `bmad-ux` - User experience design
 - `bmad-devops` - Infrastructure and deployment
+
+**Infrastructure Agents:**
+- **Infra DevOps Platform** (`/infra-devops-platform`) - Infrastructure management
 
 ### Claude Code Sub-Agent Integration
 
@@ -644,6 +654,24 @@ This creates a self-improving development system that gets faster and more relia
 2. **Batch Approvals**: Group similar items for single decision
 3. **Learn Continuously**: Apply patterns with >95% confidence
 4. **Track Progress**: Always use TodoWrite for task management
+
+## Prototype Development
+
+The prototype in `/prototype` serves as a rapid development environment for UI/UX experimentation. It now includes structured pages:
+
+### New Page Structure
+- **Apps Pages**: `/pages/apps/` - Browse and submit apps
+- **Dashboard Pages**: `/pages/dashboard/` - Overview, profile, settings, mentorship
+- **Guides Pages**: `/pages/guides/` - Browse and submit guides
+- **Profile Pages**: `/pages/profile/` - Public profiles with booking
+
+### Prototype Guidelines
+1. **Use for rapid prototyping** before implementing in Next.js
+2. **Test UI patterns** with live reload via Live Server
+3. **Maintain consistency** with main app design system
+4. **Document patterns** that will migrate to production
+
+See [docs/prototype-migration-plan.md](docs/prototype-migration-plan.md) for migration strategy.
 
 ## Review Reminder
 

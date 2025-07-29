@@ -1,6 +1,6 @@
 # vybecoding
 
-AI-powered development platform built with Next.js, featuring automated workflows, security-first architecture, and intelligent code generation.
+AI-powered development platform built with Next.js, featuring automated workflows, security-first architecture, and intelligent code generation with BMAD Method v4.33.0 integration.
 
 ## 🚀 Features
 
@@ -81,12 +81,22 @@ vybecoding/
 │   ├── mcp/              # Model Context Protocol docs
 │   └── vybehacks/        # VybeHacks patterns
 ├── prototype/            # Demo prototype (Vite-based)
-└── .claude/              # Claude Code configuration
-    ├── config/           # Settings and MCP configuration
-    ├── hooks/            # Hook scripts
-    ├── commands/         # Slash commands
-    ├── solutions/        # TRAIL system & scripts
-    └── sub-agents/       # BMAD sub-agents
+│   └── pages/           # New structured pages
+│       ├── apps/        # Apps showcase pages
+│       ├── dashboard/   # Dashboard sub-pages
+│       └── guides/      # Guides browsing
+├── .claude/              # Claude Code configuration
+│   ├── settings.json     # Hook configurations
+│   ├── config/          # MCP configuration
+│   │   └── mcp-settings.json
+│   ├── hooks/           # Hook scripts
+│   ├── agents/          # BMAD sub-agents
+│   ├── commands/        # Slash commands
+│   └── solutions/       # TRAIL system & scripts
+└── .bmad-core/          # BMAD Method v4.33.0
+    ├── bmad-core/       # Core agents and tasks
+    ├── expansion-packs/ # Infrastructure & DevOps
+    └── tools/           # BMAD CLI and utilities
 ```
 
 ## 🔐 Security Features
@@ -110,14 +120,22 @@ Automatic testing, error resolution, and intelligent learning:
 - Level 3: Playwright visual debugging with trace recording
 - Pattern recognition and automatic optimization
 
-### BMAD Method Integration
+### BMAD Method v4.33.0 Integration
 Structured development with specialized agents available as both slash commands and Claude Code sub-agents:
+
+**Core Agents** (slash commands and sub-agents):
 - `/dev` or `bmad-dev` - Full stack development (James)
 - `/sm` or `bmad-sm` - Story management (Stella)
 - `/qa` or `bmad-qa` - Quality assurance (Quinn)
 - `/po` or `bmad-po` - Product owner perspective (Olivia)
 - `/pm` or `bmad-pm` - Project management (Parker)
-- Additional sub-agents: `bmad-architect`, `bmad-doc-writer`, `bmad-analyst`
+
+**Additional Sub-agents**:
+- `bmad-architect` - System architecture (Alex)
+- `bmad-doc-writer` - Documentation specialist (Dana)
+- `bmad-analyst` - Business analysis
+- `bmad-ux` - User experience design
+- `bmad-devops` - Infrastructure and deployment
 
 ### Slash Commands
 - `/update-docs` - Automatically update documentation
@@ -135,9 +153,12 @@ npm run build
 
 - **Setup Guide**: [docs/setup.md](docs/setup.md)
 - **Tech Stack Details**: [docs/tech-stack.md](docs/tech-stack.md)
-- **Human Workflow**: [docs/human-workflow.md](docs/human-workflow.md)
+- **Prototype Migration Plan**: [docs/prototype-migration-plan.md](docs/prototype-migration-plan.md)
 - **Claude Instructions**: [CLAUDE.md](CLAUDE.md)
 - **Security Audits**: [docs/audits/](docs/audits/)
+- **Hook System**: [docs/hooks/overview.md](docs/hooks/overview.md)
+- **MCP Servers**: [docs/mcp/overview.md](docs/mcp/overview.md)
+- **BMAD Integration**: [docs/bmad/sub-agents-integration.md](docs/bmad/sub-agents-integration.md)
 
 ## 🧪 Testing
 
