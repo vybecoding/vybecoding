@@ -6,7 +6,8 @@ import { Heading, Text, Code, List, ListItem } from '@/components/ui/typography'
 import { Card, AppCard, GuideCard, MemberCard } from '@/components/ui/card';
 import { Button, ButtonGroup, IconButton } from '@/components/ui/button';
 import { Input, Label, Textarea, Select, Checkbox, Radio, RadioGroup, FormField } from '@/components/ui/form';
-import { Header, Footer, Logo } from '@/components/ui/navigation';
+import Navigation from '@/components/Navigation';
+import { Footer, Logo } from '@/components/ui/navigation';
 import { Modal, Dialog, ConfirmDialog } from '@/components/ui/modal';
 import { Badge, Tag, TagGroup } from '@/components/ui/badge';
 import { useToast } from '@/components/ui/toast';
@@ -98,7 +99,7 @@ export default function SimpleShowcasePage() {
 
   return (
     <div className="min-h-screen bg-gray-950">
-      <Header />
+      <Navigation />
       
       <main className="pt-20 pb-8 px-8">
         <Container>
