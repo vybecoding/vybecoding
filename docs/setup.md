@@ -4,7 +4,7 @@
 
 | Tool | Type | Status | Usage | Link |
 |------|------|--------|--------|------|
-| **BMAD Method** | 🤖 Built-in | ✅ | Story management • Slash commands + Claude Code sub-agents | [repo](https://github.com/bmadcode/BMAD-METHOD.git) |
+| **BMAD Method** | 🤖 Built-in | ✅ | Story management • Slash commands + Claude Code sub-agents • v4.33.0 | [repo](https://github.com/bmadcode/BMAD-METHOD.git) |
 | **PRPs Engineering** | 🤖 CLAUDE.md | ✅ | `/create-base-prp`, `/execute-base-prp` | [repo](https://github.com/Wirasm/PRPs-agentic-eng.git) |
 | **SuperClaude Framework** | 🤖 CLAUDE.md | ✅ | Personas auto-activate by context | [repo](https://github.com/SuperClaude-Org/SuperClaude_Framework.git) |
 | **Ultra Wide Turbo** | 👤 Manual | ✅ | Manually select workflow patterns | [repo](https://github.com/its-brianwithai/ultra-wide-turbo-workspace.git) |
@@ -44,7 +44,7 @@
 | **safe-compare** | 🤖 CLAUDE.md | ✅ | ⭐⭐⭐ | Auto-applied timing attack prevention • v1.1.4 | [npm](https://www.npmjs.com/package/safe-compare) |
 | **Living off AI Monitor** | 🤖 Hooks | ✅ | ⭐⭐⭐⭐ | Auto-scans AI responses • logs to `.claude/solutions/security/` | [CUSTOM] |
 | **HashiCorp Vault** | 👤 Manual | ✅ | ⭐⭐⭐⭐⭐ | `vault server -dev` • [UI](http://127.0.0.1:8200) • v1.15.4 | [repo](https://github.com/hashicorp/vault) |
-| **GitGuardian** | 🤖 Auto | ✅ | ⭐⭐⭐⭐⭐ | `ggshield` CLI • v1.41.0 • Pre-commit hooks | [gitguardian.com](https://www.gitguardian.com/) |
+| **GitGuardian** | 🤖 Auto | ✅ | ⭐⭐⭐⭐⭐ | `ggshield` CLI • v1.41.0 • Pre-commit hooks • Secret scanning | [gitguardian.com](https://www.gitguardian.com/) |
 | **Snyk** | 👤 Manual | ✅ | ⭐⭐⭐⭐ | `snyk test`, `snyk monitor` • v1.1298.1 • FREE 200/month | [snyk.io](https://snyk.io/) |
 | **Nuclei** | 👤 Manual | ✅ | ⭐⭐⭐⭐ | `nuclei -u target.com` • v3.3.7 • Template scanning | [repo](https://github.com/projectdiscovery/nuclei.git) |
 | **MCP-Scan** | 👤 Manual | ✅ | ⭐⭐⭐ | `mcp-scan scan <server>` • v0.3.2 • MCP security | [repo](https://github.com/invariantlabs-ai/mcp-scan) |
@@ -70,8 +70,8 @@
 
 | Tool | Type | Status | Usage | Link |
 |------|------|--------|--------|------|
-| **Continuous Learning** | 🤖 Auto | ✅ | Pattern recognition • `node .claude/solutions/continuous-learning.js analyze` | [LOCAL] |
-| **TRAIL System** | 🤖 Auto | ✅ | Error learning & solution recall • `.claude/solutions/search.sh "pattern"` | [LOCAL] |
+| **Continuous Learning** | 🤖 Auto | ✅ | Pattern recognition • Automatic optimization • `node .claude/solutions/continuous-learning.js analyze` | [LOCAL] |
+| **TRAIL System** | 🤖 Auto | ✅ | 3-level debugging • Error learning & solution recall • `.claude/solutions/search.sh "pattern"` | [LOCAL] |
 
 ## 📚 Security Resources & Documentation
 
@@ -89,7 +89,7 @@
 | Doc | Type | Usage | Link |
 |-----|------|--------|------|
 | **vybecoding Docs** | 📖 Local | Reference anytime via filesystem | `/home/happy/Projects/vybecoding/docs` |
-| **Tech Stack** | 📖 Local | Complete technology stack documentation | `/home/happy/Projects/vybecoding/docs/tech-stack.md` |
+| **Tech Stack** | 📖 Local | Complete technology stack documentation • ES modules • Next.js 15.4.4 | `/home/happy/Projects/vybecoding/docs/tech-stack.md` |
 | **Hooks System** | 📖 Local | Claude Code hooks documentation | `/home/happy/Projects/vybecoding/docs/tech-stack.md#-claude-code-hooks-system-` |
 | **VybeHacks** | 📖 Local | TRAIL, VERIFY-FIRST patterns | `/home/happy/Projects/vybecoding/docs/vybehacks` |
 | **Audit Checklist** | 📖 Local | Latest audit & consolidation checklist | `/home/happy/Projects/vybecoding/docs/audits/checklist-07-28-25.md` |

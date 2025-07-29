@@ -392,15 +392,15 @@ All hooks are now properly configured in `.claude/settings.json`:
 ### PostToolUse Hooks
 - **Auto-Commit**: Commits all changes to main branch with complexity indicators
 - **Environment Sanitization**: Cleans sensitive data from all tool outputs
-- **Post-Edit Sanitize**: XSS prevention on Edit/Write operations
+- **Post-Edit Sanitize**: XSS prevention on Edit/Write operations (ES module compatible)
 - **Continuous Learning**: Pattern recognition on Bash commands
 - **Orchestration**: BMAD story automation
 
 ### UserPromptSubmit Hook
-- **Post-Response Scan**: Detects malicious AI patterns in responses
+- **Post-Response Scan**: Detects malicious AI patterns in responses (ES module compatible)
 
 ### Stop Hook
-- Currently empty - task completion sounds handled by CCB
+- **Task Complete**: Plays guitar sound on session end
 
 ### Valid Hook Types
 - PreToolUse
@@ -480,6 +480,11 @@ This helps identify when to break down tasks further.
 ## BMAD Method v4.33.0 Integration
 
 The BMAD Method v4.33.0 provides structured story management through specialized agents, now available as Claude Code sub-agents for automatic delegation.
+
+### Completed Stories
+- **USER-001**: User Profile System ✅ (Comprehensive profiles with avatars, skills, social links)
+- **USER-002**: Apps Submission System ✅ (Multi-step form, image uploads, submission workflow)
+- **USER-003**: Guides Publishing System 📝 (Ready for development)
 
 ### Available BMAD Agents
 **Core Agents (Slash Commands and Sub-Agents):**

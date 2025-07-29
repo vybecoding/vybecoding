@@ -9,6 +9,8 @@ AI-powered development platform built with Next.js, featuring automated workflow
 - **Automated Workflows**: TRAIL system for automatic error learning and resolution
 - **Real-time Collaboration**: Powered by Convex for instant data synchronization
 - **Complete Auth System**: Clerk integration with SSO and multi-factor authentication
+- **User Profile System**: Comprehensive profiles with avatars, skills, and social links
+- **Apps Submission Platform**: Multi-step form for submitting and showcasing applications
 - **Payment Processing**: Stripe integration for subscriptions and one-time payments
 - **Calendar Scheduling**: Cal.com embedded for appointment booking
 - **Error Monitoring**: Sentry integration for automatic error tracking
@@ -20,8 +22,8 @@ AI-powered development platform built with Next.js, featuring automated workflow
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS + CSS Modules hybrid approach
 - **UI Components**: Shadcn UI components with custom wrapper layers
-- **Icons**: Lucide React (1000+ tree-shakeable icons)
-- **Database**: Convex (real-time, serverless)
+- **Icons**: Lucide React (1000+ tree-shakeable icons) + Radix UI Icons
+- **Database**: Convex (real-time, serverless with file storage)
 - **Authentication**: Clerk
 - **Payments**: Stripe
 - **Email**: Resend
@@ -29,6 +31,8 @@ AI-powered development platform built with Next.js, featuring automated workflow
 - **Testing**: Playwright + TRAIL System
 - **Theme**: Dark/Light mode with system preference support
 - **Tables**: TanStack Table for advanced data management
+- **Forms**: React Hook Form + Zod validation
+- **Security**: validator.js, DOMPurify, safe-compare
 
 ## 🏃 Quick Start
 
@@ -63,12 +67,27 @@ npm run convex   # Convex backend (in separate terminal)
 vybecoding/
 ├── app/                    # Next.js App Router pages
 │   ├── api/               # API routes
+│   ├── apps/              # Apps browsing and submission
 │   ├── dashboard/         # Dashboard pages
+│   │   └── apps/          # User's app submissions
+│   ├── profile/           # User profile pages
+│   │   ├── [userId]/      # Public profile view
+│   │   └── edit/          # Profile editing
 │   ├── pricing/           # Pricing page
 │   ├── services/          # Services page
 │   ├── theme-demo/        # Theme system demo
 │   └── test-error/        # Error boundary testing
 ├── components/            # React components
+│   ├── apps/              # App submission components
+│   │   ├── AppCard.tsx
+│   │   ├── AppGrid.tsx
+│   │   ├── AppSubmissionForm.tsx
+│   │   └── AppFormSteps/  # Multi-step form components
+│   ├── profile/           # User profile components
+│   │   ├── ProfileView.tsx
+│   │   ├── ProfileEdit.tsx
+│   │   ├── ProfileStats.tsx
+│   │   └── AvatarUpload.tsx
 │   ├── cal/              # Cal.com integration components
 │   ├── ui/               # Shadcn UI + custom components
 │   │   ├── button/       # Button wrapper system
@@ -112,7 +131,9 @@ vybecoding/
 │   └── test-libraries.tsx
 ├── convex/               # Convex backend
 │   ├── _generated/       # Auto-generated types
-│   └── users.ts          # User data model
+│   ├── apps.ts           # Apps data model and functions
+│   ├── storage.ts        # File storage for images
+│   └── users.ts          # User data model with profiles
 ├── contexts/             # React contexts
 │   └── ThemeContext.tsx  # Theme management
 ├── lib/                  # Utility functions
@@ -144,6 +165,10 @@ vybecoding/
 │   ├── agents/          # BMAD sub-agents
 │   ├── commands/        # Slash commands
 │   └── solutions/       # TRAIL system & scripts
+├── stories/              # BMAD user stories
+│   └── epic-01-user-management/
+│       ├── USER-001-profile-system.md  # ✅ Completed
+│       └── USER-002-apps-submission.md # ✅ Completed
 └── .bmad-core/          # BMAD Method v4.33.0
     ├── bmad-core/       # Core agents and tasks
     ├── expansion-packs/ # Infrastructure & DevOps

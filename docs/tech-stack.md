@@ -63,7 +63,7 @@ Preventing hallucination and toxic positivity in AI interactions.
 #### Task Complete Audio Notification
 **Problem:** No feedback when long-running tasks complete in background  
 **Solution:** Plays guitar sound notification when tasks finish  
-**Implementation:** `.claude/hooks/task-complete.sh` triggered on Stop event
+**Implementation:** `.claude/hooks/task-complete.sh` triggered on Stop event with proper timeouts
 
 #### Documentation Update Reminder
 **Problem:** Code changes accumulate without documentation updates  
@@ -94,15 +94,17 @@ Includes:
 
 ## 🤖 AI Agent Integration 🤖
 
-### BMAD Method Integration ✅
+### BMAD Method Integration v4.33.0 ✅
 **Problem:** Unstructured development workflows and story management  
 **Solution:** Specialized agents available as both slash commands and Claude Code sub-agents  
 **Implementation:** 
+- **Version:** v4.33.0 with full Claude Code integration
 - **Slash Commands:** `/dev`, `/sm`, `/qa`, `/po`, `/pm` for direct agent access
 - **Sub-Agents:** `bmad-dev`, `bmad-sm`, `bmad-qa`, etc. in `.claude/agents/`
 - **Auto-Delegation:** Claude Code automatically selects appropriate agent based on task
 - **Context Isolation:** Each sub-agent has its own clean context window
 - **Integration:** Works with TRAIL system for error learning and solution sharing
+- **Stories Completed:** USER-001 (Profile System), USER-002 (Apps Submission)
 
 #### BMAD Setup (One-Time)
 ```bash
@@ -176,6 +178,7 @@ Model Context Protocol (MCP) servers extend Claude's capabilities with specializ
 - **[Manual Servers](./mcp/manual-servers.md)** - Servers requiring explicit activation
 - **[Setup Guide](./mcp/setup-guide.md)** - Complete installation instructions
 - **[Security Hardening](./mcp/security.md)** - Security measures and best practices
+- **[Serena Integration](./mcp/serena.md)** - Symbol-level code navigation
 
 ### Quick Overview
 
@@ -212,7 +215,7 @@ ps aux | grep mcp
 - **Live Server Extension** - Instant feedback loop
 
 ### Phase 2: Frontend Development
-- **Next.js** - React framework with App Router (v15.4)
+- **Next.js** - React framework with App Router (v15.4.4) with ES module support
 - **TypeScript** - Type safety across the entire codebase
 - **Tailwind CSS** - Utility-first styling with custom design tokens
 - **Shadcn UI** - Modern component primitives with zero runtime
@@ -473,7 +476,7 @@ node .claude/solutions/continuous-learning.js report
 ## 🎯 Current Status 🎯
 
 ### ✅ Installed & Configured
-- **Core Infrastructure**: Convex, Clerk, Stripe, Sentry, Resend
+- **Core Infrastructure**: Convex, Clerk, Stripe (v18.3.0 with 2025.06.30.basil API), Sentry, Resend
 - **Development Tools**: BMAD Method v4.33.0, TRAIL System + Continuous Learning, Nuclei
 - **BMAD Agents**: 10+ specialized agents (Dev, SM, QA, PO, PM, Architect, Analyst, UX, DevOps, Doc Writer)
 - **Claude Code Integration**: 6 BMAD sub-agents in `.claude/agents/`, 20+ slash commands in `.claude/commands/`
@@ -482,6 +485,8 @@ node .claude/solutions/continuous-learning.js report
 - **Security Tools**: GitGuardian (unlimited), Snyk (200/month), HashiCorp Vault, Living off AI Monitor
 - **Testing**: Playwright, TRAIL with continuous learning, Parallel test execution
 - **Prototype**: Structured HTML pages with new app showcase, dashboard, and guides sections
+- **UI Components**: 30+ Shadcn UI components with wrapper pattern
+- **ES Module Support**: Full ES module configuration with "type": "module" in package.json
 
 ### ⏳ Post-MVP (Not Yet Installed)
 - **Deployment**: Vercel
@@ -500,3 +505,5 @@ node .claude/solutions/continuous-learning.js report
 - **Continuous Learning**: Self-improving system that gets smarter over time
 - **Pattern Recognition**: Automatic optimization based on historical data
 - **Knowledge Sharing**: Solution propagation across agents
+- **Auto-Commit System**: All Claude changes tracked with complexity indicators
+- **Session Reviews**: Comprehensive change tracking and recommendations
