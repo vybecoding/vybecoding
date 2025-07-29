@@ -18,14 +18,15 @@ AI-powered development platform built with Next.js, featuring automated workflow
 
 - **Framework**: Next.js 15.4 with App Router
 - **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: Shadcn/ui + Lucide Icons
+- **Styling**: Tailwind CSS + CSS Modules
+- **UI Components**: Shadcn/ui + Custom Card System + Lucide Icons
 - **Database**: Convex (real-time, serverless)
 - **Authentication**: Clerk
 - **Payments**: Stripe
 - **Email**: Resend
 - **Monitoring**: Sentry
 - **Testing**: Playwright + TRAIL System
+- **Theme**: Dark/Light mode with system preference support
 
 ## 🏃 Quick Start
 
@@ -52,6 +53,7 @@ npm run convex   # Convex backend (in separate terminal)
 | `npm run start` | Start production server |
 | `npm run test` | Run test suite |
 | `npm run convex` | Start Convex development backend |
+| `npm run demo` | Serve demo prototype at :8080 |
 
 ## 🏗️ Project Structure
 
@@ -61,26 +63,47 @@ vybecoding/
 │   ├── api/               # API routes
 │   ├── dashboard/         # Dashboard pages
 │   ├── pricing/           # Pricing page
-│   └── services/          # Services page
+│   ├── services/          # Services page
+│   ├── theme-demo/        # Theme system demo
+│   └── test-error/        # Error boundary testing
 ├── components/            # React components
 │   ├── cal/              # Cal.com integration components
-│   └── ui/               # Shadcn/ui components
+│   ├── ui/               # Shadcn/ui components
+│   │   ├── card/         # Card component system
+│   │   │   ├── Card.tsx  # Base card component
+│   │   │   ├── AppCard.tsx
+│   │   │   ├── GuideCard.tsx
+│   │   │   ├── MemberCard.tsx
+│   │   │   └── NewsCard.tsx
+│   │   └── button.tsx
+│   ├── ThemeToggle.tsx   # Theme switcher
+│   └── test-libraries.tsx
 ├── convex/               # Convex backend
 │   ├── _generated/       # Auto-generated types
 │   └── users.ts          # User data model
+├── contexts/             # React contexts
+│   └── ThemeContext.tsx  # Theme management
 ├── lib/                  # Utility functions
 │   ├── booking/          # Booking utilities
 │   ├── cal/              # Cal.com service
 │   ├── email/            # Email templates and service
 │   ├── stripe.ts         # Stripe configuration
 │   └── utils.ts          # Utility functions (cn())
+├── demo/                 # Vite-based prototype
+│   ├── pages/            # Demo HTML pages
+│   ├── images/           # Demo assets
+│   └── styles/           # Demo CSS
 ├── docs/                 # Documentation
+│   ├── architecture/     # System architecture docs
 │   ├── audits/           # Security and setup audits
 │   ├── bmad/             # BMAD method documentation
 │   ├── hooks/            # Claude Code hooks docs
 │   ├── mcp/              # Model Context Protocol docs
 │   ├── update/           # Documentation update logs
 │   └── vybehacks/        # VybeHacks patterns
+├── __tests__/            # Test files
+│   └── unit/            # Unit tests
+│       └── components/  # Component tests
 ├── .claude/              # Claude Code configuration
 │   ├── settings.json     # Hook configurations
 │   ├── config/          # MCP configuration

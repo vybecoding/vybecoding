@@ -41,7 +41,10 @@ vybecoding/
 │   ├── book/              # Booking page
 │   ├── sign-in/           # Auth pages
 │   ├── sign-up/
-│   ├── layout.tsx         # Root layout
+│   ├── theme-demo/         # Theme system demo
+│   ├── test-error/         # Error boundary testing
+│   ├── globals.css         # Global styles
+│   ├── layout.tsx         # Root layout with theme
 │   ├── page.tsx           # Home page
 │   └── ConvexClientProvider.tsx
 │
@@ -51,7 +54,20 @@ vybecoding/
 │   │   ├── CalEmbed.tsx
 │   │   └── CalFloatingButton.tsx
 │   ├── ui/                # Shadcn/ui components
-│   │   └── button.tsx     # Button component
+│   │   ├── button.tsx     # Button component
+│   │   └── card/          # Card system components
+│   │       ├── Card.tsx    # Base card component
+│   │       ├── CardGrid.tsx # Card grid layout
+│   │       ├── AppCard.tsx # App showcase card
+│   │       ├── GuideCard.tsx # Guide card
+│   │       ├── MemberCard.tsx # Member profile card
+│   │       ├── NewsCard.tsx # News/article card
+│   │       ├── examples.tsx # Card examples
+│   │       ├── index.ts    # Card exports
+│   │       ├── Card.module.css
+│   │       ├── CardGrid.module.css
+│   │       └── README.md   # Card documentation
+│   ├── ThemeToggle.tsx    # Theme switcher component
 │   └── test-libraries.tsx # Library test component
 │
 ├── convex/                 # Convex backend
@@ -60,6 +76,9 @@ vybecoding/
 │   ├── users.ts           # User functions
 │   └── hello.ts           # Example function
 │
+├── contexts/               # React contexts
+│   └── ThemeContext.tsx  # Theme provider & hooks
+│
 ├── lib/                    # Utility functions
 │   ├── booking/           # Booking utilities
 │   ├── cal/              # Cal.com service
@@ -67,7 +86,15 @@ vybecoding/
 │   ├── stripe.ts         # Stripe config
 │   └── utils.ts          # Utility helpers
 │
+├── __tests__/              # Test files
+│   └── unit/             # Unit tests
+│       └── components/   # Component tests
+│           ├── Card.test.tsx
+│           └── CardGrid.test.tsx
+│
 ├── docs/                   # Documentation
+│   ├── architecture/     # System architecture
+│   │   └── url-structure.md # URL patterns
 │   ├── audits/           # Security and setup audits
 │   │   ├── checklist-07-28-25.md
 │   │   ├── security-07-27-25.md
@@ -75,15 +102,19 @@ vybecoding/
 │   ├── bmad/             # BMAD documentation
 │   ├── hooks/            # Hook documentation
 │   ├── mcp/              # MCP documentation
+│   ├── update/           # Documentation updates
+│   │   └── update-2025-07-29-070203.md
 │   ├── vybehacks/        # VybeHacks patterns
 │   ├── commands.md       # Slash commands
-│   ├── human-workflow.md # Developer guide
+│   ├── demo-migration-plan.md # Demo to Next.js plan
 │   ├── libraries.md      # UI libraries
+│   ├── migration-progress-report.md # Migration status
 │   ├── security.md       # Security tools
 │   ├── setup.md          # Setup guide
-│   └── tech-stack.md     # Technology overview
+│   ├── tech-stack.md     # Technology overview
+│   └── theme-system.md   # Theme documentation
 │
-├── prototype/             # Vite-based demo prototype
+├── demo/                   # Vite-based demo prototype
 │   ├── dist/             # Build output
 │   ├── images/           # Demo images
 │   ├── pages/            # Structured HTML pages
