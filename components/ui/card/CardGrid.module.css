@@ -1,0 +1,96 @@
+/* CardGrid.module.css - Responsive Card Grid Layout */
+
+/* Base Grid Styles */
+.grid {
+  display: grid;
+  align-items: stretch; /* Cards stretch to match row height */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Column Layouts */
+.grid--columns-auto {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.grid--columns-1 {
+  grid-template-columns: 1fr;
+}
+
+.grid--columns-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid--columns-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--columns-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Gap Sizes */
+.grid--gap-sm {
+  gap: 1rem; /* 16px */
+}
+
+.grid--gap-md {
+  gap: 1.5rem; /* 24px */
+}
+
+.grid--gap-lg {
+  gap: 2rem; /* 32px */
+}
+
+/* Max Width Constraints */
+.grid--max-sm {
+  max-width: 640px;
+}
+
+.grid--max-md {
+  max-width: 768px;
+}
+
+.grid--max-lg {
+  max-width: 1024px;
+}
+
+.grid--max-xl {
+  max-width: 1200px;
+}
+
+.grid--max-full {
+  max-width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .grid--columns-3,
+  .grid--columns-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid--gap-lg {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid--columns-2,
+  .grid--columns-3,
+  .grid--columns-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid--columns-auto {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid--gap-md {
+    gap: 1rem;
+  }
+  
+  .grid--gap-lg {
+    gap: 1.25rem;
+  }
+}
