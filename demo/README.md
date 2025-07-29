@@ -42,10 +42,11 @@ Modern AI-powered development platform demo built with Vite and modern web techn
 # Install dependencies
 npm install
 
-# Start development server
-npm run dev
+# Start development server on port 8080 (to avoid conflict with main app)
+npm run demo
 
-# Open http://localhost:3000
+# Or use Vite dev server on port 3000
+npm run dev
 ```
 
 ### Available Scripts

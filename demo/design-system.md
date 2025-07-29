@@ -399,7 +399,7 @@ background: linear-gradient(90deg,
 ## File Structure
 
 ```
-prototype/
+demo/
 ├── css/
 │   ├── design-tokens.css         # CSS custom properties
 │   ├── styles.css                # Component styles

@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "test": "node test-runner.js",
-    "convex": "convex dev"
+    "convex": "convex dev",
+    "demo": "python3 -m http.server 8080 --directory demo"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
