@@ -94,4 +94,81 @@ export default defineSchema({
     .index("by_status", ["status"])
     .index("by_category", ["category"])
     .index("by_created", ["createdAt"]),
+
+  // Guides publishing system
+  guides: defineTable({
+    // Author info
+    authorId: v.string(),
+    
+    // Content
+    title: v.string(),
+    slug: v.string(),
+    content: v.string(), // Markdown content
+    excerpt: v.string(), // Auto-generated or custom
+    
+    // Metadata
+    category: v.string(),
+    tags: v.array(v.string()),
+    difficulty: v.string(), // beginner, intermediate, advanced
+    readingTime: v.number(), // Estimated minutes
+    
+    // SEO
+    seoTitle: v.optional(v.string()),
+    seoDescription: v.optional(v.string()),
+    seoImage: v.optional(v.string()),
+    
+    // Organization
+    seriesId: v.optional(v.string()),
+    seriesOrder: v.optional(v.number()),
+    
+    // Status
+    status: v.string(), // draft, published, unpublished
+    publishedAt: v.optional(v.number()),
+    scheduledAt: v.optional(v.number()),
+    
+    // Versioning
+    versions: v.array(v.object({
+      content: v.string(),
+      title: v.string(),
+      savedAt: v.number(),
+      wordCount: v.number()
+    })),
+    
+    // Analytics
+    views: v.number(),
+    uniqueReaders: v.number(),
+    totalReadingTime: v.number(),
+    completions: v.number(),
+    
+    // Timestamps
+    createdAt: v.number(),
+    updatedAt: v.number(),
+    lastEditedAt: v.number()
+  })
+    .index("by_author", ["authorId"])
+    .index("by_status", ["status"])
+    .index("by_category", ["category"])
+    .index("by_published", ["publishedAt"])
+    .index("by_slug", ["slug"]),
+
+  guideSeries: defineTable({
+    name: v.string(),
+    description: v.string(),
+    authorId: v.string(),
+    coverImage: v.optional(v.string()),
+    createdAt: v.number()
+  })
+    .index("by_author", ["authorId"]),
+
+  guideReadingProgress: defineTable({
+    guideId: v.string(),
+    userId: v.string(),
+    progress: v.number(), // 0-100 percentage
+    lastReadAt: v.number(),
+    bookmarked: v.boolean(),
+    completed: v.boolean()
+  })
+    .index("by_user", ["userId"])
+    .index("by_guide", ["guideId"])
+    .index("by_user_guide", ["userId", "guideId"]),
 });
