@@ -1,7 +1,5 @@
-// Re-export Shadcn badge as our Badge with additional variants
 export { Badge } from './Badge';
 export type { BadgeProps } from './Badge';
 
-// Re-export our custom Tag components
 export { Tag, TagGroup } from './Tag';
 export type { TagProps, TagGroupProps } from './Tag';
