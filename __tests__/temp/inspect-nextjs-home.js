@@ -29,7 +29,7 @@ async function inspectNextJsHome() {
   try {
     // Navigate to the home page
     await page.goto('http://localhost:3000', {
-      waitUntil: 'networkidle',
+      waitUntil: 'domcontentloaded',
       timeout: 30000
     });
     
