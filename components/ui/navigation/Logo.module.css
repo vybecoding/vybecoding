@@ -36,10 +36,10 @@
     #8a2be2 360deg
   );
   border-radius: 0.5rem;
-  animation: spin 3s linear infinite;
+  animation: logo-spin 14s linear infinite;
 }
 
-@keyframes spin {
+@keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
@@ -57,6 +57,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  perspective: 100px;
 }
 
 .letter {
@@ -64,16 +65,15 @@
   width: 1.5rem;
   height: 1.5rem;
   transform-style: preserve-3d;
-  animation: flip 4s ease-in-out infinite;
+  animation: letterRotate 14s linear infinite;
 }
 
-@keyframes flip {
-  0%, 45% {
-    transform: rotateY(0deg);
-  }
-  55%, 100% {
-    transform: rotateY(180deg);
-  }
+@keyframes letterRotate {
+  0% { transform: rotateY(0deg); }
+  25% { transform: rotateY(90deg); }
+  50% { transform: rotateY(180deg); }
+  75% { transform: rotateY(270deg); }
+  100% { transform: rotateY(360deg); }
 }
 
 .v, .c {
@@ -89,11 +89,11 @@
 }
 
 .v {
-  transform: rotateY(0deg) translateZ(0px);
+  transform: rotateY(0deg) translateZ(0px) translateX(0.4px) translateY(-2.0px);
 }
 
 .c {
-  transform: rotateY(180deg) translateZ(0px);
+  transform: rotateY(180deg) translateZ(0px) translateX(0.4px) translateY(-2.0px);
 }
 
 .text {
@@ -104,7 +104,7 @@
 .name {
   font-size: 1.25rem;
   font-weight: 600;
-  background: linear-gradient(135deg, #b475ff 0%, #00d9ff 100%);
+  background: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
