@@ -7,9 +7,9 @@
 
 ## 📊 Overall Progress
 
-- **Stories Completed:** 3/46 (7%)
-- **Points Completed:** 18/298 (6%)
-- **Current Status:** Foundation complete, DEMO-003 & DEMO-004 approved, DEMO-005 ready for verification
+- **Stories Completed:** 5/46 (11%)
+- **Points Completed:** 39/298 (13%)
+- **Current Status:** Foundation & Batch 1 complete, DEMO-001 through DEMO-005 approved
 
 ## 🚀 Execution Batches
 
@@ -19,6 +19,14 @@
   - Visual Verification: ✅ Complete
   - Story Workflow: ✅ Complete
   - **Status**: APPROVED
+
+### ✅ Batch 1: Core Pages (Complete)
+- [x] DEMO-001: Home/Landing Page (13 points) ✅
+  - Implementation: ✅ Complete
+  - Visual Verification: ✅ Complete (manual)
+  - Story Workflow: ✅ Complete
+  - **Status**: APPROVED
+  - **Notes**: Implemented all 7 sections from demo. Hero height adjusted to 90vh for better down arrow visibility. All content sections match demo structure.
 
 ### 🔄 Batch 1: Core Pages (In Progress)
 - [x] DEMO-003: Services Page (5 points) ✅

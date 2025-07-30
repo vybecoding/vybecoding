@@ -29,56 +29,195 @@ export default function Hero({ className }: HeroProps) {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    // Particle system
-    const particles: Array<{
+    // Galaxy Starfield - Fixed pulsing stars
+    const stars: Array<{
       x: number
       y: number
       size: number
-      speedX: number
-      speedY: number
+      baseSize: number
       opacity: number
+      baseOpacity: number
       color: string
+      pulsePhase: number
+      pulseSpeed: number
+      starType: 'major' | 'minor' | 'micro'
     }> = []
 
-    const colors = ['#8a2be2', '#d946a0', '#e96b3a']
-    const particleCount = 80
+    const colors = ['#8a2be2', '#d946a0', '#e96b3a', '#ffffff', '#a855f7'] // vybe colors + white/light purple
+    const starCount = 400 // Double the stars - dense galaxy
 
-    // Initialize particles
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
+    // Initialize galaxy starfield
+    for (let i = 0; i < starCount; i++) {
+      // Star distribution: 10% major, 30% minor, 60% micro
+      const rand = Math.random()
+      let starType: 'major' | 'minor' | 'micro'
+      let baseSize: number
+      let baseOpacity: number
+      let colorIndex: number
+
+      if (rand < 0.1) {
+        // Major stars - bright, larger, brand colors (capped size)
+        starType = 'major'
+        baseSize = Math.random() * 1 + 1.2 // 1.2 to 2.2 (smaller max)
+        baseOpacity = Math.random() * 0.4 + 0.4 // 0.4 to 0.8
+        colorIndex = Math.floor(Math.random() * 3) // Only brand colors
+      } else if (rand < 0.4) {
+        // Minor stars - medium, mix of colors (capped size)
+        starType = 'minor'
+        baseSize = Math.random() * 0.8 + 0.6 // 0.6 to 1.4 (smaller max)
+        baseOpacity = Math.random() * 0.3 + 0.25 // 0.25 to 0.55
+        colorIndex = Math.floor(Math.random() * colors.length) // All colors
+      } else {
+        // Micro stars - small, mostly white/subtle (capped size)
+        starType = 'micro'
+        baseSize = Math.random() * 0.6 + 0.2 // 0.2 to 0.8 (smaller max)
+        baseOpacity = Math.random() * 0.2 + 0.1 // 0.1 to 0.3
+        colorIndex = Math.random() < 0.7 ? 3 : 4 // Mostly white, some light purple
+      }
+      
+      stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.3,
-        color: colors[Math.floor(Math.random() * colors.length)]
+        size: baseSize,
+        baseSize: baseSize,
+        opacity: baseOpacity,
+        baseOpacity: baseOpacity,
+        color: colors[colorIndex],
+        pulsePhase: Math.random() * Math.PI * 2, // Random starting phase
+        pulseSpeed: Math.random() * 0.004 + 0.001, // 0.001 to 0.005 (even slower, more realistic)
+        starType: starType
       })
     }
 
-    // Animation loop
+    // Rising particles system (like demo)
+    const risingParticles: Array<{
+      x: number
+      y: number
+      size: number
+      speedY: number
+      opacity: number
+      color: string
+      life: number
+      maxLife: number
+    }> = []
+
+    const maxRisingParticles = 25 // More particles for denser effect
+    const particleColors = ['#8a2be2', '#d946a0', '#e96b3a', '#ffffff'] // Add white like demo
+
+    // Function to spawn new rising particles (exact demo style)
+    const spawnRisingParticle = () => {
+      if (risingParticles.length < maxRisingParticles) {
+        // Spawn 1-3 particles at once (like demo bursts)
+        const particlesToSpawn = Math.floor(Math.random() * 3) + 1
+        
+        for (let i = 0; i < particlesToSpawn; i++) {
+          const maxLife = Math.random() * 20000 + 15000 // 15-35 seconds (very long journey)
+          risingParticles.push({
+            x: Math.random() * canvas.width,
+            y: canvas.height + Math.random() * 50, // Spawn slightly below screen
+            size: Math.random() * 0.8 + 0.2, // 0.2 to 1px (very tiny like demo)
+            speedY: -(Math.random() * 0.3 + 0.05), // 0.05 to 0.35 upward (very slow drift)
+            opacity: Math.random() * 0.35 + 0.05, // 0.05 to 0.4 (very subtle)
+            color: particleColors[Math.floor(Math.random() * particleColors.length)],
+            life: 0,
+            maxLife: maxLife
+          })
+        }
+      }
+    }
+
+    // Initial spawn and continuous spawning (demo pattern)
+    spawnRisingParticle() // Spawn some immediately
+    const particleSpawnInterval = setInterval(spawnRisingParticle, Math.random() * 2000 + 800) // Every 0.8-2.8 seconds
+
+    // Galaxy animation loop - fixed pulsing stars + rising particles
     let animationId: number
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      particles.forEach(particle => {
-        // Update position
-        particle.x += particle.speedX
+      // Update and draw stars
+      stars.forEach(star => {
+        // Stars are fixed in position - smooth fade in/out twinkling
+        star.pulsePhase += star.pulseSpeed
+        
+        // Smooth sine wave for gentle fade in/out (no harsh blinking)
+        const fadeMultiplier = (Math.sin(star.pulsePhase) + 1) / 2 // 0 to 1 (smooth fade)
+        const smoothTwinkle = 0.3 + (fadeMultiplier * 0.7) // 0.3 to 1.0 range (never fully disappears)
+        
+        star.size = star.baseSize // Keep size constant
+        star.opacity = star.baseOpacity * smoothTwinkle
+
+        // Draw star with appropriate glow based on type
+        ctx.beginPath()
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
+        
+        if (star.starType === 'major') {
+          // Major stars get strong glow
+          const gradient = ctx.createRadialGradient(
+            star.x, star.y, 0,
+            star.x, star.y, star.size * 3
+          )
+          gradient.addColorStop(0, star.color)
+          gradient.addColorStop(0.6, `${star.color}20`) // 20% opacity
+          gradient.addColorStop(1, 'transparent')
+          ctx.fillStyle = gradient
+        } else if (star.starType === 'minor') {
+          // Minor stars get subtle glow  
+          const gradient = ctx.createRadialGradient(
+            star.x, star.y, 0,
+            star.x, star.y, star.size * 2
+          )
+          gradient.addColorStop(0, star.color)
+          gradient.addColorStop(0.8, `${star.color}10`) // 10% opacity
+          gradient.addColorStop(1, 'transparent')
+          ctx.fillStyle = gradient
+        } else {
+          // Micro stars are simple dots
+          ctx.fillStyle = star.color
+        }
+        
+        ctx.globalAlpha = star.opacity
+        ctx.fill()
+      })
+
+      // Update and draw rising particles
+      for (let i = risingParticles.length - 1; i >= 0; i--) {
+        const particle = risingParticles[i]
+        
+        // Update particle
         particle.y += particle.speedY
-
-        // Wrap around screen
-        if (particle.x < 0) particle.x = canvas.width
-        if (particle.x > canvas.width) particle.x = 0
-        if (particle.y < 0) particle.y = canvas.height
-        if (particle.y > canvas.height) particle.y = 0
-
-        // Draw particle
+        particle.life += 16.67 // Assuming 60fps (1000/60)
+        
+        // Demo-style fade: Start faint, peak in middle, fade out
+        const lifetimeProgress = particle.life / particle.maxLife
+        let fadeMultiplier
+        
+        if (lifetimeProgress < 0.3) {
+          // Fade in during first 30% of life
+          fadeMultiplier = lifetimeProgress / 0.3
+        } else if (lifetimeProgress < 0.7) {
+          // Stay visible during middle 40% of life
+          fadeMultiplier = 1
+        } else {
+          // Fade out during last 30% of life
+          fadeMultiplier = (1 - lifetimeProgress) / 0.3
+        }
+        
+        particle.opacity = (particle.opacity * 0.6) * fadeMultiplier // Apply demo-style fade curve
+        
+        // Remove particle if it's done
+        if (particle.life >= particle.maxLife || particle.y < -10) {
+          risingParticles.splice(i, 1)
+          continue
+        }
+        
+        // Draw tiny rising particle
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
         ctx.fillStyle = particle.color
         ctx.globalAlpha = particle.opacity
         ctx.fill()
-      })
+      }
 
       ctx.globalAlpha = 1
       animationId = requestAnimationFrame(animate)
@@ -87,6 +226,7 @@ export default function Hero({ className }: HeroProps) {
 
     return () => {
       cancelAnimationFrame(animationId)
+      clearInterval(particleSpawnInterval)
       window.removeEventListener('resize', resizeCanvas)
     }
   }, [])
@@ -161,8 +301,8 @@ export default function Hero({ className }: HeroProps) {
             <Link 
               href="/pricing"
               className={cn(
-                "inline-block bg-gradient-to-r from-vybe-purple to-vybe-pink",
-                "text-white text-xl px-12 py-4 rounded-lg font-semibold",
+                "inline-block bg-gradient-to-r from-vybe-purple to-vybe-orange",
+                "text-white text-xl px-12 py-4 rounded-3xl font-semibold",
                 "hover:shadow-lg hover:shadow-vybe-purple/25 hover:-translate-y-0.5",
                 "transition-all duration-300 transform",
                 "focus:outline-none focus:ring-2 focus:ring-vybe-purple focus:ring-offset-2 focus:ring-offset-gray-900"
