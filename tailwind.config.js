@@ -115,6 +115,7 @@ module.exports = {
   			'particle-float': 'particleFloat 12.5s linear infinite',
   			'neural-pulse': 'neuralPulse 5s ease-in-out infinite',
 			'spin-slow': 'spin 8s linear infinite',
+			'shimmer': 'shimmer 2s linear infinite',
   		},
   		keyframes: {
   			glow: {
@@ -224,7 +225,12 @@ module.exports = {
   					transform: 'scale(1.5)',
   					opacity: '0.3'
   				}
-  			}
+  			},
+			shimmer: {
+				'100%': {
+					transform: 'translateX(100%)'
+				}
+			}
   		}
   	}
   },

@@ -15,11 +15,11 @@ const variantMap = {
   outline: "outline" as const,
 }
 
-// Map our sizes
+// Map our sizes - matching demo exactly
 const sizeClasses = {
-  sm: "text-xs px-2 py-0.5",
-  md: "text-sm px-2.5 py-0.5",
-  lg: "text-base px-3 py-1",
+  sm: "text-xs px-2 py-1",
+  md: "text-xs px-2 py-1.5", // Demo standard size
+  lg: "text-sm px-3 py-2",
 }
 
 export interface BadgeProps extends Omit<ShadcnBadgeProps, "variant"> {
