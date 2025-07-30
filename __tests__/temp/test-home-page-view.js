@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 
 test('capture home page for viewing', async ({ page }) => {
   // Navigate to home page
-  await page.goto('http://localhost:3000');
+  await page.goto('http://localhost:3003');
   
   // Wait for page to load completely
   await page.waitForLoadState('networkidle');
