@@ -1,4 +1,4 @@
-# DEMO-007: Sign Up Page Migration
+# DEMO-006: Sign Up Page Migration
 
 **Epic:** Pixel-Perfect Demo Migration  
 **Priority:** High  

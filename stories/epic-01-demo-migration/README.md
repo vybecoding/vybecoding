@@ -45,21 +45,25 @@ This epic tracks the complete pixel-perfect migration of all 46 vybecoding demo 
 
 This epic contains **46 individual page stories** (DEMO-001 through DEMO-046), one for each HTML page in the demo. Each story focuses on pixel-perfect migration of a single page with comprehensive visual verification.
 
+### Reference Documentation
+| Document | Purpose | Location |
+|----------|---------|----------|
+| Design System Foundation | Component library patterns and reusable elements | `/reference/design-system-foundation.md` |
+
 ### Core Pages (Ready for Development)
 | Story ID | Page | Path | Priority | Points |
 |----------|------|------|----------|--------|
 | DEMO-001 | Home/Landing | `/index.html` | Critical | 13 |
-| DEMO-002 | Design System Showcase | `/design-system-showcase.html` | High | 8 |
-| DEMO-003 | Dashboard Home | `/pages/dashboard.html` | High | 8 |
-| DEMO-004 | Apps Browse | `/pages/apps/browse.html` | High | 8 |
-| DEMO-005 | Guides Browse | `/pages/guides/browse.html` | High | 8 |
+| DEMO-002 | Dashboard Home | `/pages/dashboard.html` | High | 8 |
+| DEMO-003 | Apps Browse | `/pages/apps/browse.html` | High | 8 |
+| DEMO-004 | Guides Browse | `/pages/guides/browse.html` | High | 8 |
+| DEMO-005 | Sign In | `/pages/auth/sign-in.html` | High | 5 |
+| DEMO-006 | Sign Up | `/pages/auth/sign-up.html` | High | 5 |
 
 ### Authentication Pages
 | Story ID | Page | Path | Priority | Points |
 |----------|------|------|----------|--------|
-| DEMO-006 | Sign In | `/pages/auth/sign-in.html` | High | 5 |
-| DEMO-007 | Sign Up | `/pages/auth/sign-up.html` | High | 5 |
-| DEMO-008 | Forgot Password | `/pages/auth/forgot-password.html` | Medium | 3 |
+| DEMO-007 | Forgot Password | `/pages/auth/forgot-password.html` | Medium | 3 |
 
 ### Content Pages  
 | Story ID | Page | Path | Priority | Points |

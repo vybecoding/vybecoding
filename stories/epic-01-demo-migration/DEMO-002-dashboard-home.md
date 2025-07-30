@@ -1,4 +1,4 @@
-# DEMO-003: Dashboard Home Page Migration
+# DEMO-002: Dashboard Home Page Migration
 
 **Epic:** Pixel-Perfect Demo Migration  
 **Priority:** High  

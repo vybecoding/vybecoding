@@ -1,4 +1,4 @@
-# DEMO-004: Apps Browse Page Migration
+# DEMO-003: Apps Browse Page Migration
 
 **Epic:** Pixel-Perfect Demo Migration  
 **Priority:** High  

@@ -1,4 +1,4 @@
-# DEMO-005: Guides Browse Page Migration
+# DEMO-004: Guides Browse Page Migration
 
 **Epic:** Pixel-Perfect Demo Migration  
 **Priority:** High  
