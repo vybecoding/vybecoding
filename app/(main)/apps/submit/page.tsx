@@ -4,9 +4,7 @@ import React from "react";
 import { useSearchParams } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import { Container } from "@/components/ui/layout";
 import { AppSubmissionForm } from "@/components/apps/AppSubmissionForm";
-import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import { Id } from "@/convex/_generated/dataModel";
 
@@ -41,23 +39,28 @@ export default function AppSubmitPage() {
   }
 
   return (
-    <Container className="py-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="page-container nebula-background min-h-screen">
+      {/* Nebula backgrounds */}
+      <div className="nebula-middle"></div>
+      <div className="nebula-bottom"></div>
+      
+      <div className="max-w-6xl mx-auto px-6 relative z-10 py-8">
         {/* Header */}
         <div className="mb-8">
-          <Button
-            variant="ghost"
+          <button
             onClick={() => router.back()}
-            className="flex items-center gap-2 mb-4"
+            className="btn btn-secondary mb-4 flex items-center gap-2"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
-          </Button>
+          </button>
           
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">
-            {appIdOrUndefined ? "Edit App" : "Submit Your App"}
+          <h1 className="text-4xl font-light mb-4">
+            <span className="gradient-text">
+              {appIdOrUndefined ? "Edit App" : "Submit Your App"}
+            </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
+          <p className="text-vybe-gray-300 text-xl max-w-3xl leading-relaxed">
             Share your creation with the VybeCoding community
           </p>
         </div>
@@ -65,6 +68,6 @@ export default function AppSubmitPage() {
         {/* Submission Form */}
         <AppSubmissionForm appId={appIdOrUndefined} />
       </div>
-    </Container>
+    </div>
   );
 }

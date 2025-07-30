@@ -248,11 +248,6 @@ export const getAppById = query({
 
     // Get user details
     const user = await ctx.db.get(app.userId as Id<"users">);
-    
-    // Increment view count
-    await ctx.db.patch(args.appId, {
-      views: (app.views || 0) + 1
-    });
 
     return {
       ...app,
@@ -263,6 +258,40 @@ export const getAppById = query({
         isPro: user.isPro || false,
       } : null,
     };
+  },
+});
+
+// Get app for editing (owner only)
+export const getApp = query({
+  args: { id: v.id("apps") },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) return null;
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", identity.subject))
+      .first();
+    
+    if (!user) return null;
+
+    const app = await ctx.db.get(args.id);
+    if (!app || app.userId !== user._id) return null;
+
+    return app;
+  },
+});
+
+// Increment app view count (separate mutation)
+export const incrementAppViews = mutation({
+  args: { appId: v.id("apps") },
+  handler: async (ctx, args) => {
+    const app = await ctx.db.get(args.appId);
+    if (!app) return;
+
+    await ctx.db.patch(args.appId, {
+      views: (app.views || 0) + 1
+    });
   },
 });
 

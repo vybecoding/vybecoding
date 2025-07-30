@@ -1,12 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { Container } from "@/components/ui/layout";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function AppDetailPage() {
   const params = useParams();
@@ -15,6 +16,15 @@ export default function AppDetailPage() {
   const app = useQuery(api.apps.getAppById, { 
     appId: appId as Id<"apps"> 
   });
+  
+  const incrementViews = useMutation(api.apps.incrementAppViews);
+  
+  // Increment view count when app loads
+  useEffect(() => {
+    if (app && appId) {
+      incrementViews({ appId: appId as Id<"apps"> });
+    }
+  }, [app, appId, incrementViews]);
 
   if (!app) {
     return (

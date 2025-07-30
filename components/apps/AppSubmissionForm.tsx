@@ -114,10 +114,9 @@ interface AppSubmissionFormProps {
 
 const FORM_STEPS = [
   { id: 1, name: "Basic Info", component: BasicInfoStep },
-  { id: 2, name: "Visual Assets", component: VisualAssetsStep },
-  { id: 3, name: "Links", component: LinksStep },
-  { id: 4, name: "Technical", component: TechnicalStep },
-  { id: 5, name: "Review", component: ReviewStep },
+  { id: 2, name: "Details", component: TechnicalStep },
+  { id: 3, name: "Preview", component: ReviewStep },
+  { id: 4, name: "Submit", component: ReviewStep },
 ];
 
 export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
@@ -287,13 +286,13 @@ export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
   const getStepFields = (step: number): (keyof AppFormData)[] => {
     switch (step) {
       case 1:
-        return ["name", "shortDescription", "fullDescription", "category", "tags"];
+        return ["name", "liveUrl", "category", "shortDescription"];
       case 2:
-        return ["iconUrl", "screenshots", "demoVideoUrl"];
+        return ["techStack", "tags", "fullDescription", "githubUrl", "demoVideoUrl"];
       case 3:
-        return ["liveUrl", "appStoreUrl", "playStoreUrl", "githubUrl", "documentationUrl"];
+        return []; // Preview step - no validation needed
       case 4:
-        return ["techStack", "platforms", "license"];
+        return []; // Submit step - no validation needed
       default:
         return [];
     }
@@ -303,124 +302,119 @@ export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
   const CurrentStepComponent = FORM_STEPS[currentStep - 1].component;
 
   return (
-    <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-        {/* Progress Bar */}
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span>Step {currentStep} of {FORM_STEPS.length}</span>
-            <span>{FORM_STEPS[currentStep - 1].name}</span>
-          </div>
-          <Progress value={progress} className="h-2" />
-        </div>
-
-        {/* Step Indicators */}
-        <div className="flex justify-between">
-          {FORM_STEPS.map((step) => (
-            <div
-              key={step.id}
-              className={`flex items-center ${
-                step.id < FORM_STEPS.length ? "flex-1" : ""
-              }`}
-            >
-              <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                  step.id < currentStep
-                    ? "bg-green-500 text-white"
-                    : step.id === currentStep
-                    ? "bg-blue-500 text-white"
-                    : "bg-gray-200 dark:bg-gray-700 text-gray-500"
-                }`}
-              >
-                {step.id < currentStep ? "✓" : step.id}
-              </div>
-              {step.id < FORM_STEPS.length && (
-                <div
-                  className={`flex-1 h-0.5 mx-2 ${
-                    step.id < currentStep
-                      ? "bg-green-500"
-                      : "bg-gray-200 dark:bg-gray-700"
-                  }`}
-                />
-              )}
+    <div className="page-container nebula-background min-h-screen">
+      {/* Nebula backgrounds */}
+      <div className="nebula-middle"></div>
+      <div className="nebula-bottom"></div>
+      
+      <div className="max-w-4xl mx-auto px-6 relative z-10 py-8">
+        <FormProvider {...form}>
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+            {/* Progress Indicator - Demo Style */}
+            <div className="flex justify-between items-center mb-8 relative overflow-x-auto">
+              <div className="absolute top-5 left-0 right-0 h-0.5 bg-vybe-gray-800 z-0"></div>
+              
+              {FORM_STEPS.map((step, index) => (
+                <div 
+                  key={step.id}
+                  className="flex flex-col items-center relative z-10 cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0 px-2"
+                  onClick={() => {
+                    if (step.id <= currentStep) {
+                      setCurrentStep(step.id);
+                    }
+                  }}
+                >
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold mb-2 ${
+                    step.id === currentStep 
+                      ? "bg-vybe-orange text-white"
+                      : step.id < currentStep
+                      ? "bg-green-500 text-white"
+                      : "bg-vybe-gray-800 text-vybe-gray-400"
+                  }`}>
+                    {step.id < currentStep ? "✓" : step.id}
+                  </div>
+                  <span className={`text-sm font-medium whitespace-nowrap ${
+                    step.id === currentStep
+                      ? "text-vybe-orange" 
+                      : step.id < currentStep
+                      ? "text-green-400"
+                      : "text-vybe-gray-400"
+                  }`}>
+                    {step.name}
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        {/* Form Content */}
-        <Card>
-          <CardContent className="pt-6">
-            <CurrentStepComponent 
-              {...(currentStep === 5 && { 
-                status: existingApp?.status || "draft",
-                isSubmitting 
-              })}
-            />
-          </CardContent>
-        </Card>
+            {/* Form Content */}
+            <div className="vybe-card p-8">
+              <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                {currentStep === 1 && "Basic Information"}
+                {currentStep === 2 && "App Details"}
+                {currentStep === 3 && "Preview Your Submission"}
+                {currentStep === 4 && "Submit Your App"}
+              </h2>
+              <CurrentStepComponent 
+                {...(currentStep >= 3 && { 
+                  status: existingApp?.status || "draft",
+                  isSubmitting 
+                })}
+              />
+            </div>
 
-        {/* Form Actions */}
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            {currentStep > 1 && (
-              <Button
-                type="button"
-                variant="outline"
-                onClick={handlePrevStep}
-                disabled={isSaving || isSubmitting}
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Previous
-              </Button>
-            )}
-            
-            <Button
-              type="button"
-              variant="outline"
-              onClick={handleSaveDraft}
-              disabled={isSaving || isSubmitting || !form.formState.isDirty}
-            >
-              {isSaving ? (
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              ) : (
-                <Save className="w-4 h-4 mr-2" />
-              )}
-              Save Draft
-            </Button>
-            
-            {lastSaved && (
-              <span className="text-sm text-gray-500">
-                Last saved: {lastSaved.toLocaleTimeString()}
-              </span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-4">
-            {currentStep < FORM_STEPS.length ? (
-              <Button
-                type="button"
-                onClick={handleNextStep}
-                disabled={isSaving || isSubmitting}
-              >
-                Next
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                disabled={isSaving || isSubmitting}
-              >
-                {isSubmitting ? (
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4 mr-2" />
+            {/* Form Actions */}
+            <div className="flex justify-between mt-8">
+              <div className="flex items-center gap-4">
+                {currentStep > 1 && (
+                  <button
+                    type="button"
+                    onClick={handlePrevStep}
+                    disabled={isSaving || isSubmitting}
+                    className="btn btn-secondary"
+                  >
+                    ← Back
+                  </button>
                 )}
-                Submit for Review
-              </Button>
-            )}
-          </div>
-        </div>
-      </form>
-    </FormProvider>
-  );
+                
+                {/* Auto-save indicator */}
+                {lastSaved && (
+                  <span className="text-sm text-vybe-gray-400">
+                    Last saved: {lastSaved.toLocaleTimeString()}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-4">
+                {currentStep < FORM_STEPS.length ? (
+                  <button
+                    type="button"
+                    onClick={handleNextStep}
+                    disabled={isSaving || isSubmitting}
+                    className="btn btn-primary-orange"
+                  >
+                    {currentStep === 1 && "Continue to Details"}
+                    {currentStep === 2 && "Next: Preview →"}
+                    {currentStep === 3 && "Next: Submit →"}
+                  </button>
+                ) : (
+                  <button
+                    type="submit"
+                    disabled={isSaving || isSubmitting}
+                    className="btn btn-primary-orange"
+                    id="submit-app-btn"
+                  >
+                    {isSubmitting ? (
+                      <>Loading...</>
+                    ) : (
+                      "Submit App for Review"
+                    )}
+                  </button>
+                )}
+              </div>
+            </div>
+          </form>
+        </FormProvider>
+      </div>
+    </div>
 }
