@@ -15,29 +15,25 @@ import { chromium } from 'playwright';
   const page = await context.newPage();
   
   try {
-    // Navigate to demo pricing page using hash fragment
-    console.log('📍 Navigating to demo pricing page using hash (#pricing)...');
+    // Navigate to demo home page first, then to pricing section
+    console.log('📍 Navigating to demo pricing section...');
     await page.goto('http://localhost:8080/#pricing', {
       waitUntil: 'networkidle'
     });
     
     // Wait for pricing section to be visible
     await page.waitForSelector('#pricing', { state: 'visible' });
+    await page.waitForSelector('.glass-card', { state: 'visible' });
     
     console.log('✅ Demo pricing page loaded successfully');
     
-    // Scroll to pricing section to ensure it's in view
-    await page.evaluate(() => {
-      document.querySelector('#pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    
-    // Wait a moment for smooth scroll
+    // Page is already loaded, no need to scroll
     await page.waitForTimeout(1000);
     
     // Extract pricing information
     const pricingData = await page.evaluate(() => {
       const plans = [];
-      const pricingCards = document.querySelectorAll('.glass-card');
+      const pricingCards = document.querySelectorAll('#pricing .glass-card');
       
       pricingCards.forEach(card => {
         // Extract tier name from badge
@@ -69,8 +65,8 @@ import { chromium } from 'playwright';
       });
       
       // Also get page title and subtitle
-      const title = document.querySelector('#pricing h2')?.textContent || '';
-      const subtitle = document.querySelector('#pricing p')?.textContent || '';
+      const title = document.querySelector('h1')?.textContent || document.querySelector('h2')?.textContent || '';
+      const subtitle = document.querySelector('.tagline')?.textContent || document.querySelector('main > p')?.textContent || '';
       
       return {
         title,
@@ -99,7 +95,7 @@ import { chromium } from 'playwright';
     
     const visualElements = await page.evaluate(() => {
       const section = document.querySelector('#pricing');
-      const cards = section.querySelectorAll('.glass-card');
+      const cards = section ? section.querySelectorAll('.glass-card') : [];
       
       // Check for gradients
       const gradients = [];
@@ -117,7 +113,7 @@ import { chromium } from 'playwright';
       });
       
       // Check for hover states
-      const buttons = section.querySelectorAll('.btn, a[href*="sign"]');
+      const buttons = section ? section.querySelectorAll('.btn, a[href*="sign"]') : [];
       
       return {
         cardCount: cards.length,
@@ -146,14 +142,10 @@ import { chromium } from 'playwright';
       await page.setViewportSize(vp);
       await page.waitForTimeout(500); // Allow layout to adjust
       
-      // Ensure pricing section is in view after viewport change
-      await page.evaluate(() => {
-        document.querySelector('#pricing').scrollIntoView({ behavior: 'instant', block: 'start' });
-      });
-      
+      // Take full page screenshot for pricing page
       await page.screenshot({
-        path: `visual-snapshots/pricing-hash-${vp.name}.png`,
-        clip: await page.locator('#pricing').boundingBox() // Only capture pricing section
+        path: `visual-snapshots/pricing-demo-${vp.name}.png`,
+        fullPage: true
       });
       
       console.log(`✓ Captured ${vp.name} screenshot (${vp.width}x${vp.height})`);
