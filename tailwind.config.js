@@ -94,12 +94,17 @@ module.exports = {
   			'gradient-purple': 'linear-gradient(135deg, #8a2be2 0%, #6366F1 100%)',
   			'gradient-pink': 'linear-gradient(135deg, #d946a0 0%, #ff6b9d 100%)',
   			'gradient-orange': 'linear-gradient(135deg, #e96b3a 0%, #F59E0B 100%)',
-  			'gradient-ai': 'linear-gradient(90deg, #00ff88 0%, #8844ff 25%, #ff8800 50%, #ff44aa 75%, #0066ff 100%)'
+  			'gradient-ai': 'linear-gradient(90deg, #00ff88 0%, #8844ff 25%, #ff8800 50%, #ff44aa 75%, #0066ff 100%)',
+  			'conic-gradient': 'conic-gradient(from 0deg, #8a2be2 0deg, #d946a0 120deg, #e96b3a 240deg, #8a2be2 360deg)'
   		},
   		boxShadow: {
   			'glow-purple': '0 0 20px rgba(138, 43, 226, 0.3)',
   			'glow-pink': '0 0 20px rgba(217, 70, 160, 0.3)',
-  			'glow-orange': '0 0 20px rgba(233, 107, 58, 0.3)'
+  			'glow-orange': '0 0 20px rgba(233, 107, 58, 0.3)',
+  			'soft': '0 4px 20px rgba(0, 0, 0, 0.1)',
+  			'glow-soft': '0 0 20px rgba(138, 43, 226, 0.15)',
+  			'glow-orange': '0 0 20px rgba(255, 107, 53, 0.15)',
+  			'glow-cyan': '0 0 20px rgba(0, 245, 255, 0.15)'
   		},
   		animation: {
   			glow: 'glow 2s ease-in-out infinite alternate',

@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 
 interface GradientTextProps extends React.HTMLAttributes<HTMLSpanElement> {
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'accent' | 'rainbow'
+  variant?: 'primary' | 'secondary' | 'accent' | 'rainbow' | 'logo'
   animate?: boolean
 }
 
@@ -18,7 +18,8 @@ export function GradientText({
     primary: 'bg-gradient-to-r from-vybe-purple via-vybe-pink to-vybe-orange',
     secondary: 'bg-gradient-to-r from-vybe-purple to-vybe-indigo',
     accent: 'bg-gradient-to-r from-vybe-pink to-vybe-orange',
-    rainbow: 'bg-gradient-to-r from-vybe-matrix-green via-vybe-neural-purple to-vybe-quantum-orange'
+    rainbow: 'bg-gradient-to-r from-vybe-matrix-green via-vybe-neural-purple to-vybe-quantum-orange',
+    logo: 'bg-gradient-vybe'
   }
 
   return (
