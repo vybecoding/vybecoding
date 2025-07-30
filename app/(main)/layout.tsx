@@ -1,4 +1,4 @@
-import Navigation from '@/components/navigation/Navigation'
+import { Header, Footer } from '@/components/layout'
 
 export default function MainLayout({
   children,
@@ -6,11 +6,12 @@ export default function MainLayout({
   children: React.ReactNode
 }) {
   return (
-    <>
-      <Navigation />
-      <div className="pt-16 min-h-screen">
+    <div className="min-h-screen bg-black text-white selection:bg-vybe-purple/20 selection:text-white">
+      <Header />
+      <main className="pt-16 min-h-screen">
         {children}
-      </div>
-    </>
+      </main>
+      <Footer />
+    </div>
   )
 }

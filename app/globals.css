@@ -927,3 +927,134 @@
 .app-creation-step.active {
   display: block;
 }
+
+/* Demo-specific styles and animations */
+@keyframes letterRotate {
+  0% { transform: rotateY(0deg); }
+  25% { transform: rotateY(90deg); }
+  50% { transform: rotateY(180deg); }
+  75% { transform: rotateY(270deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+/* Critical navigation fixes that must persist */
+.nav-item {
+  display: inline-block !important;
+  padding: 0.5rem 1rem !important;
+}
+
+/* Ensure navigation stays on top */
+nav {
+  z-index: 9999 !important;
+}
+
+/* Hide navigation at tablet and smaller screens and show mobile menu */
+@media (max-width: 1249px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-menu-wrapper {
+    display: block !important;
+  }
+  .desktop-user-section {
+    display: none !important;
+  }
+}
+
+/* Restore desktop navigation and prevent user section squishing on large screens */
+@media (min-width: 1250px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  .mobile-menu-wrapper {
+    display: none !important;
+  }
+  .desktop-user-section {
+    display: flex !important;
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+  .desktop-user-section .relative {
+    flex-shrink: 0;
+  }
+  .desktop-user-section button {
+    flex-shrink: 0;
+  }
+}
+
+/* Floating particles animation */
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: radial-gradient(circle, rgba(138, 43, 226, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: particleFloat 12.5s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 1.5s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 3s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 4.5s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 6s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 7.5s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 9s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 10.5s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 12s; }
+
+.neural-node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(217, 70, 160, 0.6) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: neuralPulse 5s ease-in-out infinite;
+}
+
+.neural-node:nth-child(10) { left: 15%; top: 20%; animation-delay: 0s; }
+.neural-node:nth-child(11) { left: 35%; top: 40%; animation-delay: 1s; }
+.neural-node:nth-child(12) { left: 55%; top: 60%; animation-delay: 2s; }
+.neural-node:nth-child(13) { left: 75%; top: 30%; animation-delay: 3s; }
+.neural-node:nth-child(14) { left: 25%; top: 70%; animation-delay: 4s; }
+.neural-node:nth-child(15) { left: 65%; top: 15%; animation-delay: 0.5s; }
+.neural-node:nth-child(16) { left: 85%; top: 80%; animation-delay: 1.5s; }
+.neural-node:nth-child(17) { left: 45%; top: 25%; animation-delay: 2.5s; }
+.neural-node:nth-child(18) { left: 5%; top: 50%; animation-delay: 3.5s; }
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.35;
+  }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes neuralPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.15;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+}

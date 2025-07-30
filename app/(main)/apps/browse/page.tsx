@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { GradientText } from "@/components/common/GradientText";
 import { APP_CATEGORIES, TECH_STACK_OPTIONS, PLATFORM_OPTIONS } from "@/lib/constants/apps";
-import { Search } from "lucide-react";
+import { Search, Calendar, Eye, Heart, ExternalLink, Crown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import { formatDistanceToNow } from "@/lib/utils";
 import { SkeletonGrid } from "@/components/ui/loading/SkeletonCard";
 
 // App Card Component - Matching demo exactly
@@ -58,7 +60,7 @@ function AppCard({ app }: { app: any }) {
           alignItems: 'center', 
           justifyContent: 'center', 
           height: 'auto'
-        }}
+        } as React.CSSProperties}
       >
         APP
       </span>
@@ -146,7 +148,7 @@ function AppCard({ app }: { app: any }) {
   );
 }
 
-export default function AppsPage() {
+export default function AppsBrowsePage() {
   const router = useRouter();
   const { isSignedIn } = useUser();
   
@@ -155,25 +157,9 @@ export default function AppsPage() {
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [selectedTechStack, setSelectedTechStack] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("relevance");
-  const [activeTab, setActiveTab] = useState<string>("browse");
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showSortDropdown, setShowSortDropdown] = useState(false);
-  const [searchResults, setSearchResults] = useState<any[]>([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  
-  // Close dropdowns when clicking outside
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      const target = event.target as Element;
-      if (!target.closest('.filter-dropdown')) {
-        setShowCategoryDropdown(false);
-        setShowSortDropdown(false);
-      }
-    }
-    
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
 
   // Fetch approved apps with filters
   const appsResult = useQuery(api.apps.getApprovedApps, {
@@ -196,6 +182,13 @@ export default function AppsPage() {
     setSelectedPlatforms([]);
     setSelectedTechStack([]);
     setSortBy("relevance");
+    setShowSearchResults(false);
+  };
+
+  const performSearch = () => {
+    if (searchTerm.trim()) {
+      setShowSearchResults(true);
+    }
   };
 
   const hasActiveFilters = searchTerm || selectedCategory || selectedPlatforms.length > 0 || selectedTechStack.length > 0;
@@ -209,38 +202,17 @@ export default function AppsPage() {
     { value: 'views', label: 'Most Viewed' }
   ];
 
-  const performSearch = () => {
-    if (searchTerm.trim()) {
-      // Filter apps based on search term
-      const filtered = appsResult?.apps.filter(app => 
-        app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        app.shortDescription?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        app.category.toLowerCase().includes(searchTerm.toLowerCase())
-      ) || [];
-      setSearchResults(filtered);
-      setShowSearchResults(true);
-    } else {
-      setShowSearchResults(false);
-    }
-  };
-  
-  const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      performSearch();
-    }
-  };
-
   return (
     <div className="page-container nebula-background">
-      {/* Nebula backgrounds handled by CSS */}
+      {/* Nebula backgrounds */}
       <div className="nebula-middle"></div>
       <div className="nebula-bottom"></div>
       
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 relative z-10 py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-light mb-4">
-            <span className="gradient-text">Apps</span>
+            <GradientText>Apps</GradientText>
           </h1>
           <p className="text-vybe-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
             Discover AI-built projects, applications, and tools. Live demos, source code, 
@@ -250,29 +222,25 @@ export default function AppsPage() {
 
         {/* Universal Search */}
         <div className="universal-search mb-8">
-          <svg className="universal-search-icon w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
+          <Search className="universal-search-icon w-5 h-5" />
           <input
             type="search" 
             placeholder="Search AI-built projects, apps, tools, and showcases..." 
             className="universal-search-input"
-            id="apps-search"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            onKeyUp={handleKeyPress}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                performSearch();
+              }
+            }}
           />
           <button 
-            className="btn btn-primary-purple universal-search-submit" 
+            className="btn btn-primary-purple universal-search-submit"
             onClick={performSearch}
           >
             Search
           </button>
-          
-          {/* Search Suggestions Dropdown */}
-          <div className="search-suggestions" id="apps-search-suggestions">
-            {/* Dynamically populated */}
-          </div>
         </div>
 
         {/* Search Filter Dropdowns */}
@@ -281,7 +249,7 @@ export default function AppsPage() {
             {/* Filters Row */}
             <div className="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
               {/* Category Dropdown */}
-              <div className="filter-dropdown multi-select-dropdown" id="apps-category-dropdown">
+              <div className="filter-dropdown multi-select-dropdown relative">
                 <button 
                   className="filter-dropdown-button"
                   onClick={() => {
@@ -291,7 +259,7 @@ export default function AppsPage() {
                 >
                   <span>Category</span>
                   {selectedCategory && (
-                    <span className="filter-selection-counter" id="apps-category-counter">1</span>
+                    <span className="filter-selection-counter">1</span>
                   )}
                   <svg className="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7"></path>
@@ -327,7 +295,7 @@ export default function AppsPage() {
               </div>
 
               {/* Sort By Dropdown */}
-              <div className="filter-dropdown" id="apps-sort-dropdown">
+              <div className="filter-dropdown relative">
                 <button 
                   className="filter-dropdown-button"
                   onClick={() => {
@@ -368,107 +336,58 @@ export default function AppsPage() {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="tab-navigation-container">
-          <div className="flex gap-4 border-b border-vybe-gray-800 justify-center">
-            <button 
-              onClick={() => setActiveTab('browse')} 
-              className={`apps-tab ${activeTab === 'browse' ? 'active' : ''}`}
-              data-tab="browse"
-            >
-              Browse Apps
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('submit');
-                handleSubmitApp();
-              }} 
-              className={`apps-tab ${activeTab === 'submit' ? 'active' : ''}`}
-              data-tab="submit"
-            >
-              Submit App
-            </button>
-          </div>
-        </div>
-
-        {/* Tab Navigation */}
-        <div className="tab-navigation-container">
-          <div className="flex gap-4 border-b border-vybe-gray-800 justify-center">
-            <button 
-              onClick={() => setActiveTab('browse')} 
-              className={`apps-tab ${activeTab === 'browse' ? 'active' : ''}`}
-              data-tab="browse"
-            >
-              Browse Apps
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('submit');
-                handleSubmitApp();
-              }} 
-              className={`apps-tab ${activeTab === 'submit' ? 'active' : ''}`}
-              data-tab="submit"
-            >
-              Submit App
-            </button>
-          </div>
-        </div>
-
-        {/* Content for tabs will be loaded here */}
-        <div id="apps-content-container">
-          <div id="apps-browse-content" className="apps-tab-content">
-            {/* Search Results Section (Hidden by default) */}
-            {showSearchResults && (
-              <div id="sites-search-results" className="mb-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-light">Search Results</h2>
-                  <p className="text-sm text-vybe-gray-400">
-                    <span id="apps-result-count">{searchResults.length}</span> results found
-                  </p>
-                </div>
-                <div id="apps-results-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {searchResults.map((app) => (
+        {/* Browse Apps Content */}
+        <div id="apps-browse-content" className="apps-tab-content">
+          {/* Search Results Section */}
+          {showSearchResults && (
+            <div id="sites-search-results" className="mb-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-2xl font-light">Search Results</h2>
+                <p className="text-sm text-vybe-gray-400">
+                  <span id="apps-result-count">{appsResult?.apps?.length || 0}</span> results found
+                </p>
+              </div>
+              <div id="apps-results-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {appsResult?.apps?.map((app) => (
+                  <AppCard key={app._id} app={app} />
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {/* Header Section and Apps Grid */}
+          {!showSearchResults && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {appsResult ? (
+                appsResult.apps.length > 0 ? (
+                  appsResult.apps.map((app) => (
                     <AppCard key={app._id} app={app} />
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            {/* Header Section */}
-            {/* Apps Grid - Universal Design */}
-            {!showSearchResults && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {appsResult ? (
-                  appsResult.apps.length > 0 ? (
-                    appsResult.apps.map((app) => (
-                      <AppCard key={app._id} app={app} />
-                    ))
-                  ) : (
-                    <div className="col-span-full text-center py-20">
-                      <p className="text-gray-400 text-lg">
-                        {hasActiveFilters
-                          ? "No apps found matching your filters. Try adjusting your search criteria."
-                          : "No apps have been submitted yet. Be the first to share your app!"}
-                      </p>
-                    </div>
-                  )
+                  ))
                 ) : (
-                  <div className="col-span-full py-8">
-                    <SkeletonGrid count={6} />
+                  <div className="col-span-full text-center py-20">
+                    <p className="text-gray-400 text-lg">
+                      {hasActiveFilters
+                        ? "No apps found matching your filters. Try adjusting your search criteria."
+                        : "No apps have been submitted yet. Be the first to share your app!"}
+                    </p>
                   </div>
-                )}
-              </div>
-            )}
-            
-            {/* Load More */}
-            {appsResult?.hasMore && !showSearchResults && (
-              <div className="text-center mt-12">
-                <button className="px-8 py-3 bg-black/60 backdrop-blur-lg border border-gray-700/40 rounded-lg text-white hover:bg-gray-800/60 hover:border-gray-600/50 transition-all duration-200">
-                  Load More Apps
-                </button>
-              </div>
-            )}
-          </div>
+                )
+              ) : (
+                <div className="col-span-full py-8">
+                  <SkeletonGrid count={6} />
+                </div>
+              )}
+            </div>
+          )}
+          
+          {/* Load More */}
+          {appsResult?.hasMore && (
+            <div className="text-center mt-12">
+              <button className="px-8 py-3 bg-black/60 backdrop-blur-lg border border-gray-700/40 rounded-lg text-white hover:bg-gray-800/60 hover:border-gray-600/50 transition-all duration-200">
+                Load More Apps
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
