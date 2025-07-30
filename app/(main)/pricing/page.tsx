@@ -15,7 +15,7 @@ export default function PricingPage() {
       <div className="relative z-10 page-container" style={{ 
         background: 'radial-gradient(circle at 50% 50%, transparent 0%, rgba(10, 10, 10, 0.8) 100%)' 
       }}>
-        <div style={{maxWidth: '1126px'}} className="mx-auto px-6">
+        <div style={{maxWidth: '1126px'}} className="mx-auto px-6 py-8">
           
           {/* Header Section */}
           <div className="text-center mb-8">
