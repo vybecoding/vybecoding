@@ -6,6 +6,29 @@ This document provides detailed checklists for completing stories and epics in t
 
 ## Story Completion Checklist
 
+### Demo Migration Stories (DEMO-001 through DEMO-046)
+
+**Enhanced checklist for Epic-01 pixel-perfect migration stories:**
+
+#### Visual Verification Requirements
+- [ ] Demo server running on port 8080 (`cd demo && npm start`)
+- [ ] Next.js server running on port 3000 (`npm run dev`)
+- [ ] Side-by-side visual comparison completed
+- [ ] Pixel-perfect match at 375px (mobile)
+- [ ] Pixel-perfect match at 768px (tablet)  
+- [ ] Pixel-perfect match at 1440px (desktop)
+- [ ] Visual diff score <2% at all breakpoints
+- [ ] All interactive elements function identically
+- [ ] Animation timing matches demo exactly
+
+#### Component Integration
+- [ ] Uses design system foundation patterns
+- [ ] Follows `/demo/design-system-showcase.html` standards
+- [ ] Prioritizes showcase patterns over demo inconsistencies
+- [ ] Reusable components extracted where appropriate
+
+### Standard User Stories (USER-xxx)
+
 **Use this checklist after completing each user story (e.g., USER-001)**
 
 ### ✅ Pre-Completion Verification

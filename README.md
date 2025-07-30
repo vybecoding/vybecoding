@@ -4,13 +4,19 @@ AI-powered development platform built with Next.js, featuring automated workflow
 
 ## 🚀 Features
 
-- **AI-Enhanced Development**: Integrated BMAD Method for structured story management
-- **Security-First Architecture**: Multiple layers of security including input validation, XSS prevention, and timing attack mitigation
+### Development Platform
+- **AI-Enhanced Development**: Integrated BMAD Method v4.33.0 for structured story management
+- **Pixel-Perfect Demo Migration**: Comprehensive 46-story epic for migrating demo to production
+- **Security-First Architecture**: Multiple layers including input validation, XSS prevention, and timing attack mitigation  
 - **Automated Workflows**: TRAIL system for automatic error learning and resolution
+- **Visual Verification System**: Side-by-side comparison with <2% diff tolerance
+
+### Production Features
 - **Real-time Collaboration**: Powered by Convex for instant data synchronization
 - **Complete Auth System**: Clerk integration with SSO and multi-factor authentication
 - **User Profile System**: Comprehensive profiles with avatars, skills, and social links
 - **Apps Submission Platform**: Multi-step form for submitting and showcasing applications
+- **Guides Publishing System**: Markdown editor with syntax highlighting and analytics
 - **Payment Processing**: Stripe integration for subscriptions and one-time payments
 - **Calendar Scheduling**: Cal.com embedded for appointment booking
 - **Error Monitoring**: Sentry integration for automatic error tracking
@@ -79,28 +85,27 @@ vybecoding/
 │   └── test-error/        # Error boundary testing
 ├── components/            # React components
 │   ├── apps/              # App submission components
-│   │   ├── AppCard.tsx
-│   │   ├── AppGrid.tsx
-│   │   ├── AppSubmissionForm.tsx
-│   │   └── AppFormSteps/  # Multi-step form components
-│   ├── profile/           # User profile components
-│   │   ├── ProfileView.tsx
-│   │   ├── ProfileEdit.tsx
-│   │   ├── ProfileStats.tsx
-│   │   └── AvatarUpload.tsx
-│   ├── cal/              # Cal.com integration components
-│   ├── ui/               # Shadcn UI + custom components
-│   │   ├── button/       # Button wrapper system
-│   │   │   ├── Button.tsx     # Shadcn wrapper
-│   │   │   ├── ButtonGroup.tsx
-│   │   │   └── IconButton.tsx
-│   │   ├── card/         # Card wrapper system
-│   │   │   ├── Card.tsx       # Shadcn wrapper
-│   │   │   ├── AppCard.tsx
-│   │   │   ├── GuideCard.tsx
-│   │   │   └── MemberCard.tsx
-│   │   ├── form/         # Form wrapper components
-│   │   │   ├── Form.tsx       # Shadcn form wrapper
+│   ├── profile/           # User profile components  
+│   ├── cal/               # Cal.com integration components
+│   ├── ui/                # Shadcn UI + custom wrappers
+│   └── effects/           # Visual effects (gradients, glass, etc.)
+├── stories/               # BMAD Method story management
+│   ├── epic-01-demo-migration/     # Pixel-Perfect Demo Migration
+│   │   ├── DEMO-001-home-landing.md          # Home page migration
+│   │   ├── DEMO-002-dashboard-home.md        # Dashboard migration
+│   │   ├── ...                               # 46 total page stories
+│   │   ├── DEMO-046-design-system-showcase.md
+│   │   ├── README.md                         # Epic overview (298 pts)
+│   │   └── reference/
+│   │       └── design-system-foundation.md  # Component patterns
+│   ├── user-stories-standalone/    # Individual user features
+│   │   └── USER-001-profile-system.md       # Profile management
+│   └── README.md                   # Story organization overview
+├── demo/                  # Original HTML prototype (port 8080)
+│   ├── index.html         # Demo landing page
+│   ├── pages/             # All 46 demo pages
+│   ├── css/               # Demo styling (30+ fix files)
+│   └── design-system-showcase.html  # Reference patterns
 │   │   │   ├── FormField.tsx
 │   │   │   └── validation.ts
 │   │   ├── data-table/   # Advanced data tables
@@ -142,10 +147,6 @@ vybecoding/
 │   ├── email/            # Email templates and service
 │   ├── stripe.ts         # Stripe configuration
 │   └── utils.ts          # Utility functions (cn())
-├── demo/                 # Vite-based prototype
-│   ├── pages/            # Demo HTML pages
-│   ├── images/           # Demo assets
-│   └── styles/           # Demo CSS
 ├── docs/                 # Documentation
 │   ├── architecture/     # System architecture docs
 │   ├── audits/           # Security and setup audits
@@ -155,25 +156,55 @@ vybecoding/
 │   ├── update/           # Documentation update logs
 │   └── vybehacks/        # VybeHacks patterns
 ├── __tests__/            # Test files
-│   └── unit/            # Unit tests
-│       └── components/  # Component tests
+│   ├── e2e/              # End-to-end tests
+│   ├── integration/      # Integration tests
+│   ├── unit/             # Unit tests
+│   └── visual-verification/  # Pixel-perfect validation
 ├── .claude/              # Claude Code configuration
 │   ├── settings.json     # Hook configurations
-│   ├── config/          # MCP configuration
-│   │   └── mcp-settings.json
-│   ├── hooks/           # Hook scripts
-│   ├── agents/          # BMAD sub-agents
-│   ├── commands/        # Slash commands
-│   └── solutions/       # TRAIL system & scripts
-├── stories/              # BMAD user stories
-│   └── epic-01-user-management/
-│       ├── USER-001-profile-system.md  # ✅ Completed
-│       └── USER-002-apps-submission.md # ✅ Completed
-└── .bmad-core/          # BMAD Method v4.33.0
-    ├── bmad-core/       # Core agents and tasks
-    ├── expansion-packs/ # Infrastructure & DevOps
-    └── tools/           # BMAD CLI and utilities
+│   ├── config/           # MCP configuration
+│   ├── hooks/            # Hook scripts
+│   ├── agents/           # BMAD sub-agents
+│   ├── commands/         # Slash commands
+│   └── solutions/        # TRAIL system & scripts
+└── .bmad-core/           # BMAD Method v4.33.0
+    ├── bmad-core/        # Core agents and tasks
+    ├── expansion-packs/  # Infrastructure & DevOps
+    └── tools/            # BMAD CLI and utilities
 ```
+
+## 📋 Story Management System
+
+The project uses the **BMAD Method v4.33.0** for structured development with comprehensive story tracking:
+
+### Epic Structure
+- **Epic-01**: Pixel-Perfect Demo Migration (46 stories, 298 points)
+  - Complete 1:1 migration of all demo HTML pages to Next.js
+  - Visual verification with <2% pixel difference tolerance
+  - Side-by-side comparison workflow (port 8080 vs 3000)
+  - Story completion workflows with master checklists
+
+### Story Organization
+| **Category** | **Stories** | **Points** | **Priority** |
+|--------------|-------------|------------|--------------|
+| Foundation   | DEMO-001 to DEMO-006 | 47 pts | Critical/High |
+| Authentication | DEMO-007 | 3 pts | Medium |
+| Content Pages | DEMO-008 to DEMO-011 | 42 pts | High |
+| Dashboard/Settings | DEMO-012 to DEMO-021 | 63 pts | High/Medium |
+| Detail Pages | DEMO-022 to DEMO-031 | 64 pts | High/Medium |
+| Utility/Legal | DEMO-032 to DEMO-046 | 79 pts | Medium/Low |
+
+### Development Workflow
+1. **Story Selection**: Choose from ready stories in priority order
+2. **Visual Verification**: Run demo (`npm run demo`) and Next.js (`npm run dev`) side by side
+3. **Pixel-Perfect Implementation**: Match demo exactly at all breakpoints
+4. **Story Completion**: Execute `.claude/workflows/story-completion.md`
+5. **Master Checklist**: Complete post-story quality gates
+
+### Reference Documentation
+- **Design System Foundation**: `/stories/epic-01-demo-migration/reference/design-system-foundation.md`
+- **Component Patterns**: Established from `/demo/design-system-showcase.html`
+- **Visual Verification Guide**: Automated Playwright tests with screenshot comparison
 
 ## 🔐 Security Features
 

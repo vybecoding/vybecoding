@@ -505,6 +505,28 @@ Every change is tracked with complexity indicators:
 
 This helps identify when to break down tasks further.
 
+### Demo Migration Story Workflow
+
+For Epic-01 stories, follow this enhanced workflow:
+
+1. **Story Selection**: Choose highest priority ready story
+2. **Setup Comparison Environment**:
+   ```bash
+   # Terminal 1: Start demo server
+   cd demo && npm start  # Runs on port 8080
+   
+   # Terminal 2: Start Next.js development
+   npm run dev           # Runs on port 3000
+   ```
+3. **Visual Development**: Open both URLs side-by-side for pixel-perfect comparison
+4. **Story Completion**: Execute completion workflow when acceptance criteria met
+5. **Master Checklist**: Complete post-story quality gates
+
+### Reference Integration
+- **Design System Foundation**: `/stories/epic-01-demo-migration/reference/design-system-foundation.md`
+- **Component Patterns**: Extract reusable patterns from `/demo/design-system-showcase.html`
+- **Visual Standards**: Prioritize showcase patterns over demo inconsistencies
+
 ## BMAD Method v4.33.0 Integration
 
 The BMAD Method v4.33.0 provides structured story management through specialized agents, now available as Claude Code sub-agents for automatic delegation.
@@ -514,25 +536,33 @@ The BMAD Method v4.33.0 provides structured story management through specialized
 - **USER-002**: Apps Submission System ✅ (Multi-step form, image uploads, submission workflow)
 - **USER-003**: Guides Publishing System ✅ (Markdown editor, syntax highlighting, analytics)
 
-### Active Migration: Demo to Production
-The demo migration is being completed following user flow order for continuous testing:
+### Active Epic: Pixel-Perfect Demo Migration
+**Epic-01** has been restructured as the master Demo Migration epic with comprehensive page-by-page approach:
 
-#### Migration Order (User Journey)
-1. **Landing Page** → First user touchpoint
-2. **Navigation** → Enables exploration
-3. **Apps Browse** → Discover content
-4. **Guides Browse** → More content discovery
-5. **Sign Up/In** → User registration
-6. **Dashboard** → User home base
-7. **Profile** → User identity
-8. **Create Content** → Apps/Guides submission
+#### Epic Structure
+- **46 Individual Stories**: DEMO-001 through DEMO-046
+- **298 Total Story Points**: Across 8-week timeline
+- **Complete Demo Coverage**: Every HTML page has dedicated migration story
+- **Reference Documentation**: Design system foundation patterns
 
-#### Migration Progress
-- **Functional Implementation**: 70% ✅
-- **Visual Fidelity**: 20% 🔄
-- **Page Coverage**: 40% 🔄
+#### Story Categories & Progress
+| **Category** | **Stories** | **Points** | **Status** |
+|--------------|-------------|------------|------------|
+| Foundation   | DEMO-001 to DEMO-006 | 47 pts | 🔄 Ready |
+| Authentication | DEMO-007 | 3 pts | 🔄 Ready |
+| Content Pages | DEMO-008 to DEMO-011 | 42 pts | 🔄 Ready |
+| Dashboard/Settings | DEMO-012 to DEMO-021 | 63 pts | 🔄 Ready |
+| Detail Pages | DEMO-022 to DEMO-031 | 64 pts | 🔄 Ready |
+| Utility/Legal | DEMO-032 to DEMO-046 | 79 pts | 🔄 Ready |
 
-See [docs/demo-migration-plan.md](docs/demo-migration-plan.md) for detailed pixel-perfect requirements.
+#### Visual Verification Process
+- **Side-by-Side Comparison**: Demo (port 8080) vs Next.js (port 3000)
+- **Pixel-Perfect Standard**: <2% visual difference tolerance
+- **Multi-Breakpoint Testing**: 375px, 768px, 1440px validation
+- **Automated QA**: Playwright visual regression tests
+- **Story Completion Workflow**: `.claude/workflows/story-completion.md`
+
+See [stories/epic-01-demo-migration/README.md](stories/epic-01-demo-migration/README.md) for complete epic details.
 
 ### Available BMAD Agents
 **Core Agents (Slash Commands and Sub-Agents):**

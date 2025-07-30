@@ -2,7 +2,15 @@
 
 ## Overview
 
-This document outlines the strategy for creating a pixel-perfect replication of the vybecoding demo using Next.js, React, Tailwind CSS, and Shadcn/ui components while following best practices and avoiding messy code.
+This document outlines the strategy for creating a pixel-perfect replication of the vybecoding demo using Next.js, React, Tailwind CSS, and Shadcn/ui components. The migration is organized as **Epic-01** with 46 individual page stories.
+
+## Epic Organization
+
+**Epic-01: Pixel-Perfect Demo Migration**
+- **46 Individual Stories**: DEMO-001 through DEMO-046  
+- **298 Total Story Points**: 8-week development timeline
+- **Complete Coverage**: Every HTML page in demo has dedicated story
+- **Reference System**: Design system foundation patterns documented
 
 ## Current State Analysis
 
