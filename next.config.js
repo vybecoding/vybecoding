@@ -5,8 +5,7 @@ const nextConfig = {
   // Enable React strict mode for better development experience
   reactStrictMode: true,
   
-  // Performance optimizations
-  swcMinify: true,
+  // Performance optimizations (swcMinify is enabled by default in Next.js 15)
   
   // Image optimization
   images: {

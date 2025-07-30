@@ -27,14 +27,14 @@ export default function AppSubmitPage() {
   // Show loading while checking auth
   if (!isLoaded || !isSignedIn) {
     return (
-      <Container className="py-8">
-        <div className="max-w-4xl mx-auto">
+      <div className="page-container nebula-background min-h-screen py-8">
+        <div className="max-w-4xl mx-auto px-6">
           <div className="animate-pulse space-y-6">
             <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded w-1/3"></div>
             <div className="h-64 bg-gray-200 dark:bg-gray-700 rounded"></div>
           </div>
         </div>
-      </Container>
+      </div>
     );
   }
 

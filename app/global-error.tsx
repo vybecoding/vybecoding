@@ -14,8 +14,8 @@ export default function GlobalError({
     // Log error to monitoring service
     console.error("Global error:", error);
     
-    if (typeof window !== "undefined" && window.Sentry) {
-      window.Sentry.captureException(error);
+    if (typeof window !== "undefined" && (window as any).Sentry) {
+      (window as any).Sentry.captureException(error);
     }
   }, [error]);
 

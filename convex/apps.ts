@@ -262,7 +262,7 @@ export const getAppById = query({
 });
 
 // Get app for editing (owner only)
-export const getApp = query({
+export const getAppForEdit = query({
   args: { id: v.id("apps") },
   handler: async (ctx, args) => {
     const identity = await ctx.auth.getUserIdentity();
