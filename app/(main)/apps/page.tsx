@@ -12,6 +12,7 @@ import { useUser } from "@clerk/nextjs";
 import { formatDistanceToNow } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { SkeletonGrid } from "@/components/ui/loading/SkeletonCard";
 
 // App Card Component - Matching demo exactly
 function AppCard({ app }: { app: any }) {
@@ -373,11 +374,8 @@ export default function AppsPage() {
                   </div>
                 )
               ) : (
-                <div className="flex items-center justify-center py-20">
-                  <div className="text-center">
-                    <div className="w-8 h-8 border-2 border-vybe-purple border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-gray-400">Loading apps...</p>
-                  </div>
+                <div className="py-8">
+                  <SkeletonGrid count={6} />
                 </div>
               )}
               {/* Load More */}
