@@ -5,8 +5,8 @@
   right: 0;
   z-index: 50;
   backdrop-filter: blur(12px);
-  background-color: rgba(17, 24, 39, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -69,13 +69,18 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(135deg, #b475ff 0%, #00d9ff 100%);
+  background: linear-gradient(90deg, #8a2be2, #d946a0);
   transform: scaleX(0);
   transition: transform 0.2s;
 }
 
-.navLink:hover:after {
+.navLink:hover:after,
+.navLink.active:after {
   transform: scaleX(1);
+}
+
+.navLink.active {
+  color: #d946a0;
 }
 
 .actions {

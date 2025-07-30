@@ -121,6 +121,8 @@ module.exports = {
   			'neural-pulse': 'neuralPulse 5s ease-in-out infinite',
 			'spin-slow': 'spin 8s linear infinite',
 			'shimmer': 'shimmer 2s linear infinite',
+			'logo-spin': 'logo-spin 14s linear infinite',
+			'letter-rotate': 'letterRotate 14s linear infinite',
   		},
   		keyframes: {
   			glow: {

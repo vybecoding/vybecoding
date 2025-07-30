@@ -39,7 +39,7 @@ const primaryTabs: DashboardTab[] = [
   { 
     id: 'overview', 
     label: 'Earnings & Analytics', 
-    href: '/dashboard',
+    href: '/dashboard/analytics',
     icon: LayoutDashboard,
     badge: 'PRO'
   }
@@ -64,8 +64,8 @@ export default function DashboardTabs() {
   const pathname = usePathname()
 
   const isTabActive = (href: string) => {
-    if (href === '/dashboard' && pathname === '/dashboard') return true
-    if (href !== '/dashboard' && pathname.startsWith(href)) return true
+    if (href === '/dashboard/analytics' && pathname === '/dashboard') return true
+    if (pathname.startsWith(href)) return true
     return false
   }
 

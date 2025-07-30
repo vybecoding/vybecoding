@@ -1,5 +1,8 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Button } from '../button/Button';
 import { Logo } from './Logo';
 import { MobileMenu } from './MobileMenu';
@@ -12,12 +15,16 @@ export interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const pathname = usePathname();
 
   const navItems = [
+    { href: '/', label: 'Home' },
+    { href: '/guides', label: 'Guides' },
+    { href: '/apps', label: 'Apps' },
+    { href: '/members', label: 'Members' },
+    { href: '/featured', label: 'Featured' },
     { href: '/dashboard', label: 'Dashboard' },
-    { href: '/marketplace', label: 'Marketplace' },
-    { href: '/mentorship', label: 'Mentorship' },
-    { href: '/community', label: 'Community' },
+    { href: '/pricing', label: 'Pricing' },
   ];
 
   return (
@@ -28,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
             <div className={styles.content}>
               {/* Logo */}
               <Link href="/" className={styles.logoLink}>
-                <Logo />
+                <Logo size="lg" />
               </Link>
 
               {/* Desktop Navigation */}
@@ -37,21 +44,22 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={styles.navLink}
+                    className={`${styles.navLink} ${pathname === item.href ? styles.active : ''}`}
                   >
                     {item.label}
                   </Link>
                 ))}
               </div>
 
-              {/* Auth Buttons */}
+              {/* User Profile Section (like demo) */}
               <div className={styles.actions}>
-                <Button variant="ghost" size="sm" className={styles.signIn}>
-                  Sign In
-                </Button>
-                <Button variant="primary" size="sm" className={styles.getStarted}>
-                  Get Started
-                </Button>
+                {/* User Avatar/Profile */}
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-vybe-purple to-vybe-orange flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">U</span>
+                  </div>
+                  <span className="text-white text-sm font-medium hidden sm:block">User</span>
+                </div>
                 
                 {/* Mobile Menu Button */}
                 <button
