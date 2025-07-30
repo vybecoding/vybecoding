@@ -8,6 +8,10 @@ export {
   CardContent,
 } from '@/components/ui/card';
 
+// Base card components
+export { BaseCard, CardLabel, CardDate } from './BaseCard';
+export type { BaseCardProps, CardLabelProps, CardDateProps } from './BaseCard';
+
 // Re-export our custom card variants
 export { AppCard } from './AppCard';
 export { GuideCard } from './GuideCard';

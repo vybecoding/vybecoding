@@ -19,10 +19,13 @@ function GuideCardDemo({ guide }: { guide: any }) {
 
   return (
     <GuideCard
+      id={guide._id}
       title={guide.title}
+      slug={guide.slug}
       author={{
         name: guide.author?.displayName || "Anonymous",
-        avatar: guide.author?.avatar
+        avatar: guide.author?.avatar,
+        isTopCreator: guide.isTopCreator || false
       }}
       description={guide.excerpt}
       tags={guide.tags}
@@ -33,7 +36,7 @@ function GuideCardDemo({ guide }: { guide: any }) {
       createdAt={timeAgo}
       verificationStatus={guide.verificationStatus || 'verified'}
       lastVerified={guide.lastVerified || '2h'}
-      isTopCreator={guide.isTopCreator || false}
+      isPro={guide.isPro || false}
       className="h-full cursor-pointer transition-transform hover:scale-[1.02]"
     />
   );

@@ -1,99 +1,202 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Download, Star } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Eye, Heart, Download, ExternalLink, Star } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { BaseCard, CardLabel, CardDate } from './BaseCard'
+import { Badge } from '@/components/ui/badge'
 
 export interface AppCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
-  developer: string;
-  description?: string;
-  icon?: string;
-  category?: string;
-  pricing?: 'free' | 'paid' | 'freemium';
-  rating?: number;
-  downloads?: number;
-  tags?: string[];
+  id: string
+  name: string
+  description?: string
+  icon?: string
+  category: string
+  developer?: {
+    name: string
+    avatar?: string
+  }
+  techStack?: string[]
+  platforms?: string[]
+  stats?: {
+    views?: number
+    likes?: number
+    downloads?: number
+    rating?: number
+  }
+  pricing?: 'free' | 'paid' | 'freemium'
+  featured?: boolean
+  createdAt: Date | string
+  liveUrl?: string
+  appStoreUrl?: string
+  playStoreUrl?: string
 }
 
 export const AppCard: React.FC<AppCardProps> = ({
-  title,
-  developer,
+  id,
+  name,
   description,
   icon,
   category,
+  developer,
+  techStack = [],
+  platforms = [],
+  stats = {},
   pricing = 'free',
-  rating,
-  downloads = 0,
-  tags = [],
+  featured,
+  createdAt,
+  liveUrl,
+  appStoreUrl,
+  playStoreUrl,
   className,
   ...props
 }) => {
-  const pricingBadgeVariant = pricing === 'free' ? 'secondary' : 
-                             pricing === 'paid' ? 'destructive' : 'default';
-
+  const primaryUrl = liveUrl || appStoreUrl || playStoreUrl
+  
   return (
-    <Card className={cn('hover:shadow-lg transition-shadow', className)} {...props}>
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div className="flex items-center gap-3">
-            {icon && (
-              <div className="w-12 h-12 rounded-lg bg-accent-purple/10 flex items-center justify-center text-accent-purple text-xl font-bold">
-                {icon}
-              </div>
-            )}
-            <div>
-              <CardTitle className="text-lg">{title}</CardTitle>
-              <CardDescription className="text-sm">{developer}</CardDescription>
-            </div>
-          </div>
-          <Badge variant={pricingBadgeVariant as any} className="capitalize">
-            {pricing}
-          </Badge>
-        </div>
-      </CardHeader>
+    <BaseCard variant="interactive" className={className} {...props}>
+      {/* Type label */}
+      <CardLabel type="app" />
       
-      {description && (
-        <CardContent className="pb-3">
-          <p className="text-sm text-muted-foreground line-clamp-2">{description}</p>
-        </CardContent>
+      {/* Date in corner */}
+      <CardDate date={createdAt} />
+      
+      {/* Featured badge - offset from card edge */}
+      {featured && (
+        <div className="absolute -top-2 -right-2 z-30">
+          <div className="bg-gradient-to-r from-vybe-purple to-vybe-pink text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+            ⭐ Featured
+          </div>
+        </div>
       )}
       
-      <CardFooter className="flex flex-col gap-3">
-        <div className="flex items-center justify-between w-full">
-          <div className="flex items-center gap-3">
-            {rating && (
-              <span className="flex items-center gap-1 text-sm">
-                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                <span className="text-muted-foreground">{rating.toFixed(1)}</span>
-              </span>
-            )}
-            {downloads > 0 && (
-              <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                <Download className="w-4 h-4" />
-                {downloads.toLocaleString()}
-              </span>
+      {/* Title */}
+      <h3 className="mt-6 text-lg font-semibold text-white hover:text-vybe-orange transition-colors duration-200 mb-0">
+        <Link href={`/apps/${id}`}>
+          {name}
+        </Link>
+      </h3>
+      
+      {/* Developer info */}
+      {developer && (
+        <div className="flex items-center gap-2 mt-3">
+          <div className="w-6 h-6 rounded-full overflow-hidden bg-gray-700">
+            {developer.avatar ? (
+              <Image 
+                src={developer.avatar} 
+                alt={developer.name}
+                width={24}
+                height={24}
+                className="object-cover"
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-xs text-gray-300">
+                {developer.name.slice(0, 2).toUpperCase()}
+              </div>
             )}
           </div>
-          {category && (
-            <Badge variant="outline" className="text-xs">
-              {category}
-            </Badge>
+          <span className="text-sm text-gray-400">{developer.name}</span>
+        </div>
+      )}
+      
+      {/* Description */}
+      {description && (
+        <p className="text-sm text-gray-400 mt-3 line-clamp-2 flex-grow">
+          {description}
+        </p>
+      )}
+      
+      {/* Category & pricing badges */}
+      <div className="flex items-center gap-2 mt-3">
+        <Badge variant="secondary" className="text-xs">
+          {category}
+        </Badge>
+        {pricing && (
+          <Badge 
+            variant="outline" 
+            className={cn(
+              "text-xs",
+              pricing === 'free' && "border-green-500/30 text-green-400",
+              pricing === 'paid' && "border-blue-500/30 text-blue-400",
+              pricing === 'freemium' && "border-purple-500/30 text-purple-400"
+            )}
+          >
+            {pricing === 'free' && '✓ Free'}
+            {pricing === 'paid' && '$ Paid'}
+            {pricing === 'freemium' && '✨ Freemium'}
+          </Badge>
+        )}
+      </div>
+      
+      {/* Tech stack */}
+      {techStack.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-2">
+          {techStack.slice(0, 3).map((tech) => (
+            <span 
+              key={tech}
+              className="bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light px-2 py-1 text-xs rounded"
+            >
+              {tech}
+            </span>
+          ))}
+          {techStack.length > 3 && (
+            <span className="bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light px-2 py-1 text-xs rounded">
+              +{techStack.length - 3}
+            </span>
           )}
         </div>
-        
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-1 w-full">
-            {tags.map(tag => (
-              <Badge key={tag} variant="secondary" className="text-xs">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+      )}
+      
+      {/* Platforms */}
+      {platforms.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-2">
+          {platforms.map((platform) => (
+            <span 
+              key={platform}
+              className="bg-gray-700/50 text-gray-300 px-2 py-1 text-xs rounded"
+            >
+              {platform}
+            </span>
+          ))}
+        </div>
+      )}
+      
+      {/* Bottom stats section */}
+      <div className="flex items-center justify-between pt-2 mt-auto border-t border-gray-700/50">
+        <div className="flex items-center gap-3 text-sm text-gray-400">
+          {stats.views !== undefined && (
+            <span className="flex items-center gap-1">
+              <Eye className="w-4 h-4" />
+              {stats.views.toLocaleString()}
+            </span>
+          )}
+          {stats.downloads !== undefined && (
+            <span className="flex items-center gap-1">
+              <Download className="w-4 h-4" />
+              {stats.downloads.toLocaleString()}
+            </span>
+          )}
+          {stats.rating !== undefined && (
+            <span className="flex items-center gap-1">
+              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+              {stats.rating.toFixed(1)}
+            </span>
+          )}
+        </div>
+        {primaryUrl && (
+          <a 
+            href={primaryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-vybe-purple hover:text-vybe-pink transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ExternalLink className="w-4 h-4" />
+          </a>
         )}
-      </CardFooter>
-    </Card>
-  );
-};
+      </div>
+    </BaseCard>
+  )
+}

@@ -466,3 +466,339 @@
 .animate-gentle-bounce {
   animation: gentle-bounce 2s ease-in-out infinite;
 }
+
+/* Page Container */
+.page-container {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Nebula Background */
+.nebula-background {
+  background: linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #111111 100%);
+}
+
+.nebula-middle,
+.nebula-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* VybeCoding Gray Colors */
+.text-vybe-gray-300 {
+  color: #999999;
+}
+
+.text-vybe-gray-400 {
+  color: #666666;
+}
+
+.text-vybe-gray-500 {
+  color: #555555;
+}
+
+.text-vybe-gray-800 {
+  color: #1a1a1a;
+}
+
+.border-vybe-gray-800 {
+  border-color: #1a1a1a;
+}
+
+/* VybeCoding Brand Colors */
+.text-vybe-orange {
+  color: #e96b3a;
+}
+
+.text-vybe-pink {
+  color: #d946a0;
+}
+
+.text-vybe-purple {
+  color: #8a2be2;
+}
+
+.text-vybe-purple-light {
+  color: #a855f7;
+}
+
+.bg-vybe-pink\/10 {
+  background-color: rgba(217, 70, 160, 0.1);
+}
+
+.bg-vybe-pink\/20 {
+  background-color: rgba(217, 70, 160, 0.2);
+}
+
+.border-vybe-pink\/20 {
+  border-color: rgba(217, 70, 160, 0.2);
+}
+
+.bg-vybe-purple\/10 {
+  background-color: rgba(138, 43, 226, 0.1);
+}
+
+.border-vybe-purple\/20 {
+  border-color: rgba(138, 43, 226, 0.2);
+}
+
+/* Universal Search */
+.universal-search {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.universal-search:focus-within {
+  border-color: rgba(138, 43, 226, 0.5);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+.universal-search-icon {
+  position: absolute;
+  left: 1.5rem;
+  color: #666666;
+  pointer-events: none;
+}
+
+.universal-search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 0.875rem 1rem 0.875rem 3rem;
+  font-size: 1rem;
+}
+
+.universal-search-input::placeholder {
+  color: #666666;
+}
+
+.universal-search-submit {
+  margin-right: 0.25rem;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.625rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary-purple {
+  background: linear-gradient(90deg, #8a2be2, #a855f7);
+  color: white;
+}
+
+.btn-primary-purple:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.4);
+}
+
+/* Search Filter Container */
+.search-filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Filter Dropdowns */
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-dropdown-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-dropdown-button:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.filter-dropdown-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.filter-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  min-width: 200px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.filter-dropdown-item,
+.multi-select-item {
+  padding: 0.75rem 1rem;
+  color: #cccccc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-dropdown-item:hover,
+.multi-select-item:hover {
+  background: rgba(138, 43, 226, 0.2);
+  color: white;
+}
+
+.multi-select-checkbox {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.multi-select-checkbox.checked {
+  background: linear-gradient(90deg, #8a2be2, #d946a0);
+  border-color: transparent;
+}
+
+.multi-select-checkbox.checked::after {
+  content: '✓';
+  display: block;
+  text-align: center;
+  line-height: 0.75rem;
+  color: white;
+  font-weight: bold;
+  font-size: 0.75rem;
+}
+
+.filter-selection-counter {
+  background: linear-gradient(90deg, #8a2be2, #d946a0);
+  color: white;
+  padding: 0.125rem 0.5rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.filter-clear-button {
+  padding: 0.625rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #cccccc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-clear-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Tab Navigation */
+.tab-navigation-container {
+  margin-bottom: 2rem;
+}
+
+.apps-tab {
+  padding: 0.75rem 1.5rem;
+  color: #666666;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.apps-tab:hover {
+  color: #999999;
+}
+
+.apps-tab.active {
+  color: white;
+  border-bottom-color: transparent;
+  position: relative;
+}
+
+.apps-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8a2be2, #d946a0);
+}
+
+/* Minimal Card */
+.minimal-card {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.minimal-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
