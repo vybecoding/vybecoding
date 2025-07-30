@@ -3,9 +3,13 @@
  * Uses Playwright to verify demo migration plan implementation
  */
 
-const { chromium } = require('playwright');
-const fs = require('fs');
-const path = require('path');
+import { chromium } from 'playwright';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Audit configuration
 const DEMO_URL = 'http://localhost:8080';
@@ -17,10 +21,10 @@ const PAGES_TO_AUDIT = [
   { name: 'Landing Page', demoPath: '/pages/home.html', nextPath: '/' },
   { name: 'Apps Browse', demoPath: '/pages/apps/browse.html', nextPath: '/apps' },
   { name: 'Guides Browse', demoPath: '/pages/guides/browse.html', nextPath: '/guides' },
-  { name: 'Sign In', demoPath: '/pages/auth/signin.html', nextPath: '/sign-in' },
-  { name: 'Sign Up', demoPath: '/pages/auth/signup.html', nextPath: '/sign-up' },
-  { name: 'Dashboard', demoPath: '/pages/dashboard/index.html', nextPath: '/dashboard' },
-  { name: 'Profile', demoPath: '/pages/profile/index.html', nextPath: '/profile' },
+  { name: 'Sign In', demoPath: '/pages/auth/sign-in.html', nextPath: '/sign-in' },
+  { name: 'Sign Up', demoPath: '/pages/auth/sign-up.html', nextPath: '/sign-up' },
+  { name: 'Dashboard', demoPath: '/pages/dashboard.html', nextPath: '/dashboard' },
+  { name: 'Profile', demoPath: '/pages/profile.html', nextPath: '/profile' },
 ];
 
 // Key components to verify
