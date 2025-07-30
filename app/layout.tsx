@@ -65,8 +65,76 @@ const clerkAppearance = {
 };
 
 export const metadata: Metadata = {
-  title: "vybecoding.ai",
-  description: "AI-powered development platform",
+  metadataBase: new URL('https://vybecoding.ai'),
+  title: {
+    default: 'VybeCoding.ai - AI-Powered Development Platform',
+    template: '%s | VybeCoding.ai'
+  },
+  description: 'Discover AI-built projects, applications, and tools. Browse live demos, source code, and the exact prompts used to create innovative software solutions.',
+  keywords: [
+    'AI development',
+    'AI-built apps',
+    'artificial intelligence',
+    'coding platform',
+    'developer tools',
+    'AI projects',
+    'machine learning',
+    'software development',
+    'programming guides',
+    'tech tutorials'
+  ],
+  authors: [{ name: 'VybeCoding Team' }],
+  creator: 'VybeCoding.ai',
+  publisher: 'VybeCoding.ai',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://vybecoding.ai',
+    siteName: 'VybeCoding.ai',
+    title: 'VybeCoding.ai - AI-Powered Development Platform',
+    description: 'Discover AI-built projects, applications, and tools. Browse live demos, source code, and the exact prompts used to create innovative software solutions.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'VybeCoding.ai - AI-Powered Development Platform',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VybeCoding.ai - AI-Powered Development Platform',
+    description: 'Discover AI-built projects, applications, and tools. Browse live demos, source code, and the exact prompts used to create innovative software solutions.',
+    images: ['/og-image.png'],
+    creator: '@vybecoding',
+    site: '@vybecoding',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    yandex: process.env.YANDEX_VERIFICATION,
+    yahoo: process.env.YAHOO_VERIFICATION,
+  },
+  alternates: {
+    canonical: 'https://vybecoding.ai',
+  },
+  category: 'technology',
 };
 
 export default function RootLayout({
