@@ -92,7 +92,7 @@ export default function Hero({ className }: HeroProps) {
   }, [])
 
   return (
-    <section className={cn('relative h-screen overflow-hidden', className)}>
+    <section className={cn('relative min-h-[90vh] overflow-hidden', className)}>
       {/* Background layers */}
       <div className="absolute inset-0 bg-black" />
       
@@ -129,7 +129,7 @@ export default function Hero({ className }: HeroProps) {
       />
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center h-full">
+      <div className="relative z-20 flex items-center justify-center min-h-[90vh] py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -193,7 +193,7 @@ export default function Hero({ className }: HeroProps) {
       
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-8 left-0 right-0"
+        className="absolute bottom-12 left-0 right-0 z-30"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 1.2 }}

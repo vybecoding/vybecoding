@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "next dev",
+    "dev": "kill $(lsof -t -i:3000) 2>/dev/null || true && next dev",
     "build": "next build",
     "start": "next start",
     "test": "node test-runner.js",
     "convex": "convex dev",
-    "demo": "python3 -m http.server 8080 --directory demo"
+    "demo": "kill $(lsof -t -i:8080) 2>/dev/null || true && python3 -m http.server 8080 --directory demo"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
