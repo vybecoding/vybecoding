@@ -1,4 +1,4 @@
-# Epic 02: Pixel-Perfect Demo Migration
+# Epic 01: Pixel-Perfect Demo Migration
 
 **Epic Owner:** Alex (Architecture) & James (Development)  
 **Status:** In Progress  

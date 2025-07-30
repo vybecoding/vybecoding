@@ -22,7 +22,8 @@ Each story follows this format:
 ## Organization
 
 Stories are organized by feature areas:
-- `/epic-01-user-management/` - User profiles, authentication, settings
-- `/epic-02-content-management/` - Apps, guides, submissions
-- `/epic-03-interaction-features/` - Likes, comments, bookmarks
-- `/epic-04-discovery/` - Search, filtering, recommendations
+- `/epic-01-demo-migration/` - Pixel-perfect migration of all 46 demo pages to Next.js
+- `/epic-02-demo-migration/` - [DEPRECATED] Legacy demo migration stories (backup)
+- `/user-stories-standalone/` - Individual user stories (USER-001, etc.)
+- `/epic-03-interaction-features/` - Likes, comments, bookmarks (future)
+- `/epic-04-discovery/` - Search, filtering, recommendations (future)
