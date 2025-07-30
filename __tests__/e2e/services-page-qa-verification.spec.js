@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 
 // QA Verification for Services Page
 // Note: This is testing the Next.js implementation since no demo services page exists

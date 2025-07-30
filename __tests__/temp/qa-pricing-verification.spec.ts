@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { compareVisualElements, capturePageScreenshot } from '../visual-verification/utils/visual-utils';
+import { TestUtils } from '../visual-verification/helpers/test-utils';
 
 // QA Verification Test for DEMO-004 Pricing Page
 test.describe('DEMO-004 Pricing Page QA Verification', () => {
@@ -42,11 +42,17 @@ test.describe('DEMO-004 Pricing Page QA Verification', () => {
       
       // Wait for content to load
       await demoPage.waitForSelector('[class*="vybe-card"]', { timeout: 10000 });
-      await nextPage.waitForSelector('[class*="pricing"]', { timeout: 10000 });
+      await nextPage.waitForSelector('h1', { timeout: 10000 });
       
       // Capture screenshots
-      const demoScreenshot = await capturePageScreenshot(demoPage, `pricing-demo-${breakpointName}`);
-      const nextScreenshot = await capturePageScreenshot(nextPage, `pricing-next-${breakpointName}`);
+      const demoScreenshot = await demoPage.screenshot({ 
+        path: `__tests__/temp/pricing-demo-${breakpointName}.png`,
+        fullPage: true 
+      });
+      const nextScreenshot = await nextPage.screenshot({ 
+        path: `__tests__/temp/pricing-next-${breakpointName}.png`,
+        fullPage: true 
+      });
       
       // Basic layout verification
       const demoCards = await demoPage.locator('.vybe-card').count();
