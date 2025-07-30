@@ -37,7 +37,7 @@ export const buttonVariants = createVariants({
   defaultVariants: {
     variant: 'primary',
     size: 'md',
-    glow: false,
+    glow: 'false',
   },
 });
 
@@ -70,7 +70,7 @@ export const cardVariants = createVariants({
   defaultVariants: {
     variant: 'solid',
     padding: 'md',
-    interactive: false,
+    interactive: 'false',
   },
 });
 
@@ -99,7 +99,7 @@ export const badgeVariants = createVariants({
   
   defaultVariants: {
     variant: 'purple',
-    glow: false,
+    glow: 'false',
   },
 });
 
@@ -157,7 +157,7 @@ export const headingVariants = createVariants({
   
   defaultVariants: {
     level: 'h1',
-    gradient: false,
-    glow: false,
+    gradient: 'false',
+    glow: 'false',
   },
 });

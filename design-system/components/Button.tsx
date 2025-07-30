@@ -14,7 +14,7 @@ const s = createStyles(styles);
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'gradient' | 'ghost' | 'glass';
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  glow?: boolean;
+  glow?: 'true' | 'false';
   loading?: boolean;
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
@@ -27,7 +27,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     className,
     variant = 'primary',
     size = 'md',
-    glow = false,
+    glow = 'false',
     loading = false,
     iconLeft,
     iconRight,
@@ -66,9 +66,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           buttonVariants({ variant, size, glow }),
           s.compose(
             'button',
-            loading && 'loading',
-            effect3d && 'button3d',
-            glowTrail && 'glowTrail'
+            loading ? 'loading' : '',
+            effect3d ? 'button3d' : '',
+            glowTrail ? 'glowTrail' : ''
           ),
           className
         )}

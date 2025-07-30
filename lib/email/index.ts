@@ -40,9 +40,9 @@ class ResendService implements EmailService {
         from: params.from || this.fromEmail,
         to: params.to,
         subject: params.subject,
-        html: params.html,
+        html: params.html || params.text || '',
         text: params.text,
-        reply_to: params.replyTo,
+        replyTo: params.replyTo,
       });
 
       return { success: true, data: result };

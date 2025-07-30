@@ -1,4 +1,4 @@
-import Navigation from '@/components/Navigation'
+import Navigation from '@/components/navigation/Navigation'
 
 export default function MainLayout({
   children,
@@ -8,7 +8,7 @@ export default function MainLayout({
   return (
     <>
       <Navigation />
-      <div className="pt-[72px] min-h-screen">
+      <div className="pt-16 min-h-screen">
         {children}
       </div>
     </>
