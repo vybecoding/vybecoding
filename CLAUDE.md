@@ -595,108 +595,42 @@ Example: When you say "create a story for user login", Claude Code automatically
 
 ## Story & Epic Completion Workflows
 
-### Overview
+We use a two-tier system to ensure quality throughout development:
 
-Proper completion workflows ensure quality, security, and documentation stay current throughout development. We use a two-tier system:
-
-- **Story Completion**: Quick verification after each user story
-- **Epic Completion**: Comprehensive audit after completing a feature epic
-
-### Story Completion Workflow
-
-**Run after completing each story (e.g., USER-001):**
-
-1. **Visual & Functional Verification**
-   ```bash
-   .claude/scripts/story-complete.sh
-   ```
-   This script runs:
-   - TypeScript build check
-   - Playwright visual tests with screenshots
-   - Component showcase verification
-   - Security checks (Snyk, GitGuardian, MCP-Scan)
-   - Code quality checks (console.logs, TODOs)
-
-2. **Fix Any Issues**
-   - Address all failures before proceeding
-   - Use TRAIL system to learn from any errors
-   - Re-run script until all checks pass
-
-3. **Update Documentation**
-   ```bash
-   /update-docs
-   ```
-   - Updates all documentation to reflect changes
-   - Creates timestamped update summary
-   - Ensures docs match implementation
-
-4. **Only Then: Move to Next Story**
-   - Never start a new story with failing checks
-   - Documentation must be current
-   - All tests must pass
-
-### Epic Completion Workflow
-
-**Run after completing all stories in an epic (e.g., after USER-001, USER-002, USER-003):**
-
-1. **Comprehensive Security Audit**
-   ```bash
-   .claude/scripts/full-security-audit.sh
-   ```
-   This includes all manual tools from setup.md:
-   - Snyk dependency scan + monitoring
-   - GitGuardian deep scan
-   - MCP security audit
-   - Nuclei vulnerability scan (if deployed)
-   - npm audit
-   - Hardcoded secret detection
-   - HTTPS/TLS verification
-   - Environment variable audit
-
-2. **Address Security Findings**
-   - Fix any vulnerabilities found
-   - Update dependencies if needed
-   - Document security decisions
-
-3. **Epic Summary Documentation**
-   ```bash
-   /update-docs
-   ```
-   - Create epic completion summary
-   - Document all stories completed
-   - Note any architectural decisions
-
-4. **Manual Checks (if applicable)**
-   - **Stripe**: Test webhooks if payment features added
-   - **Cal.com**: Verify booking flow if calendar features added
-   - **HashiCorp Vault**: Audit secrets if new keys added
-
-### Epic Structure Example
-
-```
-Epic: User Management (epic-01-user-management/)
-├── USER-001: User Profile System ✅
-├── USER-002: Apps Submission Platform ✅
-└── USER-003: Guides Publishing System 🔄
-
-After each story → story-complete.sh → /update-docs
-After all stories → full-security-audit.sh → epic summary
+### Story Completion (After Each Story)
+```bash
+.claude/scripts/story-complete.sh STORY-001  # Replace with your story ID
 ```
 
-### Quick Reference
+This runs TypeScript build checks, Playwright visual comparison (demo vs Next.js), security scans, and code quality checks. After all checks pass:
 
-| Workflow | When to Run | Script | Time |
-|----------|------------|--------|------|
-| Story Completion | After each story | `story-complete.sh` | ~5 min |
-| Documentation Update | After all checks pass | `/update-docs` | ~1 min |
-| Epic Completion | After all epic stories | `full-security-audit.sh` | ~15 min |
+```bash
+/update-docs  # Update documentation
+```
 
-### Important Notes
+### Epic Completion (After All Stories)
+```bash
+.claude/scripts/full-security-audit.sh
+```
 
-- **Never skip steps**: Each step catches different types of issues
-- **Fix immediately**: Don't accumulate technical debt
-- **Learn patterns**: TRAIL system captures all fixes automatically
-- **Stay current**: Documentation drift causes confusion
+Comprehensive security audit including Snyk, GitGuardian, MCP audit, and manual integration checks.
+
+### Visual Verification with Playwright
+
+The workflow now includes enhanced visual testing:
+- **Automatic comparison** of demo (port 8080) vs Next.js (port 3000)
+- **Screenshots** at multiple breakpoints (375px, 768px, 1440px)
+- **Style extraction** for gradients, shadows, typography
+- **Pixel-level diffs** to quantify visual fidelity
+
+Results are saved to `visual-snapshots/comparison/` with detailed reports.
+
+### 📚 Detailed Workflow Guides
+
+For complete documentation see:
+- [Story Completion Workflow](.claude/workflows/story-completion.md)
+- [Epic Completion Workflow](.claude/workflows/epic-completion.md)
+- [Visual Verification Guide](.claude/workflows/visual-verification.md)
 
 ## Continuous Learning System
 
