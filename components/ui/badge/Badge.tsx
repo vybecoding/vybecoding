@@ -52,7 +52,6 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
 
     return (
       <ShadcnBadge
-        ref={ref}
         variant={variantMap[variant]}
         className={cn(customClasses, className)}
         {...props}

@@ -46,7 +46,7 @@ const listItemVariants = cva(
 );
 
 export interface ListProps
-  extends React.HTMLAttributes<HTMLUListElement | HTMLOListElement>,
+  extends Omit<React.HTMLAttributes<HTMLUListElement | HTMLOListElement>, 'color'>,
     VariantProps<typeof listVariants> {
   as?: 'ul' | 'ol';
 }

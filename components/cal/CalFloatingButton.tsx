@@ -46,7 +46,7 @@ export function CalFloatingButton({
     return () => {
       (async function () {
         const cal = await getCalApi();
-        cal('destroy');
+        (cal as any)('destroy');
       })();
     };
   }, [calLink, buttonText, buttonPosition, buttonColor, hideButtonIcon]);

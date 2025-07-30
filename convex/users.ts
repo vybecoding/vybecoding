@@ -213,18 +213,21 @@ export const searchUsersBySkills = query({
   handler: async (ctx, args) => {
     const limit = args.limit || 10;
     
-    const users = await ctx.db
+    const allUsers = await ctx.db
       .query("users")
       .filter((q) => {
-        // Filter users who have at least one matching skill and public/members-only visibility
-        return q.and(
-          q.neq(q.field("profileVisibility"), "private"),
-          q.or(...args.skills.map(skill => 
-            q.eq(q.field("skills"), skill)
-          ))
-        );
+        // Filter users who have public/members-only visibility
+        return q.neq(q.field("profileVisibility"), "private");
       })
-      .take(limit);
+      .collect();
+
+    // Filter users who have at least one matching skill
+    const matchingUsers = allUsers.filter(user => 
+      user.skills && user.skills.some(skill => args.skills.includes(skill))
+    );
+
+    // Take only the requested limit
+    const users = matchingUsers.slice(0, limit);
 
     // Remove sensitive information
     return users.map(user => {

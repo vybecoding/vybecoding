@@ -19,7 +19,7 @@ export function LinksStep() {
     if (!url && !required) return true;
     if (!url && required) return "This URL is required";
     
-    if (!validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
+    if (url && !validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
       return "Must be a valid HTTPS URL";
     }
     
@@ -29,11 +29,11 @@ export function LinksStep() {
   const validateGithubUrl = (url: string | undefined) => {
     if (!url) return true; // Optional field
     
-    if (!validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
+    if (url && !validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
       return "Must be a valid HTTPS URL";
     }
     
-    if (!url.startsWith("https://github.com/")) {
+    if (url && !url.startsWith("https://github.com/")) {
       return "Must be a GitHub repository URL";
     }
     
@@ -43,11 +43,11 @@ export function LinksStep() {
   const validateAppStoreUrl = (url: string | undefined) => {
     if (!url) return true; // Optional field
     
-    if (!validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
+    if (url && !validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
       return "Must be a valid HTTPS URL";
     }
     
-    if (!url.includes("apps.apple.com")) {
+    if (url && !url.includes("apps.apple.com")) {
       return "Must be an App Store URL";
     }
     
@@ -57,11 +57,11 @@ export function LinksStep() {
   const validatePlayStoreUrl = (url: string | undefined) => {
     if (!url) return true; // Optional field
     
-    if (!validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
+    if (url && !validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
       return "Must be a valid HTTPS URL";
     }
     
-    if (!url.includes("play.google.com/store/apps")) {
+    if (url && !url.includes("play.google.com/store/apps")) {
       return "Must be a Play Store URL";
     }
     

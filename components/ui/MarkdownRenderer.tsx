@@ -43,19 +43,19 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
   className
 }) => {
   return (
-    <ReactMarkdown
-      className={cn("prose prose-gray dark:prose-invert max-w-none", className)}
-      remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypeRaw, rehypeSanitize]}
+    <div className={cn("prose prose-gray dark:prose-invert max-w-none", className)}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeRaw, rehypeSanitize]}
       components={{
-        code({ node, inline, className, children, ...props }) {
+        code({ node, className, children, ...props }) {
           const match = /language-(\w+)/.exec(className || '');
           const language = match ? match[1] : '';
           
-          if (!inline && match) {
+          if (match) {
             return (
               <SyntaxHighlighter
-                style={oneDark}
+                style={oneDark as any}
                 language={language}
                 PreTag="div"
                 customStyle={{
@@ -63,7 +63,6 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
                   borderRadius: '0.5rem',
                   fontSize: '0.875rem'
                 }}
-                {...props}
               >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
@@ -125,5 +124,6 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     >
       {content}
     </ReactMarkdown>
+    </div>
   );
 };

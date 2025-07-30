@@ -104,7 +104,7 @@ const dividerVariants = cva(
 );
 
 export interface DividerProps
-  extends React.HTMLAttributes<HTMLHRElement>,
+  extends Omit<React.HTMLAttributes<HTMLHRElement>, 'color'>,
     VariantProps<typeof dividerVariants> {
   label?: React.ReactNode;
 }

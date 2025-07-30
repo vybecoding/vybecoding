@@ -21,10 +21,10 @@ export function VisualAssetsStep() {
   const screenshots = watch("screenshots") || [];
   const demoVideoUrl = watch("demoVideoUrl");
 
-  const validateVideoUrl = (url: string) => {
+  const validateVideoUrl = (url: string | undefined) => {
     if (!url) return true; // Optional field
     
-    if (!validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
+    if (url && !validator.isURL(url, { protocols: ["https"], require_protocol: true })) {
       return "Must be a valid HTTPS URL";
     }
     
@@ -32,7 +32,7 @@ export function VisualAssetsStep() {
     const youtubeRegex = /^https:\/\/(www\.)?(youtube\.com\/watch\?v=|youtu\.be\/)/;
     const vimeoRegex = /^https:\/\/(www\.)?vimeo\.com\//;
     
-    if (!youtubeRegex.test(url) && !vimeoRegex.test(url)) {
+    if (url && !youtubeRegex.test(url) && !vimeoRegex.test(url)) {
       return "Must be a YouTube or Vimeo URL";
     }
     

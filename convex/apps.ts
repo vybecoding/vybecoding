@@ -1,6 +1,6 @@
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
-import { Doc } from "./_generated/dataModel";
+import { Doc, Id } from "./_generated/dataModel";
 
 // Rate limiting helper
 const checkRateLimit = async (ctx: any, userId: string) => {
@@ -187,7 +187,7 @@ export const getApp = query({
     if (!app) return null;
 
     // Get user details
-    const user = await ctx.db.get(app.userId);
+    const user = await ctx.db.get(app.userId as Id<"users">);
     
     return {
       ...app,
@@ -269,7 +269,7 @@ export const getApprovedApps = query({
     }
 
     if (args.platform) {
-      apps = apps.filter(app => app.platforms.includes(args.platform));
+      apps = apps.filter(app => app.platforms.includes(args.platform!));
     }
 
     if (args.searchTerm) {
@@ -292,7 +292,7 @@ export const getApprovedApps = query({
     // Get user details for each app
     const appsWithUsers = await Promise.all(
       paginatedApps.map(async (app) => {
-        const user = await ctx.db.get(app.userId);
+        const user = await ctx.db.get(app.userId as Id<"users">);
         return {
           ...app,
           user: user ? {

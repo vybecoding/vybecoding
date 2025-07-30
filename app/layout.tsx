@@ -6,7 +6,6 @@ import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const clerkAppearance = {
-  baseTheme: 'dark' as const,
   variables: {
     colorPrimary: '#8a2be2',
     colorBackground: 'rgba(26, 26, 26, 0.8)',

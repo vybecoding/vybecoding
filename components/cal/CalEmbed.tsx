@@ -42,7 +42,7 @@ export function CalEmbed({ calLink, config, className }: CalEmbedProps) {
     <Cal
       calLink={calLink}
       style={{ width: '100%', height: '100%', overflow: 'scroll' }}
-      config={config}
+      config={config as any}
       className={className}
     />
   );

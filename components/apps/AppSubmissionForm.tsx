@@ -132,7 +132,7 @@ export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
   const createApp = useMutation(api.apps.createApp);
   const updateApp = useMutation(api.apps.updateApp);
   const submitApp = useMutation(api.apps.submitApp);
-  const existingApp = useQuery(api.apps.getApp, appId ? { id: appId } : undefined);
+  const existingApp = useQuery(api.apps.getApp, appId ? { id: appId } : "skip");
 
   const form = useForm<AppFormData>({
     resolver: zodResolver(appFormSchema),

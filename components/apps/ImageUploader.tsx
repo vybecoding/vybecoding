@@ -38,7 +38,7 @@ export function ImageUploader({
     const validation = type === "icon" ? APP_VALIDATION.icon : APP_VALIDATION.screenshot;
     
     // Check file type
-    if (!validation.formats.includes(file.type)) {
+    if (!validation.formats.includes(file.type as any)) {
       return `Invalid file type. Allowed: ${validation.formats.join(", ")}`;
     }
 

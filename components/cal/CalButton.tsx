@@ -39,7 +39,7 @@ export function CalButton({
             brandColor: '#6366f1',
           },
         },
-      },
+      } as any,
     });
   };
 

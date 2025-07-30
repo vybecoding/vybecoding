@@ -74,7 +74,7 @@ export const Tag = React.forwardRef<HTMLSpanElement, TagProps>(
       return (
         <button
           type="button"
-          ref={ref}
+          ref={ref as any}
           className={cn(tagVariants({ variant, size }), styles.button, className)}
           onClick={onClick}
           {...props}
