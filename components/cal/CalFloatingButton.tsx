@@ -46,6 +46,14 @@ export function CalFloatingButton({
     return () => {
       (async function () {
         const cal = await getCalApi();
+        // Remove floating button and any Cal.com elements
+        const calElements = document.querySelectorAll('[data-cal-namespace], .cal-floating-button, [class*="cal-"], [id*="cal-"]');
+        calElements.forEach(element => {
+          if (element && element.parentNode) {
+            element.remove();
+          }
+        });
+        // Also call destroy
         (cal as any)('destroy');
       })();
     };

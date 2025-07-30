@@ -31,7 +31,7 @@ function AppCard({ app }: { app: any }) {
 
   return (
     <div 
-      className={`minimal-card rounded-lg p-5 transition-all cursor-pointer group flex flex-col ${
+      className={`minimal-card rounded-lg p-5 transition-all cursor-pointer group flex flex-col relative ${
         needsVerification ? 'card-needs-verification' : ''
       }`}
       onClick={handleClick}
@@ -151,7 +151,7 @@ export default function AppsPage() {
   const { isSignedIn } = useUser();
   
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [selectedTechStack, setSelectedTechStack] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("relevance");
@@ -177,10 +177,24 @@ export default function AppsPage() {
 
   // Fetch approved apps with filters
   const appsResult = useQuery(api.apps.getApprovedApps, {
-    category: selectedCategory || undefined,
+    category: selectedCategories.length === 1 ? selectedCategories[0] : undefined,
     searchTerm: searchTerm || undefined,
     limit: 20,
   });
+
+  // Filter apps by multiple categories if needed
+  const filteredApps = React.useMemo(() => {
+    if (!appsResult?.apps) return [];
+    
+    if (selectedCategories.length === 0 || selectedCategories.length === 1) {
+      return appsResult.apps;
+    }
+    
+    // Filter by multiple categories
+    return appsResult.apps.filter(app => 
+      selectedCategories.includes(app.category)
+    );
+  }, [appsResult?.apps, selectedCategories]);
 
   const handleSubmitApp = () => {
     if (isSignedIn) {
@@ -192,13 +206,13 @@ export default function AppsPage() {
 
   const clearFilters = () => {
     setSearchTerm("");
-    setSelectedCategory("");
+    setSelectedCategories([]);
     setSelectedPlatforms([]);
     setSelectedTechStack([]);
     setSortBy("relevance");
   };
 
-  const hasActiveFilters = searchTerm || selectedCategory || selectedPlatforms.length > 0 || selectedTechStack.length > 0;
+  const hasActiveFilters = searchTerm || selectedCategories.length > 0 || selectedPlatforms.length > 0 || selectedTechStack.length > 0;
 
   const sortOptions = [
     { value: 'relevance', label: 'Relevance' },
@@ -212,11 +226,11 @@ export default function AppsPage() {
   const performSearch = () => {
     if (searchTerm.trim()) {
       // Filter apps based on search term
-      const filtered = appsResult?.apps.filter(app => 
+      const filtered = filteredApps.filter(app => 
         app.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.shortDescription?.toLowerCase().includes(searchTerm.toLowerCase()) ||
         app.category.toLowerCase().includes(searchTerm.toLowerCase())
-      ) || [];
+      );
       setSearchResults(filtered);
       setShowSearchResults(true);
     } else {
@@ -231,12 +245,8 @@ export default function AppsPage() {
   };
 
   return (
-    <div className="page-container nebula-background">
-      {/* Nebula backgrounds handled by CSS */}
-      <div className="nebula-middle"></div>
-      <div className="nebula-bottom"></div>
-      
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <div className="page-container bg-black">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-light mb-4">
@@ -277,7 +287,27 @@ export default function AppsPage() {
 
         {/* Search Filter Dropdowns */}
         <div className="search-filter-container mb-8">
-          <div className="flex flex-col gap-0">
+          <div className="flex flex-col gap-4">
+            {/* Active Filters Display */}
+            {selectedCategories.length > 0 && (
+              <div className="flex flex-wrap gap-2 justify-center">
+                {selectedCategories.map(category => (
+                  <span 
+                    key={category}
+                    className="px-3 py-1 bg-vybe-pink/20 text-vybe-pink text-sm rounded-full border border-vybe-pink/30 flex items-center gap-2"
+                  >
+                    {category}
+                    <button 
+                      onClick={() => setSelectedCategories(selectedCategories.filter(c => c !== category))}
+                      className="hover:text-white transition-colors"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            )}
+            
             {/* Filters Row */}
             <div className="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
               {/* Category Dropdown */}
@@ -290,8 +320,8 @@ export default function AppsPage() {
                   }}
                 >
                   <span>Category</span>
-                  {selectedCategory && (
-                    <span className="filter-selection-counter" id="apps-category-counter">1</span>
+                  {selectedCategories.length > 0 && (
+                    <span className="filter-selection-counter" id="apps-category-counter">{selectedCategories.length}</span>
                   )}
                   <svg className="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 9l-7 7-7-7"></path>
@@ -302,11 +332,10 @@ export default function AppsPage() {
                     <div 
                       className="multi-select-item"
                       onClick={() => {
-                        setSelectedCategory("");
-                        setShowCategoryDropdown(false);
+                        setSelectedCategories([]);
                       }}
                     >
-                      <div className={`multi-select-checkbox ${!selectedCategory ? 'checked' : ''}`}></div>
+                      <div className={`multi-select-checkbox ${selectedCategories.length === 0 ? 'checked' : ''}`}></div>
                       <span className="multi-select-label">All Categories</span>
                     </div>
                     {APP_CATEGORIES.map(category => (
@@ -314,11 +343,14 @@ export default function AppsPage() {
                         key={category}
                         className="multi-select-item"
                         onClick={() => {
-                          setSelectedCategory(category);
-                          setShowCategoryDropdown(false);
+                          if (selectedCategories.includes(category)) {
+                            setSelectedCategories(selectedCategories.filter(c => c !== category));
+                          } else {
+                            setSelectedCategories([...selectedCategories, category]);
+                          }
                         }}
                       >
-                        <div className={`multi-select-checkbox ${selectedCategory === category ? 'checked' : ''}`}></div>
+                        <div className={`multi-select-checkbox ${selectedCategories.includes(category) ? 'checked' : ''}`}></div>
                         <span className="multi-select-label">{category}</span>
                       </div>
                     ))}
@@ -391,29 +423,6 @@ export default function AppsPage() {
           </div>
         </div>
 
-        {/* Tab Navigation */}
-        <div className="tab-navigation-container">
-          <div className="flex gap-4 border-b border-vybe-gray-800 justify-center">
-            <button 
-              onClick={() => setActiveTab('browse')} 
-              className={`apps-tab ${activeTab === 'browse' ? 'active' : ''}`}
-              data-tab="browse"
-            >
-              Browse Apps
-            </button>
-            <button 
-              onClick={() => {
-                setActiveTab('submit');
-                handleSubmitApp();
-              }} 
-              className={`apps-tab ${activeTab === 'submit' ? 'active' : ''}`}
-              data-tab="submit"
-            >
-              Submit App
-            </button>
-          </div>
-        </div>
-
         {/* Content for tabs will be loaded here */}
         <div id="apps-content-container">
           <div id="apps-browse-content" className="apps-tab-content">
@@ -454,8 +463,8 @@ export default function AppsPage() {
                       Try Again
                     </button>
                   </div>
-                ) : appsResult.apps.length > 0 ? (
-                  appsResult.apps.map((app) => (
+                ) : filteredApps.length > 0 ? (
+                  filteredApps.map((app) => (
                     <AppCard key={app._id} app={app} />
                   ))
                 ) : (

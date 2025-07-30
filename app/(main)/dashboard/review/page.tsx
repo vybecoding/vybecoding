@@ -10,7 +10,19 @@ export default function GuideReviewPage() {
   const [selectedStatus, setSelectedStatus] = useState<'all' | 'pending' | 'approved' | 'rejected'>('all')
 
   // Mock data - would come from Convex in real implementation
-  const guides = [
+  const guides: Array<{
+    id: string
+    title: string
+    status: 'approved' | 'pending' | 'rejected'
+    submittedAt: string
+    reviewedAt: string | null
+    views: number
+    rating: number | null
+    earnings: number
+    coverImage: string | null
+    gradient?: string
+    rejectionReason?: string
+  }> = [
     {
       id: '1',
       title: 'Building AI Agents with Claude',
@@ -20,7 +32,8 @@ export default function GuideReviewPage() {
       views: 1234,
       rating: 4.8,
       earnings: 287,
-      coverImage: '/api/placeholder/400/225'
+      coverImage: null,
+      gradient: 'from-vybe-purple to-vybe-pink'
     },
     {
       id: '2',
@@ -31,7 +44,8 @@ export default function GuideReviewPage() {
       views: 0,
       rating: null,
       earnings: 0,
-      coverImage: '/api/placeholder/400/225'
+      coverImage: null,
+      gradient: 'from-blue-500 to-purple-600'
     },
     {
       id: '3',
@@ -42,7 +56,8 @@ export default function GuideReviewPage() {
       views: 0,
       rating: null,
       earnings: 0,
-      coverImage: '/api/placeholder/400/225',
+      coverImage: null,
+      gradient: 'from-orange-500 to-red-600',
       rejectionReason: 'Content needs more depth and practical examples'
     },
     {
@@ -54,7 +69,8 @@ export default function GuideReviewPage() {
       views: 2847,
       rating: 4.9,
       earnings: 512,
-      coverImage: '/api/placeholder/400/225'
+      coverImage: null,
+      gradient: 'from-green-500 to-teal-600'
     }
   ]
 
@@ -84,36 +100,48 @@ export default function GuideReviewPage() {
   }
 
   return (
-    <div className="py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <BookOpen className="w-5 h-5 text-vybe-purple" />
-            <span className="text-2xl font-semibold text-white">7</span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all">
+          <div className="flex items-start justify-between mb-3">
+            <div className="w-10 h-10 bg-vybe-purple/20 rounded-lg flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-vybe-purple" />
+            </div>
+            <span className="text-3xl font-bold text-white">7</span>
           </div>
           <p className="text-sm text-gray-400">Total Guides</p>
+          <p className="text-xs text-gray-500 mt-1">All time</p>
         </div>
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <CheckCircle className="w-5 h-5 text-green-400" />
-            <span className="text-2xl font-semibold text-white">5</span>
+        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all">
+          <div className="flex items-start justify-between mb-3">
+            <div className="w-10 h-10 bg-green-400/20 rounded-lg flex items-center justify-center">
+              <CheckCircle className="w-5 h-5 text-green-400" />
+            </div>
+            <span className="text-3xl font-bold text-white">5</span>
           </div>
           <p className="text-sm text-gray-400">Approved</p>
+          <p className="text-xs text-green-400 mt-1">71% approval rate</p>
         </div>
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <Clock className="w-5 h-5 text-yellow-400" />
-            <span className="text-2xl font-semibold text-white">1</span>
+        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all">
+          <div className="flex items-start justify-between mb-3">
+            <div className="w-10 h-10 bg-yellow-400/20 rounded-lg flex items-center justify-center">
+              <Clock className="w-5 h-5 text-yellow-400" />
+            </div>
+            <span className="text-3xl font-bold text-white">1</span>
           </div>
           <p className="text-sm text-gray-400">Under Review</p>
+          <p className="text-xs text-gray-500 mt-1">~24h wait time</p>
         </div>
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <TrendingUp className="w-5 h-5 text-vybe-pink" />
-            <span className="text-2xl font-semibold text-white">8.2K</span>
+        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all">
+          <div className="flex items-start justify-between mb-3">
+            <div className="w-10 h-10 bg-vybe-pink/20 rounded-lg flex items-center justify-center">
+              <TrendingUp className="w-5 h-5 text-vybe-pink" />
+            </div>
+            <span className="text-3xl font-bold text-white">8.2K</span>
           </div>
           <p className="text-sm text-gray-400">Total Views</p>
+          <p className="text-xs text-vybe-pink mt-1">+23% this month</p>
         </div>
       </div>
 
@@ -160,11 +188,21 @@ export default function GuideReviewPage() {
                 <div className="flex flex-col md:flex-row">
                   {/* Cover Image */}
                   <div className="md:w-48 h-32 md:h-auto bg-gray-800 relative overflow-hidden">
-                    <img
-                      src={guide.coverImage}
-                      alt={guide.title}
-                      className="w-full h-full object-cover"
-                    />
+                    {guide.coverImage ? (
+                      <img
+                        src={guide.coverImage}
+                        alt={guide.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className={cn(
+                        "w-full h-full bg-gradient-to-br",
+                        guide.gradient || "from-vybe-purple to-vybe-pink",
+                        "flex items-center justify-center"
+                      )}>
+                        <BookOpen className="w-12 h-12 text-white/20" />
+                      </div>
+                    )}
                     <div className={cn(
                       "absolute top-2 right-2 px-2 py-1 rounded-md flex items-center gap-1",
                       config.bgColor,
@@ -267,25 +305,32 @@ export default function GuideReviewPage() {
       </div>
 
       {/* Create New Guide CTA */}
-      <div className="bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 rounded-xl p-8 border border-vybe-purple/40 text-center">
-        <h3 className="text-xl font-semibold text-white mb-2">
-          Ready to share your knowledge?
-        </h3>
-        <p className="text-gray-300 mb-6">
-          Create a new guide and start earning from your expertise
-        </p>
-        <a
-          href="/dashboard/guides/new"
-          className={cn(
-            "inline-block px-6 py-3",
-            "bg-gradient-to-r from-vybe-purple to-vybe-pink",
-            "text-white font-semibold rounded-lg",
-            "hover:shadow-lg hover:shadow-vybe-purple/25",
-            "transition-all transform hover:scale-105"
-          )}
-        >
-          Create New Guide
-        </a>
+      <div className="relative overflow-hidden bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 rounded-xl p-12 border border-vybe-purple/40 text-center">
+        <div className="absolute inset-0 bg-gradient-to-r from-vybe-purple/10 via-transparent to-vybe-pink/10" />
+        <div className="relative z-10">
+          <div className="w-16 h-16 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center mx-auto mb-6">
+            <BookOpen className="w-8 h-8 text-white" />
+          </div>
+          <h3 className="text-2xl font-semibold text-white mb-3">
+            Ready to share your knowledge?
+          </h3>
+          <p className="text-gray-300 mb-8 max-w-md mx-auto">
+            Create a new guide and start earning from your expertise. Join thousands of creators making an impact.
+          </p>
+          <a
+            href="/write"
+            className={cn(
+              "inline-flex items-center gap-2 px-8 py-4",
+              "bg-gradient-to-r from-vybe-purple to-vybe-pink",
+              "text-white font-semibold rounded-lg",
+              "hover:shadow-lg hover:shadow-vybe-purple/25",
+              "transition-all transform hover:scale-105"
+            )}
+          >
+            <BookOpen className="w-5 h-5" />
+            Create New Guide
+          </a>
+        </div>
       </div>
     </div>
   )

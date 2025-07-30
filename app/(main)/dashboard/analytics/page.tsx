@@ -44,7 +44,7 @@ export default function DashboardAnalyticsPage() {
   }
 
   return (
-    <div className="py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       {/* Earnings/Analytics Tabs */}
       <div className="mb-8">
         <div className="flex gap-4 border-b border-white/10 flex-wrap justify-center">

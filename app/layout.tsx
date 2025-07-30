@@ -8,55 +8,101 @@ import "./globals.css";
 const clerkAppearance = {
   variables: {
     colorPrimary: '#8a2be2',
-    colorBackground: 'rgba(26, 26, 26, 0.8)',
-    colorInputBackground: '#1f2937',
+    colorBackground: 'transparent',
+    colorInputBackground: 'rgba(31, 41, 55, 1)',
     colorInputText: '#ffffff',
     colorText: '#ffffff',
-    colorTextSecondary: '#888888',
-    borderRadius: '8px',
+    colorTextSecondary: '#9ca3af',
+    borderRadius: '0.5rem',
+    fontFamily: 'Inter, system-ui, sans-serif',
   },
   elements: {
     formButtonPrimary: {
       background: 'linear-gradient(to bottom, #8a2be2, rgba(138, 43, 226, 0.8))',
+      padding: '0.75rem 1.5rem',
+      fontWeight: '500',
       '&:hover': {
         background: 'linear-gradient(to bottom, rgba(138, 43, 226, 0.9), rgba(138, 43, 226, 0.7))',
       },
     },
     card: {
-      background: 'rgba(26, 26, 26, 0.8)',
-      backdropFilter: 'blur(10px)',
-      border: '1px solid rgba(51, 51, 51, 0.4)',
-      borderRadius: '8px',
-      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+      background: 'transparent',
+      backdropFilter: 'none',
+      border: 'none',
+      borderRadius: '0',
+      boxShadow: 'none',
+      padding: '0',
     },
     headerTitle: {
-      color: '#ffffff',
+      display: 'none',
     },
     headerSubtitle: {
-      color: '#888888',
+      display: 'none',
     },
     socialButtonsBlockButton: {
-      background: '#1f2937',
-      border: '1px solid #374151',
+      background: 'rgba(31, 41, 55, 1)',
+      border: '1px solid rgba(55, 65, 81, 1)',
       color: '#ffffff',
       '&:hover': {
         background: '#374151',
       },
     },
     formFieldInput: {
-      background: '#1f2937',
-      border: '1px solid #374151',
+      background: 'rgba(31, 41, 55, 1)',
+      border: '1px solid rgba(55, 65, 81, 1)',
       color: '#ffffff',
+      padding: '0.75rem 1rem',
+      borderRadius: '0.5rem',
+      '&::placeholder': {
+        color: 'rgba(107, 114, 128, 1)',
+      },
       '&:focus': {
         borderColor: '#8a2be2',
         boxShadow: '0 0 0 1px #8a2be2',
       },
     },
     formFieldLabel: {
-      color: '#888888',
+      color: '#9ca3af',
+      fontSize: '0.875rem',
+      fontWeight: '500',
+      marginBottom: '0.5rem',
     },
     footerActionLink: {
       color: '#8a2be2',
+      fontWeight: '500',
+      '&:hover': {
+        color: '#a855f7',
+      },
+    },
+    formFieldAction: {
+      color: '#8a2be2',
+      fontSize: '0.875rem',
+      '&:hover': {
+        color: '#a855f7',
+      },
+    },
+    dividerLine: {
+      backgroundColor: 'rgba(55, 65, 81, 1)',
+    },
+    dividerText: {
+      color: 'rgba(107, 114, 128, 1)',
+      fontSize: '0.75rem',
+      textTransform: 'uppercase',
+      backgroundColor: 'transparent',
+      padding: '0 0.5rem',
+    },
+    identityPreviewText: {
+      color: '#9ca3af',
+    },
+    identityPreviewEditButton: {
+      color: '#8a2be2',
+      '&:hover': {
+        color: '#a855f7',
+      },
+    },
+    alternativeMethodsBlockButton: {
+      color: '#8a2be2',
+      fontSize: '0.875rem',
       '&:hover': {
         color: '#a855f7',
       },

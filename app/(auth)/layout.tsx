@@ -1,4 +1,5 @@
 import { AnimatedLogo } from '@/components/ui/animated-logo';
+import Link from 'next/link';
 
 export default function AuthLayout({
   children,
@@ -19,10 +20,10 @@ export default function AuthLayout({
         <div className="w-full max-w-md">
           {/* Logo - matching demo exactly */}
           <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2">
+            <Link href="/" className="inline-flex items-center gap-2">
               <AnimatedLogo />
               <span className="text-2xl font-bold text-white">vybecoding</span>
-            </div>
+            </Link>
           </div>
 
           {/* Auth Content */}
@@ -32,12 +33,12 @@ export default function AuthLayout({
 
           {/* Back to Home */}
           <div className="text-center mt-8">
-            <a 
+            <Link 
               href="/" 
               className="text-sm text-gray-400 hover:text-white transition-colors"
             >
               ← Back to home
-            </a>
+            </Link>
           </div>
         </div>
       </main>

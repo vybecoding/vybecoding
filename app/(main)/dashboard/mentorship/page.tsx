@@ -101,7 +101,7 @@ export default function MentorshipPage() {
   ]
 
   return (
-    <div className="py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">

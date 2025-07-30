@@ -281,7 +281,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-slide-up">
               <h3 className="text-4xl font-light mb-6 text-center">
-                Learn from <GradientText variant="primary">Featured Mentors</GradientText>
+                Learn from <GradientText gradient="brand">Featured Mentors</GradientText>
               </h3>
               
               <p className="text-gray-400 text-center mb-8">
@@ -364,7 +364,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
             <h3 className="text-4xl font-light mb-8">
-              Yes, AI Can Be <GradientText variant="primary">Frustrating</GradientText>
+              Yes, AI Can Be <GradientText gradient="brand">Frustrating</GradientText>
             </h3>
             <p className="text-gray-400">I know what you&apos;re thinking...</p>
           </div>
@@ -423,7 +423,7 @@ export default function Home() {
       <section className="py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           <h3 className="text-4xl font-light mb-12 text-center">
-            Everything You Need to <GradientText variant="primary">Succeed with AI</GradientText>
+            Everything You Need to <GradientText gradient="brand">Succeed with AI</GradientText>
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -550,7 +550,7 @@ export default function Home() {
       <section className="py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
           <h3 className="text-4xl font-light mb-12 text-center">
-            The <GradientText variant="primary">Build → Guide → Grow</GradientText> Pattern
+            The <GradientText gradient="brand">Build → Guide → Grow</GradientText> Pattern
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -605,7 +605,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <h3 className="text-4xl font-light mb-12 text-center">
-              What You Could <GradientText variant="primary">Build & Share</GradientText>
+              What You Could <GradientText gradient="brand">Build & Share</GradientText>
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -705,7 +705,7 @@ export default function Home() {
       <section className="py-20 relative z-10">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h3 className="text-4xl font-light mb-8">
-            A Rising Tide <GradientText variant="primary">Lifts All Boats</GradientText>
+            A Rising Tide <GradientText gradient="brand">Lifts All Boats</GradientText>
           </h3>
           
           <div className="space-y-6 text-lg text-gray-300 mb-12">

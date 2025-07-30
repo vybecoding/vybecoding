@@ -23,5 +23,14 @@ export async function register() {
 // Export the required hook for request error instrumentation
 export const onRequestError = async (err: unknown, request: Request, context: { routerKind: string; routePath: string }) => {
   const { captureRequestError } = await import('@sentry/nextjs')
-  return captureRequestError(err, request, context)
+  // Convert Request to RequestInfo and add required properties
+  const requestInfo = {
+    ...request,
+    path: context.routePath
+  }
+  const errorContext = {
+    ...context,
+    routeType: context.routerKind
+  }
+  return captureRequestError(err, requestInfo as any, errorContext as any)
 }

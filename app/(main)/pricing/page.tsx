@@ -20,7 +20,7 @@ export default function PricingPage() {
           {/* Header Section */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-light mb-4">
-              <GradientText variant="primary">Pricing</GradientText>
+              <GradientText gradient="brand">Pricing</GradientText>
             </h1>
             <p className="text-vybe-gray-300 text-lg">
               Simple, transparent pricing for everyone.<br />

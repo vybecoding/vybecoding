@@ -59,7 +59,7 @@ export default function DashboardProfilePage() {
   }
 
   return (
-    <div className="py-6 space-y-8 max-w-4xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       {/* Profile Header */}
       <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-8">
         <div className="flex items-start gap-6">

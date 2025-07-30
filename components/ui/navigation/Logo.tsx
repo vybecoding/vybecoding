@@ -29,7 +29,7 @@ export const Logo: React.FC<LogoProps> = ({
       </div>
       
       {showText && (
-        <a href="#" data-navigate="home" className="flex items-center" aria-label="vybecoding.ai - Go to homepage">
+        <div className="flex items-center">
           <div className={styles.text}>
             <span className={styles.name}>vybecoding.ai</span>
             <div className="text-xs font-mono tracking-normal">
@@ -37,7 +37,7 @@ export const Logo: React.FC<LogoProps> = ({
             </div>
           </div>
           <span className="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs font-medium rounded-full border border-vybe-pink/30 ml-2" role="status" aria-label="Beta version">BETA</span>
-        </a>
+        </div>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Container } from "@/components/ui/layout";
@@ -47,13 +47,38 @@ export default function GuidesPage() {
   const { isSignedIn } = useUser();
   
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string>("");
+  const [selectedAITools, setSelectedAITools] = useState<string[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>("newest");
   const [activeTab, setActiveTab] = useState<string>("browse");
+  const [showAIToolsDropdown, setShowAIToolsDropdown] = useState(false);
+  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+  const [showSortDropdown, setShowSortDropdown] = useState(false);
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const target = event.target as Element;
+      if (!target.closest('.filter-dropdown')) {
+        setShowAIToolsDropdown(false);
+        setShowCategoryDropdown(false);
+        setShowSortDropdown(false);
+      }
+    }
+    
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  // AI Tools list matching demo
+  const aiTools = [
+    'Claude', 'Claude Code', 'Claude API', 'ChatGPT', 
+    'Cursor', 'Augment Code', 'GitHub Copilot', 'v0 by Vercel', 'Bolt'
+  ];
 
   // Fetch published guides with filters
   const guidesResult = useQuery(api.guides.getPublishedGuides, {
-    category: selectedCategory || undefined,
+    category: selectedCategories.length === 1 ? selectedCategories[0] : undefined,
     limit: 20,
   });
 
@@ -73,116 +98,291 @@ export default function GuidesPage() {
 
   const clearFilters = () => {
     setSearchTerm("");
-    setSelectedCategory("");
+    setSelectedAITools([]);
+    setSelectedCategories([]);
     setSortBy("newest");
   };
 
-  const hasActiveFilters = searchTerm || selectedCategory;
+  const hasActiveFilters = searchTerm || selectedAITools.length > 0 || selectedCategories.length > 0;
+
+  // Filter guides by multiple categories and AI tools if needed
+  const filteredGuides = React.useMemo(() => {
+    if (!guidesResult?.guides) return [];
+    
+    let guides = guidesResult.guides;
+    
+    // Filter by categories if multiple selected
+    if (selectedCategories.length > 1) {
+      guides = guides.filter(guide => 
+        selectedCategories.some(cat => 
+          guide.category?.toLowerCase() === cat.toLowerCase()
+        )
+      );
+    }
+    
+    // Filter by AI tools (would need to be added to guide schema)
+    if (selectedAITools.length > 0) {
+      guides = guides.filter(guide => 
+        guide.aiTools?.some((tool: string) => 
+          selectedAITools.includes(tool)
+        ) || false
+      );
+    }
+    
+    return guides;
+  }, [guidesResult?.guides, selectedCategories, selectedAITools]);
 
   // Use search results if searching, otherwise use filtered results
   const displayGuides = searchTerm && searchResults 
     ? searchResults 
-    : guidesResult?.guides || [];
+    : filteredGuides;
 
   return (
-    <Container className="py-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="page-container bg-black">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         {/* Hero Section */}
         <div className="text-center mb-12">
-          <h1 
-            className="text-6xl font-bold mb-4 bg-clip-text text-transparent"
-            style={{
-              backgroundImage: 'linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%)'
-            }}
-          >
-            Guides
+          <h1 className="text-4xl font-light mb-4">
+            <span className="gradient-text">Guides</span>
           </h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Learn from comprehensive tutorials and guides created by expert developers
+          <p className="text-vybe-gray-300 text-xl max-w-3xl mx-auto leading-relaxed">
+            Step-by-step tutorials, prompt patterns, and workflows for building with AI. 
+            Learn the exact processes behind every project.
           </p>
         </div>
 
-        {/* Search and Filters */}
-        <div className="mb-8">
-          {/* Universal Search Bar */}
-          <div className="relative max-w-2xl mx-auto mb-6">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 z-10" />
-              <input
-                type="text"
-                placeholder="Search guides and tutorials..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-black/60 backdrop-blur-lg border border-gray-700/40 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-vybe-purple/50 focus:border-vybe-purple/50 transition-all duration-200"
-              />
-            </div>
+        {/* Universal Search */}
+        <div className="universal-search mb-8">
+          <svg className="universal-search-icon w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input
+            type="search" 
+            placeholder="Search AI guides, tutorials, and workflows..." 
+            className="universal-search-input"
+            id="guides-search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === 'Enter') {
+                // Trigger search
+              }
+            }}
+          />
+          <button className="btn btn-primary-purple universal-search-submit">Search</button>
+          
+          {/* Search Suggestions Dropdown */}
+          <div className="search-suggestions" id="guides-search-suggestions">
+            {/* Dynamically populated */}
           </div>
+        </div>
 
-          {/* Filter Controls */}
-          <div className="flex items-center justify-center gap-4 mb-6">
-            {/* Category Filter */}
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 bg-black/60 backdrop-blur-lg border border-gray-700/40 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-vybe-purple/50 focus:border-vybe-purple/50 transition-all duration-200"
-            >
-              <option value="">All Categories</option>
-              {GUIDE_CATEGORIES.map(category => (
-                <option key={category.value} value={category.value}>
-                  {category.label}
-                </option>
-              ))}
-            </select>
-
-            {/* Sort By Filter */}
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="px-4 py-2 bg-black/60 backdrop-blur-lg border border-gray-700/40 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-vybe-purple/50 focus:border-vybe-purple/50 transition-all duration-200"
-            >
-              <option value="newest">Newest</option>
-              <option value="popular">Most Popular</option>
-              <option value="verified">Recently Verified</option>
-            </select>
-
-            {/* Clear Filters */}
-            {hasActiveFilters && (
-              <button
-                onClick={clearFilters}
-                className="px-4 py-2 bg-gray-700/60 hover:bg-gray-600/60 backdrop-blur-lg border border-gray-600/40 rounded-lg text-gray-300 hover:text-white transition-all duration-200"
-              >
-                Clear Filters
-              </button>
+        {/* Search Filter Dropdowns */}
+        <div className="search-filter-container mb-8">
+          <div className="flex flex-col gap-4">
+            {/* Active Filters Display */}
+            {(selectedAITools.length > 0 || selectedCategories.length > 0) && (
+              <div className="flex flex-wrap gap-2 justify-center">
+                {selectedAITools.map(tool => (
+                  <span 
+                    key={tool}
+                    className="px-3 py-1 bg-vybe-pink/20 text-vybe-pink text-sm rounded-full border border-vybe-pink/30 flex items-center gap-2"
+                  >
+                    {tool}
+                    <button 
+                      onClick={() => setSelectedAITools(selectedAITools.filter(t => t !== tool))}
+                      className="hover:text-white transition-colors"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+                {selectedCategories.map(category => (
+                  <span 
+                    key={category}
+                    className="px-3 py-1 bg-vybe-purple/20 text-vybe-purple text-sm rounded-full border border-vybe-purple/30 flex items-center gap-2"
+                  >
+                    {category}
+                    <button 
+                      onClick={() => setSelectedCategories(selectedCategories.filter(c => c !== category))}
+                      className="hover:text-white transition-colors"
+                    >
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
             )}
-          </div>
+            
+            {/* Filters Row */}
+            <div className="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
+              {/* AI Tools Multi-select Dropdown */}
+              <div className="filter-dropdown multi-select-dropdown" id="guides-aitools-dropdown">
+                <button 
+                  className="filter-dropdown-button"
+                  onClick={() => {
+                    setShowAIToolsDropdown(!showAIToolsDropdown);
+                    setShowCategoryDropdown(false);
+                    setShowSortDropdown(false);
+                  }}
+                >
+                  <span>AI Tools</span>
+                  {selectedAITools.length > 0 && (
+                    <span className="filter-selection-counter" id="guides-aitools-counter">{selectedAITools.length}</span>
+                  )}
+                  <svg className="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                {showAIToolsDropdown && (
+                  <div className="filter-dropdown-menu">
+                    {aiTools.map(tool => (
+                      <div 
+                        key={tool}
+                        className="multi-select-item"
+                        onClick={() => {
+                          if (selectedAITools.includes(tool)) {
+                            setSelectedAITools(selectedAITools.filter(t => t !== tool));
+                          } else {
+                            setSelectedAITools([...selectedAITools, tool]);
+                          }
+                        }}
+                      >
+                        <div className={`multi-select-checkbox ${selectedAITools.includes(tool) ? 'checked' : ''}`}></div>
+                        <span className="multi-select-label">{tool}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-          {/* Tab Navigation */}
-          <div className="flex justify-center mb-8">
-            <div className="flex bg-black/40 backdrop-blur-lg rounded-lg p-1 border border-gray-700/40">
-              <button
-                onClick={() => setActiveTab('browse')}
-                className={`px-6 py-2 rounded-md transition-all duration-200 ${
-                  activeTab === 'browse'
-                    ? 'bg-vybe-purple text-white shadow-lg'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                Browse Guides
-              </button>
-              <button
-                onClick={() => {
-                  setActiveTab('write');
-                  handleWriteGuide();
-                }}
-                className={`px-6 py-2 rounded-md transition-all duration-200 ${
-                  activeTab === 'write'
-                    ? 'bg-vybe-purple text-white shadow-lg'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}
-              >
-                Write Guide
-              </button>
+              {/* Category Dropdown */}
+              <div className="filter-dropdown multi-select-dropdown" id="guides-category-dropdown">
+                <button 
+                  className="filter-dropdown-button"
+                  onClick={() => {
+                    setShowCategoryDropdown(!showCategoryDropdown);
+                    setShowAIToolsDropdown(false);
+                    setShowSortDropdown(false);
+                  }}
+                >
+                  <span>Category</span>
+                  {selectedCategories.length > 0 && (
+                    <span className="filter-selection-counter" id="guides-category-counter">{selectedCategories.length}</span>
+                  )}
+                  <svg className="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                {showCategoryDropdown && (
+                  <div className="filter-dropdown-menu">
+                    <div 
+                      className="multi-select-item"
+                      onClick={() => {
+                        setSelectedCategories([]);
+                      }}
+                    >
+                      <div className={`multi-select-checkbox ${selectedCategories.length === 0 ? 'checked' : ''}`}></div>
+                      <span className="multi-select-label">All Categories</span>
+                    </div>
+                    {GUIDE_CATEGORIES.map(category => (
+                      <div 
+                        key={category.value}
+                        className="multi-select-item"
+                        onClick={() => {
+                          if (selectedCategories.includes(category.label)) {
+                            setSelectedCategories(selectedCategories.filter(c => c !== category.label));
+                          } else {
+                            setSelectedCategories([...selectedCategories, category.label]);
+                          }
+                        }}
+                      >
+                        <div className={`multi-select-checkbox ${selectedCategories.includes(category.label) ? 'checked' : ''}`}></div>
+                        <span className="multi-select-label">{category.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Sort By Dropdown */}
+              <div className="filter-dropdown" id="guides-sort-dropdown">
+                <button 
+                  className="filter-dropdown-button"
+                  onClick={() => {
+                    setShowSortDropdown(!showSortDropdown);
+                    setShowAIToolsDropdown(false);
+                    setShowCategoryDropdown(false);
+                  }}
+                >
+                  <span>Sort By</span>
+                  <svg className="filter-dropdown-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </button>
+                {showSortDropdown && (
+                  <div className="filter-dropdown-menu">
+                    <div 
+                      className="filter-dropdown-item"
+                      onClick={() => {
+                        setSortBy('newest');
+                        setShowSortDropdown(false);
+                      }}
+                    >
+                      Newest
+                    </div>
+                    <div 
+                      className="filter-dropdown-item"
+                      onClick={() => {
+                        setSortBy('popular');
+                        setShowSortDropdown(false);
+                      }}
+                    >
+                      Most Popular
+                    </div>
+                    <div 
+                      className="filter-dropdown-item"
+                      onClick={() => {
+                        setSortBy('verified');
+                        setShowSortDropdown(false);
+                      }}
+                    >
+                      Recently Verified
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Clear Filters Button */}
+              {hasActiveFilters && (
+                <button className="filter-clear-button" onClick={clearFilters}>
+                  Clear Filters
+                </button>
+              )}
             </div>
+          </div>
+        </div>
+
+        {/* Tab Navigation */}
+        <div className="tab-navigation-container">
+          <div className="flex gap-4 border-b border-vybe-gray-800 justify-center">
+            <button 
+              onClick={() => setActiveTab('browse')} 
+              className={`guides-tab ${activeTab === 'browse' ? 'active' : ''}`}
+              data-tab="browse"
+            >
+              Browse Guides
+            </button>
+            <button 
+              onClick={() => {
+                setActiveTab('write');
+                handleWriteGuide();
+              }} 
+              className={`guides-tab ${activeTab === 'write' ? 'active' : ''}`}
+              data-tab="write"
+            >
+              Write Guide
+            </button>
           </div>
         </div>
 
@@ -223,6 +423,6 @@ export default function GuidesPage() {
           </div>
         )}
       </div>
-    </Container>
+    </div>
   );
 }

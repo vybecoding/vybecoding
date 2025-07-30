@@ -73,7 +73,7 @@ export default function SettingsPage() {
   ]
 
   return (
-    <div className="py-6 space-y-8">
+    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
       {/* Section Tabs */}
       <div className="flex gap-2 flex-wrap">
         {sections.map((section) => {
