@@ -6,74 +6,16 @@ import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { GradientText, GlassCard, NebulaBackground } from "@/components/effects";
 import { useRouter } from "next/navigation";
+import Hero from "@/components/sections/Hero";
 
 export default function Home() {
   const greeting = useQuery(api.hello.get);
   const router = useRouter();
 
   return (
-    <>
-      {/* Nebula Background Effect */}
-      <NebulaBackground animated={true} />
-      
-      <main className="relative min-h-screen">
-        {/* Hero Section */}
-        <section className="h-screen flex items-center justify-center relative">
-          <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-            <div className="animate-fade-in">
-              <h1 className="text-6xl md:text-8xl font-light mb-6 leading-tight">
-                <span className="font-medium">
-                  <GradientText gradient="brand">vybecoding.ai</GradientText>
-                </span>
-              </h1>
-              <p className="text-2xl md:text-4xl text-gray-300 font-light mb-8">
-                Where <GradientText gradient="brand">vibe coding</GradientText> meets<br/>
-                <span className="bg-gradient-to-r from-vybe-orange via-vybe-pink to-vybe-purple bg-clip-text text-transparent">
-                  context engineering
-                </span>.
-              </p>
-              <h2 className="text-xl md:text-2xl text-gray-300 font-light mb-8">
-                Learn from AI builders who've shipped real products.<br/>
-                Get <span className="text-vybe-purple-light">guides</span>, showcase <span className="text-vybe-pink">apps</span>, connect with <span className="text-vybe-orange">mentors</span>.
-              </h2>
-            </div>
-            
-            {/* CTA Section */}
-            <div className="text-center animate-slide-up">
-              <Link 
-                href="/pricing"
-                className="inline-block bg-gradient-to-r from-vybe-purple to-vybe-pink text-white text-xl px-12 py-4 rounded-lg font-semibold hover:shadow-glow-purple transition-all duration-300 transform hover:scale-105"
-              >
-                Start Building with AI
-              </Link>
-              <p className="text-sm text-gray-400 mt-4">Start free • No credit card required</p>
-              
-              {/* Subtle Credibility */}
-              <div className="flex justify-center items-center gap-6 text-xs text-gray-500 mt-6">
-                <span className="flex items-center gap-1">
-                  <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                  </svg>
-                  Coined by Karpathy
-                </span>
-                <span className="flex items-center gap-1">
-                  <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                  </svg>
-                  Merriam-Webster Official
-                </span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-0 right-0">
-            <svg className="w-12 h-12 text-gray-500 mx-auto animate-gentle-bounce" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-              <line x1="12" y1="5" x2="12" y2="19"></line>
-              <polyline points="19 12 12 19 5 12"></polyline>
-            </svg>
-          </div>
-        </section>
+    <main className="relative">
+      {/* Hero Section */}
+      <Hero />
 
         {/* Featured Mentors Section */}
         <section className="py-20">
