@@ -507,20 +507,54 @@ This helps identify when to break down tasks further.
 
 ### Demo Migration Story Workflow
 
+⚠️ **CRITICAL ENFORCEMENT**: Stories are NOT complete without pixel-perfect verification.
+
 For Epic-01 stories, follow this enhanced workflow:
 
 1. **Story Selection**: Choose highest priority ready story
 2. **Setup Comparison Environment**:
-   ```bash
-   # Terminal 1: Start demo server
-   cd demo && npm start  # Runs on port 8080
-   
-   # Terminal 2: Start Next.js development
-   npm run dev           # Runs on port 3000
-   ```
-3. **Visual Development**: Open both URLs side-by-side for pixel-perfect comparison
-4. **Story Completion**: Execute completion workflow when acceptance criteria met
-5. **Master Checklist**: Complete post-story quality gates
+   - Demo server: http://localhost:8080/[page].html
+   - Next.js app: http://localhost:3000/[route]
+3. **Implementation**: bmad-dev implements the page
+4. **MANDATORY Side-by-Side Verification**:
+   - Open both URLs in separate browser tabs
+   - Manual comparison of functionality and design
+   - Freedom to improve upon demo imperfections
+   - Test all interactive elements
+   - Verify responsive design at 375px, 768px, 1440px
+   - Document improvements made with rationale
+5. **Story Completion Workflow**: Run `.claude/scripts/story-complete.sh`
+6. **Master Checklist**: Complete all verification items
+7. **Update Epic Checklist**: Update `/stories/epic-01-demo-migration/epic-checklist.md`
+8. **ONLY THEN**: Mark story as completed in TodoWrite
+
+### Story Completion Enforcement
+
+**Before marking ANY DEMO story complete:**
+- [ ] Side-by-side comparison completed
+- [ ] Functionality matches or improves upon demo
+- [ ] Design improvements documented with rationale
+- [ ] Story completion workflow passed
+- [ ] Master checklist 100% complete
+- [ ] Verification report created
+
+**NO EXCEPTIONS**: Every story follows complete verification workflow.
+
+### Pixel-Perfect Verification Process
+
+```bash
+# Terminal 1: Start demo server
+cd demo && npm start  # Runs on port 8080
+
+# Terminal 2: Start Next.js server  
+npm run dev          # Runs on port 3000
+
+# Browser: Open both for side-by-side comparison
+# - Demo: http://localhost:8080/[page].html
+# - Next.js: http://localhost:3000/[route]
+```
+
+**Manual Verification Required**: Automated tests alone are insufficient.
 
 ### Reference Integration
 - **Design System Foundation**: `/stories/epic-01-demo-migration/reference/design-system-foundation.md`

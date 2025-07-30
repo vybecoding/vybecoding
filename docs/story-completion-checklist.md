@@ -10,16 +10,20 @@ This document provides detailed checklists for completing stories and epics in t
 
 **Enhanced checklist for Epic-01 pixel-perfect migration stories:**
 
-#### Visual Verification Requirements
+#### Visual Verification Requirements ⚠️ MANDATORY BEFORE COMPLETION
 - [ ] Demo server running on port 8080 (`cd demo && npm start`)
 - [ ] Next.js server running on port 3000 (`npm run dev`)
-- [ ] Side-by-side visual comparison completed
-- [ ] Pixel-perfect match at 375px (mobile)
-- [ ] Pixel-perfect match at 768px (tablet)  
-- [ ] Pixel-perfect match at 1440px (desktop)
-- [ ] Visual diff score <2% at all breakpoints
-- [ ] All interactive elements function identically
-- [ ] Animation timing matches demo exactly
+- [ ] **CRITICAL**: Side-by-side visual comparison completed manually
+  - Open http://localhost:8080/[page].html in one browser tab
+  - Open http://localhost:3000/[route] in another browser tab
+  - Compare functionality and design quality
+- [ ] Functionality matches or improves upon demo at 375px (mobile)
+- [ ] Functionality matches or improves upon demo at 768px (tablet)  
+- [ ] Functionality matches or improves upon demo at 1440px (desktop)
+- [ ] Design system improvements documented where applied
+- [ ] All interactive elements function correctly (hover, click, animations)
+- [ ] User experience is equal or better than demo
+- [ ] **VERIFICATION REPORT**: Improvements and design decisions documented
 
 #### Component Integration
 - [ ] Uses design system foundation patterns
@@ -33,10 +37,14 @@ This document provides detailed checklists for completing stories and epics in t
 
 ### ✅ Pre-Completion Verification
 
+⚠️ **STOP**: Do not mark any story complete without following ALL steps below.
+
 - [ ] All story tasks from TodoWrite are marked complete
 - [ ] Code changes are committed to git
 - [ ] No console.log statements in production code
 - [ ] No hardcoded secrets or API keys
+- [ ] **MANDATORY**: Side-by-side visual verification completed (see above)
+- [ ] **MANDATORY**: <2% pixel difference verified and documented
 
 ### 🎯 Run Story Verification Script
 
@@ -71,6 +79,17 @@ This automated script checks:
 
 **Only proceed after all checks pass!**
 
+1. **Update Epic Checklist**
+```bash
+# Manually update the epic checklist
+vim /stories/epic-01-demo-migration/epic-checklist.md
+```
+- [ ] Mark story implementation complete
+- [ ] Mark visual verification complete
+- [ ] Update progress metrics
+- [ ] Document improvements made
+
+2. **Update Project Documentation**
 ```bash
 /update-docs
 ```

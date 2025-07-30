@@ -178,11 +178,12 @@ vybecoding/
 The project uses the **BMAD Method v4.33.0** for structured development with comprehensive story tracking:
 
 ### Epic Structure
-- **Epic-01**: Pixel-Perfect Demo Migration (46 stories, 298 points)
-  - Complete 1:1 migration of all demo HTML pages to Next.js
-  - Visual verification with <2% pixel difference tolerance
+- **Epic-01**: Demo Migration with Improvements (46 stories, 298 points)
+  - Complete migration of all demo HTML pages to Next.js
+  - Freedom to improve upon demo design imperfections
   - Side-by-side comparison workflow (port 8080 vs 3000)
   - Story completion workflows with master checklists
+  - Focus on functionality and enhanced user experience
 
 ### Story Organization
 | **Category** | **Stories** | **Points** | **Priority** |

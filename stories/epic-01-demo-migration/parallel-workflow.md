@@ -311,8 +311,64 @@ Agent 3 success: "Hero gradient angle 135deg" → .claude/solutions/
 # Repeat pattern for all 46 stories
 ```
 
+## ⚠️ CRITICAL: Story Completion Requirements
+
+### Stories Are NOT Complete Until All Steps Pass:
+
+#### 1. Implementation ✅
+- bmad-dev implements the page
+
+#### 2. Side-by-Side Visual Verification ⚠️ MANDATORY
+- **Demo**: http://localhost:8080/[page].html  
+- **Next.js**: http://localhost:3000/[route]
+- **Manual comparison**: Open both tabs, compare functionality and design
+- **Flexibility**: Improve upon demo where design system foundation is better
+- **Document**: Note improvements made and rationale
+
+#### 3. Story Completion Workflow ⚠️ MANDATORY
+```bash
+.claude/scripts/story-complete.sh STORY-ID
+```
+- TypeScript build verification
+- Visual regression testing
+- Security scans
+- Performance checks
+
+#### 4. Master Checklist Completion ⚠️ MANDATORY
+- All story acceptance criteria verified
+- Responsive design tested at 375px, 768px, 1440px
+- Interactive elements functional
+- No console errors
+- Documentation updated
+
+#### 5. Update Epic Checklist ⚠️ MANDATORY
+- Update `/stories/epic-01-demo-migration/epic-checklist.md`
+- Mark story verification steps complete
+- Document any improvements made
+- Update progress metrics
+
+#### 6. Only Then Mark Complete ✅
+- TodoWrite status changed to "completed"
+- Epic checklist updated with status
+- Ready for next story/batch
+
+## Enforcement Protocol
+
+### Before Marking Any Story Complete:
+1. **STOP** - Have you done side-by-side comparison?
+2. **VERIFY** - Is pixel difference <2%?
+3. **EXECUTE** - Story completion workflow passed?
+4. **CHECK** - Master checklist 100% complete?
+5. **THEN** - Mark story as completed
+
+### Quality Gates
+- **No shortcuts** - Every story follows complete workflow
+- **Visual verification required** - Automated tests are NOT sufficient
+- **Manual approval needed** - Human verification of pixel-perfect match
+- **Documentation mandatory** - Verification reports for each story
+
 ## Conclusion
 
 This parallel workflow transforms Epic-01 from a 2-month sequential project into a 1-month parallel sprint while maintaining pixel-perfect quality standards. By leveraging Claude Code's sub-agent orchestration capabilities, we achieve massive efficiency gains without compromising the rigorous verification requirements that ensure production-ready results.
 
-**Next Step:** Execute the foundation (DEMO-001) then begin parallel batch execution.
+**Critical Success Factor:** Never mark stories complete without full verification workflow including side-by-side visual comparison.

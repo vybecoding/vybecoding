@@ -1,0 +1,32 @@
+{
+  "timestamp": "2025-07-30T17:41:35.425Z",
+  "results": [
+    {
+      "version": "Next.js",
+      "url": "http://localhost:3000/services",
+      "loaded": true,
+      "title": "VybeCoding.ai - AI-Powered Development Platform",
+      "h1": "Professional Services",
+      "hasContent": true,
+      "timestamp": "2025-07-30T17:41:37.182Z",
+      "elements": {
+        "serviceRelated": 0,
+        "buttons": 15,
+        "links": 32
+      }
+    },
+    {
+      "version": "Demo",
+      "url": "http://localhost:8080/",
+      "loaded": true,
+      "status": 200
+    }
+  ],
+  "summary": {
+    "totalTests": 2,
+    "successful": 2,
+    "failed": 0,
+    "hasNextJs": true,
+    "hasDemo": true
+  }
+}
