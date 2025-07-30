@@ -239,6 +239,33 @@ export const getUserApps = query({
   },
 });
 
+// Get single app by ID
+export const getAppById = query({
+  args: { appId: v.id("apps") },
+  handler: async (ctx, args) => {
+    const app = await ctx.db.get(args.appId);
+    if (!app) return null;
+
+    // Get user details
+    const user = await ctx.db.get(app.userId as Id<"users">);
+    
+    // Increment view count
+    await ctx.db.patch(args.appId, {
+      views: (app.views || 0) + 1
+    });
+
+    return {
+      ...app,
+      user: user ? {
+        displayName: user.displayName || `${user.firstName} ${user.lastName}`.trim() || "Anonymous",
+        username: user.username || "anonymous",
+        avatar: user.avatar,
+        isPro: user.isPro || false,
+      } : null,
+    };
+  },
+});
+
 // Get approved apps with filtering
 export const getApprovedApps = query({
   args: {
@@ -297,7 +324,9 @@ export const getApprovedApps = query({
           ...app,
           user: user ? {
             displayName: user.displayName || `${user.firstName} ${user.lastName}`.trim() || "Anonymous",
+            username: user.username || "anonymous",
             avatar: user.avatar,
+            isPro: user.isPro || false,
           } : null,
         };
       })

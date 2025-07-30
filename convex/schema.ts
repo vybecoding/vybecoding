@@ -17,6 +17,7 @@ export default defineSchema({
     createdAt: v.number(),
     
     // Profile fields
+    username: v.optional(v.string()),
     displayName: v.optional(v.string()),
     bio: v.optional(v.string()),
     avatar: v.optional(v.string()), // URL to uploaded image
@@ -26,6 +27,7 @@ export default defineSchema({
     linkedin: v.optional(v.string()),
     twitter: v.optional(v.string()),
     skills: v.optional(v.array(v.string())), // Array of technology tags
+    isPro: v.optional(v.boolean()),
     profileVisibility: v.optional(v.union(
       v.literal("public"),
       v.literal("private"),
@@ -37,6 +39,7 @@ export default defineSchema({
   })
     .index("by_clerk_id", ["clerkId"])
     .index("by_stripe_customer_id", ["stripeCustomerId"])
+    .index("by_username", ["username"])
     .index("by_display_name", ["displayName"])
     .index("by_skills", ["skills"]),
 
@@ -74,6 +77,17 @@ export default defineSchema({
     techStack: v.array(v.string()),
     platforms: v.array(v.string()),
     license: v.string(),
+    
+    // Pricing
+    pricing: v.optional(v.union(
+      v.literal("free"),
+      v.literal("paid"),
+      v.literal("freemium")
+    )),
+    price: v.optional(v.number()),
+    
+    // Verification
+    verified: v.optional(v.boolean()),
     
     // Metadata
     status: v.string(), // draft, submitted, in-review, approved, rejected
