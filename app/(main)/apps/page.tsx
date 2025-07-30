@@ -438,23 +438,33 @@ export default function AppsPage() {
             {/* Apps Grid - Universal Design */}
             {!showSearchResults && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {appsResult ? (
-                  appsResult.apps.length > 0 ? (
-                    appsResult.apps.map((app) => (
-                      <AppCard key={app._id} app={app} />
-                    ))
-                  ) : (
-                    <div className="col-span-full text-center py-20">
-                      <p className="text-gray-400 text-lg">
-                        {hasActiveFilters
-                          ? "No apps found matching your filters. Try adjusting your search criteria."
-                          : "No apps have been submitted yet. Be the first to share your app!"}
-                      </p>
-                    </div>
-                  )
-                ) : (
+                {appsResult === undefined ? (
                   <div className="col-span-full py-8">
                     <SkeletonGrid count={6} />
+                  </div>
+                ) : appsResult === null ? (
+                  <div className="col-span-full text-center py-20">
+                    <p className="text-red-400 text-lg">
+                      Error loading apps. Please try again later.
+                    </p>
+                    <button 
+                      onClick={() => window.location.reload()} 
+                      className="mt-4 px-6 py-2 bg-vybe-pink/20 text-vybe-pink border border-vybe-pink/20 rounded-lg hover:bg-vybe-pink/30 transition-colors"
+                    >
+                      Try Again
+                    </button>
+                  </div>
+                ) : appsResult.apps.length > 0 ? (
+                  appsResult.apps.map((app) => (
+                    <AppCard key={app._id} app={app} />
+                  ))
+                ) : (
+                  <div className="col-span-full text-center py-20">
+                    <p className="text-gray-400 text-lg">
+                      {hasActiveFilters
+                        ? "No apps found matching your filters. Try adjusting your search criteria."
+                        : "No apps have been submitted yet. Be the first to share your app!"}
+                    </p>
                   </div>
                 )}
               </div>
