@@ -1,0 +1,10 @@
+{
+  "nextjs": {
+    "url": "http://localhost:3000",
+    "available": false
+  },
+  "demo": {
+    "url": "http://localhost:8080",
+    "available": true
+  }
+}

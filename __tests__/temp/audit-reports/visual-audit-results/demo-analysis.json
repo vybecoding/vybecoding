@@ -1,0 +1,2000 @@
+{
+  "pages": {
+    "home": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)",
+            "rgb(138, 43, 226)",
+            "rgb(233, 107, 58)",
+            "rgba(26, 26, 26, 0.4)",
+            "rgb(30, 37, 46)",
+            "rgba(0, 0, 0, 0)",
+            "rgb(217, 70, 160)",
+            "rgba(217, 70, 160, 0.2)",
+            "rgb(156, 163, 175)",
+            "rgb(17, 17, 17)",
+            "rgb(136, 136, 136)",
+            "rgb(107, 114, 128)",
+            "rgb(209, 213, 219)",
+            "rgba(30, 37, 46, 0.95)",
+            "rgb(168, 85, 247)",
+            "rgb(250, 204, 21)",
+            "rgba(138, 43, 226, 0.2)",
+            "rgb(243, 244, 246)",
+            "rgba(233, 107, 58, 0.2)",
+            "rgba(153, 27, 27, 0.2)",
+            "rgb(153, 27, 27)",
+            "rgba(26, 26, 26, 0.8)",
+            "rgba(138, 43, 226, 0.05)",
+            "rgba(233, 107, 58, 0.1)",
+            "rgba(233, 107, 58, 0.05)",
+            "rgba(255, 20, 147, 0.05)",
+            "rgba(255, 20, 147, 0.2)",
+            "rgba(17, 17, 17, 0.5)",
+            "rgba(0, 0, 0, 0.5)",
+            "rgba(26, 26, 26, 0.9)"
+          ],
+          "gradients": [
+            "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+            "linear-gradient(90deg, rgb(138, 43, 226) 0%, rgb(217, 70, 160) 50%, rgb(233, 107, 58) 100%)",
+            "linear-gradient(135deg, rgb(138, 43, 226) 0%, rgb(138, 43, 226) 30%, rgb(217, 70, 160) 70%, rgb(233, 107, 58) 100%)",
+            "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%), radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%), radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%), conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg)",
+            "linear-gradient(to right, rgb(233, 107, 58), rgb(217, 70, 160), rgb(138, 43, 226))",
+            "linear-gradient(135deg, rgb(138, 43, 226), rgb(255, 107, 53))",
+            "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(233, 107, 58))",
+            "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(217, 70, 160))",
+            "linear-gradient(to right bottom, rgb(217, 70, 160), rgb(233, 107, 58))",
+            "linear-gradient(to right bottom, rgb(233, 107, 58), rgb(138, 43, 226))",
+            "linear-gradient(to right bottom, rgb(26, 26, 26), rgb(17, 17, 17))"
+          ],
+          "shadows": [
+            "rgba(138, 43, 226, 0.15) 0px 0px 2px 0px",
+            "rgba(233, 107, 58, 0.15) 0px 0px 3px 0px",
+            "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px",
+            "rgba(217, 70, 160, 0.4) 0px 4px 20px 0px"
+          ],
+          "fonts": [
+            "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+            "\"JetBrains Mono\", \"Fira Code\", Consolas, monospace"
+          ],
+          "elements": {
+            "hero": {
+              "background": "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%) repeat scroll 0% 0% / auto padding-box border-box, rgb(0, 0, 0) conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg) repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "card": {
+              "background": "rgba(26, 26, 26, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "16px 16px 8px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(156, 163, 175)",
+              "boxShadow": "none",
+              "padding": "8px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "nav": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "60px",
+              "fontWeight": "300"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)",
+            "rgb(138, 43, 226)",
+            "rgb(233, 107, 58)",
+            "rgba(26, 26, 26, 0.4)",
+            "rgb(30, 37, 46)",
+            "rgba(0, 0, 0, 0)",
+            "rgb(217, 70, 160)",
+            "rgba(217, 70, 160, 0.2)",
+            "rgb(156, 163, 175)",
+            "rgb(17, 17, 17)",
+            "rgb(136, 136, 136)",
+            "rgb(107, 114, 128)",
+            "rgb(209, 213, 219)",
+            "rgba(30, 37, 46, 0.95)",
+            "rgb(168, 85, 247)",
+            "rgb(250, 204, 21)",
+            "rgba(138, 43, 226, 0.2)",
+            "rgb(243, 244, 246)",
+            "rgba(233, 107, 58, 0.2)",
+            "rgba(153, 27, 27, 0.2)",
+            "rgb(153, 27, 27)",
+            "rgba(26, 26, 26, 0.8)",
+            "rgba(138, 43, 226, 0.05)",
+            "rgba(233, 107, 58, 0.1)",
+            "rgba(233, 107, 58, 0.05)",
+            "rgba(255, 20, 147, 0.05)",
+            "rgba(255, 20, 147, 0.2)",
+            "rgba(17, 17, 17, 0.5)",
+            "rgba(0, 0, 0, 0.5)",
+            "rgba(26, 26, 26, 0.9)"
+          ],
+          "gradients": [
+            "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+            "linear-gradient(90deg, rgb(138, 43, 226) 0%, rgb(217, 70, 160) 50%, rgb(233, 107, 58) 100%)",
+            "linear-gradient(135deg, rgb(138, 43, 226) 0%, rgb(138, 43, 226) 30%, rgb(217, 70, 160) 70%, rgb(233, 107, 58) 100%)",
+            "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%), radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%), radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%), conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg)",
+            "linear-gradient(to right, rgb(233, 107, 58), rgb(217, 70, 160), rgb(138, 43, 226))",
+            "linear-gradient(135deg, rgb(138, 43, 226), rgb(255, 107, 53))",
+            "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(233, 107, 58))",
+            "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(217, 70, 160))",
+            "linear-gradient(to right bottom, rgb(217, 70, 160), rgb(233, 107, 58))",
+            "linear-gradient(to right bottom, rgb(233, 107, 58), rgb(138, 43, 226))",
+            "linear-gradient(to right bottom, rgb(26, 26, 26), rgb(17, 17, 17))"
+          ],
+          "shadows": [
+            "rgba(138, 43, 226, 0.15) 0px 0px 2px 0px",
+            "rgba(233, 107, 58, 0.15) 0px 0px 3px 0px",
+            "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px",
+            "rgba(217, 70, 160, 0.4) 0px 4px 20px 0px"
+          ],
+          "fonts": [
+            "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+            "\"JetBrains Mono\", \"Fira Code\", Consolas, monospace"
+          ],
+          "elements": {
+            "hero": {
+              "background": "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%) repeat scroll 0% 0% / auto padding-box border-box, rgb(0, 0, 0) conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg) repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "card": {
+              "background": "rgba(26, 26, 26, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "16px 16px 8px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(156, 163, 175)",
+              "boxShadow": "none",
+              "padding": "8px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "nav": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "96px",
+              "fontWeight": "300"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 0)",
+            "rgb(138, 43, 226)",
+            "rgb(233, 107, 58)",
+            "rgba(26, 26, 26, 0.4)",
+            "rgb(30, 37, 46)",
+            "rgba(0, 0, 0, 0)",
+            "rgb(217, 70, 160)",
+            "rgba(217, 70, 160, 0.2)",
+            "rgb(156, 163, 175)",
+            "rgb(17, 17, 17)",
+            "rgb(136, 136, 136)",
+            "rgb(107, 114, 128)",
+            "rgb(209, 213, 219)",
+            "rgba(30, 37, 46, 0.95)",
+            "rgb(168, 85, 247)",
+            "rgb(250, 204, 21)",
+            "rgba(138, 43, 226, 0.2)",
+            "rgb(243, 244, 246)",
+            "rgba(233, 107, 58, 0.2)",
+            "rgba(153, 27, 27, 0.2)",
+            "rgb(153, 27, 27)",
+            "rgba(26, 26, 26, 0.8)",
+            "rgba(138, 43, 226, 0.05)",
+            "rgba(233, 107, 58, 0.1)",
+            "rgba(233, 107, 58, 0.05)",
+            "rgba(255, 20, 147, 0.05)",
+            "rgba(255, 20, 147, 0.2)",
+            "rgba(17, 17, 17, 0.5)",
+            "rgba(0, 0, 0, 0.5)",
+            "rgba(26, 26, 26, 0.9)"
+          ],
+          "gradients": [
+            "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+            "linear-gradient(90deg, rgb(138, 43, 226) 0%, rgb(217, 70, 160) 50%, rgb(233, 107, 58) 100%)",
+            "linear-gradient(135deg, rgb(138, 43, 226) 0%, rgb(138, 43, 226) 30%, rgb(217, 70, 160) 70%, rgb(233, 107, 58) 100%)",
+            "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%), radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%), radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%), conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg)",
+            "linear-gradient(to right, rgb(233, 107, 58), rgb(217, 70, 160), rgb(138, 43, 226))",
+            "linear-gradient(135deg, rgb(138, 43, 226), rgb(255, 107, 53))",
+            "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(233, 107, 58))",
+            "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(217, 70, 160))",
+            "linear-gradient(to right bottom, rgb(217, 70, 160), rgb(233, 107, 58))",
+            "linear-gradient(to right bottom, rgb(233, 107, 58), rgb(138, 43, 226))",
+            "linear-gradient(to right bottom, rgb(26, 26, 26), rgb(17, 17, 17))"
+          ],
+          "shadows": [
+            "rgba(138, 43, 226, 0.15) 0px 0px 2px 0px",
+            "rgba(233, 107, 58, 0.15) 0px 0px 3px 0px",
+            "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px",
+            "rgba(217, 70, 160, 0.4) 0px 4px 20px 0px"
+          ],
+          "fonts": [
+            "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+            "\"JetBrains Mono\", \"Fira Code\", Consolas, monospace"
+          ],
+          "elements": {
+            "hero": {
+              "background": "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%) repeat scroll 0% 0% / auto padding-box border-box, radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%) repeat scroll 0% 0% / auto padding-box border-box, rgb(0, 0, 0) conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg) repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "card": {
+              "background": "rgba(26, 26, 26, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "16px 16px 8px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(156, 163, 175)",
+              "boxShadow": "none",
+              "padding": "8px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "nav": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "96px",
+              "fontWeight": "300"
+            }
+          }
+        }
+      }
+    },
+    "apps": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "guides": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "dashboard": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+          ],
+          "elements": {
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "500"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "36px",
+              "fontWeight": "300"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+          ],
+          "elements": {
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "500"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "36px",
+              "fontWeight": "300"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+          ],
+          "elements": {
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "500"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "36px",
+              "fontWeight": "300"
+            }
+          }
+        }
+      }
+    },
+    "profile": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        }
+      }
+    },
+    "login": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "signup": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(30, 37, 46)",
+            "rgb(255, 255, 255)",
+            "rgba(26, 26, 26, 0.8)",
+            "rgb(136, 136, 136)",
+            "rgb(107, 114, 128)",
+            "rgb(168, 85, 247)"
+          ],
+          "gradients": [
+            "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+            "linear-gradient(to right bottom, rgba(31, 41, 55, 0.4), rgba(55, 65, 81, 0.3), rgba(75, 85, 99, 0.2))"
+          ],
+          "shadows": [
+            "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+            "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(26, 26, 26, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+              "padding": "32px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "500"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(30, 37, 46)",
+            "rgb(255, 255, 255)",
+            "rgba(26, 26, 26, 0.8)",
+            "rgb(136, 136, 136)",
+            "rgb(107, 114, 128)",
+            "rgb(168, 85, 247)"
+          ],
+          "gradients": [
+            "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+            "linear-gradient(to right bottom, rgba(31, 41, 55, 0.4), rgba(55, 65, 81, 0.3), rgba(75, 85, 99, 0.2))"
+          ],
+          "shadows": [
+            "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+            "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(26, 26, 26, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+              "padding": "32px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "500"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(30, 37, 46)",
+            "rgb(255, 255, 255)",
+            "rgba(26, 26, 26, 0.8)",
+            "rgb(136, 136, 136)",
+            "rgb(107, 114, 128)",
+            "rgb(168, 85, 247)"
+          ],
+          "gradients": [
+            "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+            "linear-gradient(to right bottom, rgba(31, 41, 55, 0.4), rgba(55, 65, 81, 0.3), rgba(75, 85, 99, 0.2))"
+          ],
+          "shadows": [
+            "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+            "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(26, 26, 26, 0.8) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+              "padding": "32px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+              "padding": "12px 24px",
+              "borderRadius": "8px",
+              "fontSize": "16px",
+              "fontWeight": "500"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(255, 255, 255)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "apps-browse": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgba(236, 72, 153, 0.56)"
+          ],
+          "gradients": [],
+          "shadows": [
+            "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgba(236, 72, 153, 0.56)"
+          ],
+          "gradients": [],
+          "shadows": [
+            "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgba(236, 72, 153, 0.56)"
+          ],
+          "gradients": [],
+          "shadows": [
+            "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "apps-submit": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)",
+            "rgb(84, 84, 84)",
+            "rgb(0, 0, 238)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)",
+            "rgb(84, 84, 84)",
+            "rgb(0, 0, 238)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)",
+            "rgb(84, 84, 84)",
+            "rgb(0, 0, 238)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "dashboard-overview": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        }
+      }
+    },
+    "dashboard-profile": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "18.72px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "18.72px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "18.72px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "dashboard-settings": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial"
+          ],
+          "elements": {
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        }
+      }
+    },
+    "dashboard-mentorship": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            }
+          }
+        }
+      }
+    },
+    "guides-browse": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgba(138, 43, 226, 0.56)"
+          ],
+          "gradients": [],
+          "shadows": [
+            "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgba(138, 43, 226, 0.56)"
+          ],
+          "gradients": [],
+          "shadows": [
+            "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(255, 255, 255)",
+            "rgba(138, 43, 226, 0.56)"
+          ],
+          "gradients": [],
+          "shadows": [
+            "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+          ],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "24px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "guides-submit": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {}
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {}
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {}
+        }
+      }
+    },
+    "profile-view": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\""
+          ],
+          "elements": {
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "32px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    },
+    "profile-booking": {
+      "breakpoints": {
+        "mobile": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 238)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "18.72px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "tablet": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 238)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "18.72px",
+              "fontWeight": "700"
+            }
+          }
+        },
+        "desktop": {
+          "colors": [
+            "rgb(0, 0, 0)",
+            "rgb(239, 239, 239)",
+            "rgb(255, 255, 255)",
+            "rgb(0, 0, 238)"
+          ],
+          "gradients": [],
+          "shadows": [],
+          "fonts": [
+            "\"Times New Roman\"",
+            "Arial",
+            "monospace"
+          ],
+          "elements": {
+            "card": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "16px",
+              "fontWeight": "400"
+            },
+            "button": {
+              "background": "rgb(239, 239, 239) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "1px 6px",
+              "borderRadius": "0px",
+              "fontSize": "13.3333px",
+              "fontWeight": "400"
+            },
+            "heading": {
+              "background": "rgba(0, 0, 0, 0) none repeat scroll 0% 0% / auto padding-box border-box",
+              "color": "rgb(0, 0, 0)",
+              "boxShadow": "none",
+              "padding": "0px",
+              "borderRadius": "0px",
+              "fontSize": "18.72px",
+              "fontWeight": "700"
+            }
+          }
+        }
+      }
+    }
+  },
+  "designSystem": {
+    "colors": [
+      "rgb(255, 255, 255)",
+      "rgb(0, 0, 0)",
+      "rgb(138, 43, 226)",
+      "rgb(233, 107, 58)",
+      "rgba(26, 26, 26, 0.4)",
+      "rgb(30, 37, 46)",
+      "rgba(0, 0, 0, 0)",
+      "rgb(217, 70, 160)",
+      "rgba(217, 70, 160, 0.2)",
+      "rgb(156, 163, 175)",
+      "rgb(17, 17, 17)",
+      "rgb(136, 136, 136)",
+      "rgb(107, 114, 128)",
+      "rgb(209, 213, 219)",
+      "rgba(30, 37, 46, 0.95)",
+      "rgb(168, 85, 247)",
+      "rgb(250, 204, 21)",
+      "rgba(138, 43, 226, 0.2)",
+      "rgb(243, 244, 246)",
+      "rgba(233, 107, 58, 0.2)",
+      "rgba(153, 27, 27, 0.2)",
+      "rgb(153, 27, 27)",
+      "rgba(26, 26, 26, 0.8)",
+      "rgba(138, 43, 226, 0.05)",
+      "rgba(233, 107, 58, 0.1)",
+      "rgba(233, 107, 58, 0.05)",
+      "rgba(255, 20, 147, 0.05)",
+      "rgba(255, 20, 147, 0.2)",
+      "rgba(17, 17, 17, 0.5)",
+      "rgba(0, 0, 0, 0.5)",
+      "rgba(26, 26, 26, 0.9)",
+      "rgb(239, 239, 239)",
+      "rgba(236, 72, 153, 0.56)",
+      "rgb(84, 84, 84)",
+      "rgb(0, 0, 238)",
+      "rgba(138, 43, 226, 0.56)"
+    ],
+    "gradients": [
+      "conic-gradient(from 0deg, rgb(138, 43, 226) 0deg, rgb(217, 70, 160) 120deg, rgb(233, 107, 58) 240deg, rgb(138, 43, 226) 360deg)",
+      "linear-gradient(90deg, rgb(138, 43, 226) 0%, rgb(217, 70, 160) 50%, rgb(233, 107, 58) 100%)",
+      "linear-gradient(135deg, rgb(138, 43, 226) 0%, rgb(138, 43, 226) 30%, rgb(217, 70, 160) 70%, rgb(233, 107, 58) 100%)",
+      "radial-gradient(at 15% 30%, rgba(75, 18, 0, 0.38) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 75% 20%, rgba(38, 0, 75, 0.34) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 40% 70%, rgba(0, 18, 75, 0.28) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 85% 80%, rgba(75, 0, 50, 0.17) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 20% 85%, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 15% 88%, rgba(0, 20, 80, 0.35) 0%, rgba(0, 0, 0, 0) 30%), radial-gradient(at 60% 40%, rgba(0, 18, 75, 0.24) 0%, rgba(0, 0, 0, 0) 25%), radial-gradient(at 90% 15%, rgba(25, 0, 75, 0.28) 0%, rgba(0, 0, 0, 0) 20%), radial-gradient(at 55% 45%, rgba(19, 9, 75, 0.2) 0%, rgba(0, 0, 0, 0) 50%), radial-gradient(at 58% 35%, rgba(28, 9, 75, 0.15) 0%, rgba(0, 0, 0, 0) 40%), radial-gradient(at 47% 55%, rgba(10, 14, 75, 0.18) 0%, rgba(0, 0, 0, 0) 45%), radial-gradient(at 65% 50%, rgba(20, 10, 60, 0.12) 0%, rgba(0, 0, 0, 0) 35%), radial-gradient(at 50% 45%, rgba(15, 5, 50, 0.1) 0%, rgba(0, 0, 0, 0) 60%), radial-gradient(at 75% 75%, rgba(60, 0, 40, 0.1) 0%, rgba(0, 0, 0, 0) 35%), conic-gradient(from 225deg at 70% 30%, rgba(0, 0, 0, 0) 0deg, rgba(75, 18, 0, 0.19) 90deg, rgba(0, 0, 0, 0) 180deg)",
+      "linear-gradient(to right, rgb(233, 107, 58), rgb(217, 70, 160), rgb(138, 43, 226))",
+      "linear-gradient(135deg, rgb(138, 43, 226), rgb(255, 107, 53))",
+      "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(233, 107, 58))",
+      "linear-gradient(to right bottom, rgb(138, 43, 226), rgb(217, 70, 160))",
+      "linear-gradient(to right bottom, rgb(217, 70, 160), rgb(233, 107, 58))",
+      "linear-gradient(to right bottom, rgb(233, 107, 58), rgb(138, 43, 226))",
+      "linear-gradient(to right bottom, rgb(26, 26, 26), rgb(17, 17, 17))",
+      "linear-gradient(to right bottom, rgba(31, 41, 55, 0.4), rgba(55, 65, 81, 0.3), rgba(75, 85, 99, 0.2))"
+    ],
+    "shadows": [
+      "rgba(138, 43, 226, 0.15) 0px 0px 2px 0px",
+      "rgba(233, 107, 58, 0.15) 0px 0px 3px 0px",
+      "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px",
+      "rgba(217, 70, 160, 0.4) 0px 4px 20px 0px",
+      "rgba(0, 0, 0, 0.15) 0px 4px 12px 0px",
+      "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
+      "rgba(0, 0, 0, 0.2) 0px 1px 2px 0px"
+    ],
+    "fonts": [
+      "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
+      "\"JetBrains Mono\", \"Fira Code\", Consolas, monospace",
+      "\"Times New Roman\"",
+      "Arial",
+      "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+      "monospace"
+    ]
+  }
+}

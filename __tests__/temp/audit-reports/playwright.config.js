@@ -2,7 +2,7 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: '.',
-  testMatch: 'visual-audit.spec.js',
+  testMatch: ['visual-audit.spec.js', 'visual-audit-enhanced.spec.js'],
   timeout: 120000, // 2 minutes per test
   fullyParallel: false, // Run sequentially for consistent results
   workers: 1,

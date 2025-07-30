@@ -21,38 +21,59 @@ check_server() {
 }
 
 # Check both servers
-NEXTJS_RUNNING=$(check_server "http://localhost:3000" "Next.js")
-DEMO_RUNNING=$(check_server "http://localhost:8080" "Demo")
+check_server "http://localhost:3000" "Next.js"
+NEXTJS_RUNNING=$?
 
-if [ $? -ne 0 ]; then
+check_server "http://localhost:8080" "Demo"
+DEMO_RUNNING=$?
+
+# Demo must be running
+if [ $DEMO_RUNNING -ne 0 ]; then
     echo ""
-    echo "⚠️  Please ensure both servers are running:"
-    echo "   - Next.js: npm run dev (port 3000)"
-    echo "   - Demo: npm run demo (port 8080)"
+    echo "⚠️  Demo server must be running!"
+    echo "   Start it with: npm run demo"
     echo ""
-    echo "Start them in separate terminals and run this script again."
     exit 1
+fi
+
+# Warn if Next.js not running but continue
+if [ $NEXTJS_RUNNING -ne 0 ]; then
+    echo ""
+    echo "⚠️  Next.js server is not running"
+    echo "   The audit will analyze the demo only."
+    echo "   For full comparison, start Next.js with: npm run dev"
+    echo ""
 fi
 
 echo ""
 echo "📸 Starting visual audit..."
 echo ""
 
-# Run Playwright tests
+# Run Playwright tests - use enhanced version
 cd "$(dirname "$0")"
-npx playwright test visual-audit.spec.js --reporter=list
+npx playwright test visual-audit-enhanced.spec.js --reporter=list
 
 echo ""
 echo "✅ Visual audit complete!"
 echo ""
 echo "📊 Results saved to: ./visual-audit-results/"
-echo "   - visual-fidelity-report.md - Human-readable report"
-echo "   - visual-fidelity-report.json - Detailed data"
-echo "   - screenshots/ - All captured screenshots"
-echo "   - accessible-pages.json - Page availability data"
-echo "   - style-comparison.json - Detailed style differences"
+echo "   - visual-audit-report.md - Main report with analysis"
+echo "   - demo-analysis.json - Demo design system extraction"
+echo "   - server-status.json - Server availability"
 
-# Open the report if on macOS
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    open ./visual-audit-results/visual-fidelity-report.md
+if [ $NEXTJS_RUNNING -eq 0 ]; then
+    echo "   - comparison-results.json - Visual differences"
+    echo "   - screenshots/ - Side-by-side screenshots"
+else
+    echo "   - demo-only/ - Demo screenshots at all breakpoints"
+fi
+
+echo ""
+echo "📖 View the report: cat ./visual-audit-results/visual-audit-report.md"
+
+# Open the report if on macOS/Linux with appropriate viewer
+if command -v xdg-open > /dev/null 2>&1; then
+    xdg-open ./visual-audit-results/visual-audit-report.md 2>/dev/null
+elif command -v open > /dev/null 2>&1; then
+    open ./visual-audit-results/visual-audit-report.md 2>/dev/null
 fi

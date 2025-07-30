@@ -1,0 +1,9 @@
+{
+  "nextjs": [],
+  "demo": [
+    {
+      "path": "/",
+      "name": "home"
+    }
+  ]
+}

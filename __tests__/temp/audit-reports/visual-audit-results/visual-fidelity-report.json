@@ -1,0 +1,40 @@
+{
+  "summary": {
+    "overallFidelity": 0,
+    "pageScores": {},
+    "criticalIssues": [],
+    "categoryBreakdown": {
+      "gradients": {
+        "score": null,
+        "issues": 0,
+        "weight": 20
+      },
+      "colors": {
+        "score": null,
+        "issues": 0,
+        "weight": 20
+      },
+      "shadows": {
+        "score": null,
+        "issues": 0,
+        "weight": 15
+      },
+      "spacing": {
+        "score": null,
+        "issues": 0,
+        "weight": 15
+      },
+      "typography": {
+        "score": null,
+        "issues": 0,
+        "weight": 15
+      },
+      "animations": {
+        "score": null,
+        "issues": 0,
+        "weight": 15
+      }
+    }
+  },
+  "details": {}
+}
