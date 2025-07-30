@@ -1,7 +1,7 @@
 {
   "nextjs": {
     "url": "http://localhost:3000",
-    "available": false
+    "available": true
   },
   "demo": {
     "url": "http://localhost:8080",
