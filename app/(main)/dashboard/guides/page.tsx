@@ -7,6 +7,7 @@ import { api } from "@/convex/_generated/api";
 import { Container } from "@/components/ui/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { PrimaryCard, SecondaryCard } from "@/components/ui/card/CardVariants";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
@@ -177,75 +178,34 @@ export default function DashboardGuidesPage() {
         {/* Stats Cards */}
         {guideStats && (
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-base font-medium text-gray-600 dark:text-gray-400">
-                  Total Guides
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  <FileText className="w-5 h-5 text-blue-500" />
-                  <span className="text-2xl font-bold">{guideStats.total}</span>
-                </div>
-              </CardContent>
-            </Card>
+            <SecondaryCard icon={FileText} title="Total Guides" colorVariant="default">
+              <span className="text-2xl font-bold">{guideStats.total}</span>
+            </SecondaryCard>
 
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-base font-medium text-gray-600 dark:text-gray-400">
-                  Total Views
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  <Eye className="w-5 h-5 text-green-500" />
-                  <span className="text-2xl font-bold">
-                    {guideStats.totalViews.toLocaleString()}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+            <SecondaryCard icon={Eye} title="Total Views" colorVariant="default">
+              <span className="text-2xl font-bold">
+                {guideStats.totalViews.toLocaleString()}
+              </span>
+            </SecondaryCard>
 
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-base font-medium text-gray-600 dark:text-gray-400">
-                  Completions
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="w-5 h-5 text-purple-500" />
-                  <span className="text-2xl font-bold">
-                    {guideStats.totalCompletions.toLocaleString()}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+            <SecondaryCard icon={CheckCircle} title="Completions" colorVariant="purple">
+              <span className="text-2xl font-bold">
+                {guideStats.totalCompletions.toLocaleString()}
+              </span>
+            </SecondaryCard>
 
-            <Card>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-base font-medium text-gray-600 dark:text-gray-400">
-                  Avg Completion Rate
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-orange-500" />
-                  <span className="text-2xl font-bold">
-                    {guideStats.avgCompletionRate}%
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
+            <SecondaryCard icon={TrendingUp} title="Avg Completion Rate" colorVariant="orange">
+              <span className="text-2xl font-bold">
+                {guideStats.avgCompletionRate}%
+              </span>
+            </SecondaryCard>
           </div>
         )}
 
         {/* Guides List */}
-        <Card>
-          <CardHeader>
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList>
+        <PrimaryCard title="My Guides" headerVariant="default">
+          <Tabs value={activeTab} onValueChange={setActiveTab} className="-mt-4">
+            <TabsList className="mb-6">
                 <TabsTrigger value="all">
                   All ({userGuides?.length || 0})
                 </TabsTrigger>
@@ -259,9 +219,6 @@ export default function DashboardGuidesPage() {
                   Unpublished ({userGuides?.filter(g => g.status === "unpublished").length || 0})
                 </TabsTrigger>
               </TabsList>
-            </Tabs>
-          </CardHeader>
-          <CardContent>
             {filteredGuides.length === 0 ? (
               <div className="text-center py-12">
                 <BookOpen className="w-12 h-12 text-gray-400 mx-auto mb-4" />
@@ -374,8 +331,8 @@ export default function DashboardGuidesPage() {
                 ))}
               </div>
             )}
-          </CardContent>
-        </Card>
+          </Tabs>
+        </PrimaryCard>
 
         {/* Delete Confirmation Dialog */}
         <AlertDialog open={!!deleteGuideId} onOpenChange={() => setDeleteGuideId(null)}>

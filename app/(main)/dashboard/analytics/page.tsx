@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { cn } from '@/lib/utils'
+import { PrimaryCard, SecondaryCard } from '@/components/ui/card/CardVariants'
 import { TrendingUp, TrendingDown, DollarSign, BarChart3, Award } from 'lucide-react'
 
 export default function DashboardAnalyticsPage() {
@@ -88,28 +89,16 @@ export default function DashboardAnalyticsPage() {
           {/* Current Balance & Performance Summary */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Current Balance Card */}
-            <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-medium text-white flex items-center gap-2">
-                  <DollarSign className="w-5 h-5 text-vybe-purple" />
-                  Current Balance
-                </h4>
-              </div>
+            <SecondaryCard icon={DollarSign} title="Current Balance" colorVariant="purple">
               <p className="text-4xl font-semibold text-white mb-2">${earnings.balance}</p>
               <p className="text-sm text-gray-400 mb-2">Next payout: Friday</p>
               <p className="text-xs text-gray-500">
                 Automatic weekly payouts via Stripe (minimum $50)
               </p>
-            </div>
+            </SecondaryCard>
 
             {/* Last 30 Days Performance Card */}
-            <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-6">
-              <div className="flex items-center justify-between mb-4">
-                <h4 className="text-lg font-medium text-white flex items-center gap-2">
-                  <BarChart3 className="w-5 h-5 text-vybe-pink" />
-                  Last 30 Days Performance
-                </h4>
-              </div>
+            <SecondaryCard icon={BarChart3} title="Last 30 Days Performance" colorVariant="pink">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="text-sm text-gray-400">Sales</span>
@@ -142,19 +131,11 @@ export default function DashboardAnalyticsPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </SecondaryCard>
           </div>
 
           {/* Daily Revenue Chart */}
-          <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden">
-            <div className="bg-gray-700/40 border-b border-gray-600/30 px-6 py-4">
-              <h4 className="font-medium text-white flex items-center gap-3">
-                <div className="w-1 h-4 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full" />
-                Daily Revenue Trend
-                <span className="text-xs text-gray-400">(Last 7 days)</span>
-              </h4>
-            </div>
-            <div className="p-6">
+          <PrimaryCard title="Daily Revenue Trend" headerVariant="gradient">
               <div className="space-y-3">
                 {earnings.dailyRevenue.map((day) => (
                   <div key={day.day} className="flex items-center gap-4">
@@ -177,18 +158,10 @@ export default function DashboardAnalyticsPage() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+          </PrimaryCard>
 
           {/* Top Performers */}
-          <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden">
-            <div className="bg-gray-700/40 border-b border-gray-600/30 px-6 py-4">
-              <h4 className="font-medium text-white flex items-center gap-3">
-                <div className="w-1 h-4 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full" />
-                Top Performers This Month
-              </h4>
-            </div>
-            <div className="p-6">
+          <PrimaryCard title="Top Performers This Month" headerVariant="purple">
               {earnings.topPerformers.map((item) => (
                 <div
                   key={item.rank}
@@ -239,21 +212,10 @@ export default function DashboardAnalyticsPage() {
                   </button>
                 </div>
               </div>
-            </div>
-          </div>
+          </PrimaryCard>
 
           {/* Recent Transactions */}
-          <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden">
-            <div className="bg-gray-700/40 border-b border-gray-600/30 px-6 py-4">
-              <div className="flex items-center justify-between">
-                <h4 className="font-medium text-white flex items-center gap-3">
-                  <div className="w-1 h-4 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full" />
-                  Recent Transactions
-                </h4>
-                <span className="text-xs text-gray-400">(Latest activity)</span>
-              </div>
-            </div>
-            <div className="p-6">
+          <PrimaryCard title="Recent Transactions" headerVariant="default">
               {/* Sales Summary */}
               <div className="grid grid-cols-3 gap-4 mb-6 pb-6 border-b border-gray-700/30">
                 <div className="text-center">
@@ -300,8 +262,7 @@ export default function DashboardAnalyticsPage() {
                   View Complete History (Pro) →
                 </button>
               </div>
-            </div>
-          </div>
+          </PrimaryCard>
         </div>
       )}
 

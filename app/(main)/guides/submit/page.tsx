@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { PrimaryCard, SecondaryCard, CardContent as CardContentVariant } from "@/components/ui/card/CardVariants";
 import { GUIDE_CATEGORIES, DIFFICULTY_LEVELS, GUIDE_TAGS } from "@/lib/constants/guides";
 import { 
   ChevronLeft,
@@ -314,10 +315,10 @@ export default function GuideSubmitPage() {
         </div>
 
         {/* Step Content */}
-        <div className="minimal-card rounded-lg p-8">
+        <div>
           {/* Step 1: Overview */}
           {currentStep === 1 && (
-            <div>
+            <div className="minimal-card rounded-lg p-8">
               <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
                 <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
                 Guide Overview
@@ -474,7 +475,7 @@ export default function GuideSubmitPage() {
 
           {/* Step 2: Modules */}
           {currentStep === 2 && (
-            <div>
+            <div className="minimal-card rounded-lg p-8">
               <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
                 <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
                 Build Your Guide Structure
@@ -589,7 +590,7 @@ export default function GuideSubmitPage() {
 
           {/* Step 3: Content */}
           {currentStep === 3 && (
-            <div>
+            <div className="minimal-card rounded-lg p-8">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-lg font-semibold text-white flex items-center gap-2">
                   <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
@@ -712,12 +713,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
 
           {/* Step 4: Resources */}
           {currentStep === 4 && (
-            <div>
-              <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                Resources & Downloads
-              </h2>
-              
+            <PrimaryCard title="Resources & Downloads" headerVariant="default">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Upload Area */}
                 <div>
@@ -776,20 +772,19 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                   Next: Review & Submit →
                 </Button>
               </div>
-            </div>
+            </PrimaryCard>
           )}
 
           {/* Step 5: Review */}
           {currentStep === 5 && (
-            <div>
+            <div className="minimal-card rounded-lg p-8">
               <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
                 <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
                 Review & Submit
               </h2>
               
               {/* AI Review Checklist */}
-              <Card className="vybe-card p-6 mb-8">
-                <h3 className="text-lg font-medium mb-4">AI Review Checklist</h3>
+              <PrimaryCard title="AI Review Checklist" headerVariant="purple" className="mb-8">
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
@@ -816,11 +811,10 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                     <span>SEO optimization (in progress)</span>
                   </div>
                 </div>
-              </Card>
+              </PrimaryCard>
 
               {/* Final Review */}
-              <Card className="vybe-card p-6 mb-8">
-                <h3 className="text-lg font-medium mb-4">Guide Summary</h3>
+              <PrimaryCard title="Guide Summary" headerVariant="default" className="mb-8">
                 <div className="space-y-3">
                   <div>
                     <span className="font-medium">Title:</span> {formData.title || "Not set"}
@@ -838,7 +832,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                     <span className="font-medium">Tags:</span> {formData.tags.join(", ") || "None"}
                   </div>
                 </div>
-              </Card>
+              </PrimaryCard>
 
               <div className="flex justify-between">
                 <Button onClick={() => goToStep(4)} variant="outline">
