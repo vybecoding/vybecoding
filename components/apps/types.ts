@@ -22,6 +22,16 @@ export interface AppFormData {
   techStack: string[];
   platforms: string[];
   license: string;
+  
+  // Pricing
+  pricingType?: "free" | "premium";
+  price?: number;
+  licenseType?: string;
+  demoEnabled?: boolean;
+  supportIncluded?: boolean;
+  updatesIncluded?: boolean;
+  customizationService?: boolean;
+  hostingSetupService?: boolean;
 }
 
 export interface AppFormStepProps {

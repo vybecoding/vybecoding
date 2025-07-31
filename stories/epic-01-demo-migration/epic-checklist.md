@@ -70,6 +70,22 @@
   - **Status**: APPROVED
   - **Notes**: Consistent with sign-in page styling. Uses auth layout and global Clerk appearance. Webpack error resolved.
 
+### 📋 Authentication Pages (Complete)
+- [x] DEMO-007: Forgot Password Page (3 points) ✅
+  - Implementation: ✅ Complete
+  - Visual Verification: ✅ Complete
+  - Story Workflow: ✅ Complete
+  - **Status**: APPROVED
+  - **Notes**: Key icon in purple circle, success message with green styling. Uses Clerk's reset_password_email_code strategy. Auto-redirect after success.
+
+### 📋 Additional Content Pages (Complete)
+- [x] DEMO-008: Apps Main Page (8 points) ✅
+  - Implementation: ✅ Complete
+  - Visual Verification: ✅ Complete
+  - Story Workflow: ✅ Complete
+  - **Status**: APPROVED
+  - **Notes**: Completed as part of DEMO-003. The /apps route serves both main and browse functionality with multi-select filters and search.
+
 ### 🔄 Batch 3: Dashboard Foundation (In Progress)
 - [x] DEMO-002: Dashboard Home Page (8 points) ✅
   - Implementation: ✅ Complete

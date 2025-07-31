@@ -152,6 +152,14 @@ export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
       techStack: [],
       platforms: [],
       license: "",
+      pricingType: "free",
+      price: undefined,
+      licenseType: "single",
+      demoEnabled: false,
+      supportIncluded: false,
+      updatesIncluded: false,
+      customizationService: false,
+      hostingSetupService: false,
     },
   });
 
