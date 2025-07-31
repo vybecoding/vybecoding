@@ -98,22 +98,87 @@ console.log("Test code block");
             </Button>
           </Link>
 
-          {/* Preview of Guide Card */}
+          {/* Preview of Guide Card - Matching Demo Exactly */}
           <div className="max-w-md mx-auto">
-            <h3 className="text-lg font-semibold text-white mb-4">Guide Card Preview:</h3>
-            <div className="vybe-card p-6">
-              <h4 className="text-xl font-semibold text-white mb-2">{testGuide.title}</h4>
-              <p className="text-vybe-gray-300 mb-4">{testGuide.excerpt}</p>
+            <h3 className="text-lg font-semibold text-white mb-4">Guide Card Preview (Demo Style):</h3>
+            <div className="minimal-card card-verified rounded-lg p-5 transition-all cursor-pointer group relative overflow-hidden">
+              {/* Type label */}
+              <span style={{ 
+                position: "absolute", 
+                top: 0, 
+                left: 0, 
+                padding: "0.375rem 0.5rem", 
+                paddingTop: "0.5rem", 
+                background: "rgba(138, 43, 226, 0.5625)", 
+                color: "rgba(255, 255, 255, 1)", 
+                fontSize: "0.844rem", 
+                fontWeight: 600, 
+                textTransform: "uppercase", 
+                borderRadius: "0 0 0.625rem 0", 
+                zIndex: 20, 
+                lineHeight: 1, 
+                boxShadow: "0 1px 2px rgba(0,0,0,0.2)", 
+                letterSpacing: "0.25px", 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "center", 
+                height: "auto"
+              }}>
+                GUIDE
+              </span>
+              
+              {/* Title and creator - Added padding-top for spacing after badge */}
+              <h3 className="text-lg font-medium text-white mb-2 group-hover:text-vybe-purple-light transition-colors pt-8">
+                {testGuide.title}
+              </h3>
+              
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex-shrink-0"></div>
+                <span className="text-sm text-vybe-gray-400">
+                  @{testGuide.author.username}
+                  <span className="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium ml-1">PRO</span>
+                </span>
+                <span className="text-vybe-gray-500">•</span>
+                <div className="flex items-center gap-1 text-sm text-vybe-gray-500">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  <span>01/31/25</span>
+                </div>
+              </div>
+              
+              {/* Description */}
+              <p className="text-sm text-vybe-gray-400 mb-4 line-clamp-2">
+                {testGuide.excerpt}
+              </p>
+              
+              {/* Tags */}
               <div className="flex flex-wrap gap-2 mb-4">
-                {testGuide.tags.map(tag => (
-                  <span key={tag} className="px-2 py-1 bg-vybe-gray-800 text-vybe-gray-300 text-xs rounded">
+                <span className="px-2 py-1 bg-green-500/10 border border-green-500/20 text-green-500 text-xs rounded font-medium">Beginner</span>
+                {testGuide.tags.slice(0, 3).map(tag => (
+                  <span key={tag} className="px-2 py-1 bg-vybe-purple/10 border border-vybe-purple/20 text-vybe-purple-light text-xs rounded">
                     {tag}
                   </span>
                 ))}
               </div>
-              <div className="flex items-center justify-between text-sm text-vybe-gray-400">
-                <span>{testGuide.readingTime} min read</span>
-                <span>{testGuide.views} views</span>
+              
+              {/* Stats */}
+              <div className="flex items-center justify-between pt-3 border-t border-vybe-gray-800/50 mt-auto">
+                <div className="flex items-center gap-1 text-green-400 text-xs">
+                  <span className="text-xs">✅</span>
+                  <span>Verified 2h ago</span>
+                </div>
+                <div className="flex items-center gap-3 text-xs">
+                  <div className="flex items-center gap-1 text-vybe-gray-400">
+                    <svg className="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    <span>{testGuide.completions}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
