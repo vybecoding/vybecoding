@@ -281,7 +281,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-slide-up">
               <h3 className="text-4xl font-light mb-6 text-center">
-                Learn from <GradientText gradient="brand">Featured Mentors</GradientText>
+                Learn from <GradientText gradient="brand" className="inline-block" style={{ fontSize: '50px' }}>Featured Mentors</GradientText>
               </h3>
               
               <p className="text-gray-400 text-center mb-8">
@@ -298,7 +298,7 @@ export default function Home() {
                     AD
                   </div>
                   <div className="flex-1">
-                    <h5 className="font-medium">Alex Developer</h5>
+                    <p className="text-base text-white">Alex Developer</p>
                     <p className="text-xs text-gray-400">Senior Full-Stack Developer</p>
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-yellow-400 text-xs">★★★★★</span>
@@ -317,7 +317,7 @@ export default function Home() {
                     MR
                   </div>
                   <div className="flex-1">
-                    <h5 className="font-medium">Marcus Rodriguez</h5>
+                    <p className="text-base text-white">Marcus Rodriguez</p>
                     <p className="text-xs text-gray-400">Principal Engineer at Meta</p>
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-yellow-400 text-xs">★★★★★</span>
@@ -336,7 +336,7 @@ export default function Home() {
                     JL
                   </div>
                   <div className="flex-1">
-                    <h5 className="font-medium">Jennifer Liu</h5>
+                    <p className="text-base text-white">Jennifer Liu</p>
                     <p className="text-xs text-gray-400">AI Research Lead at Google</p>
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-yellow-400 text-xs">★★★★★</span>

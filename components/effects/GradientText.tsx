@@ -29,7 +29,7 @@ export const GradientText: React.FC<GradientTextProps> = ({
   return (
     <span 
       className={cn(
-        'bg-clip-text text-transparent font-semibold',
+        'bg-clip-text text-transparent',
         gradientClass,
         className
       )}
