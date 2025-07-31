@@ -6,6 +6,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, Eye, Bookmark, CheckCircle } from "lucide-react";
 import { PrimaryCard, SecondaryCard } from "@/components/ui/card/CardVariants";
 import { GuideCard } from "@/components/ui/card/GuideCard";
+import { FeaturedCard } from "@/components/ui/card/FeaturedCard";
+import { AppCard } from "@/components/ui/card/AppCard";
+import { DemoMemberCard } from "@/components/ui/card/DemoMemberCard";
+import { FeaturedContent } from "@/types/featured";
+import { Member } from "@/types/members";
 
 export default function TestStaticGuidePage() {
   // Static test data
@@ -39,6 +44,74 @@ console.log("Test code block");
       username: "testuser",
       bio: "This is a test author bio for the static demo."
     }
+  };
+
+  // Test data for card previews
+  const testAppCard: FeaturedContent = {
+    id: 'test-app-1',
+    type: 'app',
+    title: 'AI Code Review Assistant',
+    author: {
+      name: '@devtools',
+      username: 'devtools',
+      tier: 'PRO',
+      isTopCreator: false,
+      isOfficial: false
+    },
+    date: '01/02/25',
+    description: 'Interactive tool that analyzes your code for bugs, suggests improvements, and explains best practices using Claude AI.',
+    tags: ['productivity', 'developer-tools', 'TypeScript'],
+    verificationStatus: 'verified',
+    stats: {
+      likes: 89,
+      views: 1250,
+      downloads: 342
+    },
+    isPremium: false,
+    isPurchased: false
+  };
+
+  const testNewsCard: FeaturedContent = {
+    id: 'test-news-1',
+    type: 'news',
+    title: 'OpenAI Releases Claude 4.0 with Enhanced Reasoning',
+    author: {
+      name: 'OpenAI Blog',
+      username: 'openai',
+      tier: undefined,
+      isTopCreator: false,
+      isOfficial: true
+    },
+    date: '01/16/25',
+    description: 'The latest Claude model brings significant improvements to reasoning capabilities and multimodal understanding, with enhanced performance across coding and analysis tasks.',
+    tags: ['news', 'announcement', 'claude'],
+    verificationStatus: 'verified',
+    stats: {
+      likes: 567,
+      views: 8900
+    },
+    isPremium: false,
+    isPurchased: false
+  };
+
+  const testMemberData: Member = {
+    id: 'test-member-1',
+    name: 'Alex Chen',
+    username: 'alexchen',
+    title: 'Machine Learning Expert',
+    tier: 'PRO' as const,
+    avatar: 'SC',
+    bio: 'Pioneering next-generation AI systems and advancing machine learning capabilities',
+    stats: {
+      guides: 8,
+      apps: 3
+    },
+    skills: ['Production AI', 'Python', 'Machine Learning'],
+    isTopMentor: true,
+    isMentor: true,
+    mentorRating: 4.9,
+    mentorReviews: 47,
+    joinedDate: '2024-01-15'
   };
 
   return (
@@ -167,6 +240,42 @@ console.log("Test code block");
                   </Button>
                 </Link>
               </SecondaryCard>
+            </div>
+          </PrimaryCard>
+
+          {/* Card Component Previews */}
+          <PrimaryCard headerVariant="purple" title="🎨 Card Component Previews" className="mb-8" noHover>
+            <p className="text-sm text-vybe-gray-300 mb-6">
+              Preview of specialized card components used throughout the platform:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* App Card Preview */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-white">App Card (Featured Style)</h3>
+                <FeaturedCard 
+                  content={testAppCard}
+                  onClick={(content) => console.log('App card clicked:', content)}
+                />
+              </div>
+              
+              {/* News Card Preview */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-white">News Card (Featured Style)</h3>
+                <FeaturedCard 
+                  content={testNewsCard}
+                  onClick={(content) => console.log('News card clicked:', content)}
+                />
+              </div>
+              
+              {/* Member Card Preview */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-white">Member Card (Demo Style)</h3>
+                <DemoMemberCard 
+                  member={testMemberData}
+                  onClick={() => console.log('Member card clicked')}
+                />
+              </div>
             </div>
           </PrimaryCard>
 
