@@ -116,9 +116,9 @@ export default function GuidesPage() {
 
   const handleWriteGuide = () => {
     if (isSignedIn) {
-      router.push("/write");
+      router.push("/guides/submit");
     } else {
-      router.push("/sign-in?redirect=/write");
+      router.push("/sign-in?redirect=/guides/submit");
     }
   };
 

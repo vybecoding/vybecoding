@@ -1077,3 +1077,42 @@ nav {
     opacity: 0.3;
   }
 }
+
+/* Toolbar button styles for markdown editor */
+.toolbar-button {
+  @apply p-2 rounded-md text-vybe-gray-400 hover:text-white hover:bg-vybe-gray-700 transition-colors;
+}
+
+.toolbar-button.active {
+  @apply text-white bg-vybe-gray-700;
+}
+
+/* Guide submit page specific styles */
+.btn-primary-purple {
+  @apply bg-vybe-purple hover:bg-purple-700 text-white px-6 py-2 rounded-lg font-medium transition-colors;
+}
+
+/* VybeCoding specific colors not covered by Tailwind */
+.bg-vybe-gray-900 {
+  background-color: #0f0f0f;
+}
+
+.bg-vybe-gray-800 {
+  background-color: #1a1a1a;
+}
+
+.bg-vybe-gray-700 {
+  background-color: #2a2a2a;
+}
+
+.bg-vybe-gray-600 {
+  background-color: #3a3a3a;
+}
+
+.border-vybe-gray-700 {
+  border-color: #2a2a2a;
+}
+
+.border-vybe-gray-600 {
+  border-color: #3a3a3a;
+}

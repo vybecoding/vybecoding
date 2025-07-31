@@ -606,7 +606,7 @@ export default function GuideSubmitPage() {
                           key={`${module.id}-${lesson.id}`}
                           value={`${module.id}-${lesson.id}`}
                         >
-                          {module.title} > {lesson.title}
+                          {module.title} &gt; {lesson.title}
                         </SelectItem>
                       ))
                     )}
