@@ -20,10 +20,31 @@ async function compareGuideDetailPages() {
     await demoPage.goto('http://localhost:8080/pages/guide-detail.html');
     await demoPage.waitForLoadState('networkidle');
     
-    // Next.js page (we'll need to create a test guide)
-    console.log('📸 Capturing Next.js page screenshots...');
+    // Next.js page - first check what's available
+    console.log('📸 Checking Next.js guides...');
     const nextjsPage = await context.newPage();
-    await nextjsPage.goto('http://localhost:3001/guides/test-guide');
+    
+    // First check the guides list page to see if there are any guides
+    await nextjsPage.goto('http://localhost:3001/guides');
+    await nextjsPage.waitForLoadState('networkidle');
+    
+    // Look for any guide links
+    const guideLinks = await nextjsPage.evaluate(() => {
+      const links = Array.from(document.querySelectorAll('a[href*="/guides/"]'));
+      return links.map(link => link.getAttribute('href')).filter(href => 
+        href && href !== '/guides' && href !== '/guides/submit'
+      );
+    });
+    
+    console.log('Found guide links:', guideLinks);
+    
+    // If we found guides, use the first one, otherwise go to a 404 test page
+    const guideUrl = guideLinks.length > 0 
+      ? `http://localhost:3001${guideLinks[0]}`
+      : 'http://localhost:3001/guides/test-guide';
+      
+    console.log('📸 Capturing Next.js page screenshots...');
+    await nextjsPage.goto(guideUrl);
     await nextjsPage.waitForLoadState('networkidle');
     
     // Take screenshots at different viewports
