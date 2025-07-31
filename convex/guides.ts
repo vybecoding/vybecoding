@@ -639,3 +639,26 @@ export const getGuideStats = query({
     };
   },
 });
+
+// Complete a lesson
+export const completeLesson = mutation({
+  args: {
+    guideId: v.id("guides"),
+    lessonIndex: v.number(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerk_id", (q) => q.eq("clerkId", identity.subject))
+      .first();
+    
+    if (!user) throw new Error("User not found");
+
+    // For now, just return success
+    // In a full implementation, you'd track individual lesson completions
+    return { success: true, lessonIndex: args.lessonIndex };
+  },
+});
