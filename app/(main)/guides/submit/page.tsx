@@ -406,7 +406,7 @@ export default function GuideSubmitPage() {
                 <div>
                   <Label className="text-base font-medium mb-2">
                     Tags <span className="text-red-500">*</span>
-                    <span className="text-sm font-normal text-gray-600 dark:text-gray-400 ml-2">
+                    <span className="text-sm font-normal text-vybe-gray-400 ml-2">
                       (Add up to 5 tags)
                     </span>
                   </Label>
@@ -443,12 +443,12 @@ export default function GuideSubmitPage() {
                     
                     {/* Tag Suggestions */}
                     {showTagSuggestions && filteredTagSuggestions.length > 0 && (
-                      <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-gray-900 border rounded-md shadow-lg z-10">
+                      <div className="absolute top-full left-0 right-0 mt-1 bg-vybe-gray-900 border border-vybe-gray-700 rounded-md shadow-lg z-10">
                         {filteredTagSuggestions.map(tag => (
                           <button
                             key={tag}
                             onClick={() => handleAddTag(tag)}
-                            className="w-full text-left px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                            className="w-full text-left px-3 py-2 hover:bg-vybe-gray-800 transition-colors"
                           >
                             {tag}
                           </button>
@@ -512,8 +512,8 @@ export default function GuideSubmitPage() {
                         
                         <div className="space-y-2">
                           {module.lessons.map((lesson, lessonIndex) => (
-                            <div key={lesson.id} className="flex items-center gap-2 p-2 bg-gray-100 dark:bg-gray-800 rounded">
-                              <span className="text-sm text-gray-600 dark:text-gray-400">
+                            <div key={lesson.id} className="flex items-center gap-2 p-2 bg-vybe-gray-800 rounded">
+                              <span className="text-sm text-vybe-gray-400">
                                 Lesson {lessonIndex + 1}:
                               </span>
                               <Input
@@ -542,7 +542,7 @@ export default function GuideSubmitPage() {
                     ))}
                     
                     {formData.modules.length === 0 && (
-                      <div className="text-center py-8 text-gray-500">
+                      <div className="text-center py-8 text-vybe-gray-500">
                         No modules yet. Click "Add Module" to get started.
                       </div>
                     )}
@@ -561,7 +561,7 @@ export default function GuideSubmitPage() {
                             {module.title}
                           </div>
                           {module.lessons.map((lesson, lessonIndex) => (
-                            <div key={lesson.id} className="ml-4 text-gray-600 dark:text-gray-400">
+                            <div key={lesson.id} className="ml-4 text-vybe-gray-400">
                               • {lesson.title}
                             </div>
                           ))}
@@ -682,11 +682,11 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                     </Button>
                   </div>
                   
-                  <div className="flex-1 p-4 bg-white dark:bg-gray-900 overflow-y-auto">
+                  <div className="flex-1 p-4 bg-vybe-gray-900 overflow-y-auto">
                     {editorContent ? (
                       <MarkdownRenderer content={editorContent} />
                     ) : (
-                      <p className="text-gray-500 italic">
+                      <p className="text-vybe-gray-500 italic">
                         Your content preview will appear here as you type...
                       </p>
                     )}
@@ -749,19 +749,19 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                   <h3 className="text-lg font-medium mb-4">Available Resources</h3>
                   <Card className="p-4">
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between p-2 bg-green-50 dark:bg-green-950 rounded">
+                      <div className="flex items-center justify-between p-2 bg-green-500/10 rounded">
                         <div className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4 text-green-500" />
                           <span className="text-sm">Source Code</span>
                         </div>
-                        <span className="text-xs text-green-600">Ready</span>
+                        <span className="text-xs text-green-500">Ready</span>
                       </div>
-                      <div className="flex items-center justify-between p-2 bg-yellow-50 dark:bg-yellow-950 rounded">
+                      <div className="flex items-center justify-between p-2 bg-yellow-500/10 rounded">
                         <div className="flex items-center gap-2">
                           <AlertCircle className="w-4 h-4 text-yellow-500" />
                           <span className="text-sm">Video Tutorial</span>
                         </div>
-                        <span className="text-xs text-yellow-600">Processing</span>
+                        <span className="text-xs text-yellow-500">Processing</span>
                       </div>
                     </div>
                   </Card>

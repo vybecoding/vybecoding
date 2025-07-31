@@ -272,7 +272,8 @@ export const getGuideBySlug = query({
         id: author._id,
         displayName: author.displayName || author.firstName || "Anonymous",
         avatar: author.avatar,
-        bio: author.bio
+        bio: author.bio,
+        username: author.username
       }
     };
   },

@@ -50,6 +50,30 @@
     --glow-purple: 271 75% 53% / 0.3;
     --glow-pink: 323 66% 58% / 0.3;
     --glow-orange: 21 82% 56% / 0.3;
+    
+    /* Shadcn UI required variables */
+    --popover: 0 0% 7%;                   /* #111111 - midnight */
+    --popover-foreground: 0 0% 100%;      /* #ffffff */
+    
+    --primary: 271 75% 53%;               /* #8a2be2 - purple */
+    --primary-foreground: 0 0% 100%;      /* #ffffff */
+    
+    --secondary: 0 0% 10%;                /* #1a1a1a - shadow */
+    --secondary-foreground: 0 0% 100%;    /* #ffffff */
+    
+    --muted: 0 0% 14%;                    /* #242424 - steel */
+    --muted-foreground: 0 0% 53%;         /* #888888 - mist */
+    
+    --accent: 0 0% 14%;                   /* #242424 - steel */
+    --accent-foreground: 0 0% 100%;       /* #ffffff */
+    
+    --destructive: 0 100% 63%;            /* #ff4444 */
+    --destructive-foreground: 0 0% 100%;  /* #ffffff */
+    
+    --ring: 271 75% 53%;                  /* #8a2be2 - purple */
+    --radius: 0.5rem;
+    
+    --input: 0 0% 14%;                    /* #242424 - steel */
   }
   
   /* Light theme */
@@ -98,6 +122,30 @@
     --glow-purple: 271 75% 53% / 0.2;
     --glow-pink: 323 66% 58% / 0.2;
     --glow-orange: 21 82% 56% / 0.2;
+    
+    /* Shadcn UI required variables */
+    --popover: 0 0% 100%;                 /* #ffffff */
+    --popover-foreground: 0 0% 0%;        /* #000000 */
+    
+    --primary: 271 75% 53%;               /* #8a2be2 - purple */
+    --primary-foreground: 0 0% 100%;      /* #ffffff */
+    
+    --secondary: 0 0% 96%;                /* #f5f5f5 */
+    --secondary-foreground: 0 0% 0%;      /* #000000 */
+    
+    --muted: 0 0% 96%;                    /* #f5f5f5 */
+    --muted-foreground: 0 0% 40%;         /* #666666 */
+    
+    --accent: 0 0% 96%;                   /* #f5f5f5 */
+    --accent-foreground: 0 0% 0%;         /* #000000 */
+    
+    --destructive: 0 100% 55%;            /* #ff4444 */
+    --destructive-foreground: 0 0% 100%;  /* #ffffff */
+    
+    --ring: 271 75% 53%;                  /* #8a2be2 - purple */
+    --radius: 0.5rem;
+    
+    --input: 0 0% 90%;                    /* #e5e5e5 */
   }
 }
 
