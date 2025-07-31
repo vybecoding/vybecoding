@@ -15,7 +15,7 @@ export const PrimaryCard = React.forwardRef<HTMLDivElement, PrimaryCardProps>(
   ({ className, headerVariant = 'default', title, noHover = false, children, ...props }, ref) => {
     const headerStyles = {
       default: 'bg-[rgba(55,65,81,0.4)] border-b border-[rgba(75,85,99,0.3)]',
-      gradient: 'bg-gradient-to-r from-vybe-purple to-vybe-pink',
+      gradient: 'bg-gradient-to-r from-vybe-purple/50 via-vybe-pink/50 to-vybe-orange/50',
       purple: 'bg-vybe-purple/20 border-b border-vybe-purple/30',
       pink: 'bg-vybe-pink/20 border-b border-vybe-pink/30',
       orange: 'bg-vybe-orange/20 border-b border-vybe-orange/30'

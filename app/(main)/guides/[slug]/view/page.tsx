@@ -82,7 +82,7 @@ export default function GuideViewPage({ params }: GuideViewPageProps) {
   const handleLessonComplete = async () => {
     if (!user || !guide?._id) return;
     
-    setCompletedLessons(prev => new Set([...prev, currentLesson]));
+    setCompletedLessons(prev => new Set([...Array.from(prev), currentLesson]));
     
     try {
       await completeLesson({ 
@@ -96,7 +96,8 @@ export default function GuideViewPage({ params }: GuideViewPageProps) {
       });
       
       // Auto-advance to next lesson if available
-      if (currentLesson < (guide.lessons?.length || 1) - 1) {
+      const totalLessons = guide.content?.split(/^##\s/gm).length || 1;
+      if (currentLesson < totalLessons - 1) {
         setCurrentLesson(currentLesson + 1);
       }
     } catch (error) {

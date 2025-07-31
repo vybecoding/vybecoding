@@ -256,7 +256,7 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                       </span>
                       <span className="flex items-center gap-1">
                         <Users className="w-4 h-4" />
-                        {guide.targetAudience || "Backend developers"}
+                        Backend developers
                       </span>
                     </div>
                   </div>

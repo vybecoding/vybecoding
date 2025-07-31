@@ -14,8 +14,11 @@ import {
   BookOpen,
   Lightbulb,
   Code,
-  Server
+  Server,
+  Clock,
+  Users
 } from "lucide-react";
+import { PrimaryCard, SecondaryCard } from "@/components/ui/card/CardVariants";
 
 export default function TestStaticGuideUnlockedPage() {
   // Static test data
@@ -64,70 +67,51 @@ export default function TestStaticGuideUnlockedPage() {
             {/* Main Content */}
             <div className="col-span-12 lg:col-span-8">
               {/* Guide Header */}
-              <div className="vybe-card overflow-hidden mb-6">
-                <div className="relative">
-                  {/* Cover Image */}
-                  <div className="h-24 bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/50"></div>
-                  </div>
-                  
-                  {/* Guide Info Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 px-6 pb-4 pt-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <h1 className="text-3xl font-bold text-white mb-2">
-                      {guide.title}
-                    </h1>
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-vybe-gray-300">
-                      <span className="flex items-center gap-1">
-                        <span className="text-green-500">●</span>
-                        Beginner
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {guide.readingTime} min read
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Users className="w-4 h-4" />
-                        Backend developers
-                      </span>
-                    </div>
-                  </div>
+              <PrimaryCard headerVariant="gradient" title="🧪 TEST GUIDE - Static Demo Page" className="overflow-hidden mb-6" noHover>
+                {/* Brief Description */}
+                <p className="text-vybe-gray-300 mb-6">
+                  {guide.excerpt}
+                </p>
+                
+                {/* Guide Stats */}
+                <div className="flex flex-wrap items-center gap-4 text-sm text-vybe-gray-300 mb-6">
+                  <span className="flex items-center gap-1">
+                    <span className="text-green-500">●</span>
+                    Beginner
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    {guide.readingTime} min read
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    Backend developers
+                  </span>
                 </div>
                 
-                {/* Guide Details */}
-                <div className="p-6">
-                  {/* Brief Description */}
-                  <p className="text-vybe-gray-300 mb-6">
-                    {guide.excerpt}
-                  </p>
-                  
-                  {/* Primary Focus & AI Tools */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
-                      <span className="inline-block px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-sm capitalize">
-                        {guide.category?.replace('-', ' ') || 'Development'}
-                      </span>
-                    </div>
-                    <div>
-                      <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">AI Tools Covered</h3>
-                      <div className="flex flex-wrap gap-2">
-                        {guide.tags.map(tag => (
-                          <span key={tag} className="px-2 py-1 bg-vybe-orange/10 text-vybe-orange text-xs rounded">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                {/* Primary Focus & AI Tools */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
+                    <span className="inline-block px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-sm capitalize">
+                      {guide.category?.replace('-', ' ') || 'Development'}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">AI Tools Covered</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {guide.tags.map(tag => (
+                        <span key={tag} className="px-2 py-1 bg-vybe-orange/10 text-vybe-orange text-xs rounded">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </PrimaryCard>
 
               {/* What You'll Learn */}
-              <div className="vybe-card p-6 mb-6">
-                <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                  <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                  What You'll Learn
-                </h2>
+              <PrimaryCard headerVariant="purple" title="What You'll Learn" className="mb-6" noHover>
                 <p className="text-vybe-gray-300 mb-4">
                   Master advanced patterns and build production-ready AI applications. This comprehensive guide covers everything from basic setup to advanced implementation patterns.
                 </p>
@@ -149,14 +133,10 @@ export default function TestStaticGuideUnlockedPage() {
                     <span>Optimize costs with token management strategies</span>
                   </li>
                 </ul>
-              </div>
+              </PrimaryCard>
 
               {/* Curriculum */}
-              <div className="vybe-card p-6 mb-6">
-                <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                  <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                  Guide Curriculum
-                </h2>
+              <PrimaryCard headerVariant="pink" title="Guide Curriculum" className="mb-6" noHover>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Getting Started Module */}
                   <div className="rounded-lg p-4">
@@ -246,7 +226,7 @@ export default function TestStaticGuideUnlockedPage() {
                     </ul>
                   </div>
                 </div>
-              </div>
+              </PrimaryCard>
               
             </div>
             
@@ -254,7 +234,7 @@ export default function TestStaticGuideUnlockedPage() {
             <div className="col-span-12 lg:col-span-4">
               <div className="lg:sticky lg:top-6">
                 {/* Price Box (Unlocked) */}
-                <div className="vybe-card p-6 mb-6">
+                <PrimaryCard className="mb-6" noHover>
                   <div className="text-center mb-6">
                     <div className="flex items-center justify-center gap-2 mb-3">
                       <CheckCircle className="w-6 h-6 text-green-500" />
@@ -274,17 +254,11 @@ export default function TestStaticGuideUnlockedPage() {
                       Save for Later
                     </button>
                   </div>
-                </div>
+                </PrimaryCard>
                 
                 {/* Guide Stats */}
-                <div className="vybe-card overflow-hidden mb-6">
-                  <div className="vybe-card-header">
-                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                      This guide includes:
-                    </h3>
-                  </div>
-                  <div className="p-4 space-y-3 text-sm">
+                <SecondaryCard colorVariant="purple" title="This guide includes:" className="overflow-hidden mb-6" noHover>
+                  <div className="space-y-3 text-sm">
                     <div className="flex items-start gap-2">
                       <FileText className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />
                       <span className="text-vybe-gray-300">5 modules with detailed lessons</span>
@@ -298,17 +272,10 @@ export default function TestStaticGuideUnlockedPage() {
                       <span className="text-vybe-gray-300">Progress tracking</span>
                     </div>
                   </div>
-                </div>
+                </SecondaryCard>
                 
                 {/* Author */}
-                <div className="vybe-card overflow-hidden">
-                  <div className="vybe-card-header">
-                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                      About the Author
-                    </h3>
-                  </div>
-                  <div className="p-4">
+                <SecondaryCard colorVariant="pink" title="About the Author" className="overflow-hidden" noHover>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center text-white font-bold">
                         TA
@@ -330,8 +297,7 @@ export default function TestStaticGuideUnlockedPage() {
                     >
                       Message on Discord →
                     </button>
-                  </div>
-                </div>
+                </SecondaryCard>
               </div>
             </div>
           </div>

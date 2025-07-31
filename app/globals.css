@@ -1300,3 +1300,57 @@ nav {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* Clerk User Button Dropdown - 100% Opaque */
+.cl-userButtonPopoverCard,
+.cl-userButtonPopoverActionButton,
+.cl-userButtonPopoverActionButtonText,
+.cl-userButtonPopoverMain,
+.cl-userButtonPopoverFooter {
+  background: rgba(26, 26, 26, 1.0) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+/* Ensure the dropdown container is fully opaque */
+.cl-userButtonPopoverCard {
+  background: rgba(26, 26, 26, 1.0) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Make sure the user info section is opaque */
+.cl-userButtonPopoverActionButton:first-child {
+  background: rgba(26, 26, 26, 1.0) !important;
+}
+
+/* Make all text elements in the dropdown white and readable */
+.cl-userButtonPopoverActionButton,
+.cl-userButtonPopoverActionButtonText,
+.cl-userButtonPopoverActionButtonIcon,
+.cl-userPreviewMainIdentifier,
+.cl-userPreviewSecondaryIdentifier,
+.cl-userButtonPopoverFooter p,
+.cl-userButtonPopoverFooter span,
+.cl-userButtonPopoverCard * {
+  color: white !important;
+}
+
+/* Hover states for menu items */
+.cl-userButtonPopoverActionButton:hover {
+  background: rgba(138, 43, 226, 0.2) !important;
+  color: white !important;
+}
+
+/* User info section styling */
+.cl-userPreview {
+  background: rgba(26, 26, 26, 1.0) !important;
+  color: white !important;
+}
+
+/* Footer text styling */
+.cl-userButtonPopoverFooter {
+  background: rgba(26, 26, 26, 1.0) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}

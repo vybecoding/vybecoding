@@ -1,270 +1,283 @@
 "use client";
 
 import React, { useState } from "react";
-import { Container } from "@/components/ui/layout";
-import { MarkdownRenderer } from "@/components/ui/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Progress } from "@/components/ui/progress";
 import { 
-  Clock, 
-  Eye, 
-  Heart, 
-  Bookmark, 
-  Share2, 
   ArrowLeft,
+  CheckCircle,
+  Eye,
+  Bookmark,
+  FileText,
+  Download,
+  Star,
   BookOpen,
-  CheckCircle 
+  Lightbulb,
+  Code,
+  Server,
+  Clock,
+  Users,
+  Share2
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { PrimaryCard, SecondaryCard } from "@/components/ui/card/CardVariants";
 
 export default function TestStaticGuideDetailPage() {
-  const [readingProgress, setReadingProgress] = useState(25);
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   // Static test data
   const guide = {
-    _id: "test-static-guide",
     title: "🧪 TEST GUIDE - Static Demo Page",
     slug: "test-static-guide",
     excerpt: "⚠️ This is a static test page for development. Use this to test guide pages without authentication.",
-    content: `# Test Guide Content
-
-This is a static test guide page that doesn't require authentication or database access.
-
-## Features to Test
-
-- Markdown rendering
-- Code syntax highlighting
-- Layout and styling
-- Navigation between pages
-
-### Code Example
-
-\`\`\`javascript
-// Test code block
-function testFunction() {
-  console.log("🧪 This is a test!");
-  return {
-    status: "success",
-    message: "Test completed"
-  };
-}
-
-// Call the test function
-const result = testFunction();
-console.log(result);
-\`\`\`
-
-### Lists and Tables
-
-**Unordered List:**
-- First item
-- Second item
-- Third item
-
-**Table Example:**
-
-| Feature | Status | Notes |
-|---------|--------|-------|
-| Markdown | ✅ Working | Basic markdown rendering |
-| Code Blocks | ✅ Working | Syntax highlighting active |
-| Tables | ✅ Working | Table rendering confirmed |
-
-### Blockquote Test
-
-> This is a test blockquote to verify styling.
-> It can span multiple lines and should have distinct styling.
-
-## Conclusion
-
-This test guide demonstrates all the features working correctly!`,
     category: "development",
-    difficulty: "beginner",
     tags: ["test", "static", "demo"],
-    views: 123,
-    completions: 45,
     readingTime: 5,
     author: {
-      id: "test-author",
       displayName: "Test Author",
       username: "testuser",
-      bio: "This is a test author bio for the static demo.",
-      avatar: null
+      bio: "This is a test author bio for the static demo."
     }
   };
 
-  const difficultyConfig = {
-    label: "Beginner",
-    color: "text-green-500",
-    value: "beginner"
-  };
-
   return (
-    <>
-      {/* Reading Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 z-50 h-1 bg-gray-200 dark:bg-gray-800">
-        <div 
-          className="h-full bg-blue-600 transition-all duration-300"
-          style={{ width: `${readingProgress}%` }}
-        />
+    <div className="page-container nebula-background">
+      {/* Floating Particles Container */}
+      <div className="floating-particles">
+        {/* Rising particles */}
+        <div className="particle" style={{ "--duration": "25s", "--delay": "0s", "--position": "10%" } as React.CSSProperties}></div>
+        <div className="particle" style={{ "--duration": "30s", "--delay": "2s", "--position": "30%" } as React.CSSProperties}></div>
+        <div className="particle" style={{ "--duration": "35s", "--delay": "4s", "--position": "50%" } as React.CSSProperties}></div>
+        <div className="particle" style={{ "--duration": "28s", "--delay": "1s", "--position": "70%" } as React.CSSProperties}></div>
+        <div className="particle" style={{ "--duration": "32s", "--delay": "3s", "--position": "90%" } as React.CSSProperties}></div>
+        
+        {/* Neural network nodes */}
+        <div className="neural-node" style={{ top: "20%", left: "15%" }}></div>
+        <div className="neural-node" style={{ top: "60%", left: "80%" }}></div>
+        <div className="neural-node" style={{ top: "40%", left: "45%" }}></div>
       </div>
-
-      <div className="page-container nebula-background">
-        <div className="nebula-middle"></div>
-        <div className="nebula-bottom"></div>
         
         <div className="relative">
           <div className="max-w-7xl mx-auto px-6 py-8">
-            {/* Back Button */}
-            <Link href="/guides/test-static">
-              <Button variant="ghost" className="mb-6 -ml-2 text-white hover:text-vybe-purple-light">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Test Page
-              </Button>
-            </Link>
+          {/* Back Button */}
+          <Link href="/guides/test-static">
+            <Button variant="ghost" className="mb-6 -ml-2 text-vybe-gray-400 hover:text-white transition-colors">
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Back to Test Page
+            </Button>
+          </Link>
             
             <div className="grid grid-cols-12 gap-8">
 
             {/* Main Content */}
             <div className="col-span-12 lg:col-span-8">
               {/* Guide Header */}
-              <div className="vybe-card overflow-hidden mb-6">
-                <div className="relative">
-                  {/* Cover Image */}
-                  <div className="h-24 bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-black/50"></div>
-                  </div>
-                  
-                  {/* Guide Info Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 px-6 pb-4 pt-8 bg-gradient-to-t from-black/80 to-transparent">
-                    <h1 className="text-3xl font-bold text-white mb-2">
-                      {guide.title}
-                    </h1>
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-vybe-gray-300">
-                      <span className="flex items-center gap-1">
-                        <span className={cn("●", difficultyConfig.color)}></span>
-                        {difficultyConfig.label}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-4 h-4" />
-                        {guide.readingTime} min read
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Eye className="w-4 h-4" />
-                        {guide.views.toLocaleString()} views
-                      </span>
-                    </div>
-                  </div>
+              <PrimaryCard headerVariant="gradient" title="🧪 TEST GUIDE - Static Demo Page" className="overflow-hidden mb-6" noHover>
+                {/* Brief Description */}
+                <p className="text-vybe-gray-300 mb-6">
+                  {guide.excerpt}
+                </p>
+                
+                {/* Guide Stats */}
+                <div className="flex flex-wrap items-center gap-4 text-sm text-vybe-gray-300 mb-6">
+                  <span className="flex items-center gap-1">
+                    <span className="text-green-500">●</span>
+                    Beginner
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    {guide.readingTime} min read
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    Backend developers
+                  </span>
                 </div>
                 
-                {/* Tags and Actions */}
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    {/* Category */}
-                    <div>
-                      <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
-                      <Badge variant="secondary" className="capitalize bg-vybe-purple/20 text-vybe-purple-light">
-                        {guide.category.replace('-', ' ')}
-                      </Badge>
-                    </div>
-                    
-                    {/* Actions */}
-                    <div className="flex items-center gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setIsBookmarked(!isBookmarked)}
-                        className={cn("border-vybe-gray-700", isBookmarked && "text-yellow-500")}
-                      >
-                        <Bookmark className={cn("w-4 h-4", isBookmarked && "fill-current")} />
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-vybe-gray-700"
-                      >
-                        <Share2 className="w-4 h-4" />
-                      </Button>
-                    </div>
+                
+                {/* Primary Focus & AI Tools */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
+                    <span className="inline-block px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-sm capitalize">
+                      {guide.category?.replace('-', ' ') || 'Development'}
+                    </span>
                   </div>
-                  
-                  {/* Tags */}
                   <div>
                     <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">AI Tools Covered</h3>
                     <div className="flex flex-wrap gap-2">
                       {guide.tags.map(tag => (
-                        <Badge key={tag} variant="secondary" className="cursor-pointer bg-vybe-gray-800 text-vybe-gray-300 hover:bg-vybe-gray-700">
+                        <span key={tag} className="px-2 py-1 bg-vybe-orange/10 text-vybe-orange text-xs rounded">
                           {tag}
-                        </Badge>
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </PrimaryCard>
 
-              {/* Content */}
-              <article className="mb-12">
-                <MarkdownRenderer content={guide.content} />
-              </article>
+              {/* What You'll Learn */}
+              <PrimaryCard headerVariant="purple" title="What You'll Learn" className="mb-6" noHover>
+                <p className="text-vybe-gray-300 mb-4">
+                  Master advanced patterns and build production-ready AI applications. This comprehensive guide covers everything from basic setup to advanced implementation patterns.
+                </p>
+                <ul className="space-y-2 text-vybe-gray-300">
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Set up and authenticate with Claude API efficiently</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Implement rate limiting and error handling for production use</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Build streaming responses for real-time interactions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Optimize costs with token management strategies</span>
+                  </li>
+                </ul>
+              </PrimaryCard>
+
+              {/* Curriculum */}
+              <PrimaryCard headerVariant="pink" title="Guide Curriculum" className="mb-6" noHover>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Getting Started Module */}
+                  <div className="rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <BookOpen className="w-5 h-5 text-vybe-purple-light" />
+                      <h3 className="font-medium text-white">Getting Started</h3>
+                    </div>
+                    <ul className="space-y-2 text-sm text-vybe-gray-400">
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-purple-light">•</span>
+                        Introduction to Testing
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-purple-light">•</span>
+                        Setting up your environment
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-purple-light">•</span>
+                        Basic test patterns
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  {/* Core Concepts Module */}
+                  <div className="rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Lightbulb className="w-5 h-5 text-vybe-pink" />
+                      <h3 className="font-medium text-white">Core Concepts</h3>
+                    </div>
+                    <ul className="space-y-2 text-sm text-vybe-gray-400">
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-pink">•</span>
+                        Understanding test structures
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-pink">•</span>
+                        Mocking and stubbing
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-pink">•</span>
+                        Error handling strategies
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  {/* Advanced Patterns Module */}
+                  <div className="rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Code className="w-5 h-5 text-vybe-orange" />
+                      <h3 className="font-medium text-white">Advanced Patterns</h3>
+                    </div>
+                    <ul className="space-y-2 text-sm text-vybe-gray-400">
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-orange">•</span>
+                        Integration testing
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-orange">•</span>
+                        Performance testing
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-vybe-orange">•</span>
+                        Multi-environment testing
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  {/* Production Deployment Module */}
+                  <div className="rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Server className="w-5 h-5 text-green-500" />
+                      <h3 className="font-medium text-white">Production Deployment</h3>
+                    </div>
+                    <ul className="space-y-2 text-sm text-vybe-gray-400">
+                      <li className="flex items-center gap-2">
+                        <span className="text-green-500">•</span>
+                        CI/CD integration
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-green-500">•</span>
+                        Monitoring and alerts
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="text-green-500">•</span>
+                        Scaling test suites
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </PrimaryCard>
             </div>
 
             {/* Sidebar */}
+            {/* Sidebar */}
             <div className="col-span-12 lg:col-span-4">
-              <div className="lg:sticky lg:top-6 space-y-6">
+              <div className="lg:sticky lg:top-6">
+                {/* Price Box (Locked) */}
+                <PrimaryCard className="mb-6" noHover>
+                  <div className="text-center">
+                    <div className="text-4xl font-light text-white mb-2">$9.99</div>
+                    <p className="text-sm text-vybe-gray-400 mb-6">One-time purchase • Lifetime access</p>
+                    
+                    <Link href="/guides/test-static-guide/unlocked">
+                      <Button className="w-full mb-4 bg-gradient-to-r from-vybe-purple to-vybe-pink text-white hover:opacity-90">
+                        Purchase Guide
+                      </Button>
+                    </Link>
+                    
+                    <Button variant="outline" className="w-full border-vybe-gray-700 hover:bg-vybe-gray-800">
+                      <Bookmark className="w-4 h-4 mr-2" />
+                      Save for Later
+                    </Button>
+                  </div>
+                </PrimaryCard>
                 
-                {/* Table of Contents */}
-                <div className="vybe-card overflow-hidden">
-                  <div className="vybe-card-header">
-                    <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                      Table of Contents
-                    </h2>
-                  </div>
-                  <div className="p-4 space-y-3">
-                    <div className="space-y-2">
-                      <h3 className="font-medium text-white cursor-pointer hover:text-vybe-purple-light">Test Guide Content</h3>
-                      <h3 className="font-medium text-white cursor-pointer hover:text-vybe-purple-light">Features to Test</h3>
-                      <h3 className="font-medium text-white cursor-pointer hover:text-vybe-purple-light">Code Example</h3>
-                      <h3 className="font-medium text-white cursor-pointer hover:text-vybe-purple-light">Lists and Tables</h3>
-                      <h3 className="font-medium text-white cursor-pointer hover:text-vybe-purple-light">Blockquote Test</h3>
-                      <h3 className="font-medium text-white cursor-pointer hover:text-vybe-purple-light">Conclusion</h3>
+                {/* Guide Stats */}
+                <SecondaryCard colorVariant="purple" title="This guide includes:" className="overflow-hidden mb-6" noHover>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex items-start gap-2">
+                      <FileText className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-vybe-gray-300">5 modules with detailed lessons</span>
                     </div>
-                  </div>
-                </div>
-                
-                {/* Progress Tracking */}
-                <div className="vybe-card overflow-hidden">
-                  <div className="vybe-card-header">
-                    <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
-                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                      Your Progress
-                    </h2>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-vybe-gray-300">Reading Progress</span>
-                      <span className="text-sm text-vybe-gray-300">{Math.round(readingProgress)}%</span>
+                    <div className="flex items-start gap-2">
+                      <Download className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-vybe-gray-300">3 downloadable resources</span>
                     </div>
-                    <Progress value={readingProgress} className="h-2" />
-                    <div className="flex items-center gap-2 mt-3 text-sm text-vybe-gray-300">
-                      <BookOpen className="w-4 h-4" />
+                    <div className="flex items-start gap-2">
+                      <Star className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />
                       <span className="text-vybe-gray-300">Progress tracking</span>
                     </div>
                   </div>
-                </div>
+                </SecondaryCard>
                 
                 {/* Author */}
-                <div className="vybe-card overflow-hidden">
-                  <div className="vybe-card-header">
-                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                      About the Author
-                    </h3>
-                  </div>
-                  <div className="p-4">
+                <SecondaryCard colorVariant="pink" title="About the Author" className="overflow-hidden" noHover>
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-12 h-12 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center text-white font-bold">
                         TA
@@ -286,16 +299,13 @@ This test guide demonstrates all the features working correctly!`,
                     >
                       Message on Discord →
                     </button>
-                  </div>
-                </div>
-                
+                </SecondaryCard>
               </div>
             </div>
             
           </div>
         </div>
-        </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 # Epic-01 Demo Migration Checklist
 
-**Total Stories:** 41 | **Completed:** 13 (32%) | **Points:** 94/298 (32%)
+**Total Stories:** 41 | **Completed:** 14 (34%) | **Points:** 99/298 (33%)
 
 | ✓ | # | Story | Points | Status | Notes |
 |---|---|-------|--------|--------|-------|
@@ -13,7 +13,7 @@
 | ✅ | 07 | Guides Submit | 13 | APPROVED | Fixed TypeScript error with username field |
 | ✅ | 08 | Guide Detail | 8 | APPROVED | Pixel-perfect guide detail with ToC |
 | ✅ | 09 | Guide Detail Unlocked | 5 | APPROVED | Purchased status with View Guide |
-| ⏳ | 10 | Guide View | 5 | Pending | |
+| ✅ | 10 | Guide View | 5 | APPROVED | Lesson-by-lesson viewer with progress tracking |
 | ✅ | 11 | Apps Main | 8 | APPROVED | Same as browse |
 | ✅ | 12 | Apps Browse | 8 | APPROVED | Multi-category selection |
 | ✅ | 13 | Apps Submit | 13 | APPROVED | 4-step process |

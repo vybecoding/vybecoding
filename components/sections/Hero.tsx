@@ -94,7 +94,7 @@ export default function Hero() {
     }> = []
 
     const maxRisingParticles = 25
-    const particleColors = ['#8a2be2', '#d946a0', '#e96b3a', '#ffffff']
+    const particleColors = ['#0066ff', '#ffffff', '#8a2be2', '#a855f7']
 
     const spawnRisingParticle = () => {
       if (risingParticles.length < maxRisingParticles) {
@@ -105,8 +105,8 @@ export default function Hero() {
           risingParticles.push({
             x: Math.random() * canvas.width,
             y: canvas.height + Math.random() * 50,
-            size: Math.random() * 0.8 + 0.2,
-            speedY: -(Math.random() * 0.3 + 0.05),
+            size: Math.random() * 0.4 + 0.1,
+            speedY: -(Math.random() * 0.15 + 0.025),
             opacity: Math.random() * 0.35 + 0.05,
             color: particleColors[Math.floor(Math.random() * particleColors.length)],
             life: 0,
@@ -207,7 +207,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[90vh] overflow-hidden">
+    <section className="relative min-h-[94vh] overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-black" />
       
@@ -243,7 +243,7 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center min-h-[90vh] py-20">
+      <div className="relative z-20 flex items-center justify-center min-h-[94vh] py-20">
         <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -292,16 +292,16 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">500+</div>
-              <div className="text-gray-400">Apps Built</div>
+              <div className="text-3xl font-bold text-white mb-2">1</div>
+              <div className="text-gray-400">Developer</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">1,200+</div>
-              <div className="text-gray-400">Guides Shared</div>
+              <div className="text-3xl font-bold text-white mb-2">100%</div>
+              <div className="text-gray-400">Vibe Coded</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-2">150+</div>
-              <div className="text-gray-400">Expert Mentors</div>
+              <div className="text-3xl font-bold text-white mb-2">∞</div>
+              <div className="text-gray-400">Coffee Consumed</div>
             </div>
           </motion.div>
         </div>
