@@ -1,0 +1,201 @@
+/* Featured Page Specific Styles */
+
+/* ============================================
+   VERIFICATION STATES - Card variants
+   ============================================ */
+
+/* Verified cards - green accent */
+.card-verified {
+  border-color: rgba(34, 197, 94, 0.2) !important;
+}
+
+.card-verified:hover {
+  border-color: rgba(34, 197, 94, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.1) !important;
+}
+
+/* Needs verification cards - neutral */
+.card-needs-verification {
+  border-color: rgba(156, 163, 175, 0.2) !important;
+}
+
+.card-needs-verification:hover {
+  border-color: rgba(156, 163, 175, 0.3) !important;
+}
+
+/* Possibly outdated cards - yellow accent */
+.card-possibly-outdated {
+  border-color: rgba(234, 179, 8, 0.2) !important;
+}
+
+.card-possibly-outdated:hover {
+  border-color: rgba(234, 179, 8, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(234, 179, 8, 0.1) !important;
+}
+
+/* Likely outdated cards - red accent */
+.card-likely-outdated {
+  border-color: rgba(239, 68, 68, 0.2) !important;
+}
+
+.card-likely-outdated:hover {
+  border-color: rgba(239, 68, 68, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ============================================
+   NEBULA BACKGROUND - Featured page specific
+   ============================================ */
+
+.page-container {
+  min-height: 100vh;
+  position: relative;
+  background: #0a0a0a;
+  overflow-x: hidden;
+}
+
+.nebula-background {
+  position: relative;
+}
+
+.nebula-middle,
+.nebula-bottom {
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+  background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.15) 0%, rgba(138, 43, 226, 0.05) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nebula-middle {
+  top: 20%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(217, 70, 160, 0.1) 0%, transparent 70%);
+}
+
+.nebula-bottom {
+  bottom: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(233, 107, 58, 0.08) 0%, transparent 70%);
+}
+
+/* ============================================
+   FEATURED SPECIFIC GRADIENTS
+   ============================================ */
+
+.text-gradient-brand {
+  background: linear-gradient(135deg, #8a2be2 0%, #ff6b35 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #8a2be2; /* Fallback */
+}
+
+/* ============================================
+   PREMIUM CONTENT STYLING
+   ============================================ */
+
+.premium-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(45deg, transparent 0%, rgba(217, 70, 160, 0.05) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.premium-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 20;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .nebula-middle,
+  .nebula-bottom {
+    height: 30vh;
+  }
+  
+  .page-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* ============================================
+   CONTENT GRID ENHANCEMENTS
+   ============================================ */
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   FILTER ENHANCEMENTS
+   ============================================ */
+
+.search-filter-container {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure filters don't break on mobile */
+@media (max-width: 640px) {
+  .filter-dropdown {
+    min-width: auto;
+    flex: 1;
+  }
+  
+  .search-filter-container .flex {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* ============================================
+   FEATURED NOTICE STYLING
+   ============================================ */
+
+.featured-notice {
+  background: rgba(138, 43, 226, 0.1);
+  border: 1px solid rgba(138, 43, 226, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.featured-notice-icon {
+  color: rgba(138, 43, 226, 0.8);
+  font-weight: 500;
+}
+
+.featured-notice-text {
+  color: #d1d5db;
+}
