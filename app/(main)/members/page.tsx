@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import { UniversalSearch } from '@/components/ui/search/UniversalSearch'
 import { FilterDropdown, FilterContainer } from '@/components/ui/filter/FilterDropdown'
 import { DemoMemberCard } from '@/components/ui/card/DemoMemberCard'
@@ -93,6 +94,7 @@ const SORT_LABELS: Record<string, string> = {
 }
 
 export default function MembersPage() {
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
   const [filters, setFilters] = useState<MemberFilters>({
     skills: [],
@@ -234,12 +236,8 @@ export default function MembersPage() {
   }
 
   const handleMemberClick = (member: Member) => {
-    // For demo purposes, could navigate to profile
-    if (member.isMentor) {
-      console.log('Book session with mentor:', member.name)
-    } else {
-      console.log('View profile:', member.name)
-    }
+    // Navigate to the member's profile page
+    router.push(`/profile/${member.username}`)
   }
 
   return (
