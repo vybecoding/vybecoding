@@ -13,7 +13,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
 import { PrimaryCard, SecondaryCard, CardContent as CardContentVariant } from "@/components/ui/card/CardVariants";
 import { GUIDE_CATEGORIES, DIFFICULTY_LEVELS, GUIDE_TAGS } from "@/lib/constants/guides";
 import { 
@@ -76,8 +75,17 @@ export default function GuideSubmitPage() {
     category: "",
     difficulty: "beginner",
     tags: [] as string[],
-    modules: [] as GuideModule[],
-    resources: [] as any[],
+    modules: [
+      {
+        id: "default-module-1",
+        title: "Module 1: Getting Started",
+        lessons: [
+          { id: "default-lesson-1", title: "Introduction" },
+          { id: "default-lesson-2", title: "Setup" }
+        ]
+      }
+    ] as GuideModule[],
+    resources: [] as { id: string; name: string; url: string; type: string }[],
     excerpt: ""
   });
 
@@ -86,10 +94,18 @@ export default function GuideSubmitPage() {
   const [showTagSuggestions, setShowTagSuggestions] = useState(false);
   const [activeModule, setActiveModule] = useState<string | null>(null);
   const [activeLesson, setActiveLesson] = useState<string | null>(null);
-  const [editorContent, setEditorContent] = useState("");
+  const [selectedLessonId, setSelectedLessonId] = useState<string | null>(null);
+  const [lessonContents, setLessonContents] = useState<Record<string, string>>({});
   const [showPreview, setShowPreview] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [autoSaveStatus, setAutoSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
+  
+  // Resource form state
+  const [resourceForm, setResourceForm] = useState({
+    name: "",
+    url: "",
+    type: "github"
+  });
 
   // Mutations
   const createGuide = useMutation(api.guides.createGuide);
@@ -102,16 +118,23 @@ export default function GuideSubmitPage() {
     }
   }, [isSignedIn, router]);
 
+  // Initialize selected lesson
+  useEffect(() => {
+    if (!selectedLessonId && formData.modules.length > 0 && formData.modules[0].lessons.length > 0) {
+      setSelectedLessonId(formData.modules[0].lessons[0].id);
+    }
+  }, [formData.modules, selectedLessonId]);
+
   // Auto-save effect
   useEffect(() => {
     const autoSave = setTimeout(() => {
-      if (formData.title || editorContent) {
+      if (formData.title || getCurrentLessonContent()) {
         handleAutoSave();
       }
     }, 5000);
 
     return () => clearTimeout(autoSave);
-  }, [formData, editorContent]);
+  }, [formData, lessonContents]);
 
   const handleAutoSave = async () => {
     setAutoSaveStatus('saving');
@@ -181,6 +204,18 @@ export default function GuideSubmitPage() {
     });
   };
 
+  const updateLessonContent = (lessonId: string, content: string) => {
+    setLessonContents(prev => ({
+      ...prev,
+      [lessonId]: content
+    }));
+  };
+
+  const getCurrentLessonContent = () => {
+    if (!selectedLessonId) return "";
+    return lessonContents[selectedLessonId] || "";
+  };
+
   const deleteModule = (moduleId: string) => {
     updateFormData({
       modules: formData.modules.filter(m => m.id !== moduleId)
@@ -200,7 +235,37 @@ export default function GuideSubmitPage() {
     }
   };
 
+  const addResource = () => {
+    if (resourceForm.name && resourceForm.url) {
+      const newResource = {
+        id: Date.now().toString(),
+        name: resourceForm.name,
+        url: resourceForm.url,
+        type: resourceForm.type
+      };
+      updateFormData({ resources: [...formData.resources, newResource] });
+      setResourceForm({ name: "", url: "", type: "github" });
+    }
+  };
+
+  const removeResource = (resourceId: string) => {
+    updateFormData({
+      resources: formData.resources.filter(r => r.id !== resourceId)
+    });
+  };
+
   const handleSubmit = async () => {
+    // Double-check authentication
+    if (!isSignedIn) {
+      toast({
+        title: "Authentication required",
+        description: "Please sign in to submit a guide",
+        variant: "destructive"
+      });
+      router.push("/sign-in?redirect=/guides/submit");
+      return;
+    }
+
     setIsSaving(true);
     try {
       // Validate form
@@ -210,18 +275,50 @@ export default function GuideSubmitPage() {
           description: "Please fill in all required fields",
           variant: "destructive"
         });
+        setIsSaving(false);
+        return;
+      }
+
+      // Validate at least one module with content
+      if (formData.modules.length === 0 || Object.keys(lessonContents).length === 0) {
+        toast({
+          title: "No content",
+          description: "Please add at least one module with content",
+          variant: "destructive"
+        });
+        setIsSaving(false);
+        return;
+      }
+
+      // Combine all lesson contents
+      const fullContent = Object.entries(lessonContents)
+        .map(([lessonId, content]) => content)
+        .filter(content => content.trim().length > 0)
+        .join("\n\n---\n\n");
+
+      if (!fullContent.trim()) {
+        toast({
+          title: "No content",
+          description: "Please write content for at least one lesson",
+          variant: "destructive"
+        });
+        setIsSaving(false);
         return;
       }
 
       // Create guide
       const result = await createGuide({
         title: formData.title,
-        content: editorContent,
+        content: fullContent,
         excerpt: formData.excerpt || formData.description,
         category: formData.category,
         difficulty: formData.difficulty,
         tags: formData.tags
       });
+
+      if (!result) {
+        throw new Error("Failed to create guide");
+      }
 
       // Publish guide
       await publishGuide({ id: result.id });
@@ -232,10 +329,23 @@ export default function GuideSubmitPage() {
       });
 
       router.push(`/guides/${result.slug}`);
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Guide submission error:", error);
+      
+      let errorMessage = "Failed to submit your guide. Please try again.";
+      if (error.message?.includes("Not authenticated")) {
+        errorMessage = "Your session has expired. Please sign in again.";
+        // Redirect to sign in after a short delay
+        setTimeout(() => {
+          router.push("/sign-in?redirect=/guides/submit");
+        }, 2000);
+      } else if (error.message) {
+        errorMessage = error.message;
+      }
+
       toast({
         title: "Error submitting guide",
-        description: "Failed to submit your guide. Please try again.",
+        description: errorMessage,
         variant: "destructive"
       });
     } finally {
@@ -461,7 +571,7 @@ export default function GuideSubmitPage() {
                     className="btn-primary-purple"
                     disabled={!formData.title || !formData.category || formData.tags.length === 0}
                   >
-                    Next: App Modules →
+                    Next: Guide Modules →
                   </Button>
                 </div>
               </div>
@@ -470,11 +580,7 @@ export default function GuideSubmitPage() {
 
           {/* Step 2: Modules */}
           {currentStep === 2 && (
-            <div className="minimal-card rounded-lg p-8">
-              <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                Build Your Guide Structure
-              </h2>
+            <PrimaryCard title="Build Your Guide Structure" headerVariant="default" noHover>
               
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Module List */}
@@ -489,7 +595,7 @@ export default function GuideSubmitPage() {
                   
                   <div className="space-y-4">
                     {formData.modules.map((module, index) => (
-                      <Card key={module.id} className="vybe-card p-4">
+                      <SecondaryCard key={module.id}>
                         <div className="flex items-center justify-between mb-3">
                           <Input
                             value={module.title}
@@ -522,6 +628,17 @@ export default function GuideSubmitPage() {
                                 }}
                                 className="flex-1 h-8"
                               />
+                              <Button
+                                onClick={() => {
+                                  const updatedLessons = module.lessons.filter(l => l.id !== lesson.id);
+                                  updateModule(module.id, { lessons: updatedLessons });
+                                }}
+                                variant="ghost"
+                                size="sm"
+                                className="text-red-500 hover:text-red-700 p-1"
+                              >
+                                <X className="w-4 h-4" />
+                              </Button>
                             </div>
                           ))}
                           <Button
@@ -534,7 +651,7 @@ export default function GuideSubmitPage() {
                             Add Lesson
                           </Button>
                         </div>
-                      </Card>
+                      </SecondaryCard>
                     ))}
                     
                     {formData.modules.length === 0 && (
@@ -548,7 +665,7 @@ export default function GuideSubmitPage() {
                 {/* Module Preview */}
                 <div>
                   <h3 className="text-lg font-medium mb-4">Preview</h3>
-                  <Card className="vybe-card p-4">
+                  <SecondaryCard>
                     <h4 className="font-medium mb-2">{formData.title || "Your Guide Title"}</h4>
                     <div className="space-y-2 text-sm">
                       {formData.modules.map((module, index) => (
@@ -564,7 +681,7 @@ export default function GuideSubmitPage() {
                         </div>
                       ))}
                     </div>
-                  </Card>
+                  </SecondaryCard>
                 </div>
               </div>
 
@@ -580,31 +697,41 @@ export default function GuideSubmitPage() {
                   Next: Write Content →
                 </Button>
               </div>
-            </div>
+            </PrimaryCard>
           )}
 
           {/* Step 3: Content */}
           {currentStep === 3 && (
-            <div className="minimal-card rounded-lg p-8">
+            <PrimaryCard title="Write Your Content" headerVariant="default" noHover>
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-lg font-semibold text-white flex items-center gap-2">
-                  <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                  Write Your Content
-                </h2>
-                <Select defaultValue="module-1-lesson-1">
+                <div></div>
+                <Select 
+                  value={selectedLessonId || (formData.modules.length > 0 && formData.modules[0].lessons.length > 0 ? formData.modules[0].lessons[0].id : undefined)}
+                  onValueChange={(value) => {
+                    if (value && value !== "no-modules") {
+                      setSelectedLessonId(value);
+                    }
+                  }}
+                >
                   <SelectTrigger className="w-64">
-                    <SelectValue />
+                    <SelectValue placeholder={formData.modules.length === 0 ? "Add modules in step 2 first" : "Select a lesson"} />
                   </SelectTrigger>
                   <SelectContent>
-                    {formData.modules.map((module, moduleIndex) => 
-                      module.lessons.map((lesson, lessonIndex) => (
-                        <SelectItem 
-                          key={`${module.id}-${lesson.id}`}
-                          value={`${module.id}-${lesson.id}`}
-                        >
-                          {module.title} &gt; {lesson.title}
-                        </SelectItem>
-                      ))
+                    {formData.modules.length === 0 ? (
+                      <SelectItem value="no-modules" disabled>
+                        No modules available - go back to step 2
+                      </SelectItem>
+                    ) : (
+                      formData.modules.map((module, moduleIndex) => 
+                        module.lessons.map((lesson, lessonIndex) => (
+                          <SelectItem 
+                            key={`${module.id}-${lesson.id}`}
+                            value={lesson.id}
+                          >
+                            {module.title} &gt; {lesson.title}
+                          </SelectItem>
+                        ))
+                      )
                     )}
                   </SelectContent>
                 </Select>
@@ -659,8 +786,12 @@ export default function GuideSubmitPage() {
                     placeholder="# Welcome to Rate Limiting
 
 Rate limiting is a crucial technique for controlling the number of requests..."
-                    value={editorContent}
-                    onChange={(e) => setEditorContent(e.target.value)}
+                    value={getCurrentLessonContent()}
+                    onChange={(e) => {
+                      if (selectedLessonId) {
+                        updateLessonContent(selectedLessonId, e.target.value);
+                      }
+                    }}
                     className="flex-1 border-0 rounded-none font-mono text-sm resize-none focus:ring-0"
                   />
                 </div>
@@ -679,11 +810,11 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                   </div>
                   
                   <div className="flex-1 p-4 bg-vybe-gray-900 overflow-y-auto">
-                    {editorContent ? (
-                      <MarkdownRenderer content={editorContent} />
+                    {getCurrentLessonContent() ? (
+                      <MarkdownRenderer content={getCurrentLessonContent()} />
                     ) : (
                       <p className="text-vybe-gray-500 italic">
-                        Your content preview will appear here as you type...
+                        {selectedLessonId ? "Start writing content for this lesson..." : "Select a lesson to begin writing..."}
                       </p>
                     )}
                   </div>
@@ -703,59 +834,117 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                   </Button>
                 </div>
               </div>
-            </div>
+            </PrimaryCard>
           )}
 
           {/* Step 4: Resources */}
           {currentStep === 4 && (
-            <PrimaryCard title="Resources & Downloads" headerVariant="default" noHover>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Upload Area */}
+            <PrimaryCard title="Resources" headerVariant="default" noHover>
+              <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-medium mb-4">Upload Resources</h3>
-                  <div className="border-2 border-dashed border-vybe-gray-600 rounded-lg p-8 text-center hover:border-vybe-purple transition-colors cursor-pointer mb-6">
-                    <Upload className="w-12 h-12 text-vybe-gray-400 mx-auto mb-4" />
-                    <p className="text-vybe-gray-300 mb-2">Drop files here or click to browse</p>
-                    <p className="text-sm text-vybe-gray-500">Support for ZIP, PDF, images, and more</p>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between p-3 bg-vybe-gray-800 rounded-lg">
-                      <div className="flex items-center gap-3">
-                        <FileText className="w-5 h-5 text-vybe-purple" />
-                        <div>
-                          <p className="text-sm font-medium">starter-code.zip</p>
-                          <p className="text-xs text-vybe-gray-400">2.3 MB</p>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        <X className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </div>
+                  <p className="text-vybe-gray-300 mb-6">
+                    Add helpful links and external resources for your guide. These can include GitHub repositories, 
+                    documentation, demo apps, or any other relevant materials.
+                  </p>
                 </div>
 
-                {/* Resource List */}
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Available Resources</h3>
-                  <Card className="vybe-card p-4">
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between p-2 bg-green-500/10 rounded">
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="w-4 h-4 text-green-500" />
-                          <span className="text-sm">Source Code</span>
-                        </div>
-                        <span className="text-xs text-green-500">Ready</span>
-                      </div>
-                      <div className="flex items-center justify-between p-2 bg-yellow-500/10 rounded">
-                        <div className="flex items-center gap-2">
-                          <AlertCircle className="w-4 h-4 text-yellow-500" />
-                          <span className="text-sm">Video Tutorial</span>
-                        </div>
-                        <span className="text-xs text-yellow-500">Processing</span>
-                      </div>
+                {/* Add Resource Form */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-medium">Add Resource</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="resourceName" className="block text-sm font-medium text-gray-300 mb-2">
+                        Resource Name
+                      </Label>
+                      <Input
+                        id="resourceName"
+                        placeholder="e.g., Rate Limiter Template"
+                        className="w-full"
+                        value={resourceForm.name}
+                        onChange={(e) => setResourceForm({ ...resourceForm, name: e.target.value })}
+                      />
                     </div>
-                  </Card>
+                    <div>
+                      <Label htmlFor="resourceType" className="block text-sm font-medium text-gray-300 mb-2">
+                        Resource Type
+                      </Label>
+                      <Select 
+                        value={resourceForm.type}
+                        onValueChange={(value) => setResourceForm({ ...resourceForm, type: value })}
+                      >
+                        <SelectTrigger id="resourceType">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="github">GitHub Repository</SelectItem>
+                          <SelectItem value="demo">Demo App</SelectItem>
+                          <SelectItem value="docs">Documentation</SelectItem>
+                          <SelectItem value="video">Video Tutorial</SelectItem>
+                          <SelectItem value="article">Article/Blog Post</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="resourceUrl" className="block text-sm font-medium text-gray-300 mb-2">
+                      Resource URL
+                    </Label>
+                    <Input
+                      id="resourceUrl"
+                      type="url"
+                      placeholder="https://github.com/username/repo or https://example.com/..."
+                      className="w-full"
+                      value={resourceForm.url}
+                      onChange={(e) => setResourceForm({ ...resourceForm, url: e.target.value })}
+                    />
+                  </div>
+                  <Button 
+                    variant="outline"
+                    onClick={addResource}
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add Resource
+                  </Button>
+                </div>
+
+                {/* Resources List */}
+                <div>
+                  <h3 className="text-lg font-medium mb-4">Attached Resources</h3>
+                  {formData.resources.length === 0 ? (
+                    <SecondaryCard>
+                      <p className="text-center text-vybe-gray-400 py-8">
+                        No resources added yet. Add links to helpful materials above.
+                      </p>
+                    </SecondaryCard>
+                  ) : (
+                    <div className="space-y-3">
+                      {formData.resources.map((resource) => (
+                        <SecondaryCard key={resource.id}>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <LinkIcon className="w-5 h-5 text-vybe-purple" />
+                              <div>
+                                <p className="font-medium">{resource.name}</p>
+                                <p className="text-sm text-vybe-gray-400">{resource.url}</p>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <Badge variant="secondary">{resource.type}</Badge>
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-red-500 hover:text-red-700"
+                                onClick={() => removeResource(resource.id)}
+                              >
+                                <X className="w-4 h-4" />
+                              </Button>
+                            </div>
+                          </div>
+                        </SecondaryCard>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -772,11 +961,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
 
           {/* Step 5: Review */}
           {currentStep === 5 && (
-            <div className="minimal-card rounded-lg p-8">
-              <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                Review & Submit
-              </h2>
+            <PrimaryCard title="Review & Submit" headerVariant="default" noHover>
               
               {/* AI Review Checklist */}
               <PrimaryCard title="AI Review Checklist" headerVariant="purple" className="mb-8" noHover>
@@ -846,7 +1031,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                   </Button>
                 </div>
               </div>
-            </div>
+            </PrimaryCard>
           )}
         </div>
       </div>

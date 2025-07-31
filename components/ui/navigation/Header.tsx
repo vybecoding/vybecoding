@@ -3,10 +3,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useUser, UserButton, SignInButton } from '@clerk/nextjs';
 import { Button } from '../button/Button';
 import { Logo } from './Logo';
 import { MobileMenu } from './MobileMenu';
-import { Menu } from 'lucide-react';
+import { Menu, Bell } from 'lucide-react';
 import styles from './Header.module.css';
 
 export interface HeaderProps {
@@ -16,6 +17,7 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
+  const { isSignedIn } = useUser();
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -51,15 +53,38 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                 ))}
               </div>
 
-              {/* User Profile Section (like demo) */}
+              {/* User Profile Section */}
               <div className={styles.actions}>
-                {/* User Avatar/Profile */}
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-vybe-purple to-vybe-orange flex items-center justify-center">
-                    <span className="text-white text-sm font-bold">U</span>
-                  </div>
-                  <span className="text-white text-sm font-medium hidden sm:block">User</span>
-                </div>
+                {isSignedIn ? (
+                  <>
+                    {/* Notifications */}
+                    <div className="relative hidden sm:block">
+                      <button className="relative p-2 text-gray-400 hover:text-white transition-colors">
+                        <Bell className="w-5 h-5" />
+                        <span className="absolute top-1 right-1 w-2 h-2 bg-vybe-pink rounded-full" />
+                      </button>
+                    </div>
+                    
+                    {/* User Button */}
+                    <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-vybe-purple/30 hover:border-vybe-purple/50 transition-colors [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
+                      <UserButton 
+                        afterSignOutUrl="/" 
+                        appearance={{
+                          elements: {
+                            avatarBox: "w-full h-full",
+                            userButtonAvatarBox: "w-full h-full"
+                          }
+                        }}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <SignInButton mode="modal">
+                    <button className="px-5 py-2.5 rounded-lg text-white text-sm font-medium bg-gradient-to-r from-vybe-purple via-vybe-pink to-vybe-orange hover:shadow-lg hover:shadow-vybe-pink/25 hover:-translate-y-0.5 transition-all duration-300">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                )}
                 
                 {/* Mobile Menu Button */}
                 <button
@@ -81,6 +106,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         navItems={navItems}
+        isSignedIn={isSignedIn}
       />
     </>
   );

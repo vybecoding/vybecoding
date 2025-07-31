@@ -1171,3 +1171,107 @@ nav {
 .border-vybe-gray-600 {
   border-color: #3a3a3a;
 }
+
+/* Clerk Modal Centering and Styling */
+.cl-modalBackdrop {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+.cl-modalContent {
+  margin: 0 !important;
+  position: relative !important;
+  top: auto !important;
+  transform: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+/* Ensure the modal container is also centered */
+.cl-modalContainerWrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 100vh !important;
+}
+
+/* Style the actual sign-in/sign-up card */
+.cl-card {
+  background: rgba(26, 26, 26, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+  padding: 2rem !important;
+  border-radius: 16px !important;
+}
+
+/* Keep inner elements transparent */
+.cl-rootBox,
+.cl-cardBox,
+.cl-card__main,
+.cl-form {
+  background: transparent !important;
+}
+
+/* Style the footer section with solid background */
+.cl-footer {
+  background: rgba(0, 0, 0, 0.6) !important;
+  margin: -0.5rem -2rem -2rem -2rem !important;
+  padding: 1.5rem 2rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 0 16px 16px !important;
+  position: relative !important;
+  z-index: -1 !important;
+}
+
+/* Style the divider */
+.cl-dividerRow {
+  background: transparent !important;
+}
+
+/* Style the divider text */
+.cl-dividerText {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Remove padding from containers since we're adding it to the card */
+.cl-signIn-root,
+.cl-signUp-root {
+  padding: 0 !important;
+}
+
+/* Style form elements to match the site theme */
+.cl-formFieldInput {
+  background: rgba(31, 41, 55, 0.5) !important;
+  border: 1px solid rgba(55, 65, 81, 0.5) !important;
+  color: white !important;
+}
+
+.cl-formFieldInput:focus {
+  border-color: #8a2be2 !important;
+  box-shadow: 0 0 0 1px #8a2be2 !important;
+}
+
+/* Style buttons - match Submit an App button gradient */
+.cl-formButtonPrimary {
+  background: linear-gradient(to right, #d946a0, #ef4444) !important;
+  border: none !important;
+  padding: 0.75rem 2rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 9999px !important;
+}
+
+.cl-formButtonPrimary:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(217, 70, 160, 0.25) !important;
+}
