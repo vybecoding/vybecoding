@@ -848,12 +848,13 @@
   background: linear-gradient(90deg, #8a2be2, #d946a0);
 }
 
-/* Minimal Card */
+/* Minimal Card - Demo Showcase Match */  
 .minimal-card {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.5rem;
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.4);
+  border-radius: 8px;
   padding: 1.25rem;
   transition: all 0.3s ease;
   cursor: pointer;
@@ -861,22 +862,32 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .minimal-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(42, 42, 42, 0.8);
+  border-color: rgba(64, 64, 64, 0.5);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Vybe Card for Forms */
+/* Vybe Card for Forms - Demo Showcase Match */
 .vybe-card {
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.75rem;
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 51, 51, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
+}
+
+.vybe-card:hover {
+  background: rgba(42, 42, 42, 0.8);
+  border-color: rgba(64, 64, 64, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 /* Form Elements */

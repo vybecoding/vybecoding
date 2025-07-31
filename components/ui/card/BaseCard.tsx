@@ -12,7 +12,7 @@ export interface BaseCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const BaseCard = React.forwardRef<HTMLDivElement, BaseCardProps>(
   ({ className, variant = 'default', hover = true, clickable = true, children, ...props }, ref) => {
     const variants = {
-      default: 'bg-vybe-shadow/80 backdrop-blur-sm border-white/10',
+      default: 'backdrop-blur-[10px] border-[rgba(51,51,51,0.4)]',
       outlined: 'bg-transparent border-white/20',
       elevated: 'bg-vybe-shadow/90 backdrop-blur-md border-white/20 shadow-xl',
       interactive: 'bg-black/60 backdrop-blur-lg border-gray-700/40'
@@ -22,18 +22,20 @@ export const BaseCard = React.forwardRef<HTMLDivElement, BaseCardProps>(
       <div
         ref={ref}
         className={cn(
-          // Base styles matching demo
+          // Base styles matching demo exactly
           'relative rounded-lg border p-4 pb-2',
           'transition-all duration-300',
           'flex flex-col h-full',
+          // Demo background: rgba(26, 26, 26, 0.8)
+          '[background:rgba(26,26,26,0.8)]',
           // Variant styles
           variants[variant],
-          // Hover effects
+          // Hover effects matching demo exactly
           hover && clickable && [
-            'hover:bg-gray-800/60',
-            'hover:border-gray-600/50',
+            'hover:[background:rgba(42,42,42,0.8)]',
+            'hover:[border-color:rgba(64,64,64,0.5)]',
             'hover:-translate-y-0.5',
-            'hover:shadow-lg'
+            'hover:[box-shadow:0_8px_24px_rgba(0,0,0,0.2)]'
           ],
           // Clickable cursor
           clickable && 'cursor-pointer',
@@ -80,12 +82,23 @@ export const CardLabel: React.FC<CardLabelProps> = ({ type, className }) => {
   return (
     <div
       className={cn(
-        'absolute top-0 left-0 px-2 py-1.5',
-        'text-white text-xs font-semibold uppercase tracking-wide',
+        'absolute top-0 left-0 text-white font-semibold uppercase tracking-wide',
         'rounded-br-lg z-20',
         className
       )}
-      style={{ background: config.bg }}
+      style={{
+        background: config.bg,
+        padding: '0.375rem 0.5rem',
+        paddingTop: '0.5rem',
+        fontSize: '0.844rem',
+        lineHeight: 1,
+        boxShadow: '0 1px 2px rgba(0,0,0,0.2)',
+        letterSpacing: '0.25px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 'auto'
+      }}
     >
       {config.label}
     </div>
