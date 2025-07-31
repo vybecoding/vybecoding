@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "kill $(lsof -t -i:3000) 2>/dev/null || true && next dev",
+    "dev": "kill $(lsof -t -i:3000) 2>/dev/null || true && next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "test": "node test-runner.js",
     "convex": "convex dev",
-    "demo": "kill $(lsof -t -i:8080) 2>/dev/null || true && python3 -m http.server 8080 --directory demo"
+    "demo": "kill $(lsof -t -i:8080) 2>/dev/null || true && python3 -m http.server 8080 --directory demo",
+    "all": "npm run kill:all && sleep 2 && concurrently --kill-others \"npm run dev\" \"npm run demo\"",
+    "kill:all": "lsof -ti:3000,3001,3002,8080 | xargs -r kill -9 2>/dev/null || true && sleep 1"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",
@@ -66,6 +68,7 @@
     "@types/react-dom": "^18.0.0",
     "@types/validator": "^13.15.2",
     "autoprefixer": "^10.4.0",
+    "concurrently": "^9.2.0",
     "pixelmatch": "^6.0.0",
     "playwright": "^1.54.1",
     "pngjs": "^7.0.0",

@@ -493,7 +493,7 @@ export default function GuideSubmitPage() {
                   
                   <div className="space-y-4">
                     {formData.modules.map((module, index) => (
-                      <Card key={module.id} className="p-4">
+                      <Card key={module.id} className="bg-gray-700/40 border border-gray-600/30 p-4">
                         <div className="flex items-center justify-between mb-3">
                           <Input
                             value={module.title}
@@ -552,7 +552,7 @@ export default function GuideSubmitPage() {
                 {/* Module Preview */}
                 <div>
                   <h3 className="text-lg font-medium mb-4">Preview</h3>
-                  <Card className="p-4">
+                  <Card className="bg-gray-700/40 border border-gray-600/30 p-4">
                     <h4 className="font-medium mb-2">{formData.title || "Your Guide Title"}</h4>
                     <div className="space-y-2 text-sm">
                       {formData.modules.map((module, index) => (
@@ -747,7 +747,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
                 {/* Resource List */}
                 <div>
                   <h3 className="text-lg font-medium mb-4">Available Resources</h3>
-                  <Card className="p-4">
+                  <Card className="bg-gray-700/40 border border-gray-600/30 p-4">
                     <div className="space-y-3">
                       <div className="flex items-center justify-between p-2 bg-green-500/10 rounded">
                         <div className="flex items-center gap-2">
@@ -788,7 +788,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
               </h2>
               
               {/* AI Review Checklist */}
-              <Card className="p-6 mb-8">
+              <Card className="bg-gray-700/40 border border-gray-600/30 p-6 mb-8">
                 <h3 className="text-lg font-medium mb-4">AI Review Checklist</h3>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
@@ -819,7 +819,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
               </Card>
 
               {/* Final Review */}
-              <Card className="p-6 mb-8">
+              <Card className="bg-gray-700/40 border border-gray-600/30 p-6 mb-8">
                 <h3 className="text-lg font-medium mb-4">Guide Summary</h3>
                 <div className="space-y-3">
                   <div>

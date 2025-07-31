@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next.js Design System Cards - Current Implementation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configure Tailwind with VybeCoding colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vybe-void': '#000000',
+                        'vybe-dark': '#0a0a0a',
+                        'vybe-midnight': '#111111',
+                        'vybe-shadow': '#1a1a1a',
+                        'vybe-purple': '#8a2be2',
+                        'vybe-pink': '#d946a0',
+                        'vybe-orange': '#e96b3a',
+                        'vybe-gray-300': '#d1d5db',
+                        'vybe-gray-400': '#888888',
+                        'vybe-gray-500': '#6b7280',
+                        'vybe-gray-600': '#3a3a3a',
+                        'vybe-gray-700': '#374151',
+                        'vybe-gray-800': '#1f2937',
+                        'vybe-gray-900': '#0f0f0f'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        /* Base Card Styles (from BaseCard.tsx) */
+        .base-card-default {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .base-card-interactive {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(55, 65, 81, 0.4);
+        }
+        
+        .base-card-elevated {
+            background: rgba(26, 26, 26, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Card hover states */
+        .base-card-hover:hover {
+            background: rgba(31, 41, 55, 0.6);
+            border-color: rgba(75, 85, 99, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Guide submission page card style */
+        .guide-submit-card {
+            background: rgba(55, 65, 81, 0.4);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #8a2be2 0%, #d946a0 50%, #e96b3a 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Badge styles */
+        .badge-secondary {
+            background: rgba(26, 26, 26, 0.8);
+            color: #888888;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-light mb-2">
+            <span class="gradient-text">Next.js Card Components</span>
+        </h1>
+        <p class="text-vybe-gray-400 mb-12">Current implementation in the Next.js version</p>
+        
+        <!-- BaseCard Variants Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">BaseCard Variants</h2>
+            <p class="text-vybe-gray-400 mb-6">From components/ui/card/BaseCard.tsx</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Default Variant -->
+                <div class="base-card-default rounded-lg p-4 pb-2 transition-all duration-300 cursor-pointer base-card-hover">
+                    <h3 class="text-lg font-semibold mb-2">Default Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">bg-vybe-shadow/80 backdrop-blur-sm border-white/10</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">variant="default"</code>
+                </div>
+                
+                <!-- Interactive Variant -->
+                <div class="base-card-interactive rounded-lg p-4 pb-2 transition-all duration-300 cursor-pointer base-card-hover">
+                    <h3 class="text-lg font-semibold mb-2">Interactive Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">bg-black/60 backdrop-blur-lg border-gray-700/40</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">variant="interactive"</code>
+                </div>
+                
+                <!-- Elevated Variant -->
+                <div class="base-card-elevated rounded-lg p-4 pb-2 transition-all duration-300 cursor-pointer base-card-hover">
+                    <h3 class="text-lg font-semibold mb-2">Elevated Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">bg-vybe-shadow/90 backdrop-blur-md border-white/20</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">variant="elevated"</code>
+                </div>
+                
+                <!-- Outlined Variant -->
+                <div class="bg-transparent border border-white/20 rounded-lg p-4 pb-2 transition-all duration-300 cursor-pointer hover:bg-gray-800/60 hover:border-gray-600/50 hover:-translate-y-0.5 hover:shadow-lg">
+                    <h3 class="text-lg font-semibold mb-2">Outlined Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">bg-transparent border-white/20</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">variant="outlined"</code>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Card Labels Section -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">Card Type Labels</h2>
+            <p class="text-vybe-gray-400 mb-6">CardLabel component positioning and colors</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Guide Label -->
+                <div class="base-card-default rounded-lg p-4 pb-2 relative h-32">
+                    <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                         style="background: rgba(138, 43, 226, 0.5625)">
+                        GUIDE
+                    </div>
+                    <h3 class="text-lg font-semibold mt-8">Guide Card</h3>
+                    <p class="text-xs text-vybe-gray-400">Purple label</p>
+                </div>
+                
+                <!-- App Label -->
+                <div class="base-card-default rounded-lg p-4 pb-2 relative h-32">
+                    <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                         style="background: rgba(236, 72, 153, 0.5625)">
+                        APP
+                    </div>
+                    <h3 class="text-lg font-semibold mt-8">App Card</h3>
+                    <p class="text-xs text-vybe-gray-400">Fuchsia label</p>
+                </div>
+                
+                <!-- News Label -->
+                <div class="base-card-default rounded-lg p-4 pb-2 relative h-32">
+                    <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                         style="background: rgba(251, 146, 60, 0.5625)">
+                        NEWS
+                    </div>
+                    <h3 class="text-lg font-semibold mt-8">News Card</h3>
+                    <p class="text-xs text-vybe-gray-400">Orange label</p>
+                </div>
+                
+                <!-- Member Label -->
+                <div class="base-card-default rounded-lg p-4 pb-2 relative h-32">
+                    <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                         style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.5625), rgba(236, 72, 153, 0.5625))">
+                        MEMBER
+                    </div>
+                    <h3 class="text-lg font-semibold mt-8">Member Card</h3>
+                    <p class="text-xs text-vybe-gray-400">Gradient label</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Guide Card Example -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">GuideCard Component</h2>
+            <p class="text-vybe-gray-400 mb-6">Full implementation with all features</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Basic Guide Card -->
+                <div class="base-card-interactive rounded-lg p-4 pb-2 relative transition-all duration-300 cursor-pointer hover:bg-gray-800/60 hover:border-gray-600/50 hover:-translate-y-0.5 hover:shadow-lg">
+                    <!-- Label -->
+                    <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                         style="background: rgba(138, 43, 226, 0.5625)">
+                        GUIDE
+                    </div>
+                    
+                    <!-- Date -->
+                    <div class="absolute top-2 right-3 flex items-baseline gap-1 text-xs text-gray-400 z-20">
+                        <svg class="w-3 h-3 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        2 days ago
+                    </div>
+                    
+                    <!-- Title -->
+                    <h3 class="mt-8 text-lg font-semibold text-white hover:text-vybe-purple transition-colors">
+                        Building AI Agents with Claude
+                    </h3>
+                    
+                    <!-- Author -->
+                    <div class="flex items-center gap-2 my-3">
+                        <div class="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full"></div>
+                        <span class="text-sm text-vybe-gray-400">John Doe</span>
+                        <span class="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded">PRO</span>
+                    </div>
+                    
+                    <!-- Description -->
+                    <p class="text-sm text-vybe-gray-400 mb-3">Learn how to build powerful AI agents using Claude's API and best practices for production deployment.</p>
+                    
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="badge-secondary px-2 py-0.5 text-xs rounded">AI</span>
+                        <span class="badge-secondary px-2 py-0.5 text-xs rounded">Claude</span>
+                        <span class="bg-red-500/20 text-red-400 px-2 py-0.5 text-xs rounded border border-red-500/30">Advanced</span>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="flex items-center justify-between pt-2 mt-auto border-t border-gray-700/50">
+                        <div class="flex items-center gap-1 text-green-400 text-xs">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Verified 2h ago
+                        </div>
+                        <div class="flex items-center gap-3 text-xs text-vybe-gray-400">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                </svg>
+                                1.2k
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                                </svg>
+                                234
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- App Card Example -->
+                <div class="base-card-interactive rounded-lg p-4 pb-2 relative transition-all duration-300 cursor-pointer hover:bg-gray-800/60 hover:border-gray-600/50 hover:-translate-y-0.5 hover:shadow-lg">
+                    <!-- Label -->
+                    <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                         style="background: rgba(236, 72, 153, 0.5625)">
+                        APP
+                    </div>
+                    
+                    <!-- Featured Badge -->
+                    <div class="absolute -top-2 -right-2 z-30">
+                        <div class="bg-gradient-to-r from-vybe-purple to-vybe-pink text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                            ⭐ Featured
+                        </div>
+                    </div>
+                    
+                    <!-- Date -->
+                    <div class="absolute top-2 right-3 flex items-baseline gap-1 text-xs text-gray-400 z-20">
+                        <svg class="w-3 h-3 opacity-70" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                        1 week ago
+                    </div>
+                    
+                    <!-- Title -->
+                    <h3 class="mt-8 text-lg font-semibold text-white hover:text-vybe-orange transition-colors">
+                        AI Code Assistant
+                    </h3>
+                    
+                    <!-- Developer -->
+                    <div class="flex items-center gap-2 my-3">
+                        <div class="w-6 h-6 bg-gradient-to-br from-vybe-pink to-vybe-purple rounded-full"></div>
+                        <span class="text-sm text-vybe-gray-400">VybeStudio</span>
+                    </div>
+                    
+                    <!-- Description -->
+                    <p class="text-sm text-vybe-gray-400 mb-3">Intelligent code completion and refactoring powered by advanced AI models.</p>
+                    
+                    <!-- Tech Stack -->
+                    <div class="flex flex-wrap gap-1.5 mb-3">
+                        <span class="badge-secondary px-2 py-0.5 text-xs rounded">React</span>
+                        <span class="badge-secondary px-2 py-0.5 text-xs rounded">TypeScript</span>
+                        <span class="badge-secondary px-2 py-0.5 text-xs rounded">AI/ML</span>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="flex items-center justify-between pt-2 mt-auto border-t border-gray-700/50">
+                        <div class="flex items-center gap-1 text-vybe-orange text-xs">
+                            <span class="text-white bg-vybe-orange/20 px-2 py-0.5 rounded">FREE</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs text-vybe-gray-400">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path>
+                                </svg>
+                                5.2k
+                            </span>
+                            <span class="flex items-center gap-1 text-yellow-400">
+                                ⭐ 4.8
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Guide Submit Card Style -->
+                <div class="guide-submit-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4">Guide Submit Card Style</h3>
+                    <p class="text-sm text-vybe-gray-400 mb-4">This is the style used in the guide submission page for containers.</p>
+                    <code class="text-xs text-vybe-purple block">bg-gray-700/40 border-gray-600/30</code>
+                    <div class="mt-4 p-3 bg-black/20 rounded">
+                        <p class="text-xs text-vybe-gray-500">Used for AI Review Checklist, Guide Summary, and other containers</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Comparison Notes -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">Key Differences from Demo</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="guide-submit-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">Next.js Implementation</h3>
+                    <ul class="space-y-2 text-sm text-vybe-gray-400">
+                        <li>• Uses Tailwind classes with opacity modifiers (bg-black/60)</li>
+                        <li>• BaseCard component with variants system</li>
+                        <li>• Separate CardLabel and CardDate components</li>
+                        <li>• More modular approach with props</li>
+                        <li>• Guide submit uses bg-gray-700/40</li>
+                    </ul>
+                </div>
+                
+                <div class="guide-submit-card rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-3">Demo Implementation</h3>
+                    <ul class="space-y-2 text-sm text-vybe-gray-400">
+                        <li>• Uses rgba() values directly</li>
+                        <li>• minimal-card and vybe-card classes</li>
+                        <li>• Labels are ::before pseudo-elements</li>
+                        <li>• More CSS-driven approach</li>
+                        <li>• Uses rgba(26, 26, 26, 0.8) for cards</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Color Reference -->
+        <section>
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">Color Values Reference</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="guide-submit-card rounded-lg p-4">
+                    <div class="w-full h-12 rounded mb-2" style="background: #1a1a1a"></div>
+                    <p class="text-xs font-mono">vybe-shadow: #1a1a1a</p>
+                </div>
+                <div class="guide-submit-card rounded-lg p-4">
+                    <div class="w-full h-12 rounded mb-2" style="background: #374151"></div>
+                    <p class="text-xs font-mono">gray-700: #374151</p>
+                </div>
+                <div class="guide-submit-card rounded-lg p-4">
+                    <div class="w-full h-12 rounded mb-2" style="background: #1f2937"></div>
+                    <p class="text-xs font-mono">gray-800: #1f2937</p>
+                </div>
+                <div class="guide-submit-card rounded-lg p-4">
+                    <div class="w-full h-12 rounded mb-2" style="background: #0f0f0f"></div>
+                    <p class="text-xs font-mono">gray-900: #0f0f0f</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
