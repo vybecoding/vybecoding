@@ -63,8 +63,8 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
           // Base styles matching demo exactly
-          "flex items-center justify-between gap-2 px-4 py-2.5",
-          "bg-[rgba(26,26,26,0.5)] border border-white/10 text-white text-sm",
+          "flex items-center justify-between gap-2 px-3 py-2 md:px-4 md:py-2.5",
+          "bg-[rgba(26,26,26,0.5)] border border-white/10 text-white text-xs md:text-sm",
           "transition-all duration-200 whitespace-nowrap min-w-fit",
           // Hover and active states
           "hover:bg-[rgba(26,26,26,0.7)] hover:border-[rgba(138,43,226,0.3)]",
@@ -170,7 +170,7 @@ export const FilterContainer: React.FC<FilterContainerProps> = ({
     <div className={cn("mb-8", className)}>
       <div className="flex flex-col gap-0">
         {/* Filters Row */}
-        <div className="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit">
+        <div className="flex gap-0 flex-wrap justify-start content-start mx-auto w-fit md:w-auto md:justify-center lg:justify-start">
           {children}
           
           {/* Clear Filters Button */}

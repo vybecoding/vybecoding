@@ -125,7 +125,7 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
       {/* Search Input Container */}
       <div className="relative">
         {/* Search Icon */}
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/50 pointer-events-none z-10" />
+        <Search className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-white/50 pointer-events-none z-10" />
         
         {/* Input Field */}
         <input
@@ -142,9 +142,9 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
           placeholder={placeholder}
           className={cn(
             // Base styles matching demo exactly
-            "w-full pr-32 pl-14 py-4",
+            "w-full pr-24 pl-12 py-3 md:pr-32 md:pl-14 md:py-4",
             "bg-[rgba(26,26,26,0.5)] border border-white/10 rounded-xl",
-            "text-white text-base",
+            "text-white text-sm md:text-base",
             "transition-all duration-300",
             // Focus styles
             "focus:outline-none focus:border-[rgba(138,43,226,0.5)]",
@@ -158,9 +158,9 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
         <button
           onClick={handleSearchClick}
           className={cn(
-            "absolute right-2 top-1/2 transform -translate-y-1/2",
-            "px-5 py-3 bg-vybe-purple border-none rounded-lg",
-            "text-white font-medium text-sm min-h-[36px]",
+            "absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2",
+            "px-3 py-2 md:px-5 md:py-3 bg-vybe-purple border-none rounded-lg",
+            "text-white font-medium text-xs md:text-sm min-h-[32px] md:min-h-[36px]",
             "transition-all duration-200 z-20",
             "hover:bg-[rgba(138,43,226,0.8)] hover:scale-105"
           )}
