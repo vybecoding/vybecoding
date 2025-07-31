@@ -248,7 +248,7 @@ export default function GuideSubmitPage() {
   }
 
   return (
-    <div className="page-container nebula-background">
+    <div className="page-container nebula-background no-animation">
       <div className="nebula-middle"></div>
       <div className="nebula-bottom"></div>
       

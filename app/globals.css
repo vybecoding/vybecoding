@@ -306,7 +306,6 @@
   background: radial-gradient(ellipse at 20% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
               radial-gradient(ellipse at 80% 20%, rgba(217, 70, 160, 0.1) 0%, transparent 50%),
               radial-gradient(ellipse at 40% 80%, rgba(233, 107, 58, 0.08) 0%, transparent 50%);
-  animation: nebula-drift 30s ease-in-out infinite;
 }
 
 .floating-particles {
@@ -369,16 +368,13 @@
   }
 }
 
-@keyframes nebula-drift {
-  0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  33% {
-    transform: translate(-10px, -20px) rotate(1deg);
-  }
-  66% {
-    transform: translate(10px, -10px) rotate(-1deg);
-  }
+/* Nebula drift animation removed to eliminate swaying effect */
+
+/* Disable all animations on no-animation containers */
+.no-animation,
+.no-animation * {
+  animation: none !important;
+  transform: none !important;
 }
 
 @keyframes float-particles {

@@ -252,7 +252,7 @@ export default function GuidesPage() {
         }
       `}</style>
       
-      <div className="w-full max-w-xs sm:max-w-sm md:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-full max-w-xs sm:max-w-sm md:max-w-4xl lg:max-w-6xl mx-auto px-4 sm:px-6 relative z-10 pt-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-4">

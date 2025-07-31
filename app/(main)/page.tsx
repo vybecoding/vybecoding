@@ -459,10 +459,10 @@ export default function Home() {
               </ul>
               
               <div className="space-y-2">
-                <Link href="/guides" className="block text-vybe-pink hover:text-vybe-purple-light text-sm font-medium transition-colors">
+                <Link href="/guides" className="block text-vybe-purple hover:text-vybe-purple-light text-sm font-medium transition-colors">
                   Browse Guides →
                 </Link>
-                <Link href="/apps" className="block text-vybe-pink hover:text-vybe-purple-light text-sm font-medium transition-colors">
+                <Link href="/apps" className="block text-vybe-purple hover:text-vybe-purple-light text-sm font-medium transition-colors">
                   Browse Apps →
                 </Link>
               </div>
@@ -603,12 +603,12 @@ export default function Home() {
       {/* What You Could Build & Share Section */}
       <section className="py-20 relative z-10">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-3xl mx-auto">
             <h3 className="text-4xl font-light mb-12 text-center">
               What You Could <GradientText gradient="brand">Build & Share</GradientText>
             </h3>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto" style={{ marginLeft: '9%' }}>
               {/* Apps */}
               <div>
                 <h4 className="text-2xl font-medium mb-6 flex items-center gap-3">
