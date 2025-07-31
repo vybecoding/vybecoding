@@ -15,7 +15,7 @@ const breakpoints = [
 ];
 
 const demoUrl = 'http://localhost:8080/pages/guide-detail-unlocked.html';
-const nextjsUrl = 'http://localhost:3000/guides/advanced-claude-api-mastery/unlocked';
+const nextjsUrl = 'http://localhost:3000/guides/test-guide/unlocked';
 
 test.describe('Guide Detail Unlocked - Visual Comparison', () => {
   for (const breakpoint of breakpoints) {
