@@ -1,165 +1,106 @@
-# Epic-01 Demo Migration Progress Checklist
+# Epic-01 Demo Migration Progress Checklist (Reorganized)
 
 **Epic:** Demo Migration with Improvements  
-**Total Stories:** 46  
+**Total Stories:** 43 (excluding deleted home-alt and sub-steps)  
 **Total Points:** 298  
 **Target Timeline:** 4 weeks with parallel execution  
 
 ## 📊 Overall Progress
 
-- **Stories Completed:** 10/46 (22%)
+- **Stories Completed:** 10/43 (23%)
 - **Points Completed:** 73/298 (24%)
-- **Current Status:** Foundation & Batch 1 complete, DEMO-001 through DEMO-009 approved
+- **Current Status:** Authentication, Guides browse, Apps browse/submit completed
 
 ## 🚀 Execution Batches
 
-### ✅ Foundation (Complete)
-- [x] DEMO-001: Design System Foundation (8 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
-  - **Status**: APPROVED
-
-### ✅ Batch 1: Core Pages (Complete)
+### ✅ Batch 1: Core Flow (Complete)
 - [x] DEMO-001: Home/Landing Page (13 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete (manual)
-  - Story Workflow: ✅ Complete
   - **Status**: APPROVED
-  - **Notes**: Implemented all 7 sections from demo. Hero height adjusted to 90vh for better down arrow visibility. All content sections match demo structure.
+  - **Notes**: Implemented all 7 sections from demo
 
-### ✅ Batch 1: Core Pages (Complete)
-- [x] DEMO-003: Apps Browse Page (8 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
+### ✅ Batch 2: Authentication (Complete)
+- [x] DEMO-002: Sign In Page (5 points) ✅
   - **Status**: APPROVED
-  - **Notes**: Apps browse page with filtering, search, and grid layout. Fixed layout issues with container widths and positioning. Comprehensive implementation with proper card styling.
-  
-- [x] Services Page (Not numbered - 5 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete (partial due to timeout)
-  - **Status**: APPROVED - New feature not in demo
-  - **Notes**: Professional service booking system with Cal.com integration. No demo page exists, so Next.js implementation is entirely new. Quality score: 9/10
-  
-- [x] Pricing Page (Not numbered - 5 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete (spacing issue fixed)
-  - Story Workflow: ✅ Complete
+  - **Notes**: Clerk integration with custom styling
+- [x] DEMO-003: Sign Up Page (5 points) ✅
   - **Status**: APPROVED
-  - **Notes**: Fixed spacing to match demo exactly. Visual accuracy now 100%
+  - **Notes**: Consistent with sign-in page styling
+- [x] DEMO-004: Forgot Password Page (3 points) ✅
+  - **Status**: APPROVED
+  - **Notes**: Reset password flow with Clerk
 
-### ✅ Batch 2: Content Pages (Complete)
-- [x] DEMO-004: Guides Browse Page (8 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
+### 🔄 Batch 3: Guides Flow (Partially Complete)
+- [ ] DEMO-005: Guides Main Page (8 points)
+- [x] DEMO-006: Guides Browse Page (8 points) ✅
   - **Status**: APPROVED
-  - **Notes**: Multi-select filters for AI Tools and Categories. Universal search bar matches demo. Container width aligned to max-w-5xl.
-- [x] DEMO-005: Sign In Page (5 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
+  - **Notes**: Multi-select filters for AI Tools and Categories
+- [ ] DEMO-007: Guides Submit Page (13 points)
+- [ ] DEMO-008: Guide Detail Page (8 points)
+- [ ] DEMO-009: Guide Detail Unlocked Page (5 points)
+- [ ] DEMO-010: Guide View Page (5 points)
+
+### 🔄 Batch 4: Apps Flow (Partially Complete)
+- [x] DEMO-011: Apps Main Page (8 points) ✅
+  - **Status**: APPROVED (same as browse)
+- [x] DEMO-012: Apps Browse Page (8 points) ✅
   - **Status**: APPROVED
-  - **Notes**: Clerk integration with custom styling. Animated logo, social login buttons, and gradient form button matching demo.
-- [x] DEMO-006: Sign Up Page (5 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
+  - **Notes**: Multi-category selection feature
+- [x] DEMO-013: Apps Submit Page (13 points) ✅
   - **Status**: APPROVED
-  - **Notes**: Consistent with sign-in page styling. Uses auth layout and global Clerk appearance. Webpack error resolved.
+  - **Notes**: 4-step process with pricing section
+- [ ] DEMO-014: App Native Detail Page (8 points)
+- [ ] DEMO-015: App Member Preview Page (5 points)
 
-### 📋 Authentication Pages (Complete)
-- [x] DEMO-007: Forgot Password Page (3 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
+### 📋 Batch 5: Community & Profile (Pending)
+- [ ] DEMO-016: Members Directory (8 points)
+- [ ] DEMO-017: Profile Main Page (5 points)
+- [ ] DEMO-018: Profile Info Page (5 points)
+- [ ] DEMO-019: Profile Booking Page (5 points)
+- [ ] DEMO-020: Featured Content Page (5 points)
+
+### 🔄 Batch 6: Dashboard (Partially Complete)
+- [x] DEMO-021: Dashboard Main Page (8 points) ✅
   - **Status**: APPROVED
-  - **Notes**: Key icon in purple circle, success message with green styling. Uses Clerk's reset_password_email_code strategy. Auto-redirect after success.
-
-### 📋 Additional Content Pages (Complete)
-- [x] DEMO-008: Apps Main Page (8 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
-  - **Status**: APPROVED
-  - **Notes**: Completed as part of DEMO-003. The /apps route serves both main and browse functionality with multi-select filters and search.
-
-### 🔄 Batch 3: Dashboard Foundation (In Progress)
-- [x] DEMO-002: Dashboard Home Page (8 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
-  - **Status**: APPROVED
-  - **Notes**: Tab navigation structure implemented, redirects to Guide Review as first tab. Authentication protection via middleware.
-- [x] DEMO-009: Apps Submit Page (13 points) ✅
-  - Implementation: ✅ Complete
-  - Visual Verification: ✅ Complete
-  - Story Workflow: ✅ Complete
-  - **Status**: APPROVED
-  - **Notes**: Restructured to 4-step process matching demo. Added pricing section to Basic Info. Auto-save every 30 seconds. Full Convex integration.
-- [ ] DEMO-010: Dashboard Profile (5 points)
-- [ ] DEMO-011: Dashboard Settings (5 points)
-
-### 📋 Batch 4: Detail Pages (Pending)
-- [ ] DEMO-012: App Detail Page (8 points)
-- [ ] DEMO-013: Guide Detail Page (8 points)
-- [ ] DEMO-014: Member Profile Page (5 points)
-
-### 📋 Batch 5: Form Pages (Pending)
-- [ ] DEMO-015: App Submission Form (13 points)
-- [ ] DEMO-016: Guide Creation Form (13 points)
-- [ ] DEMO-017: Profile Update Form (8 points)
-
-### 📋 Batch 6: Marketing Pages (Pending)
-- [ ] DEMO-018: Features Page (5 points)
-- [ ] DEMO-019: About Us Page (3 points)
-- [ ] DEMO-020: Contact Page (5 points)
-
-### 📋 Batch 7: Dashboard Sub-pages (Pending)
-- [ ] DEMO-021: Dashboard Mentorship (8 points)
+  - **Notes**: Tab navigation structure implemented
 - [ ] DEMO-022: Dashboard Review Queue (8 points)
-- [ ] DEMO-023: Dashboard Analytics (8 points)
+- [ ] DEMO-023: Dashboard Mentorship (8 points)
+  - **Enhanced**: Hybrid recommendations added
+- [ ] DEMO-024: Dashboard Analytics (8 points)
+  - [ ] DEMO-024a: Analytics Overview Tab (5 points)
+  - [ ] DEMO-024b: Analytics Insights Tab (5 points)
+- [ ] DEMO-025: Dashboard Profile (5 points)
+- [ ] DEMO-026: Dashboard Settings (5 points)
+  - **Enhanced**: Hybrid recommendations added
 
-### 📋 Batch 8: Profile Sub-pages (Pending)
-- [ ] DEMO-024: Profile Settings (5 points)
-- [ ] DEMO-025: Profile Public View (5 points)
-- [ ] DEMO-026: Profile Edit Page (5 points)
+### 📋 Batch 7: Settings Sub-pages (Pending)
+- [ ] DEMO-027: Settings Profile (3 points)
+- [ ] DEMO-028: Settings Account (3 points)
+- [ ] DEMO-029: Settings Privacy (3 points)
+- [ ] DEMO-030: Settings Notifications (3 points)
+- [ ] DEMO-031: Settings Billing (5 points)
 
-### 📋 Batch 9: Apps Sub-pages (Pending)
-- [ ] DEMO-027: Apps Categories (5 points)
-- [ ] DEMO-028: Apps Featured (5 points)
-- [ ] DEMO-029: Apps Search Results (5 points)
+### 📋 Batch 8: Information Pages (Pending)
+- [ ] DEMO-032: About Page (3 points)
+- [x] DEMO-033: Pricing Page (5 points) ✅
+  - **Status**: APPROVED
+  - **Notes**: Fixed spacing to match demo
+- [ ] DEMO-034: Help Center (5 points)
+- [ ] DEMO-035: Support Page (3 points)
 
-### 📋 Batch 10: Guides Sub-pages (Pending)
-- [ ] DEMO-030: Guides Categories (5 points)
-- [ ] DEMO-031: Guides Popular (5 points)
-- [ ] DEMO-032: Guides Search Results (5 points)
+### 📋 Batch 9: Legal Pages (Pending)
+- [ ] DEMO-036: Terms of Service (3 points)
+- [ ] DEMO-037: Privacy Policy (3 points)
+- [ ] DEMO-038: Licenses Page (3 points)
+- [ ] DEMO-039: Cookie Policy (3 points)
 
-### 📋 Batch 11: Community Pages (Pending)
-- [ ] DEMO-033: Members Directory (8 points)
-- [ ] DEMO-034: Mentors Directory (8 points)
-- [ ] DEMO-035: Success Stories (5 points)
+### 📋 Batch 10: Special Pages (Pending)
+- [ ] DEMO-040: Notifications Page (5 points)
+- [ ] DEMO-041: Design System Showcase (8 points)
 
-### 📋 Batch 12: Support Pages (Pending)
-- [ ] DEMO-036: Help Center (5 points)
-- [ ] DEMO-037: FAQ Page (3 points)
-- [ ] DEMO-038: Terms of Service (3 points)
-
-### 📋 Batch 13: Account Pages (Pending)
-- [ ] DEMO-039: Account Settings (5 points)
-- [ ] DEMO-040: Subscription Management (8 points)
-- [ ] DEMO-041: Notification Preferences (5 points)
-
-### 📋 Batch 14: Error & Special Pages (Pending)
-- [ ] DEMO-042: 404 Page (3 points)
-- [ ] DEMO-043: 500 Page (3 points)
-- [ ] DEMO-044: Maintenance Page (3 points)
-
-### 📋 Batch 15: Final Pages (Pending)
-- [ ] DEMO-045: Privacy Policy (3 points)
-- [ ] DEMO-046: Cookie Policy (3 points)
+### ✅ Additional Pages (Complete)
+- [x] Services Page (5 points) ✅
+  - **Status**: APPROVED
+  - **Notes**: New feature with Cal.com integration
 
 ## 📈 Verification Status Legend
 
@@ -180,7 +121,7 @@
 6. **Documentation** - Improvements documented
 
 ### Completion Criteria
-- [ ] All 46 stories implemented
+- [ ] All 43 stories implemented
 - [ ] All visual verifications completed
 - [ ] All story workflows passed
 - [ ] Master checklist 100% complete
@@ -190,18 +131,24 @@
 
 ### Design System Enhancements
 - **DEMO-001**: Established improved color system with better contrast
-- **Batch 1**: Consistent spacing tokens applied across pages
+- **Batch 1-2**: Consistent spacing tokens applied across pages
 
 ### Functionality Improvements
-- **DEMO-003**: Added entirely new Services page with professional booking system and Cal.com integration (not present in demo)
+- **DEMO-012**: Multi-category selection for apps browse
+- **Services Page**: Added entirely new page with booking system
+- **DEMO-023**: Enhanced mentorship with video calls and AI matching
+- **DEMO-024**: Split analytics into Overview and Insights tabs
+- **DEMO-026**: Enhanced settings with search and sync features
 
-### Performance Optimizations
-- *To be documented as stories complete*
+### Deleted/Consolidated Stories
+- **DEMO-034-home-alt.md**: Deleted (alternative home layout not needed)
+- **Guides submit steps**: Consolidated into main submit story
+- **Apps submit steps**: Consolidated into main submit story
 
 ## 🔄 Last Updated
-- **Date**: 2025-07-30
-- **By**: BMAD QA Agent (Quinn)
-- **Next Review**: After Batch 1 verification complete
+- **Date**: 2025-01-31
+- **By**: Story Reorganization Complete
+- **Next Review**: After next batch completion
 
 ---
 
