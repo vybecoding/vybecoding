@@ -3,334 +3,574 @@
 import React, { useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { cn } from '@/lib/utils'
-import { Video, Calendar, Clock, Users, TrendingUp, Star, ChevronRight } from 'lucide-react'
+import { 
+  Calendar, 
+  Clock, 
+  DollarSign, 
+  Star, 
+  TrendingUp, 
+  Users,
+  MessageSquare,
+  ChevronLeft,
+  ChevronRight,
+  Edit2,
+  Save,
+  X
+} from 'lucide-react'
 
-export default function MentorshipPage() {
+interface TimeSlot {
+  time: string
+  available: boolean
+}
+
+interface DayAvailability {
+  date: number
+  status: 'available' | 'booked' | 'unavailable' | 'today'
+  slots?: TimeSlot[]
+}
+
+export default function DashboardMentorshipPage() {
   const { user } = useUser()
-  const [activeTab, setActiveTab] = useState<'upcoming' | 'history'>('upcoming')
+  const [isEditingBio, setIsEditingBio] = useState(false)
+  const [isEditingAvailability, setIsEditingAvailability] = useState(false)
+  const [mentorBio, setMentorBio] = useState(
+    "I'm a senior developer with 8+ years in SaaS and React development, specializing in full-stack development & career growth for developers. I help developers level up their technical skills, navigate career growth, and build confidence in system design."
+  )
+  const [selectedDate, setSelectedDate] = useState(11)
+  const [currentMonth, setCurrentMonth] = useState('January 2025')
 
-  // Mock data - would come from Convex in real implementation
-  const stats = {
-    totalSessions: 47,
-    thisMonth: 12,
-    averageRating: 4.9,
-    earnings: 2340,
-    upcomingCount: 3,
-    completedCount: 44
+  // Mock calendar data
+  const calendarDays: DayAvailability[] = [
+    // First week padding
+    { date: 0, status: 'unavailable' },
+    { date: 0, status: 'unavailable' },
+    { date: 0, status: 'unavailable' },
+    { date: 1, status: 'unavailable' },
+    { date: 2, status: 'unavailable' },
+    { date: 3, status: 'unavailable' },
+    { date: 4, status: 'unavailable' },
+    // Week 2
+    { date: 5, status: 'unavailable' },
+    { date: 6, status: 'unavailable' },
+    { date: 7, status: 'unavailable' },
+    { date: 8, status: 'unavailable' },
+    { date: 9, status: 'unavailable' },
+    { date: 10, status: 'unavailable' },
+    { date: 11, status: 'available', slots: [
+      { time: '9:00 AM', available: true },
+      { time: '10:00 AM', available: false },
+      { time: '11:00 AM', available: false },
+      { time: '2:00 PM', available: false },
+      { time: '3:00 PM', available: true },
+      { time: '4:00 PM', available: false }
+    ]},
+    // Week 3
+    { date: 12, status: 'unavailable' },
+    { date: 13, status: 'unavailable' },
+    { date: 14, status: 'unavailable' },
+    { date: 15, status: 'available' },
+    { date: 16, status: 'unavailable' },
+    { date: 17, status: 'unavailable' },
+    { date: 18, status: 'booked' },
+    // Week 4
+    { date: 19, status: 'unavailable' },
+    { date: 20, status: 'unavailable' },
+    { date: 21, status: 'today' },
+    { date: 22, status: 'available' },
+    { date: 23, status: 'unavailable' },
+    { date: 24, status: 'unavailable' },
+    { date: 25, status: 'unavailable' },
+    // Week 5
+    { date: 26, status: 'unavailable' },
+    { date: 27, status: 'unavailable' },
+    { date: 28, status: 'unavailable' },
+    { date: 29, status: 'available' },
+    { date: 30, status: 'unavailable' },
+    { date: 31, status: 'unavailable' },
+    { date: 0, status: 'unavailable' },
+  ]
+
+  const sessionTypes = [
+    { type: 'Quick Chat', duration: '30 min', price: 75 },
+    { type: 'Standard', duration: '60 min', price: 100 },
+    { type: 'Deep Dive', duration: '90 min', price: 150 }
+  ]
+
+  const getDayClasses = (day: DayAvailability) => {
+    if (day.date === 0) return ''
+    
+    const baseClasses = 'text-center py-2 text-sm rounded cursor-pointer transition-colors'
+    
+    switch (day.status) {
+      case 'available':
+        return cn(baseClasses, 'bg-green-600 text-white hover:bg-green-700 font-medium')
+      case 'booked':
+        return cn(baseClasses, 'bg-red-600 text-white cursor-not-allowed font-medium')
+      case 'today':
+        return cn(baseClasses, 'bg-purple-600 text-white hover:bg-purple-700 font-medium')
+      default:
+        return cn(baseClasses, 'text-white hover:bg-vybe-gray-800')
+    }
   }
 
-  const upcomingSessions = [
-    {
-      id: '1',
-      mentee: {
-        name: 'Sarah Chen',
-        avatar: '/api/placeholder/40/40',
-        level: 'Intermediate'
-      },
-      date: '2024-01-28',
-      time: '2:00 PM EST',
-      duration: 60,
-      topic: 'React Performance Optimization',
-      meetingLink: 'https://cal.com/meeting/abc123'
-    },
-    {
-      id: '2',
-      mentee: {
-        name: 'Marcus Johnson',
-        avatar: '/api/placeholder/40/40',
-        level: 'Beginner'
-      },
-      date: '2024-01-30',
-      time: '10:00 AM EST',
-      duration: 30,
-      topic: 'Getting Started with TypeScript',
-      meetingLink: 'https://cal.com/meeting/def456'
-    },
-    {
-      id: '3',
-      mentee: {
-        name: 'Emily Rodriguez',
-        avatar: '/api/placeholder/40/40',
-        level: 'Advanced'
-      },
-      date: '2024-02-02',
-      time: '3:30 PM EST',
-      duration: 45,
-      topic: 'System Design Interview Prep',
-      meetingLink: 'https://cal.com/meeting/ghi789'
-    }
-  ]
-
-  const sessionHistory = [
-    {
-      id: '4',
-      mentee: {
-        name: 'Alex Kim',
-        avatar: '/api/placeholder/40/40'
-      },
-      date: '2024-01-25',
-      duration: 60,
-      topic: 'Advanced Next.js Patterns',
-      rating: 5,
-      earnings: 60
-    },
-    {
-      id: '5',
-      mentee: {
-        name: 'Jordan Lee',
-        avatar: '/api/placeholder/40/40'
-      },
-      date: '2024-01-23',
-      duration: 30,
-      topic: 'Career Guidance',
-      rating: 4.5,
-      earnings: 30
-    },
-    {
-      id: '6',
-      mentee: {
-        name: 'Taylor Swift',
-        avatar: '/api/placeholder/40/40'
-      },
-      date: '2024-01-20',
-      duration: 45,
-      topic: 'Code Review Session',
-      rating: 5,
-      earnings: 45
-    }
-  ]
-
   return (
-    <div className="w-full max-w-5xl mx-auto py-6 space-y-8">
-      {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <Users className="w-5 h-5 text-vybe-purple" />
-            <span className="text-2xl font-semibold text-white">{stats.totalSessions}</span>
-          </div>
-          <p className="text-sm text-gray-400">Total Sessions</p>
-        </div>
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <Calendar className="w-5 h-5 text-vybe-pink" />
-            <span className="text-2xl font-semibold text-white">{stats.thisMonth}</span>
-          </div>
-          <p className="text-sm text-gray-400">This Month</p>
-        </div>
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <Star className="w-5 h-5 text-yellow-400" />
-            <span className="text-2xl font-semibold text-white">{stats.averageRating}</span>
-          </div>
-          <p className="text-sm text-gray-400">Average Rating</p>
-        </div>
-        <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <TrendingUp className="w-5 h-5 text-green-400" />
-            <span className="text-2xl font-semibold text-green-400">${stats.earnings}</span>
-          </div>
-          <p className="text-sm text-gray-400">Total Earnings</p>
-        </div>
-      </div>
-
-      {/* Session Tabs */}
-      <div className="flex gap-2">
-        <button
-          onClick={() => setActiveTab('upcoming')}
-          className={cn(
-            "px-6 py-3 rounded-lg font-medium transition-all",
-            activeTab === 'upcoming'
-              ? "bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/40"
-              : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white/80 border border-white/10"
-          )}
-        >
-          Upcoming Sessions
-          <span className="ml-2 text-xs opacity-60">({stats.upcomingCount})</span>
-        </button>
-        <button
-          onClick={() => setActiveTab('history')}
-          className={cn(
-            "px-6 py-3 rounded-lg font-medium transition-all",
-            activeTab === 'history'
-              ? "bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/40"
-              : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white/80 border border-white/10"
-          )}
-        >
-          Session History
-          <span className="ml-2 text-xs opacity-60">({stats.completedCount})</span>
-        </button>
-      </div>
-
-      {/* Upcoming Sessions */}
-      {activeTab === 'upcoming' && (
-        <div className="space-y-4">
-          {upcomingSessions.length === 0 ? (
-            <div className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-12 text-center">
-              <Calendar className="w-12 h-12 text-gray-500 mx-auto mb-4" />
-              <p className="text-gray-400">No upcoming sessions scheduled</p>
-              <a
-                href="/dashboard/settings#availability"
-                className="inline-block mt-4 px-4 py-2 bg-vybe-purple/20 text-vybe-purple-light rounded-lg hover:bg-vybe-purple/30 transition-all text-sm font-medium"
-              >
-                Update Availability
-              </a>
-            </div>
-          ) : (
-            <>
-              {upcomingSessions.map((session) => (
-                <div
-                  key={session.id}
-                  className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all"
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start gap-4">
-                      <img
-                        src={session.mentee.avatar}
-                        alt={session.mentee.name}
-                        className="w-12 h-12 rounded-full"
-                      />
-                      <div>
-                        <h3 className="text-lg font-semibold text-white mb-1">{session.mentee.name}</h3>
-                        <p className="text-sm text-gray-400 mb-3">{session.mentee.level} Developer</p>
-                        <div className="space-y-2">
-                          <div className="flex items-center gap-2 text-sm text-gray-300">
-                            <Calendar className="w-4 h-4 text-vybe-purple" />
-                            <span>{new Date(session.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-300">
-                            <Clock className="w-4 h-4 text-vybe-pink" />
-                            <span>{session.time} • {session.duration} minutes</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-300">
-                            <Video className="w-4 h-4 text-vybe-orange" />
-                            <span>{session.topic}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-semibold text-white mb-2">${session.duration}</p>
-                      <a
-                        href={session.meetingLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                          "inline-flex items-center gap-2 px-4 py-2",
-                          "bg-gradient-to-r from-vybe-purple to-vybe-pink",
-                          "text-white text-sm font-semibold rounded-lg",
-                          "hover:shadow-lg hover:shadow-vybe-purple/25",
-                          "transition-all transform hover:scale-105"
-                        )}
-                      >
-                        Join Meeting
-                        <ChevronRight className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
-
-              {/* Calendar Integration Reminder */}
-              <div className="bg-yellow-400/10 border border-yellow-400/20 rounded-lg p-4">
-                <p className="text-sm text-yellow-400">
-                  <span className="font-medium">Pro tip:</span> Add these sessions to your calendar to get reminders.
-                  Sessions are automatically scheduled through your Cal.com integration.
-                </p>
-              </div>
-            </>
-          )}
-        </div>
-      )}
-
-      {/* Session History */}
-      {activeTab === 'history' && (
-        <div className="space-y-4">
-          {sessionHistory.map((session) => (
-            <div
-              key={session.id}
-              className="bg-vybe-shadow/80 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-white/20 transition-all"
-            >
+    <div className="max-w-7xl mx-auto py-6">
+      {/* Two Column Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+        
+        {/* Main Content Column (60%) */}
+        <div className="col-span-1 lg:col-span-3 space-y-6">
+          
+          {/* Bio Section */}
+          <div className="vybe-card overflow-hidden">
+            <div className="vybe-card-header">
               <div className="flex items-center justify-between">
-                <div className="flex items-start gap-4">
-                  <img
-                    src={session.mentee.avatar}
-                    alt={session.mentee.name}
-                    className="w-12 h-12 rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">{session.mentee.name}</h3>
-                    <p className="text-sm text-gray-400 mb-2">{session.topic}</p>
-                    <div className="flex items-center gap-4 text-sm text-gray-300">
-                      <span>{new Date(session.date).toLocaleDateString()}</span>
-                      <span>•</span>
-                      <span>{session.duration} minutes</span>
-                      <span>•</span>
-                      <div className="flex items-center gap-1">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={cn(
-                              "w-3 h-3",
-                              i < Math.floor(session.rating)
-                                ? "text-yellow-400 fill-yellow-400"
-                                : i < session.rating
-                                ? "text-yellow-400 fill-yellow-400/50"
-                                : "text-gray-600"
-                            )}
-                          />
-                        ))}
-                        <span className="ml-1">{session.rating}</span>
-                      </div>
-                    </div>
-                  </div>
+                <h4 className="vybe-section-header">
+                  <div className="vybe-gradient-accent-bar"></div>
+                  Mentor Bio
+                </h4>
+                {!isEditingBio ? (
+                  <button
+                    onClick={() => setIsEditingBio(true)}
+                    className="px-3 py-1.5 text-sm bg-transparent border border-vybe-purple text-vybe-purple rounded-lg hover:bg-vybe-purple/20 transition-all"
+                  >
+                    Edit
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setIsEditingBio(false)}
+                    className="px-3 py-1.5 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    Save
+                  </button>
+                )}
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <div className="mb-6">
+                <textarea
+                  value={mentorBio}
+                  onChange={(e) => setMentorBio(e.target.value)}
+                  readOnly={!isEditingBio}
+                  className={cn(
+                    "w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm h-24 resize-none",
+                    isEditingBio && "focus:border-vybe-purple focus:ring-1 focus:ring-vybe-purple"
+                  )}
+                  placeholder="Describe your expertise and what you help mentees with..."
+                />
+              </div>
+              
+              {/* Quick Settings */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-medium text-vybe-gray-400 block mb-1">Experience</label>
+                  <select 
+                    className="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple"
+                    disabled={!isEditingBio}
+                  >
+                    <option>8+ years</option>
+                    <option>5-8 years</option>
+                    <option>3-5 years</option>
+                  </select>
                 </div>
-                <div className="text-right">
-                  <p className="text-lg font-semibold text-green-400">+${session.earnings}</p>
-                  <button className="mt-2 text-sm text-vybe-purple hover:text-vybe-pink transition-colors">
-                    View Feedback
+                
+                <div>
+                  <label className="text-xs font-medium text-vybe-gray-400 block mb-1">Response Time</label>
+                  <select 
+                    className="w-full bg-vybe-gray-800 border border-vybe-gray-700 rounded-lg px-3 py-2 text-white text-sm focus:border-vybe-purple"
+                    disabled={!isEditingBio}
+                  >
+                    <option>Within 24 hours</option>
+                    <option>Within 4 hours</option>
+                    <option>Within 1 hour</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Availability Calendar */}
+          <div className="vybe-card overflow-hidden">
+            <div className="vybe-card-header">
+              <div className="flex items-center justify-between">
+                <h4 className="vybe-section-header">
+                  <div className="vybe-gradient-accent-bar"></div>
+                  Availability Calendar
+                </h4>
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-vybe-gray-300">EST (UTC-5)</span>
+                    <button className="px-2 py-1 text-xs bg-vybe-gray-800 text-vybe-gray-400 rounded hover:bg-vybe-gray-700 transition-colors">
+                      Change
+                    </button>
+                  </div>
+                  {!isEditingAvailability ? (
+                    <button
+                      onClick={() => setIsEditingAvailability(true)}
+                      className="px-3 py-1.5 text-sm bg-transparent border border-vybe-purple text-vybe-purple rounded-lg hover:bg-vybe-purple/20 transition-all"
+                    >
+                      Edit Availability
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => setIsEditingAvailability(false)}
+                        className="px-3 py-1.5 text-sm bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                      >
+                        Save Changes
+                      </button>
+                      <button
+                        onClick={() => setIsEditingAvailability(false)}
+                        className="px-3 py-1.5 text-sm bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              {/* Month Navigation */}
+              <div className="flex items-center justify-between mb-3">
+                <h5 className="text-white font-medium">{currentMonth}</h5>
+                <div className="flex items-center gap-2">
+                  <button className="p-1 text-vybe-gray-400 hover:text-white rounded transition-colors">
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button className="px-3 py-1 text-xs bg-vybe-gray-800 text-white rounded-lg hover:bg-vybe-gray-700 transition-colors">
+                    Today
+                  </button>
+                  <button className="p-1 text-vybe-gray-400 hover:text-white rounded transition-colors">
+                    <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
+              
+              {/* Bulk Actions (Only visible in edit mode) */}
+              {isEditingAvailability && (
+                <div className="flex gap-2 flex-wrap mb-3">
+                  <button className="px-3 py-1 text-xs bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/30 rounded-lg hover:bg-vybe-purple/30 transition-colors">
+                    Block Weekends
+                  </button>
+                  <button className="px-3 py-1 text-xs bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors">
+                    Copy Last Week
+                  </button>
+                  <button className="px-3 py-1 text-xs bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors">
+                    Clear All
+                  </button>
+                </div>
+              )}
+              
+              {/* View Mode Info */}
+              {!isEditingAvailability && (
+                <div className="text-sm text-vybe-gray-400 mb-3">
+                  <p>Your current availability is shown below. Click "Edit Availability" to make changes.</p>
+                </div>
+              )}
+              
+              {/* Calendar Grid */}
+              <div className="grid grid-cols-7 gap-2 mb-3 w-full">
+                {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day) => (
+                  <div key={day} className="text-center text-xs text-vybe-gray-500 py-1">
+                    {day}
+                  </div>
+                ))}
+              </div>
+              
+              <div className="grid grid-cols-7 gap-2 select-none w-full">
+                {calendarDays.map((day, index) => (
+                  <button
+                    key={index}
+                    className={getDayClasses(day)}
+                    onClick={() => day.date > 0 && setSelectedDate(day.date)}
+                    disabled={day.date === 0 || (!isEditingAvailability && day.status === 'booked')}
+                  >
+                    {day.date > 0 ? day.date : ''}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Legend */}
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-4 p-3 bg-vybe-gray-800/30 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+                  <span className="text-vybe-gray-300 text-sm">Available</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-purple-600 rounded-full"></div>
+                  <span className="text-vybe-gray-300 text-sm">Today</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-red-600 rounded-full"></div>
+                  <span className="text-vybe-gray-300 text-sm">Booked</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-vybe-gray-600 rounded-full"></div>
+                  <span className="text-vybe-gray-300 text-sm">Unavailable</span>
+                </div>
+                {isEditingAvailability && (
+                  <div className="text-xs text-vybe-gray-400">💡 Tip: Click and drag to select multiple dates</div>
+                )}
+              </div>
+              
+              {/* Time Selection Panel */}
+              <div className="mt-6 p-4 bg-vybe-gray-800/50 rounded-lg">
+                <h5 className="text-white font-semibold mb-3">
+                  Available Times on January {selectedDate}
+                </h5>
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {calendarDays.find(d => d.date === selectedDate)?.slots?.map((slot, index) => (
+                    <button
+                      key={index}
+                      className={cn(
+                        "px-3 py-2 text-sm rounded-lg transition-all",
+                        slot.available
+                          ? "bg-gradient-to-b from-vybe-purple to-vybe-purple/80 text-white hover:from-vybe-purple/90 hover:to-vybe-purple/70 shadow-sm"
+                          : "border border-vybe-gray-600 text-vybe-gray-400 hover:border-vybe-purple hover:text-white"
+                      )}
+                      disabled={!isEditingAvailability}
+                    >
+                      {slot.time}
+                    </button>
+                  ))}
+                </div>
+                
+                {/* Quick Time Selection (Edit mode only) */}
+                {isEditingAvailability && (
+                  <div className="flex gap-2 flex-wrap mb-3">
+                    <button className="px-3 py-1 text-xs bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/30 rounded-lg hover:bg-vybe-purple/30 transition-colors">
+                      Select All Morning
+                    </button>
+                    <button className="px-3 py-1 text-xs bg-vybe-purple/20 text-vybe-purple-light border border-vybe-purple/30 rounded-lg hover:bg-vybe-purple/30 transition-colors">
+                      Select All Afternoon
+                    </button>
+                    <button className="px-3 py-1 text-xs bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-colors">
+                      Clear All
+                    </button>
+                  </div>
+                )}
+                
+                {/* View Mode Info */}
+                {!isEditingAvailability && (
+                  <div className="text-sm text-vybe-gray-400">
+                    <p>Available times for the selected date are shown above.</p>
+                  </div>
+                )}
+              </div>
             </div>
-          ))}
-
-          {/* Load More */}
-          <div className="text-center pt-4">
-            <button className="px-6 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all text-sm font-medium">
-              Load More Sessions
-            </button>
+          </div>
+          
+          {/* Session Pricing */}
+          <div className="vybe-card p-6">
+            <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
+              <div className="vybe-gradient-accent-bar"></div>
+              Session Pricing
+            </h4>
+            
+            <div className="overflow-hidden rounded-lg border border-vybe-gray-700">
+              <table className="w-full">
+                <thead className="bg-vybe-gray-800/50">
+                  <tr>
+                    <th className="px-4 py-3 text-left text-xs font-medium text-vybe-gray-400 uppercase tracking-wider">
+                      Type
+                    </th>
+                    <th className="px-4 py-3 text-center text-xs font-medium text-vybe-gray-400 uppercase tracking-wider">
+                      Duration
+                    </th>
+                    <th className="px-4 py-3 text-right text-xs font-medium text-vybe-gray-400 uppercase tracking-wider">
+                      Price
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-vybe-gray-700">
+                  {sessionTypes.map((session, index) => (
+                    <tr key={index} className="bg-vybe-gray-800/30 hover:bg-vybe-gray-800/50 transition-colors">
+                      <td className="px-4 py-3">
+                        <div className="text-sm font-medium text-white">{session.type}</div>
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <span className="text-sm text-vybe-gray-300">{session.duration}</span>
+                      </td>
+                      <td className="px-4 py-3 text-right">
+                        <span className="text-sm font-semibold text-white">${session.price}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            
+            <div className="mt-4 flex gap-3">
+              <button className="px-4 py-2 bg-vybe-purple/20 text-vybe-purple-light rounded-lg hover:bg-vybe-purple/30 transition-all text-sm font-medium">
+                Edit Pricing
+              </button>
+              <button className="px-4 py-2 bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-all text-sm font-medium">
+                Add Package Deal
+              </button>
+            </div>
           </div>
         </div>
-      )}
-
-      {/* Mentorship Settings CTA */}
-      <div className="bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 rounded-xl p-8 border border-vybe-purple/40">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Optimize Your Mentorship
-            </h3>
-            <p className="text-gray-300 mb-4">
-              Update your availability, rates, and expertise areas to attract more mentees
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="/dashboard/settings#mentorship"
-                className="px-4 py-2 bg-vybe-purple text-white rounded-lg hover:bg-vybe-purple/80 transition-all text-sm font-medium"
-              >
-                Mentorship Settings
-              </a>
-              <a
-                href="/profile/${user?.username || 'me'}"
-                className="px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-white/20 transition-all text-sm font-medium"
-              >
-                View Public Profile
-              </a>
+        
+        {/* Sidebar Column (40%) */}
+        <div className="col-span-1 lg:col-span-2 space-y-6">
+          
+          {/* Mentor Stats */}
+          <div className="vybe-card overflow-hidden">
+            <div className="vybe-card-header">
+              <h4 className="vybe-section-header">
+                <div className="vybe-gradient-accent-bar"></div>
+                Mentor Statistics
+              </h4>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                    <Users className="w-5 h-5 text-green-500" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-vybe-gray-400">Total Sessions</p>
+                    <p className="text-xl font-semibold text-white">147</p>
+                  </div>
+                </div>
+                <TrendingUp className="w-4 h-4 text-green-500" />
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center">
+                    <Star className="w-5 h-5 text-yellow-500" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-vybe-gray-400">Average Rating</p>
+                    <p className="text-xl font-semibold text-white">4.9</p>
+                  </div>
+                </div>
+                <span className="text-xs text-vybe-gray-400">(89 reviews)</span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-vybe-purple/20 rounded-lg flex items-center justify-center">
+                    <DollarSign className="w-5 h-5 text-vybe-purple" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-vybe-gray-400">Monthly Earnings</p>
+                    <p className="text-xl font-semibold text-white">$2,450</p>
+                  </div>
+                </div>
+                <span className="text-xs text-green-500">+15%</span>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <Clock className="w-5 h-5 text-blue-500" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-vybe-gray-400">Response Time</p>
+                    <p className="text-xl font-semibold text-white">2.3h</p>
+                  </div>
+                </div>
+                <span className="text-xs text-vybe-gray-400">avg</span>
+              </div>
             </div>
           </div>
-          <div className="hidden md:block">
-            <div className="text-6xl">🎯</div>
+          
+          {/* Recent Sessions */}
+          <div className="vybe-card overflow-hidden">
+            <div className="vybe-card-header">
+              <h4 className="vybe-section-header">
+                <div className="vybe-gradient-accent-bar"></div>
+                Recent Sessions
+              </h4>
+            </div>
+            <div className="p-6 space-y-3">
+              <div className="flex items-center justify-between p-3 bg-vybe-gray-800/50 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-medium">
+                    JD
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-white">John Doe</p>
+                    <p className="text-xs text-vybe-gray-400">React Performance</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-3 h-3 fill-current" />
+                    <span className="text-xs">5.0</span>
+                  </div>
+                  <p className="text-xs text-vybe-gray-400">2 days ago</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between p-3 bg-vybe-gray-800/50 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-white text-xs font-medium">
+                    SM
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-white">Sarah Miller</p>
+                    <p className="text-xs text-vybe-gray-400">Career Guidance</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-3 h-3 fill-current" />
+                    <span className="text-xs">4.8</span>
+                  </div>
+                  <p className="text-xs text-vybe-gray-400">5 days ago</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-between p-3 bg-vybe-gray-800/50 rounded-lg">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center text-white text-xs font-medium">
+                    AK
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-white">Alex Kim</p>
+                    <p className="text-xs text-vybe-gray-400">System Design</p>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="flex items-center gap-1 text-yellow-500">
+                    <Star className="w-3 h-3 fill-current" />
+                    <span className="text-xs">5.0</span>
+                  </div>
+                  <p className="text-xs text-vybe-gray-400">1 week ago</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="px-6 pb-6">
+              <button className="w-full px-4 py-2 bg-vybe-purple/20 text-vybe-purple-light rounded-lg hover:bg-vybe-purple/30 transition-all text-sm font-medium">
+                View All Sessions
+              </button>
+            </div>
+          </div>
+          
+          {/* Quick Actions */}
+          <div className="vybe-card p-6">
+            <h4 className="text-sm font-semibold text-white mb-4">Quick Actions</h4>
+            <div className="space-y-2">
+              <button className="w-full px-4 py-2 bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-all text-sm font-medium text-left flex items-center gap-2">
+                <MessageSquare className="w-4 h-4" />
+                Message All Mentees
+              </button>
+              <button className="w-full px-4 py-2 bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-all text-sm font-medium text-left flex items-center gap-2">
+                <Calendar className="w-4 h-4" />
+                Block Time Off
+              </button>
+              <button className="w-full px-4 py-2 bg-transparent border border-vybe-gray-600 text-white rounded-lg hover:bg-vybe-gray-800 transition-all text-sm font-medium text-left flex items-center gap-2">
+                <DollarSign className="w-4 h-4" />
+                Update Pricing
+              </button>
+            </div>
           </div>
         </div>
       </div>
