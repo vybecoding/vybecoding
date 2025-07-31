@@ -125,6 +125,51 @@ console.log("Test code block");
             </div>
           </PrimaryCard>
 
+          {/* Profile Pages Test Section */}
+          <PrimaryCard headerVariant="orange" title="👤 Profile Pages Test" className="mb-8" noHover>
+            <p className="text-sm text-vybe-gray-300 mb-4">
+              Test the newly implemented profile pages:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <SecondaryCard colorVariant="purple" noHover className="flex flex-col">
+                <h3 className="font-semibold text-white mb-2">✅ 17. Profile Main</h3>
+                <p className="text-sm text-vybe-gray-400 mb-3 flex-grow">
+                  Tabbed interface with info & booking
+                </p>
+                <Link href="/profile/alexdev">
+                  <Button variant="outline" size="sm" className="w-full">
+                    👤 View Profile Main
+                  </Button>
+                </Link>
+              </SecondaryCard>
+              
+              <SecondaryCard colorVariant="pink" noHover className="flex flex-col">
+                <h3 className="font-semibold text-white mb-2">✅ 18. Profile Info</h3>
+                <p className="text-sm text-vybe-gray-400 mb-3 flex-grow">
+                  Integrated as tab in Profile Main
+                </p>
+                <Link href="/profile/alexdev">
+                  <Button variant="outline" size="sm" className="w-full">
+                    ℹ️ View Profile Info Tab
+                  </Button>
+                </Link>
+              </SecondaryCard>
+              
+              <SecondaryCard colorVariant="default" noHover className="flex flex-col">
+                <h3 className="font-semibold text-white mb-2">✅ 19. Profile Booking</h3>
+                <p className="text-sm text-vybe-gray-400 mb-3 flex-grow">
+                  Integrated as tab in Profile Main
+                </p>
+                <Link href="/profile/alexdev">
+                  <Button variant="outline" size="sm" className="w-full">
+                    📅 View Booking Tab
+                  </Button>
+                </Link>
+              </SecondaryCard>
+            </div>
+          </PrimaryCard>
+
           <Link href="/guides">
             <Button variant="ghost" className="mb-6 -ml-2 text-vybe-gray-400 hover:text-white">
               <ArrowLeft className="w-4 h-4 mr-2" />

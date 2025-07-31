@@ -205,6 +205,24 @@ export const getUserByDisplayName = query({
   },
 });
 
+export const getUserByUsername = query({
+  args: { username: v.string() },
+  handler: async (ctx, args) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_username", (q) => q.eq("username", args.username))
+      .unique();
+
+    if (!user || user.profileVisibility === "private") {
+      return null;
+    }
+
+    // Remove sensitive information
+    const { stripeCustomerId, subscriptionStatus, ...publicProfile } = user;
+    return publicProfile;
+  },
+});
+
 export const searchUsersBySkills = query({
   args: { 
     skills: v.array(v.string()),

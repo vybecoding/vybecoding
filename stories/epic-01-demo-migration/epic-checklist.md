@@ -1,6 +1,6 @@
 # Epic-01 Demo Migration Checklist
 
-**Total Stories:** 41 | **Completed:** 16 (39%) | **Points:** 112/298 (38%)
+**Total Stories:** 41 | **Completed:** 20 (49%) | **Points:** 138/298 (46%)
 
 | ✓ | # | Story | Points | Status | Notes |
 |---|---|-------|--------|--------|-------|
@@ -19,10 +19,10 @@
 | ✅ | 13 | Apps Submit | 13 | APPROVED | 4-step process |
 | ✅ | 14 | App Native Detail | 8 | APPROVED | Native app detail page implemented |
 | ✅ | 15 | App Member Preview | 5 | APPROVED | Member app preview implemented |
-| ⏳ | 16 | Members Directory | 8 | Pending | |
-| ⏳ | 17 | Profile Main | 5 | Pending | |
-| ⏳ | 18 | Profile Info | 5 | Pending | |
-| ⏳ | 19 | Profile Booking | 5 | Pending | |
+| ✅ | 16 | Members Directory | 8 | APPROVED | Pixel-perfect member cards with filters |
+| ✅ | 17 | Profile Main | 8 | APPROVED | Tabbed interface with info & booking |
+| ✅ | 18 | Profile Info | 5 | APPROVED | Integrated as tab in Profile Main |
+| ✅ | 19 | Profile Booking | 5 | APPROVED | Integrated as tab in Profile Main |
 | ⏳ | 20 | Featured Content | 5 | Pending | |
 | ✅ | 21 | Dashboard Main | 8 | APPROVED | Tab navigation |
 | ⏳ | 22 | Dashboard Review | 8 | Pending | |
