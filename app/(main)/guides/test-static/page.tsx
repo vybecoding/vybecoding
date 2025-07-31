@@ -55,7 +55,7 @@ console.log("Test code block");
                 <p className="text-sm text-vybe-gray-400 mb-3">
                   Regular guide detail page with table of contents
                 </p>
-                <Link href={`/guides/${testGuide.slug}`}>
+                <Link href="/guides/test-static-guide">
                   <Button variant="outline" size="sm" className="w-full">
                     <Eye className="w-4 h-4 mr-2" />
                     View Detail Page
