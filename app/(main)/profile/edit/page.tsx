@@ -82,8 +82,13 @@ export default function ProfileEditPage() {
         description: "Your changes have been saved."
       });
 
-      // Redirect to profile view
-      router.push(`/profile/${userProfile._id}`);
+      // Redirect to profile view using username
+      const updatedUsername = profileData.username || userProfile.username;
+      if (updatedUsername) {
+        router.push(`/profile/${updatedUsername}`);
+      } else {
+        router.push('/dashboard/profile');
+      }
     } catch (error) {
       console.error("Profile update error:", error);
       toast({

@@ -20,6 +20,13 @@ import { Id } from "@/convex/_generated/dataModel";
 
 // Validation schema with security-first approach
 const profileSchema = z.object({
+  username: z.string()
+    .min(3, "Username must be at least 3 characters")
+    .max(20, "Username must be less than 20 characters")
+    .regex(/^[a-zA-Z0-9_-]+$/, "Username can only contain letters, numbers, underscores, and hyphens")
+    .refine((val) => validator.isAlphanumeric(val.replace(/[_-]/g, '')), {
+      message: "Username contains invalid characters"
+    }),
   displayName: z.string()
     .min(2, "Display name must be at least 2 characters")
     .max(50, "Display name must be less than 50 characters")
@@ -63,6 +70,7 @@ type ProfileFormData = z.infer<typeof profileSchema>;
 interface User {
   _id: Id<"users">;
   clerkId: string;
+  username?: string;
   displayName?: string;
   bio?: string;
   avatar?: string;
@@ -98,6 +106,7 @@ export function ProfileEdit({ user, onSave, onCancel, isLoading = false }: Profi
   } = useForm<ProfileFormData>({
     resolver: zodResolver(profileSchema),
     defaultValues: {
+      username: user.username || "",
       displayName: user.displayName || "",
       bio: user.bio || "",
       location: user.location || "",
@@ -112,6 +121,7 @@ export function ProfileEdit({ user, onSave, onCancel, isLoading = false }: Profi
   // Reset form when user data changes
   useEffect(() => {
     reset({
+      username: user.username || "",
       displayName: user.displayName || "",
       bio: user.bio || "",
       location: user.location || "",
@@ -172,6 +182,7 @@ export function ProfileEdit({ user, onSave, onCancel, isLoading = false }: Profi
       // Sanitize all text inputs
       const sanitizedData = {
         ...data,
+        username: data.username ? DOMPurify.sanitize(data.username.trim()) : undefined,
         displayName: data.displayName ? DOMPurify.sanitize(data.displayName.trim()) : undefined,
         bio: data.bio ? DOMPurify.sanitize(data.bio.trim()) : undefined,
         location: data.location ? DOMPurify.sanitize(data.location.trim()) : undefined,
@@ -235,6 +246,25 @@ export function ProfileEdit({ user, onSave, onCancel, isLoading = false }: Profi
         {/* Basic Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
+            <Label htmlFor="username" className="text-sm font-medium">
+              Username *
+            </Label>
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">@</span>
+              <Input
+                id="username"
+                {...register("username")}
+                placeholder="username"
+                className={`pl-8 ${errors.username ? "border-red-500" : ""}`}
+              />
+            </div>
+            {errors.username && (
+              <p className="text-sm text-red-600 mt-1">{errors.username.message}</p>
+            )}
+            <p className="text-xs text-gray-500 mt-1">Your profile URL: /profile/{watch("username") || "username"}</p>
+          </div>
+
+          <div>
             <Label htmlFor="displayName" className="text-sm font-medium">
               Display Name *
             </Label>
@@ -248,21 +278,21 @@ export function ProfileEdit({ user, onSave, onCancel, isLoading = false }: Profi
               <p className="text-sm text-red-600 mt-1">{errors.displayName.message}</p>
             )}
           </div>
+        </div>
 
-          <div>
-            <Label htmlFor="location" className="text-sm font-medium">
-              Location
-            </Label>
-            <Input
-              id="location"
-              {...register("location")}
-              placeholder="City, Country"
-              className={errors.location ? "border-red-500" : ""}
-            />
-            {errors.location && (
-              <p className="text-sm text-red-600 mt-1">{errors.location.message}</p>
-            )}
-          </div>
+        <div>
+          <Label htmlFor="location" className="text-sm font-medium">
+            Location
+          </Label>
+          <Input
+            id="location"
+            {...register("location")}
+            placeholder="City, Country"
+            className={errors.location ? "border-red-500" : ""}
+          />
+          {errors.location && (
+            <p className="text-sm text-red-600 mt-1">{errors.location.message}</p>
+          )}
         </div>
 
         {/* Bio */}

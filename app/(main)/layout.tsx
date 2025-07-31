@@ -1,4 +1,5 @@
 import { Header, Footer } from '@/components/layout'
+import { UserProfileSync } from '@/components/auth/UserProfileSync'
 
 export default function MainLayout({
   children,
@@ -7,6 +8,7 @@ export default function MainLayout({
 }) {
   return (
     <div className="min-h-screen bg-black text-white selection:bg-vybe-purple/20 selection:text-white">
+      <UserProfileSync />
       <Header />
       <main className="pt-16 min-h-screen">
         {children}
