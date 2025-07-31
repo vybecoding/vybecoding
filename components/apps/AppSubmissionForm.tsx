@@ -13,6 +13,7 @@ import { Progress } from "@/components/ui/progress";
 import { Card, CardContent } from "@/components/ui/card";
 import { 
   BasicInfoStep, 
+  DetailsStep,
   VisualAssetsStep, 
   LinksStep, 
   TechnicalStep, 
@@ -114,7 +115,7 @@ interface AppSubmissionFormProps {
 
 const FORM_STEPS = [
   { id: 1, name: "Basic Info", component: BasicInfoStep },
-  { id: 2, name: "Details", component: TechnicalStep },
+  { id: 2, name: "Details", component: DetailsStep },
   { id: 3, name: "Preview", component: ReviewStep },
   { id: 4, name: "Submit", component: ReviewStep },
 ];
@@ -296,7 +297,7 @@ export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
       case 1:
         return ["name", "liveUrl", "category", "shortDescription"];
       case 2:
-        return ["techStack", "tags", "fullDescription", "githubUrl", "demoVideoUrl"];
+        return ["fullDescription"]; // Details step - other fields are optional
       case 3:
         return []; // Preview step - no validation needed
       case 4:

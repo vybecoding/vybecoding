@@ -20,6 +20,7 @@ export interface AppFormData {
   
   // Technical
   techStack: string[];
+  techStackString?: string; // For demo-style tech input
   platforms: string[];
   license: string;
   
