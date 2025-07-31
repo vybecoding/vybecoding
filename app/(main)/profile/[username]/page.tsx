@@ -11,6 +11,7 @@ import { Card } from "@/components/ui/card";
 import { UserX, Lock, ArrowLeft } from "lucide-react";
 import { ProfileInfoTab } from "@/components/profile/ProfileInfoTab";
 import { ProfileBookingTab } from "@/components/profile/ProfileBookingTab";
+import { getDemoMember } from "@/lib/demo-data/members";
 
 interface ProfilePageProps {
   params: Promise<{ username: string }>;
@@ -33,9 +34,13 @@ export default function ProfilePage({ params }: ProfilePageProps) {
   const profileUser = useQuery(api.users.getUserByUsername, 
     username ? { username } : "skip"
   );
+  
+  // Use demo data if no real user found
+  const demoUser = username ? getDemoMember(username) : null;
+  const userData = profileUser || demoUser;
 
   // Check if this is the current user's own profile
-  const isOwnProfile = currentUser && profileUser && currentUser.id === profileUser.clerkId;
+  const isOwnProfile = currentUser && userData && currentUser.id === userData.clerkId;
 
   // Loading state
   if (!username || profileUser === undefined) {
@@ -67,7 +72,7 @@ export default function ProfilePage({ params }: ProfilePageProps) {
   }
 
   // Profile not found or private
-  if (profileUser === null) {
+  if (userData === null) {
     return (
       <div className="page-container nebula-background">
         <div className="nebula-middle"></div>
@@ -107,7 +112,7 @@ export default function ProfilePage({ params }: ProfilePageProps) {
   }
 
   // Check if profile is members-only and user is not authenticated
-  if (profileUser.profileVisibility === "members-only" && !currentUser) {
+  if (userData.profileVisibility === "members-only" && !currentUser) {
     return (
       <div className="page-container nebula-background">
         <div className="nebula-middle"></div>
@@ -175,13 +180,13 @@ export default function ProfilePage({ params }: ProfilePageProps) {
         <div className="profile-tab-contents flex-1">
           {activeTab === 'info' && (
             <ProfileInfoTab 
-              user={profileUser}
+              user={userData}
               isOwnProfile={!!isOwnProfile}
             />
           )}
           {activeTab === 'booking' && (
             <ProfileBookingTab 
-              user={profileUser}
+              user={userData}
             />
           )}
         </div>
