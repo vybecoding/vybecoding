@@ -6,13 +6,15 @@ interface GradientTextProps {
   className?: string;
   gradient?: 'brand' | 'title' | 'purple' | 'pink' | 'orange' | 'ai' | 'custom';
   customGradient?: string;
+  style?: React.CSSProperties;
 }
 
 export const GradientText: React.FC<GradientTextProps> = ({
   children,
   className,
   gradient = 'brand',
-  customGradient
+  customGradient,
+  style
 }) => {
   const gradientClasses = {
     brand: 'bg-gradient-to-r from-vybe-purple via-vybe-pink to-vybe-orange',
@@ -33,9 +35,10 @@ export const GradientText: React.FC<GradientTextProps> = ({
         gradientClass,
         className
       )}
-      style={gradient === 'custom' && customGradient ? {
-        backgroundImage: customGradient
-      } : undefined}
+      style={{
+        ...(gradient === 'custom' && customGradient ? { backgroundImage: customGradient } : {}),
+        ...style
+      }}
     >
       {children}
     </span>

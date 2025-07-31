@@ -1,0 +1,148 @@
+<!-- Step 1: Guide Overview -->
+                    <div id="guide-creation-step-1" class="guide-creation-step">
+                        <div class="vybe-card p-8">
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-lg font-semibold text-white flex items-center gap-2">
+                                    <div class="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                                    Guide Overview
+                                </h2>
+                            </div>
+                            
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="title" class="block text-sm font-medium text-gray-300 mb-2">
+                                        Title <span class="text-red-500">*</span>
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="title" 
+                                        class="form-input w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800/80 text-white placeholder-gray-500 focus:border-vybe-purple-light focus:ring-1 focus:ring-vybe-purple-light transition-all"
+                                        placeholder="Complete Guide to Building REST APIs with Node.js"
+                                        value="Complete Guide to Building REST APIs with Node.js"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label for="subtitle" class="block text-sm font-medium text-gray-300 mb-2">
+                                        Subtitle
+                                    </label>
+                                    <input 
+                                        type="text" 
+                                        id="subtitle" 
+                                        class="form-input w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800/80 text-white placeholder-gray-500 focus:border-vybe-purple-light focus:ring-1 focus:ring-vybe-purple-light transition-all"
+                                        placeholder="Learn authentication, validation, and deployment best practices"
+                                        value="Learn authentication, validation, and deployment best practices"
+                                    />
+                                </div>
+
+                                <div>
+                                    <label for="description" class="block text-sm font-medium text-gray-300 mb-2">
+                                        Description <span class="text-red-500">*</span>
+                                    </label>
+                                    <textarea 
+                                        id="description" 
+                                        rows="4" 
+                                        class="form-textarea w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800/80 text-white placeholder-gray-500 focus:border-vybe-purple-light focus:ring-1 focus:ring-vybe-purple-light transition-all resize-none"
+                                        placeholder="A comprehensive guide that covers everything you need to know about building production-ready REST APIs with Node.js..."
+                                    >A comprehensive guide that covers everything you need to know about building production-ready REST APIs with Node.js. From basic setup to advanced authentication patterns, we'll walk through real-world examples and best practices used by top engineering teams.</textarea>
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="category" class="block text-sm font-medium text-gray-300 mb-2">
+                                            Category <span class="text-red-500">*</span>
+                                        </label>
+                                        <select id="category" class="form-select w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800/80 text-white focus:border-vybe-purple-light focus:ring-1 focus:ring-vybe-purple-light transition-all">
+                                            <option value="">Select a category</option>
+                                            <option value="frontend" selected>Frontend Development</option>
+                                            <option value="backend">Backend Development</option>
+                                            <option value="fullstack">Full Stack</option>
+                                            <option value="mobile">Mobile Development</option>
+                                            <option value="ai-ml">AI & Machine Learning</option>
+                                            <option value="devops">DevOps & Infrastructure</option>
+                                            <option value="design">UI/UX Design</option>
+                                            <option value="data-science">Data Science</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label for="difficulty" class="block text-sm font-medium text-gray-300 mb-2">
+                                            Difficulty Level
+                                        </label>
+                                        <select id="difficulty" class="form-select w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800/80 text-white focus:border-vybe-purple-light focus:ring-1 focus:ring-vybe-purple-light transition-all">
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate" selected>Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Tags -->
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">
+                                        Tags <span class="text-red-500">*</span>
+                                        <span class="text-xs font-normal text-gray-500 ml-2">
+                                            (Add up to 5 tags)
+                                        </span>
+                                    </label>
+                                    
+                                    <!-- Selected Tags -->
+                                    <div class="flex flex-wrap gap-2 mb-3">
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-vybe-purple/20 text-vybe-purple border border-vybe-purple/30">
+                                            nodejs
+                                            <button type="button" class="ml-2 hover:text-red-500">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-vybe-pink/20 text-vybe-pink border border-vybe-pink/30">
+                                            api-design
+                                            <button type="button" class="ml-2 hover:text-red-500">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm bg-vybe-orange/20 text-vybe-orange border border-vybe-orange/30">
+                                            authentication
+                                            <button type="button" class="ml-2 hover:text-red-500">
+                                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                    <!-- Tag Input -->
+                                    <div class="relative">
+                                        <input 
+                                            type="text" 
+                                            class="form-input w-full px-4 py-3 rounded-lg border border-gray-700 bg-gray-800/80 text-white placeholder-gray-500 focus:border-vybe-purple-light focus:ring-1 focus:ring-vybe-purple-light transition-all"
+                                            placeholder="Type to search tags or create new ones"
+                                        />
+                                        
+                                        <!-- Tag Suggestions (hidden by default) -->
+                                        <div class="absolute top-full left-0 right-0 mt-1 bg-gray-900 border border-gray-700 rounded-md shadow-lg z-10 hidden">
+                                            <button type="button" class="w-full text-left px-3 py-2 hover:bg-gray-800 transition-colors">
+                                                express
+                                            </button>
+                                            <button type="button" class="w-full text-left px-3 py-2 hover:bg-gray-800 transition-colors">
+                                                rest-api
+                                            </button>
+                                            <button type="button" class="w-full text-left px-3 py-2 hover:bg-gray-800 transition-colors">
+                                                jwt
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-between pt-6">
+                                    <div></div>
+                                    <button type="button" onclick="goToGuideStep(2)" class="btn btn-primary-purple">
+                                        Next: Guide Modules →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

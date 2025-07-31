@@ -318,15 +318,11 @@ export default function GuideSubmitPage() {
         <div>
           {/* Step 1: Overview */}
           {currentStep === 1 && (
-            <div className="minimal-card rounded-lg p-8">
-              <h2 className="text-lg font-semibold text-white mb-6 flex items-center gap-2">
-                <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
-                Guide Overview
-              </h2>
+            <PrimaryCard title="Guide Overview" headerVariant="default" noHover>
               
               <div className="space-y-6">
                 <div>
-                  <Label htmlFor="title" className="text-base font-medium mb-2">
+                  <Label htmlFor="title" className="block text-sm font-medium text-gray-300 mb-2">
                     Title <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -334,12 +330,11 @@ export default function GuideSubmitPage() {
                     placeholder="Complete Guide to Building REST APIs with Node.js"
                     value={formData.title}
                     onChange={(e) => updateFormData({ title: e.target.value })}
-                    className="text-xl font-semibold"
                   />
                 </div>
 
                 <div>
-                  <Label htmlFor="subtitle" className="text-base font-medium mb-2">
+                  <Label htmlFor="subtitle" className="block text-sm font-medium text-gray-300 mb-2">
                     Subtitle
                   </Label>
                   <Input
@@ -351,7 +346,7 @@ export default function GuideSubmitPage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="description" className="text-base font-medium mb-2">
+                  <Label htmlFor="description" className="block text-sm font-medium text-gray-300 mb-2">
                     Description <span className="text-red-500">*</span>
                   </Label>
                   <Textarea
@@ -365,7 +360,7 @@ export default function GuideSubmitPage() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <Label htmlFor="category" className="text-base font-medium mb-2">
+                    <Label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
                       Category <span className="text-red-500">*</span>
                     </Label>
                     <Select value={formData.category} onValueChange={(value) => updateFormData({ category: value })}>
@@ -383,7 +378,7 @@ export default function GuideSubmitPage() {
                   </div>
 
                   <div>
-                    <Label htmlFor="difficulty" className="text-base font-medium mb-2">
+                    <Label htmlFor="difficulty" className="block text-sm font-medium text-gray-300 mb-2">
                       Difficulty Level
                     </Label>
                     <Select value={formData.difficulty} onValueChange={(value) => updateFormData({ difficulty: value })}>
@@ -405,9 +400,9 @@ export default function GuideSubmitPage() {
 
                 {/* Tags */}
                 <div>
-                  <Label className="text-base font-medium mb-2">
+                  <Label className="block text-sm font-medium text-gray-300 mb-2">
                     Tags <span className="text-red-500">*</span>
-                    <span className="text-sm font-normal text-vybe-gray-400 ml-2">
+                    <span className="text-xs font-normal text-gray-500 ml-2">
                       (Add up to 5 tags)
                     </span>
                   </Label>
@@ -470,7 +465,7 @@ export default function GuideSubmitPage() {
                   </Button>
                 </div>
               </div>
-            </div>
+            </PrimaryCard>
           )}
 
           {/* Step 2: Modules */}
@@ -713,7 +708,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
 
           {/* Step 4: Resources */}
           {currentStep === 4 && (
-            <PrimaryCard title="Resources & Downloads" headerVariant="default">
+            <PrimaryCard title="Resources & Downloads" headerVariant="default" noHover>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Upload Area */}
                 <div>
@@ -784,7 +779,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
               </h2>
               
               {/* AI Review Checklist */}
-              <PrimaryCard title="AI Review Checklist" headerVariant="purple" className="mb-8">
+              <PrimaryCard title="AI Review Checklist" headerVariant="purple" className="mb-8" noHover>
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
@@ -814,7 +809,7 @@ Rate limiting is a crucial technique for controlling the number of requests..."
               </PrimaryCard>
 
               {/* Final Review */}
-              <PrimaryCard title="Guide Summary" headerVariant="default" className="mb-8">
+              <PrimaryCard title="Guide Summary" headerVariant="default" className="mb-8" noHover>
                 <div className="space-y-3">
                   <div>
                     <span className="font-medium">Title:</span> {formData.title || "Not set"}
