@@ -1,6 +1,4 @@
-const { chromium } = require('playwright');
-const fs = require('fs').promises;
-const path = require('path');
+import { chromium } from 'playwright';
 
 async function compareLogos() {
   const browser = await chromium.launch({ headless: false });
