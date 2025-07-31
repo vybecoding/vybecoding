@@ -1,6 +1,6 @@
-const { chromium } = require('playwright');
-const fs = require('fs');
-const path = require('path');
+import { chromium } from 'playwright';
+import fs from 'fs';
+import path from 'path';
 
 async function compareGuidesSubmitPages() {
   console.log('🚀 Starting visual comparison for guides submit page...');
@@ -18,13 +18,13 @@ async function compareGuidesSubmitPages() {
     // Demo page
     console.log('📸 Capturing demo page screenshots...');
     const demoPage = await context.newPage();
-    await demoPage.goto('http://localhost:8080/guides/submit.html');
+    await demoPage.goto('http://localhost:8080/pages/guides/submit.html');
     await demoPage.waitForLoadState('networkidle');
     
     // Next.js page
     console.log('📸 Capturing Next.js page screenshots...');
     const nextjsPage = await context.newPage();
-    await nextjsPage.goto('http://localhost:3000/guides/submit');
+    await nextjsPage.goto('http://localhost:3002/guides/submit');
     await nextjsPage.waitForLoadState('networkidle');
     
     // Take screenshots at different viewports
@@ -219,19 +219,17 @@ ${report.issues.length === 0 ? 'No issues detected! 🎉' :
 }
 
 // Run the comparison
-if (require.main === module) {
-  compareGuidesSubmitPages()
-    .then(report => {
-      console.log('\n🎯 Summary:');
-      console.log(`- Issues found: ${report.issues.length}`);
-      console.log(`- High severity: ${report.issues.filter(i => i.severity === 'high').length}`);
-      console.log(`- Medium severity: ${report.issues.filter(i => i.severity === 'medium').length}`);
-      process.exit(0);
-    })
-    .catch(error => {
-      console.error('💥 Comparison failed:', error);
-      process.exit(1);
-    });
-}
+compareGuidesSubmitPages()
+  .then(report => {
+    console.log('\n🎯 Summary:');
+    console.log(`- Issues found: ${report.issues.length}`);
+    console.log(`- High severity: ${report.issues.filter(i => i.severity === 'high').length}`);
+    console.log(`- Medium severity: ${report.issues.filter(i => i.severity === 'medium').length}`);
+    process.exit(0);
+  })
+  .catch(error => {
+    console.error('💥 Comparison failed:', error);
+    process.exit(1);
+  });
 
-module.exports = { compareGuidesSubmitPages };
+export { compareGuidesSubmitPages };
