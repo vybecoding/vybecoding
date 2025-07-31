@@ -14,6 +14,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { 
   BasicInfoStep, 
   DetailsStep,
+  PreviewStep,
+  SubmitStep,
   VisualAssetsStep, 
   LinksStep, 
   TechnicalStep, 
@@ -116,8 +118,8 @@ interface AppSubmissionFormProps {
 const FORM_STEPS = [
   { id: 1, name: "Basic Info", component: BasicInfoStep },
   { id: 2, name: "Details", component: DetailsStep },
-  { id: 3, name: "Preview", component: ReviewStep },
-  { id: 4, name: "Submit", component: ReviewStep },
+  { id: 3, name: "Preview", component: PreviewStep },
+  { id: 4, name: "Submit", component: SubmitStep },
 ];
 
 export function AppSubmissionForm({ appId }: AppSubmissionFormProps) {
