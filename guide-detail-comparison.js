@@ -65,8 +65,7 @@ async function compareGuideDetailPages() {
         mainHeading: document.querySelector('h1')?.textContent?.trim() || '',
         hasProgressBar: !!document.querySelector('.fixed.top-0'),
         hasSidebar: !!document.querySelector('.col-span-4'),
-        hasAuthorSection: !!document.querySelector('h3:contains("About the Author")') || 
-                         !!Array.from(document.querySelectorAll('h3')).find(h => h.textContent?.includes('About the Author')),
+        hasAuthorSection: !!Array.from(document.querySelectorAll('h3')).find(h => h.textContent?.includes('About the Author')),
         hasToc: !!Array.from(document.querySelectorAll('h2, h3')).find(h => h.textContent?.includes('Table of Contents')),
         sidebarElements: Array.from(document.querySelectorAll('.col-span-4 .vybe-card h2, .col-span-4 .vybe-card h3')).map(el => el.textContent?.trim()),
         layout: document.querySelector('.grid.grid-cols-12') ? 'two-column' : 'single-column'
@@ -79,8 +78,7 @@ async function compareGuideDetailPages() {
         mainHeading: document.querySelector('h1')?.textContent?.trim() || '',
         hasProgressBar: !!document.querySelector('.fixed.top-0'),
         hasSidebar: !!document.querySelector('.col-span-4'),
-        hasAuthorSection: !!document.querySelector('h3:contains("About the Author")') || 
-                         !!Array.from(document.querySelectorAll('h3')).find(h => h.textContent?.includes('About the Author')),
+        hasAuthorSection: !!Array.from(document.querySelectorAll('h3')).find(h => h.textContent?.includes('About the Author')),
         hasToc: !!Array.from(document.querySelectorAll('h2, h3')).find(h => h.textContent?.includes('Table of Contents')),
         sidebarElements: Array.from(document.querySelectorAll('.col-span-4 .vybe-card h2, .col-span-4 .vybe-card h3')).map(el => el.textContent?.trim()),
         layout: document.querySelector('.grid.grid-cols-12') ? 'two-column' : 'single-column',
