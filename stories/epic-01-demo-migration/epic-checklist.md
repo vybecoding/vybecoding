@@ -1,6 +1,6 @@
 # Epic-01 Demo Migration Checklist
 
-**Total Stories:** 41 | **Completed:** 14 (34%) | **Points:** 99/298 (33%)
+**Total Stories:** 41 | **Completed:** 16 (39%) | **Points:** 112/298 (38%)
 
 | ✓ | # | Story | Points | Status | Notes |
 |---|---|-------|--------|--------|-------|
@@ -17,8 +17,8 @@
 | ✅ | 11 | Apps Main | 8 | APPROVED | Same as browse |
 | ✅ | 12 | Apps Browse | 8 | APPROVED | Multi-category selection |
 | ✅ | 13 | Apps Submit | 13 | APPROVED | 4-step process |
-| ⏳ | 14 | App Native Detail | 8 | Pending | |
-| ⏳ | 15 | App Member Preview | 5 | Pending | |
+| ✅ | 14 | App Native Detail | 8 | APPROVED | Native app detail page implemented |
+| ✅ | 15 | App Member Preview | 5 | APPROVED | Member app preview implemented |
 | ⏳ | 16 | Members Directory | 8 | Pending | |
 | ⏳ | 17 | Profile Main | 5 | Pending | |
 | ⏳ | 18 | Profile Info | 5 | Pending | |
@@ -54,7 +54,7 @@
 ## Quick Stats
 - **Authentication**: 4/4 Complete ✅
 - **Guides**: 2/6 Complete 
-- **Apps**: 3/5 Complete
+- **Apps**: 5/5 Complete ✅
 - **Dashboard**: 1/6 Complete
 - **Settings**: 0/5 Complete
 - **Other**: 1/14 Complete

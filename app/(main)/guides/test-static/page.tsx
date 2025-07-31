@@ -92,6 +92,39 @@ console.log("Test code block");
             </div>
           </PrimaryCard>
 
+          {/* App Pages Test Section */}
+          <PrimaryCard headerVariant="purple" title="🚀 App Pages Test" className="mb-8" noHover>
+            <p className="text-sm text-vybe-gray-300 mb-4">
+              Test the newly implemented app detail pages:
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <SecondaryCard colorVariant="default" noHover className="flex flex-col">
+                <h3 className="font-semibold text-white mb-2">14. App Native Detail</h3>
+                <p className="text-sm text-vybe-gray-400 mb-3 flex-grow">
+                  AI Calculator app with interactive interface and AI features
+                </p>
+                <Link href="/apps/native-detail">
+                  <Button variant="outline" size="sm" className="w-full">
+                    🧮 View Native Detail
+                  </Button>
+                </Link>
+              </SecondaryCard>
+              
+              <SecondaryCard colorVariant="pink" noHover className="flex flex-col">
+                <h3 className="font-semibold text-white mb-2">15. App Member Preview</h3>
+                <p className="text-sm text-vybe-gray-400 mb-3 flex-grow">
+                  Fitness Coach app preview with launch button
+                </p>
+                <Link href="/apps/member-preview">
+                  <Button variant="outline" size="sm" className="w-full">
+                    ⚡ View Member Preview
+                  </Button>
+                </Link>
+              </SecondaryCard>
+            </div>
+          </PrimaryCard>
+
           <Link href="/guides">
             <Button variant="ghost" className="mb-6 -ml-2 text-vybe-gray-400 hover:text-white">
               <ArrowLeft className="w-4 h-4 mr-2" />

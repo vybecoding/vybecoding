@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useUser, UserButton, SignInButton } from '@clerk/nextjs';
@@ -15,9 +15,15 @@ export interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showHamburger, setShowHamburger] = useState(false);
   const pathname = usePathname();
   const { isSignedIn } = useUser();
+  
+  const headerRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+  const actionsRef = useRef<HTMLDivElement>(null);
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -29,19 +35,55 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
     { href: '/pricing', label: 'Pricing' },
   ];
 
+  // Check for overlap between navigation and logo/actions
+  useEffect(() => {
+    const checkOverlap = () => {
+      if (!logoRef.current || !navRef.current || !actionsRef.current) return;
+
+      const logoRect = logoRef.current.getBoundingClientRect();
+      const navRect = navRef.current.getBoundingClientRect();
+      const actionsRect = actionsRef.current.getBoundingClientRect();
+
+      // Add some buffer space (20px on each side)
+      const logoRight = logoRect.right + 20;
+      const actionsLeft = actionsRect.left - 20;
+      
+      // Check if nav would overlap with logo or actions
+      const wouldOverlap = navRect.left < logoRight || navRect.right > actionsLeft;
+      
+      setShowHamburger(wouldOverlap);
+    };
+
+    // Check on mount and resize
+    checkOverlap();
+    window.addEventListener('resize', checkOverlap);
+    
+    // Also check after a small delay to ensure everything is rendered
+    const timer = setTimeout(checkOverlap, 100);
+
+    return () => {
+      window.removeEventListener('resize', checkOverlap);
+      clearTimeout(timer);
+    };
+  }, [pathname]); // Re-check when route changes
+
   return (
     <>
-      <header className={`${styles.header} ${className}`}>
+      <header ref={headerRef} className={`${styles.header} ${className}`}>
         <nav className={styles.nav} role="navigation" aria-label="Main navigation">
           <div className={styles.container}>
             <div className={styles.content}>
               {/* Logo */}
-              <Link href="/" className={styles.logoLink}>
+              <Link ref={logoRef} href="/" className={styles.logoLink}>
                 <Logo size="lg" />
               </Link>
 
-              {/* Desktop Navigation */}
-              <div className={styles.desktopNav}>
+              {/* Desktop Navigation - Hide when hamburger should show */}
+              <div 
+                ref={navRef} 
+                className={styles.desktopNav}
+                style={{ visibility: showHamburger ? 'hidden' : 'visible' }}
+              >
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
@@ -54,7 +96,19 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
               </div>
 
               {/* User Profile Section */}
-              <div className={styles.actions}>
+              <div ref={actionsRef} className={styles.actions}>
+                {/* Dynamic Hamburger Menu - Shows when nav would overlap */}
+                {showHamburger && (
+                  <button
+                    className={`${styles.dynamicMenuButton} hidden md:flex`}
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    aria-expanded={mobileMenuOpen}
+                    aria-label="Toggle navigation menu"
+                  >
+                    <Menu className="h-6 w-6" />
+                  </button>
+                )}
+                
                 {isSignedIn ? (
                   <>
                     {/* Notifications */}
@@ -86,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                   </SignInButton>
                 )}
                 
-                {/* Mobile Menu Button */}
+                {/* Mobile Menu Button - Always visible on mobile */}
                 <button
                   className={styles.mobileMenuButton}
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

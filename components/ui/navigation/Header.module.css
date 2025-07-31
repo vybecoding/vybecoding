@@ -139,3 +139,19 @@
 .mobileMenuButton:hover {
   color: #ffffff;
 }
+
+.dynamicMenuButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: #f3f4f6;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.dynamicMenuButton:hover {
+  color: #ffffff;
+}

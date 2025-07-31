@@ -2,12 +2,11 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Calculator } from 'lucide-react'
-import { PrimaryCard } from '@/components/ui/cards/PrimaryCard'
+import { ArrowLeft } from 'lucide-react'
 
 export default function AppNativeDetailPage() {
   return (
-    <div className="pt-24 pb-16 min-h-screen bg-black">
+    <div className="pt-5 pb-16 relative bg-black">
       <div className="max-w-6xl mx-auto px-6">
         {/* Back Button */}
         <Link 
@@ -19,10 +18,12 @@ export default function AppNativeDetailPage() {
         </Link>
         
         {/* App Detail Header */}
-        <PrimaryCard className="p-8 mb-8">
+        <div className="p-8 mb-8">
           <div className="flex items-start gap-6">
             <div className="w-16 h-16 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-lg flex items-center justify-center flex-shrink-0">
-              <Calculator className="w-8 h-8 text-white" />
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 17H7V7h2v10zm4 0h-2V7h2v10zm4 0h-2V7h2v10zm2-8H4V7h15v2z"/>
+              </svg>
             </div>
             <div className="flex-1">
               <h1 className="text-3xl font-light mb-2 text-white">AI Calculator</h1>
@@ -44,12 +45,12 @@ export default function AppNativeDetailPage() {
               </div>
             </div>
           </div>
-        </PrimaryCard>
+        </div>
         
         {/* App Interface */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Calculator Interface */}
-          <PrimaryCard className="p-6">
+          <div className="p-6">
             <h3 className="text-xl font-medium mb-4 text-white">Calculator</h3>
             <div className="bg-gray-900 rounded-lg p-4">
               <div className="bg-gray-800 rounded p-3 mb-4">
@@ -81,16 +82,16 @@ export default function AppNativeDetailPage() {
                 <button className="bg-vybe-purple hover:bg-vybe-purple/80 text-white p-3 rounded transition-colors">=</button>
               </div>
             </div>
-          </PrimaryCard>
+          </div>
           
           {/* AI Features */}
-          <PrimaryCard className="p-6">
+          <div className="p-6">
             <h3 className="text-xl font-medium mb-4 text-white">AI Features</h3>
             <div className="space-y-4">
               <div className="bg-gray-900 rounded-lg p-4">
                 <h4 className="font-medium mb-2 text-white">Natural Language Input</h4>
                 <p className="text-sm text-gray-400 mb-3">Ask questions in plain English:</p>
-                <div className="bg-gray-800 rounded p-2 text-sm font-mono text-green-400">
+                <div className="bg-gray-800 rounded p-2 text-sm font-mono text-white">
                   "What is 15% of 250?"
                 </div>
               </div>
@@ -98,7 +99,7 @@ export default function AppNativeDetailPage() {
               <div className="bg-gray-900 rounded-lg p-4">
                 <h4 className="font-medium mb-2 text-white">Advanced Math</h4>
                 <p className="text-sm text-gray-400 mb-3">Solve complex equations:</p>
-                <div className="bg-gray-800 rounded p-2 text-sm font-mono text-green-400">
+                <div className="bg-gray-800 rounded p-2 text-sm font-mono text-white">
                   "Solve x² + 5x + 6 = 0"
                 </div>
               </div>
@@ -106,12 +107,12 @@ export default function AppNativeDetailPage() {
               <div className="bg-gray-900 rounded-lg p-4">
                 <h4 className="font-medium mb-2 text-white">Unit Conversion</h4>
                 <p className="text-sm text-gray-400 mb-3">Convert between units:</p>
-                <div className="bg-gray-800 rounded p-2 text-sm font-mono text-green-400">
+                <div className="bg-gray-800 rounded p-2 text-sm font-mono text-white">
                   "Convert 100 miles to km"
                 </div>
               </div>
             </div>
-          </PrimaryCard>
+          </div>
         </div>
       </div>
     </div>
