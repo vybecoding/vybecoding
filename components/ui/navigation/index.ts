@@ -9,3 +9,5 @@ export type { LogoProps } from './Logo';
 
 export { MobileMenu } from './MobileMenu';
 export type { MobileMenuProps, NavItem } from './MobileMenu';
+
+export { UserMenu } from './UserMenu';

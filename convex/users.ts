@@ -17,6 +17,7 @@ export const createUser = mutation({
     email: v.string(),
     firstName: v.optional(v.string()),
     lastName: v.optional(v.string()),
+    username: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
     const existingUser = await ctx.db
@@ -27,10 +28,48 @@ export const createUser = mutation({
     if (existingUser) {
       return existingUser._id;
     }
+    
+    // Generate username if not provided
+    let username = args.username;
+    if (!username) {
+      const email = args.email;
+      const firstName = args.firstName || "";
+      const lastName = args.lastName || "";
+      
+      if (email) {
+        username = email.split('@')[0].toLowerCase();
+      } else if (firstName || lastName) {
+        username = `${firstName}${lastName}`.toLowerCase();
+      } else {
+        username = `user${args.clerkId.slice(0, 8)}`;
+      }
+      
+      // Clean username
+      username = username.replace(/[^a-z0-9]/g, '').slice(0, 20);
+    }
+    
+    // Check if username is taken and append number if necessary
+    let finalUsername = username;
+    let counter = 1;
+    while (true) {
+      const existing = await ctx.db
+        .query("users")
+        .withIndex("by_username", (q) => q.eq("username", finalUsername))
+        .unique();
+      
+      if (!existing) break;
+      
+      finalUsername = `${username}${counter}`;
+      counter++;
+    }
 
     return await ctx.db.insert("users", {
       clerkId: args.clerkId,
       email: args.email,
+      username: finalUsername,
+      displayName: args.firstName && args.lastName 
+        ? `${args.firstName} ${args.lastName}` 
+        : args.firstName || args.lastName || finalUsername,
       firstName: args.firstName,
       lastName: args.lastName,
       stripeCustomerId: null,

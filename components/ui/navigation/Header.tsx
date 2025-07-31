@@ -3,10 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useUser, UserButton, SignInButton } from '@clerk/nextjs';
+import { useUser, SignInButton } from '@clerk/nextjs';
 import { Button } from '../button/Button';
 import { Logo } from './Logo';
 import { MobileMenu } from './MobileMenu';
+import { UserMenu } from './UserMenu';
 import { Menu, Bell } from 'lucide-react';
 import styles from './Header.module.css';
 
@@ -119,18 +120,8 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
                       </button>
                     </div>
                     
-                    {/* User Button */}
-                    <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-vybe-purple/30 hover:border-vybe-purple/50 transition-colors [&_img]:w-full [&_img]:h-full [&_img]:object-cover">
-                      <UserButton 
-                        afterSignOutUrl="/" 
-                        appearance={{
-                          elements: {
-                            avatarBox: "w-full h-full",
-                            userButtonAvatarBox: "w-full h-full"
-                          }
-                        }}
-                      />
-                    </div>
+                    {/* User Menu */}
+                    <UserMenu />
                   </>
                 ) : (
                   <SignInButton mode="modal">

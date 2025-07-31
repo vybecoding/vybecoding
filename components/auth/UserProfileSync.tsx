@@ -31,11 +31,34 @@ export function UserProfileSync() {
       // If user doesn't exist in Convex, create them
       if (existingUser === null) {
         try {
+          // Generate a default username from email or name
+          const email = user.emailAddresses[0]?.emailAddress || "";
+          const firstName = user.firstName || "";
+          const lastName = user.lastName || "";
+          
+          let defaultUsername = "";
+          if (email) {
+            // Use part before @ from email
+            defaultUsername = email.split('@')[0].toLowerCase();
+          } else if (firstName || lastName) {
+            // Combine first and last name
+            defaultUsername = `${firstName}${lastName}`.toLowerCase();
+          } else {
+            // Fallback to user ID prefix
+            defaultUsername = `user${user.id.slice(0, 8)}`;
+          }
+          
+          // Clean username (remove special chars, limit length)
+          defaultUsername = defaultUsername
+            .replace(/[^a-z0-9]/g, '')
+            .slice(0, 20);
+          
           await createUser({
             clerkId: user.id,
-            email: user.emailAddresses[0]?.emailAddress || "",
+            email,
             firstName: user.firstName || undefined,
             lastName: user.lastName || undefined,
+            username: defaultUsername || undefined,
           });
           
           // Show welcome message for new users
