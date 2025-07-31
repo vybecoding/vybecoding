@@ -4,7 +4,7 @@
  * Script to create a test guide for development and testing
  */
 
-const { ConvexHttpClient } = require("convex/browser");
+import { ConvexHttpClient } from "convex/browser";
 
 const CONVEX_URL = process.env.NEXT_PUBLIC_CONVEX_URL || "https://gentle-kangaroo-406.convex.cloud";
 
