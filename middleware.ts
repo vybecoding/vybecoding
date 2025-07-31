@@ -13,6 +13,8 @@ const isPublicRoute = createRouteMatcher([
   '/guides',
   '/featured',
   '/test-clerk',
+  '/profile/(.*)',  // Allow public profile viewing
+  '/members',       // Allow public members browsing
 ])
 
 export default clerkMiddleware(async (auth, req) => {
