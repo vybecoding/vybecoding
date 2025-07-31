@@ -169,160 +169,198 @@ export default function GuideDetailsPage({ params }: GuideDetailsPageProps) {
         />
       </div>
 
-      <Container className="py-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Back Button */}
-          <Link href="/guides">
-            <Button variant="ghost" className="mb-6 -ml-2">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Guides
-            </Button>
-          </Link>
-
-          {/* Header */}
-          <header className="mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              {guide.category && (
-                <Badge variant="secondary" className="capitalize">
-                  {guide.category.replace('-', ' ')}
-                </Badge>
-              )}
-              {difficultyConfig && (
-                <Badge variant="outline" className={difficultyConfig.color}>
-                  {difficultyConfig.label}
-                </Badge>
-              )}
-              <span className="text-sm text-gray-600 dark:text-gray-400">
-                {guide.readingTime} min read
-              </span>
-            </div>
-
-            <h1 className="text-4xl font-bold mb-4">
-              {guide.title}
-            </h1>
-
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-              {guide.excerpt}
-            </p>
-
-            {/* Author Info */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <Avatar>
-                  <AvatarImage src={guide.author?.avatar} />
-                  <AvatarFallback>
-                    {guide.author?.displayName?.[0] || "A"}
-                  </AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-medium">{guide.author?.displayName}</p>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Published {formatDistanceToNow(guide.publishedAt || guide.createdAt, { addSuffix: true })}
-                  </p>
-                </div>
-              </div>
-
-              {/* Actions */}
-              <div className="flex items-center gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleBookmark}
-                  className={isBookmarked ? "text-yellow-600" : ""}
-                >
-                  <Bookmark className={cn("w-4 h-4", isBookmarked && "fill-current")} />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={handleShare}
-                >
-                  <Share2 className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-              <span className="flex items-center gap-1">
-                <Eye className="w-4 h-4" />
-                {guide.views.toLocaleString()} views
-              </span>
-              <span className="flex items-center gap-1">
-                <CheckCircle className="w-4 h-4" />
-                {completionRate}% completion rate
-              </span>
-              {guide.completions > 0 && (
-                <span className="flex items-center gap-1">
-                  <Heart className="w-4 h-4" />
-                  {guide.completions.toLocaleString()} completed
-                </span>
-              )}
-            </div>
-          </header>
-
-          {/* Tags */}
-          {guide.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-8">
-              {guide.tags.map(tag => (
-                <Link key={tag} href={`/guides?tag=${tag}`}>
-                  <Badge variant="secondary" className="cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700">
-                    {tag}
-                  </Badge>
-                </Link>
-              ))}
-            </div>
-          )}
-
-          {/* Content */}
-          <article className="mb-12">
-            <MarkdownRenderer content={guide.content} />
-          </article>
-
-          {/* Footer */}
-          <footer className="border-t pt-8">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h3 className="font-semibold mb-2">Did you find this guide helpful?</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Share it with others who might benefit
-                </p>
-              </div>
-              <Button onClick={handleShare}>
-                <Share2 className="w-4 h-4 mr-2" />
-                Share Guide
+      <div className="page-container nebula-background">
+        <div className="nebula-middle"></div>
+        <div className="nebula-bottom"></div>
+        
+        <div className="relative">
+          <div className="max-w-7xl mx-auto px-6 py-8">
+            {/* Back Button */}
+            <Link href="/guides">
+              <Button variant="ghost" className="mb-6 -ml-2 text-white hover:text-vybe-purple-light">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Guides
               </Button>
-            </div>
+            </Link>
+            
+            <div className="grid grid-cols-12 gap-8">
 
-            {/* Author Bio */}
-            {guide.author?.bio && (
-              <div className="bg-gray-50 dark:bg-gray-900 rounded-lg p-6">
-                <div className="flex items-start gap-4">
-                  <Avatar className="w-16 h-16">
-                    <AvatarImage src={guide.author.avatar} />
-                    <AvatarFallback>
-                      {guide.author.displayName?.[0] || "A"}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <h3 className="font-semibold mb-2">
-                      About {guide.author.displayName}
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
-                      {guide.author.bio}
-                    </p>
-                    <Link href={`/profile/${guide.author.id}`}>
-                      <Button variant="outline" size="sm">
-                        View Profile
-                      </Button>
-                    </Link>
+            {/* Main Content */}
+            <div className="col-span-12 lg:col-span-8">
+              {/* Guide Header */}
+              <div className="vybe-card overflow-hidden mb-6">
+                <div className="relative">
+                  {/* Cover Image */}
+                  <div className="h-24 bg-gradient-to-r from-vybe-purple/20 to-vybe-pink/20 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-black/50"></div>
+                  </div>
+                  
+                  {/* Guide Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 px-6 pb-4 pt-8 bg-gradient-to-t from-black/80 to-transparent">
+                    <h1 className="text-3xl font-bold text-white mb-2">
+                      {guide.title}
+                    </h1>
+                    <div className="flex flex-wrap items-center gap-4 text-sm text-vybe-gray-300">
+                      {difficultyConfig && (
+                        <span className="flex items-center gap-1">
+                          <span className={cn("●", difficultyConfig.color)}></span>
+                          {difficultyConfig.label}
+                        </span>
+                      )}
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {guide.readingTime} min read
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Eye className="w-4 h-4" />
+                        {guide.views.toLocaleString()} views
+                      </span>
+                    </div>
                   </div>
                 </div>
+                
+                {/* Tags and Actions */}
+                <div className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    {/* Category */}
+                    {guide.category && (
+                      <div>
+                        <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
+                        <Badge variant="secondary" className="capitalize bg-vybe-purple/20 text-vybe-purple-light">
+                          {guide.category.replace('-', ' ')}
+                        </Badge>
+                      </div>
+                    )}
+                    
+                    {/* Actions */}
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleBookmark}
+                        className={cn("border-vybe-gray-700", isBookmarked && "text-yellow-500")}
+                      >
+                        <Bookmark className={cn("w-4 h-4", isBookmarked && "fill-current")} />
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={handleShare}
+                        className="border-vybe-gray-700"
+                      >
+                        <Share2 className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {/* Tags */}
+                  {guide.tags.length > 0 && (
+                    <div>
+                      <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">AI Tools Covered</h3>
+                      <div className="flex flex-wrap gap-2">
+                        {guide.tags.map(tag => (
+                          <Link key={tag} href={`/guides?tag=${tag}`}>
+                            <Badge variant="secondary" className="cursor-pointer bg-vybe-gray-800 text-vybe-gray-300 hover:bg-vybe-gray-700">
+                              {tag}
+                            </Badge>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </footer>
+
+
+              {/* Content */}
+              <article className="mb-12">
+                <MarkdownRenderer content={guide.content} />
+              </article>
+            </div>
+
+            {/* Sidebar */}
+            <div className="col-span-12 lg:col-span-4">
+              <div className="lg:sticky lg:top-6 space-y-6">
+                
+                {/* Table of Contents */}
+                <div className="vybe-card overflow-hidden">
+                  <div className="vybe-card-header">
+                    <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                      Table of Contents
+                    </h2>
+                  </div>
+                  <div className="p-4 space-y-3">
+                    <div className="space-y-2">
+                      <h3 className="font-medium text-white">Getting Started</h3>
+                      <h3 className="font-medium text-white">Core Concepts</h3>
+                      <h3 className="font-medium text-white">Advanced Patterns</h3>
+                      <h3 className="font-medium text-white">Production Deployment</h3>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Progress Tracking */}
+                <div className="vybe-card overflow-hidden">
+                  <div className="vybe-card-header">
+                    <h2 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                      Your Progress
+                    </h2>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm text-vybe-gray-300">Reading Progress</span>
+                      <span className="text-sm text-vybe-gray-300">{Math.round(readingProgress)}%</span>
+                    </div>
+                    <Progress value={readingProgress} className="h-2" />
+                    <div className="flex items-center gap-2 mt-3 text-sm text-vybe-gray-300">
+                      <BookOpen className="w-4 h-4" />
+                      <span className="text-vybe-gray-300">Progress tracking</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Author */}
+                <div className="vybe-card overflow-hidden">
+                  <div className="vybe-card-header">
+                    <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                      <div className="w-1 h-5 bg-gradient-to-b from-vybe-purple to-vybe-pink rounded-full"></div>
+                      About the Author
+                    </h3>
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center text-white font-bold">
+                        {guide.author?.displayName?.[0] || "A"}
+                      </div>
+                      <div>
+                        <div className="font-medium text-white">{guide.author?.displayName || "Author"}</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-vybe-gray-400">@{guide.author?.username || "author"}</span>
+                          <span className="px-2 py-0.5 bg-vybe-pink/20 text-vybe-pink text-xs rounded-full font-medium">PRO</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-sm text-vybe-gray-300 mb-3">
+                      {guide.author?.bio || "With years of experience in development, I specialize in building scalable web applications and mentoring developers."}
+                    </p>
+                    <button 
+                      onClick={() => window.open('https://discord.gg/VaxG4VEdFk', '_blank')} 
+                      className="text-sm text-vybe-purple-light hover:text-vybe-pink transition-colors"
+                    >
+                      Message on Discord →
+                    </button>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
         </div>
-      </Container>
+        </div>
+      </div>
     </>
   );
 }
