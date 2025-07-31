@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updated Design System Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Configure Tailwind with VybeCoding colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'vybe-void': '#000000',
+                        'vybe-dark': '#0a0a0a',
+                        'vybe-midnight': '#111111',
+                        'vybe-shadow': '#1a1a1a',
+                        'vybe-purple': '#8a2be2',
+                        'vybe-pink': '#d946a0',
+                        'vybe-orange': '#e96b3a',
+                        'vybe-gray-300': '#d1d5db',
+                        'vybe-gray-400': '#888888',
+                        'vybe-gray-500': '#6b7280',
+                        'vybe-gray-600': '#3a3a3a',
+                        'vybe-gray-700': '#374151',
+                        'vybe-gray-800': '#1f2937',
+                        'vybe-gray-900': '#0f0f0f'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        /* Updated styles from globals.css */
+        .minimal-card, .vybe-card {
+            background: rgba(26, 26, 26, 0.8) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(51, 51, 51, 0.4) !important;
+        }
+        
+        .minimal-card:hover, .vybe-card:hover {
+            background: rgba(42, 42, 42, 0.8) !important;
+            border-color: rgba(64, 64, 64, 0.5) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Old guide submit style for comparison */
+        .old-guide-card {
+            background: rgba(55, 65, 81, 0.4);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+        }
+        
+        /* BaseCard default styles */
+        .base-card-new {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(51, 51, 51, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .base-card-new:hover {
+            background: rgba(42, 42, 42, 0.8);
+            border-color: rgba(64, 64, 64, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-light mb-2">
+            <span class="text-vybe-purple">Design System Update Test</span>
+        </h1>
+        <p class="text-vybe-gray-400 mb-12">Comparing old vs new implementations</p>
+        
+        <!-- Before/After Comparison -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">Guide Submit Page Cards</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- Before -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Before (bg-gray-700/40)</h3>
+                    <div class="old-guide-card rounded-lg p-6">
+                        <h4 class="text-lg font-medium mb-4">AI Review Checklist</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span>Content structure and formatting</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span>Code examples and syntax</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- After -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">After (vybe-card class)</h3>
+                    <div class="vybe-card rounded-lg p-6 cursor-pointer">
+                        <h4 class="text-lg font-medium mb-4">AI Review Checklist</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span>Content structure and formatting</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                                <span>Code examples and syntax</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BaseCard Component Update -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">BaseCard Component Update</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Default Variant -->
+                <div class="base-card-new rounded-lg p-4 pb-2 cursor-pointer">
+                    <h3 class="text-lg font-semibold mb-2">Default Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">Now matches demo exactly</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">rgba(26, 26, 26, 0.8)</code>
+                </div>
+                
+                <!-- Interactive Variant -->
+                <div class="base-card-new rounded-lg p-4 pb-2 cursor-pointer">
+                    <h3 class="text-lg font-semibold mb-2">Interactive Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">Same base as default</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">rgba(26, 26, 26, 0.8)</code>
+                </div>
+                
+                <!-- Elevated Variant -->
+                <div class="base-card-new rounded-lg p-4 pb-2 cursor-pointer">
+                    <h3 class="text-lg font-semibold mb-2">Elevated Variant</h3>
+                    <p class="text-sm text-vybe-gray-400">Consistent styling</p>
+                    <code class="text-xs text-vybe-purple mt-2 block">rgba(26, 26, 26, 0.8)</code>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Side by Side with Demo -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">Demo vs Next.js Comparison</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Demo Style -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Demo Showcase Style</h3>
+                    <div class="minimal-card rounded-lg p-6 cursor-pointer relative">
+                        <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                             style="background: rgba(138, 43, 226, 0.5625)">
+                            GUIDE
+                        </div>
+                        <h4 class="text-lg font-medium mt-8">Demo Card</h4>
+                        <p class="text-sm text-vybe-gray-400 mt-2">Uses minimal-card class</p>
+                        <div class="mt-4 text-xs">
+                            <p>• background: rgba(26, 26, 26, 0.8)</p>
+                            <p>• border: rgba(51, 51, 51, 0.4)</p>
+                            <p>• hover bg: rgba(42, 42, 42, 0.8)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Next.js Style -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Next.js Updated Style</h3>
+                    <div class="vybe-card rounded-lg p-6 cursor-pointer relative">
+                        <div class="absolute top-0 left-0 px-2 py-1.5 text-white text-xs font-semibold uppercase tracking-wide rounded-br-lg z-20" 
+                             style="background: rgba(138, 43, 226, 0.5625)">
+                            GUIDE
+                        </div>
+                        <h4 class="text-lg font-medium mt-8">Next.js Card</h4>
+                        <p class="text-sm text-vybe-gray-400 mt-2">Uses vybe-card class</p>
+                        <div class="mt-4 text-xs">
+                            <p>• background: rgba(26, 26, 26, 0.8)</p>
+                            <p>• border: rgba(51, 51, 51, 0.4)</p>
+                            <p>• hover bg: rgba(42, 42, 42, 0.8)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Visual Match Test -->
+        <section>
+            <h2 class="text-2xl font-light mb-6 text-vybe-purple">Visual Match Test</h2>
+            <p class="text-vybe-gray-400 mb-6">These should look identical - both using the same rgba values</p>
+            
+            <div class="flex flex-wrap gap-4">
+                <div class="minimal-card rounded-lg p-4 cursor-pointer">
+                    <span class="text-xs text-vybe-gray-500">minimal-card</span>
+                    <h3 class="text-lg font-semibold mt-2">Demo Class</h3>
+                </div>
+                
+                <div class="vybe-card rounded-lg p-4 cursor-pointer">
+                    <span class="text-xs text-vybe-gray-500">vybe-card</span>
+                    <h3 class="text-lg font-semibold mt-2">Next.js Class</h3>
+                </div>
+                
+                <div class="base-card-new rounded-lg p-4 cursor-pointer">
+                    <span class="text-xs text-vybe-gray-500">BaseCard component</span>
+                    <h3 class="text-lg font-semibold mt-2">Component</h3>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

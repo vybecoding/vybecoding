@@ -1,0 +1,1 @@
+set-card-profile alsa_card.pci-0000_02_00.1 pro-audio
