@@ -273,7 +273,7 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <h3 className="text-sm font-medium text-vybe-gray-400 mb-2">Primary Focus</h3>
-                      <span className="inline-block px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-sm">
+                      <span className="inline-block px-3 py-1 bg-vybe-purple/20 text-vybe-purple-light rounded-full text-sm capitalize">
                         {guide.category?.replace('-', ' ') || 'Development'}
                       </span>
                     </div>
@@ -298,20 +298,25 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                   What You'll Learn
                 </h2>
                 <p className="text-vybe-gray-300 mb-4">
-                  {guide.whatYouWillLearn || "Master advanced patterns and build production-ready AI applications. This comprehensive guide covers everything from basic setup to advanced implementation patterns."}
+                  Master advanced patterns and build production-ready AI applications. This comprehensive guide covers everything from basic setup to advanced implementation patterns.
                 </p>
                 <ul className="space-y-2 text-vybe-gray-300">
-                  {(guide.learningObjectives || [
-                    "Set up and authenticate with Claude API efficiently",
-                    "Implement rate limiting and error handling for production use", 
-                    "Build streaming responses for real-time interactions",
-                    "Optimize costs with token management strategies"
-                  ]).map((objective, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-vybe-purple-light mt-1">✓</span>
-                      <span>{objective}</span>
-                    </li>
-                  ))}
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Set up and authenticate with Claude API efficiently</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Implement rate limiting and error handling for production use</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Build streaming responses for real-time interactions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-vybe-purple-light mt-1">✓</span>
+                    <span>Optimize costs with token management strategies</span>
+                  </li>
                 </ul>
               </div>
 
@@ -329,12 +334,7 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                       <h3 className="font-medium text-white">Getting Started</h3>
                     </div>
                     <ul className="space-y-2 text-sm text-vybe-gray-400">
-                      {guide.lessons?.slice(0, 4).map((lesson, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <span className="text-vybe-purple-light">•</span>
-                          {lesson.title}
-                        </li>
-                      )) || (
+                      {(
                         <>
                           <li className="flex items-center gap-2">
                             <span className="text-vybe-purple-light">•</span>
@@ -364,12 +364,7 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                       <h3 className="font-medium text-white">Core Concepts</h3>
                     </div>
                     <ul className="space-y-2 text-sm text-vybe-gray-400">
-                      {guide.lessons?.slice(4, 8).map((lesson, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <span className="text-vybe-pink">•</span>
-                          {lesson.title}
-                        </li>
-                      )) || (
+                      {(
                         <>
                           <li className="flex items-center gap-2">
                             <span className="text-vybe-pink">•</span>
@@ -399,12 +394,7 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                       <h3 className="font-medium text-white">Advanced Patterns</h3>
                     </div>
                     <ul className="space-y-2 text-sm text-vybe-gray-400">
-                      {guide.lessons?.slice(8, 12).map((lesson, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <span className="text-vybe-orange">•</span>
-                          {lesson.title}
-                        </li>
-                      )) || (
+                      {(
                         <>
                           <li className="flex items-center gap-2">
                             <span className="text-vybe-orange">•</span>
@@ -434,12 +424,7 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                       <h3 className="font-medium text-white">Production Deployment</h3>
                     </div>
                     <ul className="space-y-2 text-sm text-vybe-gray-400">
-                      {guide.lessons?.slice(12, 16).map((lesson, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <span className="text-green-500">•</span>
-                          {lesson.title}
-                        </li>
-                      )) || (
+                      {(
                         <>
                           <li className="flex items-center gap-2">
                             <span className="text-green-500">•</span>
@@ -507,11 +492,11 @@ export default function GuideUnlockedPage({ params }: GuideDetailsPageProps) {
                   <div className="p-4 space-y-3 text-sm">
                     <div className="flex items-start gap-2">
                       <FileText className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-vybe-gray-300">{guide.lessons?.length || 5} modules with detailed lessons</span>
+                      <span className="text-vybe-gray-300">5 modules with detailed lessons</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <Download className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-vybe-gray-300">{guide.resources?.length || 3} downloadable resources</span>
+                      <span className="text-vybe-gray-300">3 downloadable resources</span>
                     </div>
                     <div className="flex items-start gap-2">
                       <Star className="w-4 h-4 text-vybe-gray-400 mt-0.5 flex-shrink-0" />

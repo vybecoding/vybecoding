@@ -139,7 +139,13 @@ export default function GuideViewPage({ params }: GuideViewPageProps) {
     );
   }
 
-  const lessons = guide.lessons || [];
+  // For now, simulate lessons since they're not in the schema
+  const lessons = [
+    { id: "1", title: "Introduction", content: guide.content, duration: 15 },
+    { id: "2", title: "Core Concepts", content: "# Core Concepts\n\nThis lesson would contain core concepts...", duration: 20 },
+    { id: "3", title: "Advanced Topics", content: "# Advanced Topics\n\nThis lesson would contain advanced topics...", duration: 25 },
+    { id: "4", title: "Conclusion", content: "# Conclusion\n\nThis lesson would wrap up the guide...", duration: 10 }
+  ];
   const currentLessonData = lessons[currentLesson];
   const progressPercentage = ((completedLessons.size / Math.max(lessons.length, 1)) * 100);
 

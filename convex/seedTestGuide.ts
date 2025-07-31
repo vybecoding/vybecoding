@@ -240,17 +240,7 @@ This test guide has demonstrated all major features of our guide rendering syste
       readingTime: 15,
       publishedAt: Date.now(),
       createdAt: Date.now(),
-      updatedAt: Date.now(),
-      lessons: testLessons,
-      resources: testResources,
-      targetAudience: "Developers testing the platform",
-      whatYouWillLearn: "This is a test guide to verify all guide features work correctly. You'll test markdown rendering, lesson navigation, progress tracking, and more.",
-      learningObjectives: [
-        "Test markdown rendering and syntax highlighting",
-        "Verify lesson navigation functionality",
-        "Check progress tracking system",
-        "Ensure all UI elements render correctly"
-      ]
+      updatedAt: Date.now()
     });
 
     return { 

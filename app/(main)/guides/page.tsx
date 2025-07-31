@@ -13,6 +13,7 @@ import { useUser } from "@clerk/nextjs";
 import { formatDistanceToNow } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { TestGuideButton } from "@/components/TestGuideButton";
 
 // Guide Card Component - Matching demo exactly
 function GuideCardDemo({ guide }: { guide: any }) {
@@ -418,6 +419,18 @@ export default function GuidesPage() {
             </button>
           </div>
         </div>
+
+        {/* Test Guide Button - Development Only */}
+        {process.env.NODE_ENV === 'development' && isSignedIn && (
+          <div className="flex justify-center mt-6 mb-4">
+            <div className="p-4 bg-vybe-orange/5 border border-vybe-orange/20 rounded-lg">
+              <p className="text-sm text-vybe-orange mb-3">
+                ⚠️ Development Mode: Create a test guide to verify all features
+              </p>
+              <TestGuideButton />
+            </div>
+          </div>
+        )}
 
         {/* Content for tabs will be loaded here */}
         <div id="guides-content-container">
