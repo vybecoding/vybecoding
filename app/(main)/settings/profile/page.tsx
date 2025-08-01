@@ -3,14 +3,15 @@
 import React, { useState } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { cn } from '@/lib/utils'
-import { Plus, X, ChevronDown, Info } from 'lucide-react'
+import { Plus, X, ChevronDown, Info, Save, ArrowLeft } from 'lucide-react'
+import Link from 'next/link'
 
 interface Skill {
   name: string
   color: string
 }
 
-export default function DashboardProfilePage() {
+export default function SettingsProfilePage() {
   const { user } = useUser()
   
   // Profile form state
@@ -187,8 +188,15 @@ export default function DashboardProfilePage() {
 
   return (
     <div className="py-6 space-y-8">
-      {/* Spacing to match sub-tabs */}
-      <div className="mb-8"></div>
+      {/* Breadcrumb */}
+      <div className="flex items-center gap-2 text-sm">
+        <Link href="/dashboard/settings" className="text-vybe-gray-400 hover:text-white transition-colors flex items-center gap-1">
+          <ArrowLeft className="w-4 h-4" />
+          Settings
+        </Link>
+        <span className="text-vybe-gray-600">/</span>
+        <span className="text-white">Profile</span>
+      </div>
       
       {/* Profile Settings Section */}
       <div className="vybe-card overflow-hidden">
@@ -495,12 +503,13 @@ export default function DashboardProfilePage() {
             </div>
             
             <div className="flex gap-4">
-              <button type="submit" className="btn btn-primary-fuchsia">
+              <button type="submit" className="btn btn-primary-fuchsia flex items-center gap-2">
+                <Save className="w-4 h-4" />
                 Save Changes
               </button>
-              <button type="button" className="btn btn-secondary">
+              <Link href="/dashboard/settings" className="btn btn-secondary">
                 Cancel
-              </button>
+              </Link>
             </div>
           </form>
         </div>

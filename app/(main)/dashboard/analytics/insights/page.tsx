@@ -212,13 +212,10 @@ export default function DashboardAnalyticsInsightsPage() {
       </div>
       
       {/* Performance Insights Container */}
-      <div className="vybe-card mb-6">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+      <div className="vybe-card overflow-hidden mb-6" style={{border: '1px solid rgba(138, 43, 226, 0.3)'}}>
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.08))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)'}}>
           <div className="flex items-center justify-between">
-            <h4 className="vybe-section-header flex items-center gap-3">
-              <div className="vybe-gradient-accent-bar"></div>
-              Performance Insights
-            </h4>
+            <h3 className="text-base font-semibold text-white">Performance Insights</h3>
             {/* Time Period Toggle */}
             <div className="flex gap-1 bg-vybe-gray-800/50 p-1 rounded-lg">
               <button 
@@ -309,12 +306,9 @@ export default function DashboardAnalyticsInsightsPage() {
       </div>
       
       {/* Optimization Opportunities */}
-      <div className="vybe-card mb-6">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
-          <h4 className="vybe-section-header flex items-center gap-3">
-            <div className="vybe-gradient-accent-bar"></div>
-            Optimization Opportunities
-          </h4>
+      <div className="vybe-card overflow-hidden mb-6" style={{border: '1px solid rgba(217, 70, 160, 0.3)'}}>
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(217, 70, 160, 0.2), rgba(217, 70, 160, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+          <h3 className="text-base font-semibold text-white">Optimization Opportunities</h3>
         </div>
         <div className="p-6">
           <div className="mb-4 p-4 bg-gradient-to-r from-green-500/10 to-green-600/10 rounded-lg border border-green-500/30">
@@ -341,12 +335,9 @@ export default function DashboardAnalyticsInsightsPage() {
       </div>
       
       {/* Comparative Analysis */}
-      <div className="vybe-card mb-6">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
-          <h4 className="vybe-section-header flex items-center gap-3">
-            <div className="vybe-gradient-accent-bar"></div>
-            Comparative Analysis
-          </h4>
+      <div className="vybe-card overflow-hidden mb-6" style={{border: '1px solid rgba(233, 107, 58, 0.4)'}}>
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+          <h3 className="text-base font-semibold text-white">Comparative Analysis</h3>
         </div>
         <div className="p-6">
           <p className="text-sm text-vybe-gray-400 mb-4">You vs Similar Creators:</p>
@@ -379,13 +370,10 @@ export default function DashboardAnalyticsInsightsPage() {
       </div>
       
       {/* Complete Sales History (Pro Feature) */}
-      <div className="vybe-card mb-6">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+      <div className="vybe-card overflow-hidden mb-6">
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
           <div className="flex items-center justify-between">
-            <h4 className="vybe-section-header flex items-center gap-3">
-              <div className="vybe-gradient-accent-bar"></div>
-              Complete Sales History
-            </h4>
+            <h3 className="text-base font-semibold text-white">Complete Sales History</h3>
             <div className="flex gap-2">
               {/* Filter Options */}
               <input 

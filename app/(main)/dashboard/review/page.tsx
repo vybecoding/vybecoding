@@ -107,19 +107,16 @@ export default function DashboardReviewPage() {
       <div className="mb-8"></div>
       
       {/* Guide Review Queue */}
-      <div className="vybe-card p-6">
+      <div className="vybe-card overflow-hidden">
         {/* Header */}
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4 -m-6 mb-6">
-          <h3 className="vybe-section-header">
-            <div className="vybe-gradient-accent-bar"></div>
-            Guide Review Queue
-          </h3>
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+          <h3 className="text-base font-semibold text-white">Guide Review Queue</h3>
           <p className="text-sm text-vybe-gray-400 mt-1">
             Automated quality assessment for submitted guides
           </p>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="p-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Queue Items */}
           <div className="lg:col-span-2 space-y-3">
             {mockReviews.map((review) => {
@@ -220,12 +217,9 @@ export default function DashboardReviewPage() {
 
           <div className="space-y-6">
             {/* Review Statistics */}
-            <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h4 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Review Statistics
-                </h4>
+            <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(138, 43, 226, 0.3)'}}>
+              <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.08))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)'}}>
+                <h3 className="text-base font-semibold text-white">Review Statistics</h3>
               </div>
               <div className="p-6">
                 <div className="space-y-4">
@@ -270,12 +264,9 @@ export default function DashboardReviewPage() {
             </div>
 
             {/* Review Criteria Sidebar */}
-            <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h4 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Review Criteria
-                </h4>
+            <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(233, 107, 58, 0.4)'}}>
+              <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+                <h3 className="text-base font-semibold text-white">Review Criteria</h3>
               </div>
               <div className="p-6">
                 <div className="space-y-3 text-sm text-vybe-gray-400">
@@ -297,6 +288,7 @@ export default function DashboardReviewPage() {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>

@@ -123,12 +123,9 @@ export default function DashboardMentorshipPage() {
           
           {/* Bio Section */}
           <div className="vybe-card overflow-hidden">
-            <div className="vybe-card-header">
+            <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.08))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)'}}>
               <div className="flex items-center justify-between">
-                <h4 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Mentor Bio
-                </h4>
+                <h3 className="text-base font-semibold text-white">Mentor Bio</h3>
                 {!isEditingBio ? (
                   <button
                     onClick={() => setIsEditingBio(true)}
@@ -192,12 +189,9 @@ export default function DashboardMentorshipPage() {
           
           {/* Availability Calendar */}
           <div className="vybe-card overflow-hidden">
-            <div className="vybe-card-header">
+            <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(217, 70, 160, 0.2), rgba(217, 70, 160, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
               <div className="flex items-center justify-between">
-                <h4 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Availability Calendar
-                </h4>
+                <h3 className="text-base font-semibold text-white">Availability Calendar</h3>
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-2">
                     <span className="text-sm text-vybe-gray-300">EST (UTC-5)</span>
@@ -364,11 +358,11 @@ export default function DashboardMentorshipPage() {
           </div>
           
           {/* Session Pricing */}
-          <div className="vybe-card p-6">
-            <h4 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-              <div className="vybe-gradient-accent-bar"></div>
-              Session Pricing
-            </h4>
+          <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(233, 107, 58, 0.4)'}}>
+            <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+              <h3 className="text-base font-semibold text-white">Session Pricing</h3>
+            </div>
+            <div className="p-6">
             
             <div className="overflow-hidden rounded-lg border border-vybe-gray-700">
               <table className="w-full">
@@ -411,6 +405,7 @@ export default function DashboardMentorshipPage() {
                 Add Package Deal
               </button>
             </div>
+            </div>
           </div>
         </div>
         
@@ -419,11 +414,8 @@ export default function DashboardMentorshipPage() {
           
           {/* Mentor Stats */}
           <div className="vybe-card overflow-hidden">
-            <div className="vybe-card-header">
-              <h4 className="vybe-section-header">
-                <div className="vybe-gradient-accent-bar"></div>
-                Mentor Statistics
-              </h4>
+            <div style={{padding: '1rem', background: 'rgba(55, 65, 81, 0.4)', borderBottom: '1px solid rgba(75, 85, 99, 0.3)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+              <h3 className="text-base font-semibold text-white">Mentor Statistics</h3>
             </div>
             <div className="p-6 space-y-4">
               <div className="flex items-center justify-between">
@@ -482,11 +474,8 @@ export default function DashboardMentorshipPage() {
           
           {/* Recent Sessions */}
           <div className="vybe-card overflow-hidden">
-            <div className="vybe-card-header">
-              <h4 className="vybe-section-header">
-                <div className="vybe-gradient-accent-bar"></div>
-                Recent Sessions
-              </h4>
+            <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+              <h3 className="text-base font-semibold text-white">Recent Sessions</h3>
             </div>
             <div className="p-6 space-y-3">
               <div className="flex items-center justify-between p-3 bg-vybe-gray-800/50 rounded-lg">

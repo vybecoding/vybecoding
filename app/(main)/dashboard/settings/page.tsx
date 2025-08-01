@@ -57,11 +57,8 @@ export default function SettingsPage() {
         {activeSection === 'account' && (
           <div className="space-y-6">
             <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h3 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Account Settings
-                </h3>
+              <div style={{padding: '1rem', background: 'rgba(55, 65, 81, 0.4)', borderBottom: '1px solid rgba(75, 85, 99, 0.3)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+                <h3 className="text-base font-semibold text-white">Account Settings</h3>
               </div>
               <div className="p-6">
                 <div className="space-y-6">
@@ -122,11 +119,8 @@ export default function SettingsPage() {
         {/* Notifications Section */}
         {activeSection === 'notifications' && (
           <div className="vybe-card overflow-hidden">
-            <div className="vybe-card-header">
-              <h3 className="vybe-section-header">
-                <div className="vybe-gradient-accent-bar"></div>
-                Notification Preferences
-              </h3>
+            <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+              <h3 className="text-base font-semibold text-white">Notification Preferences</h3>
             </div>
             <div className="p-6">
               <div className="space-y-6">
@@ -191,12 +185,9 @@ export default function SettingsPage() {
         {/* Privacy Section */}
         {activeSection === 'privacy' && (
           <div className="space-y-6">
-            <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h3 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Privacy Settings
-                </h3>
+            <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(138, 43, 226, 0.3)'}}>
+              <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.08))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)'}}>
+                <h3 className="text-base font-semibold text-white">Privacy Settings</h3>
               </div>
               <div className="p-6">
                 <div className="space-y-6">
@@ -248,12 +239,9 @@ export default function SettingsPage() {
               </div>
             </div>
 
-            <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h3 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Data & Privacy
-                </h3>
+            <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(217, 70, 160, 0.3)'}}>
+              <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(217, 70, 160, 0.2), rgba(217, 70, 160, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+                <h3 className="text-base font-semibold text-white">Data & Privacy</h3>
               </div>
               <div className="p-6">
                 <div className="space-y-4">
@@ -283,12 +271,9 @@ export default function SettingsPage() {
         {/* Billing Section */}
         {activeSection === 'billing' && (
           <div className="space-y-6">
-            <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h3 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Payment Settings
-                </h3>
+            <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(233, 107, 58, 0.4)'}}>
+              <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+                <h3 className="text-base font-semibold text-white">Payment Settings</h3>
               </div>
               <div className="p-6">
                 <div className="mb-6 p-4 bg-green-400/10 border border-green-400/20 rounded-lg">
@@ -348,11 +333,8 @@ export default function SettingsPage() {
             </div>
 
             <div className="vybe-card overflow-hidden">
-              <div className="vybe-card-header">
-                <h3 className="vybe-section-header">
-                  <div className="vybe-gradient-accent-bar"></div>
-                  Earnings Summary
-                </h3>
+              <div style={{padding: '1rem', background: 'rgba(55, 65, 81, 0.4)', borderBottom: '1px solid rgba(75, 85, 99, 0.3)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+                <h3 className="text-base font-semibold text-white">Earnings Summary</h3>
               </div>
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

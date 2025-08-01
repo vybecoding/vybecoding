@@ -91,26 +91,25 @@ export default function DashboardAnalyticsOverviewPage() {
       {/* Current Balance & Performance Summary */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         {/* Current Balance Card */}
-        <div className="vybe-card p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="text-lg font-medium text-white flex items-center gap-2">
-              💰 Current Balance
-            </h4>
+        <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(138, 43, 226, 0.3)'}}>
+          <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(138, 43, 226, 0.08))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)'}}>
+            <h3 className="text-base font-semibold text-white">💰 Current Balance</h3>
           </div>
+          <div className="p-6">
           <p className="text-4xl font-semibold text-white mb-2">${currentBalance.toLocaleString()}</p>
           <p className="text-sm text-vybe-gray-400 mb-2">Next payout: {nextPayoutDay}</p>
           <p className="text-xs text-vybe-gray-500">
             Automatic weekly payouts via Stripe (minimum $50)
           </p>
+          </div>
         </div>
         
         {/* Last 30 Days Performance Card */}
-        <div className="vybe-card p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h4 className="text-lg font-medium text-white flex items-center gap-2">
-              📈 Last 30 Days Performance
-            </h4>
+        <div className="vybe-card overflow-hidden">
+          <div style={{padding: '1rem', background: 'rgba(55, 65, 81, 0.4)', borderBottom: '1px solid rgba(75, 85, 99, 0.3)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+            <h3 className="text-base font-semibold text-white">📈 Last 30 Days Performance</h3>
           </div>
+          <div className="p-6">
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-sm text-vybe-gray-400">Sales</span>
@@ -149,17 +148,14 @@ export default function DashboardAnalyticsOverviewPage() {
               </div>
             </div>
           </div>
+          </div>
         </div>
       </div>
       
       {/* Daily Revenue Chart */}
-      <div className="vybe-card mb-6">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
-          <h4 className="vybe-section-header flex items-center gap-3">
-            <div className="vybe-gradient-accent-bar"></div>
-            Daily Revenue Trend
-            <span className="text-xs text-vybe-gray-400">(Last 7 days)</span>
-          </h4>
+      <div className="vybe-card overflow-hidden mb-6" style={{border: '1px solid rgba(217, 70, 160, 0.3)'}}>
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(217, 70, 160, 0.2), rgba(217, 70, 160, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+          <h3 className="text-base font-semibold text-white">Daily Revenue Trend <span className="text-xs text-vybe-gray-400">(Last 7 days)</span></h3>
         </div>
         <div className="p-6">
           <div className="space-y-3">
@@ -185,12 +181,9 @@ export default function DashboardAnalyticsOverviewPage() {
       </div>
       
       {/* Top Performers This Month (Free Tier) */}
-      <div className="vybe-card mb-6">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
-          <h4 className="vybe-section-header flex items-center gap-3">
-            <div className="vybe-gradient-accent-bar"></div>
-            Top Performers This Month
-          </h4>
+      <div className="vybe-card overflow-hidden mb-6" style={{border: '1px solid rgba(233, 107, 58, 0.4)'}}>
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+          <h3 className="text-base font-semibold text-white">Top Performers This Month</h3>
         </div>
         <div className="p-6">
           {/* Top 3 Items Only */}
@@ -233,13 +226,10 @@ export default function DashboardAnalyticsOverviewPage() {
       </div>
       
       {/* Sales History (Free Tier) */}
-      <div className="vybe-card">
-        <div className="bg-gray-700/40 rounded-t-xl border-b border-gray-600/30 px-6 py-4">
+      <div className="vybe-card overflow-hidden">
+        <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(138, 43, 226, 0.2), rgba(217, 70, 160, 0.2), rgba(233, 107, 58, 0.2))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
           <div className="flex items-center justify-between">
-            <h4 className="vybe-section-header flex items-center gap-3">
-              <div className="vybe-gradient-accent-bar"></div>
-              Recent Transactions
-            </h4>
+            <h3 className="text-base font-semibold text-white">Recent Transactions</h3>
             <span className="text-xs text-vybe-gray-400">(Latest activity)</span>
           </div>
         </div>
