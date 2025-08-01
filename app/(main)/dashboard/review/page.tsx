@@ -97,7 +97,7 @@ export default function DashboardReviewPage() {
       case 'pending':
         return 'PENDING'
       default:
-        return status.toUpperCase()
+        return 'UNKNOWN'
     }
   }
 

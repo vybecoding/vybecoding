@@ -181,7 +181,7 @@ export default function SettingsProfilePage() {
       skill.name.toLowerCase().includes(skillSearch.toLowerCase())
     )
     if (filtered.length > 0) {
-      acc[category] = filtered
+      (acc as any)[category] = filtered
     }
     return acc
   }, {} as typeof availableSkills)

@@ -3,25 +3,23 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Search } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { MemberSearchSuggestion } from '@/types/members'
-
-interface UniversalSearchProps {
+interface UniversalSearchProps<T = any> {
   placeholder?: string
   value?: string
   onSearch: (query: string) => void
-  onSuggestionSelect?: (suggestion: MemberSearchSuggestion) => void
-  suggestions?: MemberSearchSuggestion[]
+  onSuggestionSelect?: (suggestion: T) => void
+  suggestions?: T[]
   className?: string
 }
 
-export const UniversalSearch: React.FC<UniversalSearchProps> = ({
+export const UniversalSearch = <T extends any>({
   placeholder = "Search members by name, skills, or expertise...",
   value = "",
   onSearch,
   onSuggestionSelect,
   suggestions = [],
   className
-}) => {
+}: UniversalSearchProps<T>) => {
   const [query, setQuery] = useState(value)
   const [showSuggestions, setShowSuggestions] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(-1)
@@ -94,12 +92,13 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
     }
   }
 
-  const handleSuggestionClick = (suggestion: MemberSearchSuggestion) => {
-    setQuery(suggestion.label)
+  const handleSuggestionClick = (suggestion: T) => {
+    const label = (suggestion as any).label || (suggestion as any).title || String(suggestion)
+    setQuery(label)
     setShowSuggestions(false)
     setHighlightedIndex(-1)
     onSuggestionSelect?.(suggestion)
-    onSearch(suggestion.label)
+    onSearch(label)
   }
 
   const handleSearchClick = () => {
@@ -107,7 +106,7 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
     setShowSuggestions(false)
   }
 
-  const getSuggestionIcon = (type: MemberSearchSuggestion['type']) => {
+  const getSuggestionIcon = (type: string) => {
     switch (type) {
       case 'member':
         return '👤'
@@ -115,6 +114,14 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
         return '🔧'
       case 'expertise':
         return '⚡'
+      case 'guide':
+        return '📚'
+      case 'app':
+        return '📱'
+      case 'news':
+        return '📰'
+      case 'content':
+        return '📄'
       default:
         return '🔍'
     }
@@ -178,23 +185,30 @@ export const UniversalSearch: React.FC<UniversalSearchProps> = ({
             "shadow-lg shadow-black/20 max-h-64 overflow-y-auto"
           )}
         >
-          {suggestions.map((suggestion, index) => (
-            <div
-              key={`${suggestion.type}-${suggestion.value}`}
-              onClick={() => handleSuggestionClick(suggestion)}
-              className={cn(
-                "flex items-center gap-3 px-4 py-3 cursor-pointer",
-                "text-sm text-white/80 hover:text-white",
-                "hover:bg-white/5 transition-colors",
-                "first:rounded-t-lg last:rounded-b-lg",
-                highlightedIndex === index && "bg-white/10 text-white"
-              )}
-            >
-              <span className="text-base">{getSuggestionIcon(suggestion.type)}</span>
-              <span className="flex-1">{suggestion.label}</span>
-              <span className="text-xs text-white/40 capitalize">{suggestion.type}</span>
-            </div>
-          ))}
+          {suggestions.map((suggestion, index) => {
+            const suggestionAny = suggestion as any
+            const type = suggestionAny.type || 'unknown'
+            const label = suggestionAny.label || suggestionAny.title || String(suggestion)
+            const value = suggestionAny.value || suggestionAny.id || index
+            
+            return (
+              <div
+                key={`${type}-${value}`}
+                onClick={() => handleSuggestionClick(suggestion)}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-3 cursor-pointer",
+                  "text-sm text-white/80 hover:text-white",
+                  "hover:bg-white/5 transition-colors",
+                  "first:rounded-t-lg last:rounded-b-lg",
+                  highlightedIndex === index && "bg-white/10 text-white"
+                )}
+              >
+                <span className="text-base">{getSuggestionIcon(type)}</span>
+                <span className="flex-1">{label}</span>
+                <span className="text-xs text-white/40 capitalize">{type}</span>
+              </div>
+            )
+          })}
         </div>
       )}
     </div>

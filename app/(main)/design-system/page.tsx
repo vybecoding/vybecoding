@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Palette, Type, Layout, Zap, Eye, Copy, Check, ChevronDown, Star, User, Settings, Bell, Heart, Download, Search, Filter, Play, Pause, Volume2, MoreHorizontal, Edit, Trash2, Share2, RefreshCw, ArrowRight, ExternalLink, Calendar, Clock, DollarSign, TrendingUp, Users, MessageSquare, BookOpen, Shield, AlertTriangle, Info, CheckCircle, XCircle, AlertCircle, Home, FileText, PlusCircle, Minus, Plus, X, Mail, Phone, Github, Twitter, Linkedin, Youtube, Instagram, Facebook } from 'lucide-react'
+import { Palette, Type, Layout, Zap, Eye, Copy, Check, ChevronDown, Star, User, Settings, Bell, Heart, Download, Search, Filter, Play, Pause, Volume2, MoreHorizontal, Edit, Trash2, Share2, RefreshCw, ArrowRight, ExternalLink, Calendar, Clock, DollarSign, TrendingUp, Users, MessageSquare, BookOpen, Shield, AlertTriangle, Info, CheckCircle, XCircle, AlertCircle, Home, FileText, PlusCircle, Minus, Plus, X, Mail, Phone, Github, Twitter, Linkedin, Youtube, Instagram, Facebook, BadgeCheck, Trophy } from 'lucide-react'
 
 export default function DesignSystemShowcasePage() {
   const [activeTab, setActiveTab] = useState('colors')
@@ -432,9 +432,236 @@ export default function DesignSystemShowcasePage() {
       {/* Cards */}
       {activeTab === 'cards' && (
         <div className="space-y-6">
+          {/* Specialized Card Components */}
+          <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(233, 107, 58, 0.4)'}}>
+            <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(233, 107, 58, 0.2), rgba(233, 107, 58, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Palette className="w-5 h-5" />
+                Card Component Previews
+              </h3>
+              <p className="text-sm text-vybe-gray-300 mt-1">Preview of specialized card components used throughout the platform</p>
+            </div>
+            <div className="p-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* App Card */}
+                <div>
+                  <h4 className="text-sm font-medium text-vybe-gray-400 mb-3">App Card (Featured Style)</h4>
+                  <div className="vybe-card bg-vybe-gray-800 border border-vybe-gray-700 hover:border-vybe-purple/50 transition-all duration-300 cursor-pointer group relative">
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-2 py-1 bg-vybe-purple text-white text-xs font-bold rounded-md">APP</span>
+                    </div>
+                    <div className="absolute top-4 right-4 z-10">
+                      <button className="p-2 bg-vybe-gray-900/80 backdrop-blur-sm rounded-lg text-vybe-gray-400 hover:text-white hover:bg-vybe-gray-900 transition-colors">
+                        <Heart className="w-4 h-4" />
+                      </button>
+                    </div>
+                    <div className="aspect-video bg-gradient-to-br from-vybe-purple/20 to-vybe-pink/20 rounded-t-lg overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-vybe-purple/30 rounded-lg"></div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-white mb-2">AI Code Review Assistant</h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full"></div>
+                          <span className="text-sm text-vybe-gray-300">@devtools</span>
+                        </div>
+                        <span className="px-2 py-0.5 bg-vybe-purple/20 text-vybe-purple text-xs font-medium rounded-full">PRO</span>
+                        <span className="text-vybe-gray-400 text-xs">• 01/02/25</span>
+                      </div>
+                      <p className="text-sm text-vybe-gray-300 mb-4 line-clamp-2">
+                        Interactive tool that analyzes your code for bugs, suggests improvements, and explains best...
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">productivity</span>
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">developer-tools</span>
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">TypeScript</span>
+                      </div>
+                      <div className="flex items-center justify-between pt-3 border-t border-vybe-gray-700">
+                        <div className="flex items-center gap-1">
+                          <BadgeCheck className="w-4 h-4 text-green-400" />
+                          <span className="text-xs text-vybe-gray-400">Verified 2w ago</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-vybe-gray-400">
+                          <span className="flex items-center gap-1">
+                            <Heart className="w-4 h-4" />
+                            89
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* News Card */}
+                <div>
+                  <h4 className="text-sm font-medium text-vybe-gray-400 mb-3">News Card (Featured Style)</h4>
+                  <div className="vybe-card bg-vybe-gray-800 border border-vybe-gray-700 hover:border-vybe-purple/50 transition-all duration-300 cursor-pointer group relative">
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-2 py-1 bg-vybe-orange text-white text-xs font-bold rounded-md">NEWS</span>
+                    </div>
+                    <div className="aspect-video bg-gradient-to-br from-vybe-orange/20 to-vybe-purple/20 rounded-t-lg overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <div className="w-16 h-16 bg-vybe-orange/30 rounded-lg"></div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-white mb-2">OpenAI Releases Claude 4.0 with Enhanced Reasoning</h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 bg-gradient-to-br from-vybe-orange to-vybe-purple rounded-full"></div>
+                          <span className="text-sm text-vybe-gray-300">OpenAI Blog</span>
+                          <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 text-xs font-medium rounded-full">Official</span>
+                        </div>
+                        <span className="text-vybe-gray-400 text-xs">• 01/16/25</span>
+                      </div>
+                      <p className="text-sm text-vybe-gray-300 mb-4 line-clamp-2">
+                        The latest Claude model brings significant improvements to reasoning capabilities and...
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">news</span>
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">announcement</span>
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">claude</span>
+                      </div>
+                      <div className="flex items-center justify-between pt-3 border-t border-vybe-gray-700">
+                        <div className="flex items-center gap-1">
+                          <BadgeCheck className="w-4 h-4 text-green-400" />
+                          <span className="text-xs text-vybe-gray-400">Verified 2h ago</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-vybe-gray-400">
+                          <span className="flex items-center gap-1">
+                            <Heart className="w-4 h-4" />
+                            567
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Member Card */}
+                <div>
+                  <h4 className="text-sm font-medium text-vybe-gray-400 mb-3">Member Card (Demo Style)</h4>
+                  <div className="vybe-card bg-vybe-gray-800 border border-vybe-gray-700 hover:border-vybe-purple/50 transition-all duration-300 cursor-pointer group">
+                    <div className="p-6">
+                      <div className="absolute top-4 right-4">
+                        <span className="px-2 py-1 bg-vybe-purple text-white text-xs font-bold rounded-md">MEMBER</span>
+                      </div>
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0">
+                          AC
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-semibold text-white">Machine Learning Expert</h3>
+                          <div className="flex items-center gap-2 mt-1">
+                            <span className="text-sm text-vybe-gray-300">@alexchen</span>
+                            <span className="px-2 py-0.5 bg-vybe-purple/20 text-vybe-purple text-xs font-medium rounded-full">PRO</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-4 mb-4 text-sm text-vybe-gray-400">
+                        <span className="flex items-center gap-1">
+                          <BookOpen className="w-4 h-4" />
+                          8 guides
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <MessageSquare className="w-4 h-4" />
+                          3 apps
+                        </span>
+                      </div>
+                      <p className="text-sm text-vybe-gray-300 mb-4 line-clamp-2">
+                        Pioneering next-generation AI systems and advancing machine learning capabilities
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className="px-2 py-1 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full border border-vybe-purple/30">🏆 Top Mentor</span>
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">Production AI</span>
+                        <span className="px-2 py-1 bg-vybe-gray-700/50 text-xs text-vybe-gray-300 rounded">Python</span>
+                      </div>
+                      <div className="flex items-center justify-between pt-3 border-t border-vybe-gray-700">
+                        <div className="flex items-center gap-2">
+                          <Trophy className="w-4 h-4 text-yellow-400" />
+                          <span className="text-xs text-vybe-gray-400">Mentor</span>
+                          <span className="text-xs text-vybe-gray-400">•</span>
+                          <div className="flex items-center gap-0.5">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className={`w-3 h-3 ${i < 5 ? 'text-yellow-400 fill-current' : 'text-vybe-gray-600'}`} />
+                            ))}
+                            <span className="text-xs text-vybe-gray-400 ml-1">4.9 (47)</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Guide Card */}
+                <div>
+                  <h4 className="text-sm font-medium text-vybe-gray-400 mb-3">Guide Card (New Card System)</h4>
+                  <div className="vybe-card bg-vybe-gray-800 border border-vybe-gray-700 hover:border-vybe-purple/50 transition-all duration-300 cursor-pointer group relative lg:col-span-2">
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="px-2 py-1 bg-vybe-purple text-white text-xs font-bold rounded-md">GUIDE</span>
+                    </div>
+                    <div className="absolute top-4 right-4 z-10">
+                      <span className="text-xs text-vybe-gray-400 bg-vybe-gray-900/80 backdrop-blur-sm px-2 py-1 rounded">2h ago</span>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold text-white mb-2 flex items-center gap-2">
+                        <span className="text-green-400">🚀</span>
+                        TEST GUIDE - Static Demo Page
+                      </h3>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 bg-gradient-to-br from-vybe-purple to-vybe-pink rounded-full flex items-center justify-center text-white text-xs font-bold">
+                            TE
+                          </div>
+                          <span className="text-sm text-vybe-gray-300">Test Author</span>
+                        </div>
+                        <span className="px-2 py-0.5 bg-vybe-purple/20 text-vybe-purple text-xs font-medium rounded-full">PRO</span>
+                      </div>
+                      <p className="text-sm text-vybe-gray-300 mb-4">
+                        ⚠️ This is a static test page for development. Use this to test guide pages without authentication.
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        <span className="px-2 py-1 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full border border-vybe-purple/30">test</span>
+                        <span className="px-2 py-1 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full border border-vybe-purple/30">static</span>
+                        <span className="px-2 py-1 bg-vybe-purple/20 text-vybe-purple text-xs rounded-full border border-vybe-purple/30">demo</span>
+                      </div>
+                      <div className="flex items-center justify-between pt-4 border-t border-vybe-gray-700">
+                        <div className="flex items-center gap-3">
+                          <span className="px-2 py-1 bg-green-500/20 text-green-400 text-xs font-medium rounded-full">Beginner</span>
+                          <div className="flex items-center gap-1">
+                            <BadgeCheck className="w-4 h-4 text-green-400" />
+                            <span className="text-xs text-vybe-gray-400">Verified 2h ago</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-4 text-sm text-vybe-gray-400">
+                          <span className="flex items-center gap-1">
+                            <Eye className="w-4 h-4" />
+                            123
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Heart className="w-4 h-4" />
+                            45
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <Clock className="w-4 h-4" />
+                            5m
+                          </span>
+                          <span className="text-xs px-2 py-1 bg-vybe-purple/20 text-vybe-purple rounded-full font-medium">Tutorial</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card System Examples */}
           <div className="vybe-card overflow-hidden" style={{border: '1px solid rgba(217, 70, 160, 0.3)'}}>
             <div style={{padding: '1rem', background: 'linear-gradient(90deg, rgba(217, 70, 160, 0.2), rgba(217, 70, 160, 0.15))', borderBottom: '1px solid rgba(75, 85, 99, 0.4)', borderRadius: '8px 8px 0 0', overflow: 'hidden'}}>
-              <h3 className="text-xl font-bold text-white">Card System Examples</h3>
+              <h3 className="text-xl font-bold text-white">Card System Structure</h3>
             </div>
             <div className="p-6">
               <div className="space-y-8">

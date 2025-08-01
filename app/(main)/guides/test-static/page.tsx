@@ -65,7 +65,7 @@ console.log("Test code block");
     stats: {
       likes: 89,
       views: 1250,
-      downloads: 342
+      comments: 342
     },
     isPremium: false,
     isPurchased: false
@@ -244,12 +244,12 @@ console.log("Test code block");
           </PrimaryCard>
 
           {/* Card Component Previews */}
-          <PrimaryCard headerVariant="purple" title="🎨 Card Component Previews" className="mb-8" noHover>
+          <PrimaryCard headerVariant="purple" title="🎨 Card Component Previews" className="mb-8 [&>div:last-child]:pb-8" noHover>
             <p className="text-sm text-vybe-gray-300 mb-6">
               Preview of specialized card components used throughout the platform:
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-4">
               {/* App Card Preview */}
               <div className="space-y-2">
                 <h3 className="text-sm font-semibold text-white">App Card (Featured Style)</h3>
@@ -276,40 +276,33 @@ console.log("Test code block");
                   onClick={() => console.log('Member card clicked')}
                 />
               </div>
+              
+              {/* Guide Card Preview */}
+              <div className="space-y-2">
+                <h3 className="text-sm font-semibold text-white">Guide Card (New Card System)</h3>
+                <GuideCard
+                  id={testGuide._id}
+                  title={testGuide.title}
+                  slug={testGuide.slug}
+                  author={{
+                    name: testGuide.author.displayName,
+                    isTopCreator: false
+                  }}
+                  description={testGuide.excerpt}
+                  tags={testGuide.tags}
+                  difficulty={testGuide.difficulty as any}
+                  readTime={testGuide.readingTime}
+                  views={testGuide.views}
+                  likes={testGuide.completions}
+                  createdAt="2h ago"
+                  verificationStatus="verified"
+                  lastVerified="2h"
+                  isPro={true}
+                  className="cursor-pointer"
+                />
+              </div>
             </div>
           </PrimaryCard>
-
-          <Link href="/guides">
-            <Button variant="ghost" className="mb-6 -ml-2 text-vybe-gray-400 hover:text-white">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Guides
-            </Button>
-          </Link>
-
-          {/* Preview of Guide Card - Using Proper Card System */}
-          <div className="max-w-md mx-auto">
-            <h3 className="text-lg font-semibold text-white mb-4">Guide Card Preview (New Card System):</h3>
-            <GuideCard
-              id={testGuide._id}
-              title={testGuide.title}
-              slug={testGuide.slug}
-              author={{
-                name: testGuide.author.displayName,
-                isTopCreator: false
-              }}
-              description={testGuide.excerpt}
-              tags={testGuide.tags}
-              difficulty={testGuide.difficulty as any}
-              readTime={testGuide.readingTime}
-              views={testGuide.views}
-              likes={testGuide.completions}
-              createdAt="2h ago"
-              verificationStatus="verified"
-              lastVerified="2h"
-              isPro={true}
-              className="cursor-pointer"
-            />
-          </div>
         </div>
       </div>
     </div>

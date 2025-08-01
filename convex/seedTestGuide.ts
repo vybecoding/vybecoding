@@ -225,6 +225,7 @@ This test guide has demonstrated all major features of our guide rendering syste
     ];
 
     // Create the test guide
+    const now = Date.now();
     const guideId = await ctx.db.insert("guides", {
       title: "🧪 TEST GUIDE - Development Placeholder",
       slug: "test-guide-placeholder",
@@ -236,11 +237,20 @@ This test guide has demonstrated all major features of our guide rendering syste
       authorId: user._id,
       status: "published",
       views: 42,
+      uniqueReaders: 32,
+      totalReadingTime: 480, // 32 readers * 15 minutes average
       completions: 7,
       readingTime: 15,
-      publishedAt: Date.now(),
-      createdAt: Date.now(),
-      updatedAt: Date.now()
+      versions: [{
+        content: testContent,
+        title: "🧪 TEST GUIDE - Development Placeholder",
+        savedAt: now,
+        wordCount: Math.floor(testContent.length / 5) // Rough word count estimate
+      }],
+      publishedAt: now,
+      createdAt: now,
+      updatedAt: now,
+      lastEditedAt: now
     });
 
     return { 

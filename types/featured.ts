@@ -51,8 +51,13 @@ export interface FeaturedSearchSuggestion {
   label: string
 }
 
+export interface FilterOption {
+  value: string
+  label: string
+}
+
 // Filter options for dropdowns
-export const CONTENT_TYPE_OPTIONS = [
+export const CONTENT_TYPE_OPTIONS: FilterOption[] = [
   { value: 'all', label: 'All Activity' },
   { value: 'guides', label: 'Guides' },
   { value: 'apps', label: 'Apps' },
@@ -61,15 +66,15 @@ export const CONTENT_TYPE_OPTIONS = [
   { value: 'trending', label: 'Trending Now' },
   { value: 'popular', label: 'Most Popular' },
   { value: 'featured', label: 'Featured Only' }
-] as const
+]
 
-export const MEMBER_TIER_OPTIONS = [
+export const MEMBER_TIER_OPTIONS: FilterOption[] = [
   { value: 'all', label: 'All Tiers' },
   { value: 'pro', label: 'Pro' },
   { value: 'free', label: 'Free' }
-] as const
+]
 
-export const EXPERTISE_OPTIONS = [
+export const EXPERTISE_OPTIONS: FilterOption[] = [
   { value: 'ai-dev', label: 'AI Development' },
   { value: 'claude', label: 'Claude Expert' },
   { value: 'fullstack', label: 'Full-Stack' },
@@ -81,21 +86,21 @@ export const EXPERTISE_OPTIONS = [
   { value: 'devops', label: 'DevOps' },
   { value: 'mobile', label: 'Mobile' },
   { value: 'data-science', label: 'Data Science' }
-] as const
+]
 
-export const SERVICE_OPTIONS = [
+export const SERVICE_OPTIONS: FilterOption[] = [
   { value: 'all', label: 'All Services' },
   { value: 'mentorship', label: 'Offering Mentorship' },
   { value: 'collab', label: 'Open to Collab' },
   { value: 'hiring', label: 'Hiring/Available' },
   { value: 'consulting', label: 'Consulting' }
-] as const
+]
 
-export const SORT_OPTIONS = [
+export const SORT_OPTIONS: FilterOption[] = [
   { value: 'newest', label: 'Newest First' },
   { value: 'oldest', label: 'Oldest First' },
   { value: 'popular', label: 'Most Popular' },
   { value: 'likes', label: 'Most Liked' },
   { value: 'comments', label: 'Most Comments' },
   { value: 'trending', label: 'Trending' }
-] as const
+]

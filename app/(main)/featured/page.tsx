@@ -301,7 +301,7 @@ export default function FeaturedPage() {
             label="Sort by"
             options={SORT_OPTIONS}
             selected={[filters.sort]}
-            onSelectionChange={(values) => handleFilterChange('sort', values[0] || 'newest')}
+            onSelectionChange={(values) => handleFilterChange('sort', [values[0] || 'newest'])}
           />
         </FilterContainer>
 
